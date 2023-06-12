@@ -1,4 +1,4 @@
-const moduleName = "wordle_js";
+const moduleName = "enola_poc_0";
 
 const matchInit = function (ctx: nkruntime.Context, logger: nkruntime.Logger, nk: nkruntime.Nakama, params: {[key: string]: string}): {state: nkruntime.MatchState, tickRate: number, label: string} {
     return {
@@ -32,7 +32,6 @@ const matchInit = function (ctx: nkruntime.Context, logger: nkruntime.Logger, nk
     for (const message of messages) {
         dispatcher.broadcastMessage(4, message.data);
     }
-  
     return {
       state
     };

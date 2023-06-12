@@ -19,8 +19,8 @@ let rpcFindMatch: nkruntime.RpcFunction = function (ctx: nkruntime.Context, logg
 
     let matches: nkruntime.Match[];
     try {
-        //const query = `+label.open:1`;
-        matches = nk.matchList(10, true, null, null, 1);
+        // max 5 people per match before we open new match
+        matches = nk.matchList(10, true, null, null, 5);
     } catch (error) {
         logger.error('Error listing matches: %v', error);
         throw error;
