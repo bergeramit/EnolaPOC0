@@ -1,0 +1,141 @@
+h1 {
+    text-align: center;
+     margin-block-start: 0.5em;
+      margin-block-end: 0.5em;
+      color: black;
+   }
+   
+   body {
+     touch-action: manipulation;
+     background-color: #ecf0f1;
+   }
+
+   .letter-count {
+      font-size: 0.6rem;
+   }
+   
+   #game-board {
+     display: flex;
+     align-items: center;
+     flex-direction: column;
+   }
+   
+   .letter-box {
+     border: 2px solid gray;
+     border-radius: 3px;
+     margin: 2px;
+     font-size: 1.5rem;
+     font-weight: 700;
+     height: 2rem;
+     width: 1.5rem;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     text-transform: uppercase;
+   }
+   
+   .filled-box {
+     border: 2px solid black;
+   }
+
+   .button-marked {
+    background-color: #4CAF50;
+    color: white;
+   }
+   
+   .letter-row-local {
+     display: flex;
+   }
+   
+   .letter-row-opponent {
+     display: flex;
+     color: black;
+     background-color: antiquewhite;
+   }
+   
+   #keyboard-cont {
+     margin: 1rem 1rem 1rem 1rem;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+   }
+   
+   #keyboard-cont div {
+     display: flex;
+   }
+   
+   .second-row {
+     margin: 0.5rem 0;
+   }
+   
+   .fourth-row {
+     margin: 0.2rem 0;
+   }
+
+   .filled-box {
+    border: 2px solid black;
+  }
+   .guess-button {
+    border: 2px solid gray;
+    border-radius: 3px;
+    margin: 2px;
+    font-size: 1rem;
+    color: black;
+    font-weight: 700;
+    height: 2rem;
+    width: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+   }
+
+   .keyboard-button {
+     border: 1px solid black;
+     color:black;
+     font-size: 1rem;
+     font-weight: 700;
+     padding-top: 1rem;
+     padding-bottom: 1rem;
+     padding-left: 0.6rem;
+     padding-right: 0.6rem;
+     margin: 0 2px;
+     cursor: pointer;
+     text-transform: uppercase;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+   }
+   
+   #connect_button {
+     padding-top: 0.8rem;
+     padding-bottom: 0.8rem;
+   }
+
+   .letter-local {
+    display: flex;
+  }
+
+   .pagination {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+  }
+  
+  .pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 1px solid #4CAF50;
+  }
+  
+  .pagination a:hover:not(.active) {background-color: #ddd;}
