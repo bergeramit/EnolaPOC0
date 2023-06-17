@@ -43,7 +43,7 @@ h1, h4 {
    }
 
    .button-marked {
-    background-color: #4CAF50;
+    background-color: #3498db;
     color: white;
    }
    
@@ -97,21 +97,17 @@ h1, h4 {
      color:black;
      font-size: 1.2rem;
      font-weight: 700;
-     padding-top: 0.8rem;
-     padding-bottom: 0.8rem;
-     padding-left: 0.6rem;
-     padding-right: 0.6rem;
+     padding-top: 0.6rem;
+     padding-bottom: 0.6rem;
+     padding-left: 0.5rem;
+     padding-right: 0.5rem;
+     min-width: 2rem;
      margin: 0 2px;
      cursor: pointer;
      text-transform: uppercase;
      -webkit-appearance: none;
      -moz-appearance: none;
      appearance: none;
-   }
-   
-   #connect_button {
-     padding-top: 0.8rem;
-     padding-bottom: 0.8rem;
    }
 
    .letter-local {
@@ -135,9 +131,9 @@ h1, h4 {
   }
   
   .pagination a.active {
-    background-color: #4CAF50;
+    background-color: #3498db;
     color: white;
-    border: 1px solid #4CAF50;
+    border: 1px solid #3498db;
   }
   
   .pagination a:hover:not(.active) {background-color: #ddd;}
@@ -161,6 +157,11 @@ h1, h4 {
 
   #chat-messages div {
     margin-top: 5px;
+  }
+
+  #space-button {
+    min-width: 10rem;
+    padding: 0.3rem;
   }
   
 
@@ -193,7 +194,6 @@ h1, h4 {
     padding: 0;
   }
   ul li {
-    /* display: inline-block; */
     background-color: pink;
     display: flex;
     margin: 10px;
@@ -208,4 +208,15 @@ h1, h4 {
     text-align: center; 
     margin: auto;
     
+  }
+
+  .avatar-icon {
+    border-radius: 100%;
+    border: 1px solid #000000!important;
+    padding: 0.2rem;
+    font-size: 0.7rem;
+    text-align: center;
+    vertical-align: middle; 
+    min-width: 2rem;
+    background-color: #3498db;
   }
