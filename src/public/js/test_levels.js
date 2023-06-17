@@ -4,13 +4,15 @@ let difficulty = 'Easy'
 let levelDataStructure
 let metaLevelDataStructure
 let levelNumber = 0
+let totalScore = 0
+let currentStreak = 1
 let timeoutBetweenLevels = 1000;
 let correctlyGuessed = {}
 let availableLetters
 let enterKeyName = "Enter"
 let spaceKeyName = "space"
 let backspaceKeyName = "Backspace"
-let botGuessInterval = 7000
+let botGuessInterval = [1000, 3000, 4000, 5000, 6000, 7000, 8000, 9000]
 let botUserNames = ["user12431", "smartFox69", "Huberman32", "WordyJack3"]
 let botMessages = ["a though one!", "Damn", "So close!", "almost almost", "thats so fun"]
 
@@ -62,6 +64,18 @@ function checkGuess (guess) {
 
 /* ---------------------- User Inputs ---------------------- */
 
+function handleEnterGuess(guessValue) {
+    if (!checkGuess(guessValue)) {
+        // add to chat instead
+        appendMessage('you', guessValue)
+        currentStreak = 1
+    }else {
+        appendMessage("WordHunt", "you solved a row!")
+        totalScore += 10 * currentStreak
+        currentStreak += 1
+        updateScore()
+    }
+}
 
 function addKeyToInput (pressedKey, onScreen) {
     const guess = document.getElementById('input-guess')
@@ -76,12 +90,7 @@ function addKeyToInput (pressedKey, onScreen) {
     }
     
     if (pressedKey === enterKeyName) {
-        if (!checkGuess(guess.value)) {
-            // add to chat instead
-            appendMessage('you', guess.value)
-        }else {
-            appendMessage("WordHunt", "you solved a row!")
-        }
+        handleEnterGuess(guess.value)
         guess.value = ''
         return
     }
@@ -100,12 +109,7 @@ document.getElementById('keyboard-cont').addEventListener('click', (e) => {
     let key = target.textContent
     const guess = document.getElementById('input-guess')
     if (target.className.includes("fa-share")) {
-        if (!checkGuess(guess.value)) {
-            // add to chat instead
-            appendMessage('you', guess.value)
-        } else {
-            appendMessage("WordHunt", "you solved a row!")
-        }
+        handleEnterGuess(guess.value)
         guess.value = ''
     }
     else if (target.className.includes("backspace")) {
@@ -138,15 +142,22 @@ buttons.forEach((button) => {
     })
 })
 
+function updateScore() {
+    const totalScoreObj = document.getElementById('total-score')
+    totalScoreObj.textContent = 'Score: ' + totalScore
+}
+
 /* ---------------------- /User Inputs ---------------------- */
 
 /* ---------------------- Server API ---------------------- */
 function generateNewLevel () {
     correctlyGuessed = {}
+
+
     const levelNumberObj = document.getElementById('level-number')
-    
     levelNumber += 1
     levelNumberObj.textContent = 'Level: ' + levelNumber
+    updateScore()
 
     fetch(postURL, {
         method: 'POST',
@@ -219,9 +230,11 @@ function paintCurrentLevel (currentLevel) {
 
 function setupStartingLevel () {
     generateNewLevel()
-    appendMessage('WordHunt', 'Welcome!')
-    appendMessage('WordHunt', 'Try and guess the words and communicate with your friends!')
-    setInterval(runBotGuesser, botGuessInterval);
+    for (let i=0; i<botUserNames.length;i++) {
+        appendMessage('WordHunt', botUserNames[i] + ' joined!')
+    }
+    appendMessage('WordHunt', 'you joined!')
+    setInterval(runBotGuesser, botGuessInterval[Math.floor(Math.random()*botGuessInterval.length)]);
 }
 setupStartingLevel()
 /* ---------------------- /Level Generation ---------------------- */
@@ -229,7 +242,6 @@ setupStartingLevel()
 
 /* ---------------------- /Bot Logic ---------------------- */
 function runBotGuesser() {
-
     let botUserName = botUserNames[Math.floor(Math.random()*botUserNames.length)]
     //let botMessage = botMessages[Math.floor(Math.random()*botMessages.length)]
     let botGuess = metaLevelDataStructure[Math.floor(Math.random()*metaLevelDataStructure.length)]
