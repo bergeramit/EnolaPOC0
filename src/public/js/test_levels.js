@@ -3,8 +3,11 @@ const postURL = 'http://127.0.0.1:3000/generate_level/'
 let difficulty = 'Easy'
 let levelDataStructure
 let levelNumber = 0
+let timeoutBetweenLevels = 1000;
 let correctlyGuessed = {}
 let availableLetters
+let enterKeyName = "Enter"
+let backspaceKeyName = "Backspace"
 
 function appendMessage (username, message) {
     const chatMessages = document.getElementById('chat-messages')
@@ -84,9 +87,12 @@ function checkGuess (guess) {
                 }
             }
             // generate new level
+            appendMessage('WordHunt', 'Great job!')
+            appendMessage('WordHunt', 'Get Ready for level ' + (levelNumber+1))
             setTimeout(() => {
                 geneateNewLevel()
-            }, 500) // 500ms
+            }, timeoutBetweenLevels)
+            return
         }
     }
     // add to chat instead
@@ -96,15 +102,14 @@ function checkGuess (guess) {
 
 function addKeyToInput (pressedKey, onScreen) {
     const guess = document.getElementById('input-guess')
-    console.log('reached here')
-    if (pressedKey === 'Backspace') {
+    if (pressedKey === backspaceKeyName) {
         if (onScreen) {
             guess.value = guess.value.substring(0, guess.value.length - 1)
         }
         return
     }
     
-    if (pressedKey === 'Enter') {
+    if (pressedKey === enterKeyName) {
         checkGuess(guess.value)
         // add to chat if not a correct guess
         guess.value = ''
@@ -118,8 +123,10 @@ function addKeyToInput (pressedKey, onScreen) {
 function geneateNewLevel () {
     correctlyGuessed = {}
     const levelNumberObj = document.getElementById('level-number')
+    
     levelNumber += 1
     levelNumberObj.textContent = 'Level: ' + levelNumber
+
     fetch(postURL, {
         method: 'POST',
         headers: {
@@ -153,9 +160,11 @@ document.getElementById('keyboard-cont').addEventListener('click', (e) => {
         geneateNewLevel()
         return
     }
-    
-    if (key === 'Del') {
-        key = 'Backspace'
+    if (target.className.includes("comment-arrow-up")) {
+        key = enterKeyName
+    }
+    if (target.className.includes("backspace")) {
+        key = backspaceKeyName
     }
     addKeyToInput(key, true) // onscreen press
 })

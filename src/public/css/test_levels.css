@@ -1,3 +1,7 @@
+:root {
+  --font-size: 0.8rem;
+}
+
 h1, h4 {
     text-align: center;
      margin-block-start: 0.5em;
@@ -24,7 +28,7 @@ h1, h4 {
      border: 2px solid gray;
      border-radius: 3px;
      margin: 2px;
-     font-size: 1.5rem;
+     font-size: 1rem;
      font-weight: 700;
      height: 2rem;
      width: 1.5rem;
@@ -75,13 +79,12 @@ h1, h4 {
    .filled-box {
     border: 2px solid black;
   }
-   .guess-button {
+   #input-guess {
     border: 2px solid gray;
     border-radius: 3px;
     margin: 2px;
-    font-size: 1rem;
+    font-size: var(--font-size);
     color: black;
-    font-weight: 700;
     height: 1.5rem;
     width: 19rem;
     display: flex;
@@ -92,10 +95,10 @@ h1, h4 {
    .keyboard-button {
      border: 1px solid black;
      color:black;
-     font-size: 1rem;
+     font-size: 1.2rem;
      font-weight: 700;
-     padding-top: 1rem;
-     padding-bottom: 1rem;
+     padding-top: 0.8rem;
+     padding-bottom: 0.8rem;
      padding-left: 0.6rem;
      padding-right: 0.6rem;
      margin: 0 2px;
@@ -152,7 +155,7 @@ h1, h4 {
     max-height: 4rem;/* Adjust the height according to your requirements */
     min-height: 4rem;
     overflow-y: scroll;
-    font-size: 1rem;
+    font-size: var(--font-size);
     font-weight: 700;
   }
 
