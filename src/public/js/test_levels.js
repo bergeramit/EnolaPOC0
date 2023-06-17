@@ -78,7 +78,7 @@ function addKeyToInput (pressedKey, onScreen) {
     if (pressedKey === enterKeyName) {
         if (!checkGuess(guess.value)) {
             // add to chat instead
-            appendMessage('you', guess)
+            appendMessage('you', guess.value)
         }else {
             appendMessage("WordHunt", "you solved a row!")
         }
