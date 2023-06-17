@@ -160,7 +160,7 @@ document.getElementById('keyboard-cont').addEventListener('click', (e) => {
         geneateNewLevel()
         return
     }
-    if (target.className.includes("comment-arrow-up")) {
+    if (target.className.includes("fa-share")) {
         key = enterKeyName
     }
     if (target.className.includes("backspace")) {
