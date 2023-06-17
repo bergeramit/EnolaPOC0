@@ -1,0 +1,26 @@
+{
+  "name": "enolapoc0",
+  "version": "1.0.0",
+  "description": "## Run nakama server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bergeramit/EnolaPOC0.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bergeramit/EnolaPOC0/issues"
+  },
+  "homepage": "https://github.com/bergeramit/EnolaPOC0#readme",
+  "devDependencies": {
+    "eslint": "^8.43.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^16.0.0",
+    "eslint-plugin-promise": "^6.1.1"
+  }
+}
