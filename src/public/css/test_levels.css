@@ -176,3 +176,37 @@ h1, h4 {
     border-radius: 15px;
     max-width: 20rem;
   }
+
+  /* test icons */
+
+  #players {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    padding: 0;
+  }
+  ul li {
+    /* display: inline-block; */
+    background-color: pink;
+    display: flex;
+    margin: 10px;
+    border-radius: 80%;
+    height: 40px;
+    width: 40px;  
+  }
+  ul li a {
+    color: #000;
+    display: table-cell;
+    vertical-align: middle; 
+    text-align: center; 
+    margin: auto;
+
+     
+  }
