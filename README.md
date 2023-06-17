@@ -12,6 +12,7 @@ docker compose up --build nakama
 
 ```
 cd src/server/networkServer
+npm install
 node app.js # or if you use PM2 then pm2 start app.js
 ```
 

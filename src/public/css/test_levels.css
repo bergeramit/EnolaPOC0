@@ -1,7 +1,7 @@
-h1 {
+h1, h4 {
     text-align: center;
      margin-block-start: 0.5em;
-      margin-block-end: 0.5em;
+      margin-block-end: 0.1em;
       color: black;
    }
    
@@ -54,7 +54,7 @@ h1 {
    }
    
    #keyboard-cont {
-     margin: 1rem 1rem 1rem 1rem;
+     margin: 0rem 1rem 1rem 1rem;
      display: flex;
      flex-direction: column;
      align-items: center;
@@ -82,12 +82,11 @@ h1 {
     font-size: 1rem;
     color: black;
     font-weight: 700;
-    height: 2rem;
-    width: 6rem;
+    height: 1.5rem;
+    width: 19rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-transform: uppercase;
    }
 
    .keyboard-button {
@@ -139,3 +138,38 @@ h1 {
   }
   
   .pagination a:hover:not(.active) {background-color: #ddd;}
+
+  #chat-container {
+    margin: auto;
+    display: flex;
+    max-height: 7rem;/* Adjust the height according to your requirements */
+    max-width: 30rem;
+    overflow-y: scroll;
+  }
+  
+  #chat-messages {
+    padding: 10px;
+    max-height: 4rem;/* Adjust the height according to your requirements */
+    min-height: 4rem;
+    overflow-y: scroll;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  #chat-messages div {
+    margin-top: 5px;
+  }
+  
+
+  /* test chat box */
+  
+  #chatborder {
+    border: 1px solid #ccc!important;
+    border-width: 1px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 7px;
+    border-radius: 15px;
+    max-width: 20rem;
+  }

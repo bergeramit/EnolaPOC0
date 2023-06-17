@@ -13,22 +13,27 @@
   />
 </head>
 <body>
-    <h1>Test Levels Difficulty</h1>
+    <h1>WordHunt</h1>
+    <h4 id="level-number"></h4>
     <div id="game-board">
 
     </div>
     
+   
+        <div id='chatborder'>
+            <div id="chat-messages">
+            </div>
+          <input id="input-guess" class="guess-button"></input>
+        </div>
     
     <div id="keyboard-cont">
-        <div class="pagination">
-            <button id="input-guess" class="guess-button"></button>
-        </div>
-        <div class="pagination">
-            <a href="#">Easy</a>
-            <a href="#" class="active">Medium</a>
+        
+        <!-- <div class="pagination">
+            <a href="#" class="active">Easy</a>
+            <a href="#">Medium</a>
             <a href="#">Hard</a>
             <a href="#">Very Hard</a>
-          </div>
+          </div> -->
         <div class="first-row">
             <button class="keyboard-button">q<span class="letter-count"></span></button>
             <button class="keyboard-button">w<span class="letter-count"></span></button>
@@ -63,7 +68,7 @@
             <button class="keyboard-button">m<span class="letter-count"></span></button>
             <button class="keyboard-button">Enter</button>
         </div>
-	<div class="fourth-row"></div>  
+	<div class="fourth-row">
 	<button id="connect_button" class="keyboard-button">Generate Level</button>
         </div>
     </div>
