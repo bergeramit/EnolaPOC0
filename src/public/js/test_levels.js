@@ -10,6 +10,7 @@ let availableLetters
 let enterKeyName = "Enter"
 let spaceKeyName = "space"
 let backspaceKeyName = "Backspace"
+let botGuessInterval = 7000
 let botUserNames = ["user12431", "smartFox69", "Huberman32", "WordyJack3"]
 let botMessages = ["a though one!", "Damn", "So close!", "almost almost", "thats so fun"]
 
@@ -220,7 +221,7 @@ function setupStartingLevel () {
     generateNewLevel()
     appendMessage('WordHunt', 'Welcome!')
     appendMessage('WordHunt', 'Try and guess the words and communicate with your friends!')
-    setInterval(runBotGuesser, 5000);
+    setInterval(runBotGuesser, botGuessInterval);
 }
 setupStartingLevel()
 /* ---------------------- /Level Generation ---------------------- */
