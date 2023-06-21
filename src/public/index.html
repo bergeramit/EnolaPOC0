@@ -1,103 +1,640 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Levels</title>
-    <link rel="stylesheet" href="css/test_levels.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-</head>
-<body>
-    <h1>WordHunt</h1>
-    
-    <div id="players">
-        <ul>
-            <li><a href="#"><i class="fa-solid fa-robot"><p class="avatar-icon">YOU</p></i></a></li>
-            <li><a href="#"><i class="fa-solid fa-robot"></i></a></li>
-            <li><a href="#"><i class="fa-solid fa-robot"></i></a></li>
-            <li><a href="#"><i class="fa-solid fa-robot"></i></a></li>
-            <li><a href="#"><i class="fa-solid fa-robot"></i></a></li>
-        </ul> 
-    </div>
-    
-    <div id="meta-state">
-        <div>
-            <h4 id="level-number"></h4>
-            <h4 id="total-score"></h4>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!--<meta name=description content="This site was generated with Anima. www.animaapp.com"/>-->
+    <!-- <link rel="shortcut icon" type=image/png href="https://animaproject.s3.amazonaws.com/home/favicon.png" /> -->
+    <meta name="viewport" content="width=1728, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="css/word-hunt.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="word-hunt" />
+    <div class="container-center-horizontal">
+      <form class="word-hunt screen" name="form1" action="form1" method="post">
+        <img class="rectangle-7596" src="img/rectangle-7596-2@2x.png" alt="Rectangle 7596" />
+        <div class="overlap-group5">
+          <img class="bg" src="img/bg.png" alt="BG" />
+          <div class="bottom-shading">
+            <img class="line-44" src="img/line-441.svg" alt="Line 441" />
+            <img class="line-44" src="img/line-442.svg" alt="Line 442" />
+          </div>
+          <div class="desktop">
+            <div class="flex-col">
+              <div class="logo">
+                <img class="logo-1" src="img/logo@2x.png" alt="Logo" />
+                <p class="guess-words-open-do valign-text-middle">
+                  GUESS WORDS,<br />OPEN DOORS, AND<br />MEET OTHER PLAYERS
+                </p>
+              </div>
+              <div class="chat-1">
+                <div class="overlap-group1">
+                  <div class="overlap-group-4">
+                    <img class="freind" src="img/freind-3@2x.png" alt="freind 3" />
+                    <div class="online-indication"></div>
+                  </div>
+                  <div class="name valign-text-middle gilroy-extra-extra-bold-pixie-powder-14px">Matthew Clark</div>
+                  <img class="close_round" src="img/close-round.svg" alt="Close_round" />
+                </div>
+                <div class="other">
+                  <div class="chat">
+                    <div class="overlap-group">
+                      <img class="freind" src="img/freind-2@2x.png" alt="freind 2" />
+                      <div class="online-indication"></div>
+                    </div>
+                  </div>
+                  <div class="chat">
+                    <div class="overlap-group">
+                      <img class="freind" src="img/freind-1@2x.png" alt="freind 1" />
+                      <div class="online-indication"></div>
+                    </div>
+                  </div>
+                  <div class="chat">
+                    <div class="overlap-group">
+                      <img class="pic" src="img/pic@2x.png" alt="pic" />
+                      <div class="online-indication"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex-col-1">
+              <div class="nav-1">
+                <div class="nav-how-to-button">
+                  <div class="overlap-group-5">
+                    <div class="how-to-play gilroy-extra-extra-bold-white-14px animate-enter">
+                      HOW<br />TO<br />PLAY
+                    </div>
+                  </div>
+                </div>
+                <div class="nav-friends-button">
+                  <div class="overlap-group1-1">
+                    <img class="pic-1 pic-4" src="img/player_1.png" alt="pic" />
+                    <img class="pic-2 pic-4" src="img/player_2.png" alt="pic" />
+                    <img class="pic-3 pic-4" src="img/player_3.png" alt="pic" />
+                    <div class="online-indication-1"></div>
+                  </div>
+                </div>
+                <div class="nav">
+                  <div class="overlap-group2">
+                    <div class="room-name valign-text-middle">ALL<br />ROOMS</div>
+                    <div class="overlap-group-6">
+                      <div class="ellipse-1900"></div>
+                      <div class="live valign-text-middle">LIVE</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="nav">
+                  <div class="overlap-group3">
+                    <div class="solo-game gilroy-extra-extra-bold-white-14px">SOLO<br />GAME</div>
+                  </div>
+                </div>
+              </div>
+              <div class="register">
+                <div class="overlap-group2-1">
+                  <div class="overlap-group1-2">
+                    <div class="tooltip">
+                      <img class="vector-564" src="img/vector-564.svg" alt="Vector 564" />
+                      <div class="frame-238064">
+                        <a href="javascript:SubmitForm('form1')">
+                          <div class="group-238075">
+                            <div class="overlap-group-7">
+                              <img class="mask-group" src="img/mask-group@2x.png" alt="Mask group" />
+                              <div class="place valign-text-middle">REGISTER</div>
+                            </div>
+                          </div></a
+                        >
+                        <div class="frame-238071"><div class="how-it-works valign-text-middle">Enter Email</div></div>
+                        <p class="play-anywhere-meet valign-text-middle">
+                          <span
+                            ><span class="span0"
+                              >Play anywhere,<br />meet new friends and discover exciting content</span
+                            ><span class="gilroy-extra-extra-bold-pixie-powder-14px"></span
+                            ><span class="gilroy-extra-extra-bold-pixie-powder-14px"></span
+                            ><span class="gilroy-extra-extra-bold-pixie-powder-14px"
+                              >sign up to get the<br />full experience</span
+                            >
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                    <h1 class="game-launch-soon">GAME<br />LAUNCH<br />SOON!</h1>
+                    <img class="image-229" src="img/image-229@2x.png" alt="image 229" />
+                  </div>
+                  <img class="pip-character" src="img/pip---character@2x.png" alt="Pip - Character" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="in-game-top-ui">
+            <div class="players">
+              <div class="player-you"></div>
+              <div class="player"></div>
+              <div class="player-1 player-3"></div>
+              <div class="player-2 player-3"></div>
+            </div>
+            <div class="letters">
+              <div class="letter">
+                <div class="overlap-group-1">
+                  <div class="price valign-text-middle gilroy-extra-extra-bold-gunsmoke-12-1px">R</div>
+                </div>
+              </div>
+              <div class="letter">
+                <div class="overlap-group-1">
+                  <div class="o valign-text-middle gilroy-extra-extra-bold-gunsmoke-12-1px">O</div>
+                </div>
+              </div>
+              <div class="letter">
+                <div class="overlap-group-1">
+                  <div class="d valign-text-middle gilroy-extra-extra-bold-gunsmoke-12-1px">D</div>
+                </div>
+              </div>
+              <div class="letter">
+                <div class="overlap-group-1">
+                  <div class="c valign-text-middle gilroy-extra-extra-bold-gunsmoke-12-1px">C</div>
+                </div>
+              </div>
+              <div class="letter-2">
+                <div class="overlap-group-1">
+                  <div class="w valign-text-middle gilroy-extra-extra-bold-gunsmoke-12-1px">W</div>
+                </div>
+              </div>
+            </div>
+            <div class="info-button"><div class="text valign-text-middle">?</div></div>
+          </div>
+          <div class="in-game-secondary-ui">
+            <div class="in-game-timer"><div class="text-1 valign-text-middle">1:08</div></div>
+            <div class="in-game-score-progress">
+              <div class="text-2 valign-text-middle">
+                <span><span class="span0-1">13</span><span>/23</span> </span>
+              </div>
+            </div>
+          </div>
+          <div class="keyboard">
+            <div class="overlap-group2-2"><div class="text-3">Add comment</div></div>
+            <div class="keyboard-1 keyboard-2">
+              <div class="r1">
+                <article class="component">
+                  <div class="price-1 gilroy-extra-extra-bold-cape-cod-20-4px">Q</div>
+                </article>
+                <article class="component"><div class="q gilroy-extra-extra-bold-cape-cod-20-4px">W</div></article>
+                <article class="component">
+                  <div class="q-1 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">E</div>
+                </article>
+                <article class="component">
+                  <div class="q-2 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">R</div>
+                </article>
+                <article class="component-1 component-2">
+                  <div class="overlap-group-2">
+                    <div class="q-3 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">T</div>
+                    <div class="superscript-text roboto-bold-cape-cod-8-9px">4</div>
+                  </div>
+                </article>
+                <article class="component">
+                  <div class="q-4 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">Y</div>
+                </article>
+                <article class="component">
+                  <div class="q-5 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">U</div>
+                </article>
+                <article class="component">
+                  <div class="q-6 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">I</div>
+                </article>
+                <article class="component">
+                  <div class="q-7 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">O</div>
+                </article>
+                <article class="component">
+                  <div class="q-8 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">P</div>
+                </article>
+              </div>
+              <div class="keyboard-item keyboard-2">
+                <article class="component">
+                  <div class="q-9 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">A</div>
+                </article>
+                <article class="component">
+                  <div class="q-10 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">S</div>
+                </article>
+                <article class="component-1 component-2">
+                  <div class="overlap-group-2">
+                    <div class="q-11 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">D</div>
+                    <div class="superscript-text roboto-bold-cape-cod-8-9px">3</div>
+                  </div>
+                </article>
+                <article class="component">
+                  <div class="q-12 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">F</div>
+                </article>
+                <article class="component-1 component-2">
+                  <div class="overlap-group-2">
+                    <div class="q-13 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">G</div>
+                    <div class="superscript-text roboto-bold-cape-cod-8-9px">2</div>
+                  </div>
+                </article>
+                <article class="component">
+                  <div class="q-14 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">H</div>
+                </article>
+                <article class="component">
+                  <div class="q-15 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">J</div>
+                </article>
+                <article class="component-1 component-2">
+                  <div class="q-16 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">K</div>
+                </article>
+                <article class="component">
+                  <div class="q-17 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">L</div>
+                </article>
+              </div>
+              <div class="keyboard-item keyboard-2">
+                <article class="component">
+                  <div class="q-18 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">Z</div>
+                </article>
+                <article class="component">
+                  <div class="q-19 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">X</div>
+                </article>
+                <article class="component">
+                  <div class="q-20 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">C</div>
+                </article>
+                <article class="component">
+                  <div class="q-21 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">V</div>
+                </article>
+                <article class="component">
+                  <div class="q-22 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">B</div>
+                </article>
+                <article class="component">
+                  <div class="q-23 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">N</div>
+                </article>
+                <article class="component">
+                  <div class="q-24 q-25 gilroy-extra-extra-bold-cape-cod-20-4px">M</div>
+                </article>
+              </div>
+              <div class="r4">
+                <div class="component-key component-2">
+                  <img
+                    class="icon-material-icon-backspace_black_24dp"
+                    src="img/icon---material-icon---backspace-black-24dp.svg"
+                    alt="Icon / material-icon / backspace_black_24dp"
+                  />
+                </div>
+                <div class="component-key-1"><div class="x">SPACE</div></div>
+                <div class="component-key component-2">
+                  <div class="send_fill"><img class="subtract" src="img/subtract-2.svg" alt="Subtract" /></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="words-tiles">
+            <div class="word">
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div id="test-1" class="word">
+              <article class="tail">
+                <div class="tail-1">
+                  <div class="highlights"><img class="intersect" src="img/intersect-1.svg" alt="Intersect" /></div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="tail-1">
+                  <div class="highlights-1 highlights-6">
+                    <img class="intersect" src="img/intersect-3.svg" alt="Intersect" />
+                  </div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="tail-1">
+                  <div class="highlights-2 highlights-6">
+                    <img class="intersect" src="img/intersect-5.svg" alt="Intersect" />
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="word">
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill-1 tile-fill-4"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill-1 tile-fill-4"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill-1 tile-fill-4"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill-1 tile-fill-4"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill-1 tile-fill-4"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="word">
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill-2 tile-fill-4"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill-2 tile-fill-4"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill-2 tile-fill-4"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill-2 tile-fill-4"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="word">
+              <article class="tail">
+                <div class="tail-1">
+                  <div class="highlights-3 highlights-6">
+                    <img class="intersect" src="img/intersect-7.svg" alt="Intersect" />
+                  </div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="tail-1">
+                  <div class="highlights-4 highlights-6">
+                    <img class="intersect" src="img/intersect-9.svg" alt="Intersect" />
+                  </div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="tail-1">
+                  <div class="highlights-5 highlights-6">
+                    <img class="intersect" src="img/intersect-11.svg" alt="Intersect" />
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="word">
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill-3 tile-fill-4"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill-3 tile-fill-4"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill-3 tile-fill-4"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+              <article class="tail">
+                <div class="letter-tile">
+                  <div class="overlap-group-3">
+                    <div class="tile-bg">
+                      <div class="tile-fill-3 tile-fill-4"></div>
+                    </div>
+                    <div class="letter-input letter-1 valign-text-middle gilroy-extra-extra-bold-cherry-pie-23-7px">C</div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+          <img class="chat-2" src="img/chat@2x.png" alt="Chat" />
         </div>
+      </form>
     </div>
+    <script>
+      function ShowOnScroll() {
+        this.toShow = [];
+        this.nextEventY = undefined;
+      }
 
-    <div id="game-board">
-        
-    </div>
-    
-    
-    <div id='chatborder'>
-        <div id="chat-messages">
-        </div>
-        <input id="input-guess" placeholder="guess words or chat with friends..." class="guess-button"></input>
-    </div>
-    
-    <div id="keyboard-cont">
-        
-        <!-- <div class="pagination">
-            <a href="#" class="active">Easy</a>
-            <a href="#">Medium</a>
-            <a href="#">Hard</a>
-            <a href="#">Very Hard</a>
-        </div> -->
-        <div class="first-row">
-            <button class="keyboard-button">q<span class="letter-count"></span></button>
-            <button class="keyboard-button">w<span class="letter-count"></span></button>
-            <button class="keyboard-button">e<span class="letter-count"></span></button>
-            <button class="keyboard-button">r<span class="letter-count"></span></button>
-            <button class="keyboard-button">t<span class="letter-count"></span></button>
-            <button class="keyboard-button">y<span class="letter-count"></span></button>
-            <button class="keyboard-button">u<span class="letter-count"></span></button>
-            <button class="keyboard-button">i<span class="letter-count"></span></button>
-            <button class="keyboard-button">o<span class="letter-count"></span></button>
-            <button class="keyboard-button">p<span class="letter-count"></span></button>
-        </div>
-        <div class="second-row">
-            <button class="keyboard-button">a<span class="letter-count"></span></button>
-            <button class="keyboard-button">s<span class="letter-count"></span></button>
-            <button class="keyboard-button">d<span class="letter-count"></span></button>
-            <button class="keyboard-button">f<span class="letter-count"></span></button>
-            <button class="keyboard-button">g<span class="letter-count"></span></button>
-            <button class="keyboard-button">h<span class="letter-count"></span></button>
-            <button class="keyboard-button">j<span class="letter-count"></span></button>
-            <button class="keyboard-button">k<span class="letter-count"></span></button>
-            <button class="keyboard-button">l<span class="letter-count"></span></button>
-        </div>
-        <div class="third-row">
-            <button class="keyboard-button fa-solid fa-share"></button>
-            <button class="keyboard-button">z<span class="letter-count"></span></button>
-            <button class="keyboard-button">x<span class="letter-count"></span></button>
-            <button class="keyboard-button">c<span class="letter-count"></span></button>
-            <button class="keyboard-button">v<span class="letter-count"></span></button>
-            <button class="keyboard-button">b<span class="letter-count"></span></button>
-            <button class="keyboard-button">n<span class="letter-count"></span></button>
-            <button class="keyboard-button">m<span class="letter-count"></span></button>
-            <button class="keyboard-button fas fa-backspace"></button>
-            
-        </div>
-        <div class="fourth-row">
-            <button id="space-button" class="keyboard-button">space</button>
-        </div>
-    </div>
-    
-    <script
-    src="https://code.jquery.com/jquery-3.6.0.min.js"
-    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-    crossorigin="anonymous"></script>
-    <script src="js/test_levels.js"></script>
-    <script src="https://cdn.lr-ingest.com/LogRocket.min.js" crossorigin="anonymous"></script>
-    <script>window.LogRocket && window.LogRocket.init('9o6vsp/enolapoc0');</script>
-</body>
+      ShowOnScroll.prototype.show = function (e) {
+        e.style.display = "";
+      };
+
+      ShowOnScroll.prototype.hide = function (e) {
+        e.style.display = "none";
+      };
+
+      ShowOnScroll.prototype.getTop = function (e) {
+        if (e.Top != undefined && e.Top != 0) {
+          return e.Top;
+        }
+        var top = 0;
+        var iter = e;
+        do {
+          top += iter.offsetTop || 0;
+          iter = iter.offsetParent;
+        } while (iter);
+        e.Top = top;
+        return top;
+      };
+
+      ShowOnScroll.prototype.onScroll = function () {
+        var screenBottom = window.pageYOffset + window.innerHeight;
+        if (this.nextEventY == undefined || this.nextEventY > screenBottom) {
+          return;
+        }
+        this.nextEventY = undefined;
+        for (var i = 0; i < this.toShow.length; i++) {
+          var e = this.toShow[i];
+          var top = this.getTop(e);
+          if (top < screenBottom) {
+            this.show(e);
+            this.toShow.shift();
+            i--;
+          } else {
+            this.nextEventY = top;
+            break;
+          }
+        }
+      };
+
+      ShowOnScroll.prototype.resetScrolling = function () {
+        // Clear state
+        var screenBottom = window.pageYOffset + window.innerHeight;
+        for (var i = 0; i < this.toShow.length; i++) {
+          var e = this.toShow[i];
+          this.show(e);
+        }
+        this.toShow = [];
+        this.nextEventY == undefined;
+
+        // Collect items
+        var itemsToShowOnScroll = Array.prototype.slice.call(document.getElementsByTagName("*"));
+        itemsToShowOnScroll = itemsToShowOnScroll.filter(function (e) {
+          return e.getAttribute("show-on-scroll") != undefined;
+        });
+        var getTop = this.getTop;
+        itemsToShowOnScroll.sort(function (a, b) {
+          return getTop(a) - getTop(b);
+        });
+        for (var i = 0; i < itemsToShowOnScroll.length; i++) {
+          var e = itemsToShowOnScroll[i];
+          var top = this.getTop(e);
+          if (top < screenBottom) {
+            continue;
+          }
+          this.toShow.push(e);
+          this.hide(e);
+          this.nextEventY = this.nextEventY != undefined ? this.nextEventY : top;
+        }
+      };
+
+      ShowOnScroll.prototype.handleEvent = function (e) {
+        switch (e.type) {
+          case "scroll":
+            this.onScroll();
+            break;
+          case "resize":
+            this.resetScrolling();
+            break;
+        }
+      };
+
+      ShowOnScroll.prototype.init = function () {
+        this.resetScrolling();
+        window.addEventListener("scroll", this);
+        window.addEventListener("resize", this);
+      };
+
+      // After anima-src
+      setTimeout(function () {
+        var instShowOnScroll = new ShowOnScroll();
+        instShowOnScroll.init();
+      }, 250);
+    </script>
+    <script>
+      /* Copyright (c) 2016 Tobias Buschor https://goo.gl/gl0mbf | MIT License https://goo.gl/HgajeK */
+
+      if (!HTMLFormElement.prototype.reportValidity) {
+        HTMLFormElement.prototype.reportValidity = function () {
+          if (this.checkValidity()) return true;
+          var btn = document.createElement("button");
+          this.appendChild(btn);
+          btn.click();
+          this.removeChild(btn);
+          return false;
+        };
+      }
+
+      function SubmitForm(form_name) {
+        var form = document.getElementsByName(form_name)[0];
+        if (form.reportValidity()) {
+          form.submit();
+          if (window.submitted) window.submitted();
+        }
+      }
+    </script>
+    <script src="js/word_hunt.js"></script>
+  </body>
 </html>
