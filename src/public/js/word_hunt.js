@@ -5,6 +5,7 @@ let EMPTY_TILE = `
     </div>
 </article>
 `
+let levelDataStructure
 
 let filled_tile = `
 <article class="tail">
@@ -18,6 +19,8 @@ let filled_tile = `
     </div>
 </article>
 `
+
+let DIFFICULTY = "Medium"
 
 /* letter-input is key for inputting different letter values */
 /* should change tile-fill with appropritate fillings */
@@ -42,3 +45,86 @@ window.onload = (event) => {
         //appendEmptyTile(word)
     });
   };
+
+  function createWordRow(word) {
+    let board = document.getElementsByClassName("words-tiles")
+    const row = document.createElement('div')
+    row.className = 'word'
+    
+    /* for letter in word create empty tile and append to row */
+
+    board.appendChild(row)
+    
+  }
+
+  function paintCurrentLevel (currentLevel) {
+    console.log(currentLevel)
+    levelDataStructure = currentLevel
+    // levelDataStructure = currentLevel
+    // availableLetters = Array.from(levelDataStructure[0])
+    // console.log(availableLetters)
+    const board = document.getElementsByClassName("words-tiles")
+    board.innerHTML = ''
+    
+    for (let i = 0; i < levelDataStructure.length; i++) {
+        const row = createWordRow(row, levelDataStructure[i])
+    }
+    //     correctlyGuessed[i] = false
+    //     const row = document.createElement('div')
+    //     row.className = 'letter-local'
+        
+    //     console.log(levelDataStructure[i])
+    //     for (let j = 0; j < levelDataStructure[i].length; j++) {
+    //         const box = document.createElement('div')
+    //         box.className = 'letter-box'
+    //         row.appendChild(box)
+    //     }
+    //     board.appendChild(row)
+    // }
+    
+    // const buttons = document.querySelectorAll('.keyboard-button')
+    // buttons.forEach((button) => {
+    //     button.classList.remove('button-marked')
+    //     button.style.color = 'black'
+    //     const letterCount = button.getElementsByClassName('letter-count')[0]
+    //     if (letterCount) {
+    //         letterCount.textContent = ''
+    //         if (availableLetters.includes(button.textContent[0])) {
+    //             button.classList.add('button-marked')
+    //             button.style.color = 'white'
+    //             letterCount.textContent = countLetter(button.textContent, levelDataStructure[0])
+    //         }
+    //     }
+    // })
+}
+
+/* ---------------------- Server API ---------------------- */
+function generateNewLevel () {
+    correctlyGuessed = {}
+    // const levelNumberObj = document.getElementById('level-number')
+    // levelNumber += 1
+    // levelNumberObj.textContent = 'Level: ' + levelNumber
+    // updateScore()
+
+    fetch(postURL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true
+        },
+        body: JSON.stringify({ Easy })
+    }).then(response => {
+        console.log(response.statusText)
+        return response.json()
+    })
+    .then(data => {
+        console.log(data)
+        metaLevelDataStructure = data.metaLevel
+        paintCurrentLevel(data.level)
+    })
+}
+
+generateNewLevel ()
+/* ---------------------- /Server API ---------------------- */
