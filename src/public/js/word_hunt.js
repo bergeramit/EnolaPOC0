@@ -2,6 +2,8 @@
 const postURL = 'http://127.0.0.1:3000/generate_level/'
 let levelDataStructure
 let correctlyGuessed = {}
+let availableLetters
+let difficulty = 'Easy'
 let selectedLettersClasses = ["keyboard-button-1", "keyboard-button-2"]
 let EMPTY_TILE = `
 <article class="tail">
@@ -23,7 +25,22 @@ let filled_tile = `
 </article>
 `
 
-let difficulty = 'Easy'
+/* ---------------------- GameLogic ---------------------- */
+
+function countLetter (letter, str) {
+    let letterCount = 0
+    const lowercaseLetter = letter.toLowerCase()
+    const lowercaseString = str.toLowerCase()
+    
+    for (let i = 0; i < lowercaseString.length; i++) {
+        if (lowercaseString[i] === lowercaseLetter) {
+            letterCount++
+        }
+    }
+    return letterCount
+}
+
+/* ---------------------- /GameLogic ---------------------- */
 
 /* letter-input is key for inputting different letter values */
 /* should change tile-fill with appropritate fillings */
@@ -63,6 +80,7 @@ window.onload = (event) => {
   function paintCurrentLevel (currentLevel) {
     console.log(currentLevel)
     levelDataStructure = currentLevel
+    availableLetters = Array.from(levelDataStructure[0])
 
     const board = document.getElementsByClassName("words-tiles")[0]
     board.innerHTML = ''
@@ -77,20 +95,13 @@ window.onload = (event) => {
     buttons.forEach((button) => {
         button.classList.remove("keyboard-button-1", "keyboard-button-2")
         const letterCount = button.getElementsByClassName('letter-count')[0]
+        const letter = button.getElementsByClassName('button-letter')[0]
+        letterCount.textContent = ''
+        if (availableLetters.includes(letter.textContent[0].toLowerCase())) {
+            button.classList.add("keyboard-button-1", "keyboard-button-2")
+            letterCount.textContent = countLetter(letter.textContent, levelDataStructure[0])
+        }
     })
-    // buttons.forEach((button) => {
-    //     button.classList.remove('button-marked')
-    //     button.style.color = 'black'
-    //     const letterCount = button.getElementsByClassName('letter-count')[0]
-    //     if (letterCount) {
-    //         letterCount.textContent = ''
-    //         if (availableLetters.includes(button.textContent[0])) {
-    //             button.classList.add('button-marked')
-    //             button.style.color = 'white'
-    //             letterCount.textContent = countLetter(button.textContent, levelDataStructure[0])
-    //         }
-    //     }
-    // })
 }
 
 /* ---------------------- Server API ---------------------- */
@@ -123,3 +134,29 @@ function generateNewLevel () {
 
 generateNewLevel ()
 /* ---------------------- /Server API ---------------------- */
+
+/* ---------------------- EventListeners ---------------------- */
+// document.getElementById('keyboard-cont').addEventListener('click', (e) => {
+//     const target = e.target
+//     if (!target.classList.contains('keyboard-button')) {
+//         return
+//     }
+    
+//     let key = target.textContent
+//     const guess = document.getElementById('input-guess')
+//     if (target.className.includes("fa-share")) {
+//         handleEnterGuess(guess.value)
+//         guess.value = ''
+//     }
+//     else if (target.className.includes("backspace")) {
+//         guess.value = guess.value.substring(0, guess.value.length - 1)
+//         return
+//     }
+//     else if (key == spaceKeyName) {
+//         guess.value = guess.value + " "
+//         return
+//     } else {
+//         guess.value = guess.value + key.toLowerCase()[0]
+//     }
+// })
+/* ---------------------- /EventListeners ---------------------- */
