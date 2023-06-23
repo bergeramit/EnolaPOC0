@@ -10,8 +10,6 @@ const ENTER_KEY_NAME = "Enter"
 const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
 const botGuessInterval = [4000, 5000, 6000, 7000, 8000, 9000]
-const botUserNames = ["user12431", "smartFox69", "Huberman32", "WordyJack3"]
-const botOptionalPics = ["url('img/player_2.png')", "url('img/player_3.png')", "url('img/player_4.png')"]
 let selectedLettersClasses = ["keyboard-button-1", "keyboard-button-2"]
 const EMPTY_TILE = `
 <article class="tail">
@@ -42,8 +40,7 @@ let CHAT_MESSAGE = `
 
 /* ---------------------- GameLogic ---------------------- */
 
-function checkGuess (guess) {
-    // console.log("in CheckGuess");
+function checkGuess (player, guess) {
     for (let i = 0; i < levelDataStructure.length; i++) {
         //console.log('Checks: levelDataStructure[1][i]: ' + levelDataStructure[i] + ' === ' + guess)
         if (levelDataStructure[i] === guess && !correctlyGuessed[i]) {
@@ -54,7 +51,10 @@ function checkGuess (guess) {
                 // place word correctly!
                 row.children[j].innerHTML = FILLED_TILES
                 const currentTile = row.children[j].getElementsByClassName("letter-input")[0]
-                currentTile.textContent = levelDataStructure[i][j].toUpperCase()            }
+                currentTile.textContent = levelDataStructure[i][j].toUpperCase()  
+                const backgroundFill = row.children[j].getElementsByClassName("tile-fill")[0]
+                backgroundFill.style.backgroundColor = player.color
+            }
             
             for (const key of Object.keys(correctlyGuessed)) {
                 if (!correctlyGuessed[key]) {
@@ -88,11 +88,11 @@ function countLetter (letter, str) {
 }
 
 function handleSubmitChatMessage(message) {
-    if (!checkGuess(message)) {
-        appendMessage('you', message, false)
+    if (!checkGuess(playersList[0], message)) {
+        appendMessage(playersList[0], message, false)
         //currentStreak = 1
     } else {
-        appendMessage('you', message, true)
+        appendMessage(playersList[0], message, true)
         // totalScore += 10 * currentStreak
         // updateScore()
     }
@@ -126,28 +126,25 @@ function addKeyToInput (pressedKey, onScreen) {
 
 /* ---------------------- DOM Cyber ---------------------- */
 
-function appendMessage (username, message, solved) {
-    console.log(username, message)
+function appendMessage (player, message, solved) {
     let chat = document.getElementById("chat-area")
     let messageElement = document.createElement('article')
     messageElement.classList.add("chat-row")
     messageElement.innerHTML = CHAT_MESSAGE
     let usernameElement = messageElement.getElementsByClassName("chat-row-username")[0]
-    usernameElement.textContent = username
+    usernameElement.textContent = player.username
     let messageContentElement = messageElement.getElementsByClassName("chat-row-message")[0]
     
-    if (!solved) {
+    if (solved) {
+        messageContentElement.style.color = player.color
+    } else {
         messageContentElement.classList.remove("correct-word")
     }
     messageContentElement.textContent = message
 
     let imgElement = messageElement.getElementsByClassName("chat-row-icon")[0]
-    if (username === "you") {
-        imgElement.style.backgroundImage = "url('img/player_1.png')";
-    } else {
-        const botPic = botOptionalPics[Math.floor(Math.random()*botOptionalPics.length)]
-        imgElement.style.backgroundImage = botPic;
-    }
+    imgElement.style.backgroundImage = player.icon
+    imgElement.style.borderColor = player.color
 
     chat.appendChild(messageElement)
     messageElement.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
@@ -283,14 +280,30 @@ document.addEventListener('keyup', (e) => {
 
 /* ---------------------- BotLogic ---------------------- */
 
+
+class Player {
+    constructor(username, icon, color, textColor) {
+        this.username = username
+        this.color = color
+        this.textColor = textColor
+        this.icon = icon
+    }
+}
+
+const playersList = [
+    new Player("you", "url('img/player_1.png')", "#ffd232", "black"),
+    new Player("user12431", "url('img/player_2.png')", "#32ff84", "white"),
+    new Player("smartFox69", "url('img/player_3.png')", "#ff3364", "white"),
+    new Player("WordyJack3", "url('img/player_4.png')", "#329dff", "white"),
+]
+
 function runBotGuesser() {
-    let botUserName = botUserNames[Math.floor(Math.random()*botUserNames.length)]
-    //let botMessage = botMessages[Math.floor(Math.random()*botMessages.length)]
+    let bot = playersList[Math.floor(Math.random()*(playersList.length-1)) + 1]
     let botGuess = metaLevelDataStructure[Math.floor(Math.random()*metaLevelDataStructure.length)]
-    if (checkGuess(botGuess)) {
-        appendMessage(botUserName, botGuess, true)
+    if (checkGuess(bot, botGuess)) {
+        appendMessage(bot, botGuess, true)
     } else {
-        appendMessage(botUserName, botGuess, false)
+        appendMessage(bot, botGuess, false)
     }
 }
 

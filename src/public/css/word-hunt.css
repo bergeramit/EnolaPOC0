@@ -1255,6 +1255,7 @@ transform: scale(1);
   overflow-y: scroll;
   scroll-behavior: smooth;
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  -webkit-mask-image: -webkit-gradient(linear, left 40%, left top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
   scrollbar-width: none; /* for Firefox */
   max-height: 170px;
   max-width: 350px;
@@ -1331,6 +1332,8 @@ transform: scale(1);
   margin: 5px;
   background-image: url(../img/player_2.png);
   background-size: 100% 100%;
+  border: 3px solid red;
+  border-radius: 20px;
 }
 
 .chat-row-username-and-message {
