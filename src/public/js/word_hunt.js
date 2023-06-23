@@ -55,7 +55,10 @@ function checkGuess (player, guess) {
                 const backgroundFill = row.children[j].getElementsByClassName("tile-fill")[0]
                 backgroundFill.style.backgroundColor = player.color
             }
-            
+            row.style.animationDuration = "1s";
+            row.style.animationTimingFunction = "ease";
+            row.style.animationName = "zoom-in-zoom-out";
+
             for (const key of Object.keys(correctlyGuessed)) {
                 if (!correctlyGuessed[key]) {
                     // There are still empty rows
