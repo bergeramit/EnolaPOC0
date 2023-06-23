@@ -40,6 +40,7 @@ fs.readFile("../gameLogic/resources/easy_meta_levels.json", "utf8", (err, jsonSt
 });
 
 function retrieve_level(difficulty) {
+    console.log(difficulty)
     const diff_to_range = {
         "Easy": [0, levels.length / 4],
         "Medium": [Math.floor(levels.length / 4),Math.floor(levels.length / 2)],

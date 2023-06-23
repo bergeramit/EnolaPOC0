@@ -1,3 +1,8 @@
+//var postURL = "http://64.226.100.123/generate_level/";
+const postURL = 'http://127.0.0.1:3000/generate_level/'
+let levelDataStructure
+let correctlyGuessed = {}
+let selectedLettersClasses = ["keyboard-button-1", "keyboard-button-2"]
 let EMPTY_TILE = `
 <article class="tail">
     <div class="tail-1">
@@ -5,8 +10,6 @@ let EMPTY_TILE = `
     </div>
 </article>
 `
-let levelDataStructure
-
 let filled_tile = `
 <article class="tail">
     <div class="letter-tile">
@@ -20,7 +23,7 @@ let filled_tile = `
 </article>
 `
 
-let DIFFICULTY = "Medium"
+let difficulty = 'Easy'
 
 /* letter-input is key for inputting different letter values */
 /* should change tile-fill with appropritate fillings */
@@ -46,43 +49,35 @@ window.onload = (event) => {
     });
   };
 
-  function createWordRow(word) {
-    let board = document.getElementsByClassName("words-tiles")
+  function createEmptyWordRow(word) {
     const row = document.createElement('div')
     row.className = 'word'
     
     /* for letter in word create empty tile and append to row */
-
-    board.appendChild(row)
-    
+    for (let i = 0; i < word.length; i++) {
+        appendEmptyTile(row)
+    }
+    return row
   }
 
   function paintCurrentLevel (currentLevel) {
     console.log(currentLevel)
     levelDataStructure = currentLevel
-    // levelDataStructure = currentLevel
-    // availableLetters = Array.from(levelDataStructure[0])
-    // console.log(availableLetters)
-    const board = document.getElementsByClassName("words-tiles")
+
+    const board = document.getElementsByClassName("words-tiles")[0]
     board.innerHTML = ''
     
     for (let i = 0; i < levelDataStructure.length; i++) {
-        const row = createWordRow(row, levelDataStructure[i])
+        correctlyGuessed[i] = false
+        const row = createEmptyWordRow(levelDataStructure[i])
+        board.appendChild(row)
     }
-    //     correctlyGuessed[i] = false
-    //     const row = document.createElement('div')
-    //     row.className = 'letter-local'
-        
-    //     console.log(levelDataStructure[i])
-    //     for (let j = 0; j < levelDataStructure[i].length; j++) {
-    //         const box = document.createElement('div')
-    //         box.className = 'letter-box'
-    //         row.appendChild(box)
-    //     }
-    //     board.appendChild(row)
-    // }
     
-    // const buttons = document.querySelectorAll('.keyboard-button')
+    const buttons = document.querySelectorAll('.keyboard-button')
+    buttons.forEach((button) => {
+        button.classList.remove("keyboard-button-1", "keyboard-button-2")
+        const letterCount = button.getElementsByClassName('letter-count')[0]
+    })
     // buttons.forEach((button) => {
     //     button.classList.remove('button-marked')
     //     button.style.color = 'black'
@@ -114,7 +109,7 @@ function generateNewLevel () {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Credentials': true
         },
-        body: JSON.stringify({ Easy })
+        body: JSON.stringify({ difficulty })
     }).then(response => {
         console.log(response.statusText)
         return response.json()
