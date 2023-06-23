@@ -1,5 +1,5 @@
-//var postURL = "http://64.226.100.123/generate_level/";
-const postURL = 'http://127.0.0.1:3000/generate_level/'
+var postURL = "http://64.226.100.123/generate_level/";
+//const postURL = 'http://127.0.0.1:3000/generate_level/'
 let levelDataStructure
 let metaLevelDataStructure
 let correctlyGuessed = {}
