@@ -151,6 +151,7 @@ h1, h4 {
     max-height: 4rem;/* Adjust the height according to your requirements */
     min-height: 4rem;
     overflow-y: scroll;
+    max-width: 300px;
     font-size: var(--font-size);
     font-weight: 700;
   }

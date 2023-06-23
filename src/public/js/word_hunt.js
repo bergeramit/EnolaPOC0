@@ -28,6 +28,15 @@ const FILLED_TILES = `
     </div>
 </article>
 `
+let CHAT_MESSAGE = `
+<article class="chat-row">
+    <div class="chat-row-icon"></div>
+    <div class="chat-row-username-and-message">
+        <div class="chat-row-username">You</div>
+        <div class="chat-row-message correct-word">Correct</div>
+    </div>
+</article>
+`
 
 /* ---------------------- GameLogic ---------------------- */
 

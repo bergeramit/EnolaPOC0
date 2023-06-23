@@ -858,6 +858,8 @@ transform: scale(1);
 }
 
 .word-hunt .keyboard-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   cursor: pointer;
   background-color: var(--zircon);
   border-radius: 11px;
@@ -898,6 +900,8 @@ transform: scale(1);
 }
 
 .word-hunt .keyboard-button-1 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   background-color: var(--vis-vis);
   box-shadow: 0px 6px 4px #00000026 , 0px 1px 0px #dec481 , inset 0px -2px 0px #dec481;
   min-width: 35px;
@@ -1049,6 +1053,8 @@ transform: scale(1);
 }
 
 .word-hunt .keyboard-button-key {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   cursor: pointer;
   background-color: var(--riptide);
   box-shadow: 0px 6px 4px #00000026 , 0px 1px 0px #75b1a9 , inset 0px -2px 0px #74b1a8;
@@ -1065,6 +1071,8 @@ transform: scale(1);
 }
 
 .word-hunt .keyboard-button-key-1 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   cursor: pointer;
   background-color: var(--zircon);
   border-radius: 22px;
@@ -1241,14 +1249,24 @@ transform: scale(1);
 }
 
 .word-hunt .chat-2 {
-  height: 162px;
   left: 699px;
   position: absolute;
+  flex-direction: column;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  max-height: 170px;
+  max-width: 350px;
   top: 469px;
-  width: 321px;
+}
+
+.chat-2::-webkit-scrollbar {
+  display: none;
 }
 
 .word-hunt .keyboard-button-2 {
+  -webkit-appearance: none;
+  -moz-appearance: none;
   cursor: pointer;
   border-radius: 11px;
   height: 35px;
@@ -1298,4 +1316,81 @@ transform: scale(1);
   box-shadow: inset 0px 0.92px 0px 2.77px #ffffffb2 , inset 0px -5.55px 0.37px 1.85px #0000000d;
   height: 35px;
   width: 38px;
+}
+
+.chat-row {
+  max-height: 100px;
+  display: flex;
+  flex-direction: row;
+}
+
+.chat-row-icon {
+  min-width: 40px;
+  min-height: 40px;
+  margin: 5px;
+  background-image: url(../img/player_2.png);
+  background-size: 100% 100%;
+}
+
+.chat-row-username-and-message {
+  margin: 5px;
+}
+
+.chat-row-username {
+  color: var(--white);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-s);
+  font-weight: 500;
+  height: 16px;
+  letter-spacing: 0;
+  line-height: 15.4px;
+  white-space: nowrap;
+}
+
+.chat-row-message {
+  color: var(--white);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-m);
+  font-weight: 500;
+  max-width: 220px;
+  letter-spacing: 0;
+  line-height: 24.6px;
+  text-shadow: 0px 1px 0px #0707078c;
+  white-space: nowrap;
+}
+
+.correct-word {
+  -webkit-text-stroke: 2px #000000e3;
+  color: #5cff9e;
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-m);
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 24.6px;
+  text-shadow: 0px 1px 0px #0707078c;
+  white-space: nowrap;
+}
+
+.screen a {
+  display: contents;
+  text-decoration: none;
+}
+
+.container-center-horizontal {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  pointer-events: none;
+  width: 100%;
+}
+
+.container-center-horizontal > * {
+  flex-shrink: 0;
+  pointer-events: auto;
+}
+
+.valign-text-middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
