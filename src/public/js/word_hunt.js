@@ -1,6 +1,7 @@
 //var postURL = "http://64.226.100.123/generate_level/";
 const postURL = 'http://127.0.0.1:3000/generate_level/'
 let levelDataStructure
+let metaLevelDataStructure
 let correctlyGuessed = {}
 let availableLetters
 const timeoutBetweenLevels = 2000
@@ -8,6 +9,9 @@ const difficulty = 'Easy'
 const ENTER_KEY_NAME = "Enter"
 const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
+const botGuessInterval = [4000, 5000, 6000, 7000, 8000, 9000]
+const botUserNames = ["user12431", "smartFox69", "Huberman32", "WordyJack3"]
+const botOptionalPics = ["url('img/player_2.png')", "url('img/player_3.png')"]
 let selectedLettersClasses = ["keyboard-button-1", "keyboard-button-2"]
 const EMPTY_TILE = `
 <article class="tail">
@@ -143,7 +147,8 @@ function appendMessage (username, message, solved) {
     if (username === "you") {
         imgElement.style.backgroundImage = "url('img/player_1.png')";
     } else {
-        imgElement.style.backgroundImage = "url('img/player_2.png')";
+        const botPic = botOptionalPics[Math.floor(Math.random()*botOptionalPics.length)]
+        imgElement.style.backgroundImage = botPic;
     }
 
     chat.appendChild(messageElement)
@@ -234,7 +239,12 @@ function generateNewLevel () {
     })
 }
 
-generateNewLevel ()
+function startUp() {
+    generateNewLevel ()
+    setInterval(runBotGuesser, botGuessInterval[Math.floor(Math.random()*botGuessInterval.length)]);
+}
+
+startUp()
 /* ---------------------- /Server API ---------------------- */
 
 /* ---------------------- EventListeners ---------------------- */
@@ -274,5 +284,16 @@ document.addEventListener('keyup', (e) => {
 /* ---------------------- /EventListeners ---------------------- */
 
 /* ---------------------- BotLogic ---------------------- */
+
+function runBotGuesser() {
+    let botUserName = botUserNames[Math.floor(Math.random()*botUserNames.length)]
+    //let botMessage = botMessages[Math.floor(Math.random()*botMessages.length)]
+    let botGuess = metaLevelDataStructure[Math.floor(Math.random()*metaLevelDataStructure.length)]
+    if (checkGuess(botGuess)) {
+        appendMessage(botUserName, botGuess, true)
+    } else {
+        appendMessage(botUserName, botGuess, false)
+    }
+}
 
 /* ---------------------- /BotLogic ---------------------- */
