@@ -858,6 +858,7 @@ transform: scale(1);
 }
 
 .word-hunt .keyboard-button {
+  cursor: pointer;
   background-color: var(--zircon);
   border-radius: 11px;
   box-shadow: 0px 6px 4px #00000026 , 0px 1px 0px #a1d3cc , inset 0px -2px 0px #a2d3cc;
@@ -1048,6 +1049,7 @@ transform: scale(1);
 }
 
 .word-hunt .keyboard-button-key {
+  cursor: pointer;
   background-color: var(--riptide);
   box-shadow: 0px 6px 4px #00000026 , 0px 1px 0px #75b1a9 , inset 0px -2px 0px #74b1a8;
   min-width: 51px;
@@ -1063,6 +1065,7 @@ transform: scale(1);
 }
 
 .word-hunt .keyboard-button-key-1 {
+  cursor: pointer;
   background-color: var(--zircon);
   border-radius: 22px;
   box-shadow: 0px 6px 4px #00000026 , 0px 1px 0px #a1d3cc , inset 0px -2px 0px #a2d3cc;
@@ -1086,7 +1089,7 @@ transform: scale(1);
   width: 150px;
 }
 
-.word-hunt .send_fill {
+.word-hunt .enter-button {
   align-items: flex-end;
   box-shadow: 1px 1px 3px #affff2;
   display: flex;
@@ -1246,6 +1249,7 @@ transform: scale(1);
 }
 
 .word-hunt .keyboard-button-2 {
+  cursor: pointer;
   border-radius: 11px;
   height: 35px;
   position: relative;

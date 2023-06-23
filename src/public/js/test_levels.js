@@ -69,7 +69,7 @@ function handleEnterGuess(guessValue) {
         // add to chat instead
         appendMessage('you', guessValue)
         currentStreak = 1
-    }else {
+    } else {
         appendMessage("WordHunt", "you solved a row!")
         totalScore += 10 * currentStreak
         currentStreak += 1

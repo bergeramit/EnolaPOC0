@@ -3,16 +3,20 @@ const postURL = 'http://127.0.0.1:3000/generate_level/'
 let levelDataStructure
 let correctlyGuessed = {}
 let availableLetters
-let difficulty = 'Easy'
+const timeoutBetweenLevels = 2000
+const difficulty = 'Easy'
+const ENTER_KEY_NAME = "Enter"
+const SPACE_KEY_NAME = "space"
+const BACKSPACE_KEY_NAME = "Backspace"
 let selectedLettersClasses = ["keyboard-button-1", "keyboard-button-2"]
-let EMPTY_TILE = `
+const EMPTY_TILE = `
 <article class="tail">
     <div class="tail-1">
         <div class="highlights"><img class="intersect" src="img/intersect-1.svg" alt="Intersect" /></div>
     </div>
 </article>
 `
-let filled_tile = `
+const FILLED_TILES = `
 <article class="tail">
     <div class="letter-tile">
         <div class="overlap-group-3">
@@ -27,6 +31,38 @@ let filled_tile = `
 
 /* ---------------------- GameLogic ---------------------- */
 
+function checkGuess (guess) {
+    // console.log("in CheckGuess");
+    for (let i = 0; i < levelDataStructure.length; i++) {
+        //console.log('Checks: levelDataStructure[1][i]: ' + levelDataStructure[i] + ' === ' + guess)
+        if (levelDataStructure[i] === guess && !correctlyGuessed[i]) {
+            correctlyGuessed[i] = true
+            console.log('Success! at row: ' + (i + 1))
+            const row = document.getElementsByClassName('word')[i]
+            for (let j = 0; j < row.children.length; j++) {
+                // place word correctly!
+                row.children[j].innerHTML = FILLED_TILES
+                const currentTile = row.children[j].getElementsByClassName("letter-input")[0]
+                currentTile.textContent = levelDataStructure[i][j].toUpperCase()            }
+            
+            for (const key of Object.keys(correctlyGuessed)) {
+                if (!correctlyGuessed[key]) {
+                    // There are still empty rows
+                    return true
+                }
+            }
+            // generate new level
+            appendMessage('WordHunt', 'Great job!')
+            //appendMessage('WordHunt', 'Get Ready for level ' + (levelNumber+1))
+            setTimeout(() => {
+                generateNewLevel()
+            }, timeoutBetweenLevels)
+            return true
+        }
+    }
+    return false
+}
+
 function countLetter (letter, str) {
     let letterCount = 0
     const lowercaseLetter = letter.toLowerCase()
@@ -40,7 +76,51 @@ function countLetter (letter, str) {
     return letterCount
 }
 
+function handleSubmitChatMessage(message) {
+    if (!checkGuess(message)) {
+        // add to chat instead
+        appendMessage('you', message)
+        //currentStreak = 1
+    } else {
+        appendMessage("WordHunt", "you solved a row!")
+        // totalScore += 10 * currentStreak
+        // currentStreak += 1
+        // updateScore()
+    }
+}
+
+function addKeyToInput (pressedKey, onScreen) {
+    const guess = document.getElementById('chat-input')
+    if (pressedKey === BACKSPACE_KEY_NAME && onScreen) {
+        guess.value = guess.value.substring(0, guess.value.length - 1)
+        return
+    }
+
+    if (pressedKey === SPACE_KEY_NAME && onScreen) {
+        guess.value = guess.value + " "
+        return
+    }
+    
+    if (pressedKey === ENTER_KEY_NAME) {
+        handleSubmitChatMessage(guess.value)
+        guess.value = ''
+        return
+    }
+
+    if (onScreen) {
+        guess.value = guess.value + pressedKey.toLowerCase()[0]
+    }
+}
+
 /* ---------------------- /GameLogic ---------------------- */
+
+
+/* ---------------------- DOM Cyber ---------------------- */
+
+function appendMessage (username, message) {
+    console.log(username, message)
+}
+
 
 /* letter-input is key for inputting different letter values */
 /* should change tile-fill with appropritate fillings */
@@ -55,16 +135,6 @@ function appendFilledTile(word, letter) {
 function appendEmptyTile(word) {
     word.innerHTML += EMPTY_TILE
 }
-
-window.onload = (event) => {
-    console.log("page is fully loaded");
-    //let word = document.getElementById("test-1")
-    let words = document.querySelectorAll(".word")
-    words.forEach((word) => {
-        //appendFilledTile(word, 'Q')
-        //appendEmptyTile(word)
-    });
-  };
 
   function createEmptyWordRow(word) {
     const row = document.createElement('div')
@@ -104,6 +174,9 @@ window.onload = (event) => {
     })
 }
 
+/* ---------------------- /DOM Cyber ---------------------- */
+
+
 /* ---------------------- Server API ---------------------- */
 function generateNewLevel () {
     correctlyGuessed = {}
@@ -136,27 +209,37 @@ generateNewLevel ()
 /* ---------------------- /Server API ---------------------- */
 
 /* ---------------------- EventListeners ---------------------- */
-// document.getElementById('keyboard-cont').addEventListener('click', (e) => {
-//     const target = e.target
-//     if (!target.classList.contains('keyboard-button')) {
-//         return
-//     }
-    
-//     let key = target.textContent
-//     const guess = document.getElementById('input-guess')
-//     if (target.className.includes("fa-share")) {
-//         handleEnterGuess(guess.value)
-//         guess.value = ''
-//     }
-//     else if (target.className.includes("backspace")) {
-//         guess.value = guess.value.substring(0, guess.value.length - 1)
-//         return
-//     }
-//     else if (key == spaceKeyName) {
-//         guess.value = guess.value + " "
-//         return
-//     } else {
-//         guess.value = guess.value + key.toLowerCase()[0]
-//     }
-// })
+const buttons = document.querySelectorAll('.keyboard-button')
+buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        /* Only for onscreen button presses */
+        const pressedKey = e.target.textContent[0].toLowerCase()
+        addKeyToInput(pressedKey, true)
+    })
+})
+
+document.getElementById("enterButton").addEventListener("click", (e) => {
+    /* When Enterkey Pressed */
+    const chatInput = document.getElementById("chat-input")
+    handleSubmitChatMessage(chatInput.value)
+    chatInput.value = ""
+})
+
+document.getElementById("delButton").addEventListener("click", (e) => {
+    /* When Enterkey Pressed */
+    const chatInput = document.getElementById("chat-input")
+    chatInput.value = chatInput.value.substring(0, chatInput.value.length - 1)
+})
+
+document.getElementById("spaceButton").addEventListener("click", (e) => {
+    /* When Spacekey Pressed */
+    const chatInput = document.getElementById("chat-input")
+    chatInput.value += " "
+})
+
+document.addEventListener('keyup', (e) => {
+    const pressedKey = String(e.key)
+    addKeyToInput(pressedKey, false)
+})
+
 /* ---------------------- /EventListeners ---------------------- */

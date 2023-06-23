@@ -15,7 +15,7 @@
   <body style="margin: 0; background: #ffffff">
     <input type="hidden" id="anPageName" name="page" value="word-hunt" />
     <div class="container-center-horizontal">
-      <form class="word-hunt screen" name="form1" action="form1" method="post">
+      <div class="word-hunt screen" name="form1" action="form1" method="post">
         <img class="rectangle-7596" src="img/rectangle-7596-2@2x.png" alt="Rectangle 7596" />
         <div class="overlap-group5">
           <img class="bg" src="img/bg.png" alt="BG" />
@@ -55,7 +55,7 @@
                   </div>
                   <div class="chat">
                     <div class="overlap-group">
-                      <img class="pic" src="img/pic@2x.png" alt="pic" />
+                      <img class="pic" src="img/player_1.png" alt="pic" />
                       <div class="online-indication"></div>
                     </div>
                   </div>
@@ -106,8 +106,7 @@
                               <img class="mask-group" src="img/mask-group@2x.png" alt="Mask group" />
                               <div class="place valign-text-middle">REGISTER</div>
                             </div>
-                          </div></a
-                        >
+                          </div></a>
                         <div class="frame-238071"><div class="how-it-works valign-text-middle">Enter Email</div></div>
                         <p class="play-anywhere-meet valign-text-middle">
                           <span
@@ -175,7 +174,7 @@
             </div>
           </div>
           <div class="keyboard">
-            <div class="overlap-group2-2"><div class="text-3">Add comment</div></div>
+            <input id="chat-input" placeholder="Add Comment" class="overlap-group2-2 text-3"></input>
             <div class="keyboard-1 keyboard-2">
               <div class="r1">
                 <article class="keyboard-button">
@@ -288,16 +287,16 @@
                 </article>
               </div>
               <div class="r4">
-                <div class="keyboard-button-key keyboard-button-2">
+                <div id="delButton" class="keyboard-button-key keyboard-button-2">
                   <img
                     class="icon-material-icon-backspace_black_24dp"
                     src="img/icon---material-icon---backspace-black-24dp.svg"
                     alt="Icon / material-icon / backspace_black_24dp"
                   />
                 </div>
-                <div class="keyboard-button-key-1"><div class="x">SPACE</div></div>
+                <div id="spaceButton" class="keyboard-button-key-1"><div class="x">SPACE</div></div>
                 <div class="keyboard-button-key keyboard-button-2">
-                  <div class="send_fill"><img class="subtract" src="img/subtract-2.svg" alt="Subtract" /></div>
+                  <div id="enterButton" class="enter-button"><img class="subtract" src="img/subtract-2.svg" alt="Subtract" /></div>
                 </div>
               </div>
             </div>
@@ -307,7 +306,7 @@
           </div>
           <img class="chat-2" src="img/chat@2x.png" alt="Chat" />
         </div>
-      </form>
+    </div>
     </div>
     <script>
       function ShowOnScroll() {
