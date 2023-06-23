@@ -11,7 +11,7 @@ const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
 const botGuessInterval = [4000, 5000, 6000, 7000, 8000, 9000]
 const botUserNames = ["user12431", "smartFox69", "Huberman32", "WordyJack3"]
-const botOptionalPics = ["url('img/player_2.png')", "url('img/player_3.png')"]
+const botOptionalPics = ["url('img/player_2.png')", "url('img/player_3.png')", "url('img/player_4.png')"]
 let selectedLettersClasses = ["keyboard-button-1", "keyboard-button-2"]
 const EMPTY_TILE = `
 <article class="tail">
@@ -89,13 +89,11 @@ function countLetter (letter, str) {
 
 function handleSubmitChatMessage(message) {
     if (!checkGuess(message)) {
-        // add to chat instead
         appendMessage('you', message, false)
         //currentStreak = 1
     } else {
         appendMessage('you', message, true)
         // totalScore += 10 * currentStreak
-        // currentStreak += 1
         // updateScore()
     }
 }

@@ -605,7 +605,7 @@ transform: scale(1);
 }
 
 .word-hunt .player-you {
-  background-image: url(../img/logo@2x.png);
+  background-image: url(../img/player_1.png);
   background-position: 50% 50%;
   background-size: cover;
   height: 28px;
@@ -614,7 +614,7 @@ transform: scale(1);
 }
 
 .word-hunt .player {
-  background-image: url(../img/player_1.png);
+  background-image: url(../img/player_4.png);
   background-position: 50% 50%;
   background-size: cover;
   height: 28px;
@@ -833,7 +833,7 @@ transform: scale(1);
 .word-hunt .text-3 {
   color: #ffffff99;
   font-family: var(--font-family-inter);
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-m);
   font-weight: 500;
   letter-spacing: 0;
   line-height: 24.6px;
