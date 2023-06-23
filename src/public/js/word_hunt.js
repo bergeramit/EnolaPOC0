@@ -29,13 +29,11 @@ const FILLED_TILES = `
 </article>
 `
 let CHAT_MESSAGE = `
-<article class="chat-row">
     <div class="chat-row-icon"></div>
     <div class="chat-row-username-and-message">
         <div class="chat-row-username">You</div>
         <div class="chat-row-message correct-word">Correct</div>
     </div>
-</article>
 `
 
 /* ---------------------- GameLogic ---------------------- */
@@ -61,7 +59,7 @@ function checkGuess (guess) {
                 }
             }
             // generate new level
-            appendMessage('WordHunt', 'Great job!')
+            //appendMessage('WordHunt', 'Great job!', false)
             //appendMessage('WordHunt', 'Get Ready for level ' + (levelNumber+1))
             setTimeout(() => {
                 generateNewLevel()
@@ -88,10 +86,10 @@ function countLetter (letter, str) {
 function handleSubmitChatMessage(message) {
     if (!checkGuess(message)) {
         // add to chat instead
-        appendMessage('you', message)
+        appendMessage('you', message, false)
         //currentStreak = 1
     } else {
-        appendMessage("WordHunt", "you solved a row!")
+        appendMessage('you', message, true)
         // totalScore += 10 * currentStreak
         // currentStreak += 1
         // updateScore()
@@ -126,8 +124,30 @@ function addKeyToInput (pressedKey, onScreen) {
 
 /* ---------------------- DOM Cyber ---------------------- */
 
-function appendMessage (username, message) {
+function appendMessage (username, message, solved) {
     console.log(username, message)
+    let chat = document.getElementById("chat-area")
+    let messageElement = document.createElement('article')
+    messageElement.classList.add("chat-row")
+    messageElement.innerHTML = CHAT_MESSAGE
+    let usernameElement = messageElement.getElementsByClassName("chat-row-username")[0]
+    usernameElement.textContent = username
+    let messageContentElement = messageElement.getElementsByClassName("chat-row-message")[0]
+    
+    if (!solved) {
+        messageContentElement.classList.remove("correct-word")
+    }
+    messageContentElement.textContent = message
+
+    let imgElement = messageElement.getElementsByClassName("chat-row-icon")[0]
+    if (username === "you") {
+        imgElement.style.backgroundImage = "url('img/player_1.png')";
+    } else {
+        imgElement.style.backgroundImage = "url('img/player_2.png')";
+    }
+
+    chat.appendChild(messageElement)
+    messageElement.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
 }
 
 
@@ -252,3 +272,7 @@ document.addEventListener('keyup', (e) => {
 })
 
 /* ---------------------- /EventListeners ---------------------- */
+
+/* ---------------------- BotLogic ---------------------- */
+
+/* ---------------------- /BotLogic ---------------------- */
