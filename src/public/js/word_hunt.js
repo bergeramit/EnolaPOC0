@@ -4,7 +4,9 @@ let levelDataStructure
 let metaLevelDataStructure
 let correctlyGuessed = {}
 let availableLetters
-const timeoutBetweenLevels = 2000
+let round = 1
+let lockBotGuess = false
+const timeoutBetweenLevels = 3000
 const difficulty = 'Easy'
 const ENTER_KEY_NAME = "Enter"
 const SPACE_KEY_NAME = "space"
@@ -55,9 +57,7 @@ function checkGuess (player, guess) {
                 const backgroundFill = row.children[j].getElementsByClassName("tile-fill")[0]
                 backgroundFill.style.backgroundColor = player.color
             }
-            row.style.animationDuration = "1s";
-            row.style.animationTimingFunction = "ease";
-            row.style.animationName = "zoom-in-zoom-out";
+            setScaleAnimation(row)
 
             for (const key of Object.keys(correctlyGuessed)) {
                 if (!correctlyGuessed[key]) {
@@ -68,8 +68,9 @@ function checkGuess (player, guess) {
             // generate new level
             //appendMessage('WordHunt', 'Great job!', false)
             //appendMessage('WordHunt', 'Get Ready for level ' + (levelNumber+1))
+            displayFinishedLevel()
             setTimeout(() => {
-                generateNewLevel()
+                beginReadyLevel()
             }, timeoutBetweenLevels)
             return true
         }
@@ -128,6 +129,31 @@ function addKeyToInput (pressedKey, onScreen) {
 
 
 /* ---------------------- DOM Cyber ---------------------- */
+
+function beginReadyLevel() {
+    const popup = document.getElementById("complete-level-popup")
+    popup.style.display = "none"
+
+    let chat = document.getElementById("chat-area")
+    chat.innerHTML = ""
+
+    round += 1
+    const readyPopup = document.getElementById("ready-level-popup")
+    let roundElement = readyPopup.getElementsByClassName("round-1")[0]
+    roundElement.textContent = "Round " + round
+    readyPopup.style.display = "flex"
+    setScaleAnimation(readyPopup)
+
+    setTimeout(() => {
+        generateNewLevel()
+    }, timeoutBetweenLevels)
+}
+
+function setScaleAnimation(element) {
+    element.style.animationDuration = "1s";
+    element.style.animationTimingFunction = "ease";
+    element.style.animationName = "zoom-in-zoom-out";
+}
 
 function appendMessage (player, message, solved) {
     let chat = document.getElementById("chat-area")
@@ -206,11 +232,21 @@ function appendEmptyTile(word) {
     })
 }
 
+function displayFinishedLevel() {
+    lockBotGuess = true
+    var completePopup = document.getElementById("complete-level-popup")
+    completePopup.style.display = "flex"
+    setScaleAnimation(completePopup)
+}
+
 /* ---------------------- /DOM Cyber ---------------------- */
 
 
 /* ---------------------- Server API ---------------------- */
 function generateNewLevel () {
+    var readyPopup = document.getElementById("ready-level-popup")
+    readyPopup.style.display = "none"
+
     correctlyGuessed = {}
     // const levelNumberObj = document.getElementById('level-number')
     // levelNumber += 1
@@ -234,6 +270,7 @@ function generateNewLevel () {
         console.log(data)
         metaLevelDataStructure = data.metaLevel
         paintCurrentLevel(data.level)
+        lockBotGuess = false
     })
 }
 
@@ -246,6 +283,7 @@ startUp()
 /* ---------------------- /Server API ---------------------- */
 
 /* ---------------------- EventListeners ---------------------- */
+
 const buttons = document.querySelectorAll('.keyboard-button')
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -255,11 +293,23 @@ buttons.forEach((button) => {
     })
 })
 
+document.getElementById("yay-message").addEventListener("click", (e) => {
+    /* When yay Pressed */
+    const popup = document.getElementById("complete-level-popup")
+    popup.style.display = "none"
+})
+
 document.getElementById("enterButton").addEventListener("click", (e) => {
     /* When Enterkey Pressed */
     const chatInput = document.getElementById("chat-input")
     handleSubmitChatMessage(chatInput.value)
     chatInput.value = ""
+})
+
+
+document.getElementById("info-button-id").addEventListener("click", (e) => {
+    /* When "?" Pressed */
+    
 })
 
 document.getElementById("delButton").addEventListener("click", (e) => {
@@ -301,6 +351,9 @@ const playersList = [
 ]
 
 function runBotGuesser() {
+    if (lockBotGuess) {
+        return
+    }
     let bot = playersList[Math.floor(Math.random()*(playersList.length-1)) + 1]
     let botGuess = metaLevelDataStructure[Math.floor(Math.random()*metaLevelDataStructure.length)]
     if (checkGuess(bot, botGuess)) {

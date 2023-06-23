@@ -1,5 +1,11 @@
 /* screen - frame-238080 */
 
+#ready-level-popup {
+  display: none;
+  top: 400px;
+  position: absolute;
+}
+
 .frame-238080 {
   align-items: center;
   border: 1px none;

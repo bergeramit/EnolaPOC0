@@ -716,6 +716,7 @@ transform: scale(1);
 }
 
 .word-hunt .info-button {
+  cursor: pointer;
   background-color: #d9d9d9;
   border-radius: 11.5px;
   height: 23px;
