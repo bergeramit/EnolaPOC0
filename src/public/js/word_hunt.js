@@ -100,6 +100,7 @@ function checkGuess (player, guess) {
             //appendMessage('WordHunt', 'Great job!', false)
             //appendMessage('WordHunt', 'Get Ready for level ' + (levelNumber+1))
             freezeGame = true
+            window.LogRocket.track('FinishedLevel', {round: round, score: groupScore});
             setTimeout(() => {
                 displayFinishedLevel()
             }, 1000)
@@ -352,6 +353,7 @@ function updateTimer() {
 }
 
 function handleOutOfTime() {
+    window.LogRocket.track('FinishedGameStats', {round: round, score: groupScore});
     freezeGame = true
 
     var scoreElement = document.getElementById("level-timeout-score")
@@ -451,15 +453,14 @@ buttons.forEach((button) => {
 
 document.getElementById("yay-message").addEventListener("click", (e) => {
     /* When yay Pressed */
-    window.LogRocket.log('clicked: dismiss complete level');
+    window.LogRocket.track('clickDismissCompleteLevel', {});
     const popup = document.getElementById("complete-level-popup")
     popup.style.display = "none"
 })
 
 document.getElementById("play-again-button").addEventListener("click", (e) => {
     /* When play-again-click Pressed */
-    window.LogRocket.log('clicked: play again');
-    window.LogRocket.log('last-game-stats: round: ' + round + ' score: ' + groupScore);
+    window.LogRocket.track('clickPlayAgain', {});
     const popup = document.getElementById("out-of-time-popup")
     popup.style.display = "none"
     resetGame()
@@ -468,7 +469,7 @@ document.getElementById("play-again-button").addEventListener("click", (e) => {
 
 document.getElementById("enterButton").addEventListener("click", (e) => {
     /* When Enterkey Pressed */
-    window.LogRocket.log('clicked: Enter');
+    window.LogRocket.track('clickEnter', {});
     const chatInput = document.getElementById("chat-input")
     handleSubmitChatMessage(chatInput.value)
     chatInput.value = ""
@@ -476,21 +477,21 @@ document.getElementById("enterButton").addEventListener("click", (e) => {
 
 document.getElementById("info-button-id").addEventListener("click", (e) => {
     /* When "?" Pressed */
-    window.LogRocket.log('clicked: "?"');
+    window.LogRocket.track('clickQuestionMark', {});
     const howToPopup = document.getElementById("how-to-popup")
     howToPopup.style.display = "flex"
 })
 
 document.getElementById("x-how-to-popup-button").addEventListener("click", (e) => {
     /* When "x" Pressed in popup window */
-    window.LogRocket.log('clicked: x in how-to popup');
+    window.LogRocket.track('clickXInHowToPopup', {});
     const howToPopup = document.getElementById("how-to-popup")
     howToPopup.style.display = "none"
 })
 
 document.getElementById("how-to-nav-button").addEventListener("click", (e) => {
     /* When pressed in popup window */
-    window.LogRocket.log('clicked: how-to popup from nav');
+    window.LogRocket.track('clickHowToPopup', {});
     const howToPopup = document.getElementById("how-to-popup")
     howToPopup.style.display = "flex"
 })
