@@ -510,6 +510,10 @@ document.addEventListener('keyup', (e) => {
     const pressedKey = String(e.key)
     addKeyToInput(pressedKey, false)
 
+    if (pressedKey === ENTER_KEY_NAME) {
+        window.LogRocket.track('clickEnter', {});
+    }
+
     let found = pressedKey.match(/[a-z]/gi)
     if (!found || found.length > 1) {
         return
