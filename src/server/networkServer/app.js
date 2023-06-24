@@ -15,13 +15,18 @@ app.use(cors({
 	methods: ['GET', 'POST']
 }));
 
-app.post('/generate_level', function(req, res) {
-    
-    const difficulty = req.body.difficulty;
-    // console.log(difficulty);
-    board = test_levels.retrieve_level(difficulty);
-    console.log(board);
-    res.send(JSON.stringify(board));
-  });
+app.post('/generate_level', function(req, res) { 
+  const difficulty = req.body.difficulty;
+  // console.log(difficulty);
+  board = test_levels.retrieve_level(difficulty);
+  console.log(board);
+  res.send(JSON.stringify(board));
+});
+
+app.post('/register_user', function(req, res) {
+  const email = req.body.email;
+  console.log(email);
+  res.send();
+});
 
 app.listen(3000, ()=> console.log("App Listening on port 3000"));

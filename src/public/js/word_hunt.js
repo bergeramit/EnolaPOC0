@@ -1,5 +1,6 @@
-var postURL = "http://64.226.100.123/generate_level/";
-//const postURL = 'http://127.0.0.1:3000/generate_level/'
+const generateLevelPostURL = "http://64.226.100.123/generate_level/";
+//const generateLevelPostURL = 'http://127.0.0.1:3000/generate_level/'
+const registerPostURL = "http://64.226.100.123/register_user/";
 let levelDataStructure
 let metaLevelDataStructure
 let correctlyGuessed = {}
@@ -253,7 +254,7 @@ function generateNewLevel () {
     // levelNumberObj.textContent = 'Level: ' + levelNumber
     // updateScore()
 
-    fetch(postURL, {
+    fetch(generateLevelPostURL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -274,7 +275,25 @@ function generateNewLevel () {
     })
 }
 
+function submitRegisterForm() {
+    const email = document.getElementById("email-input")
+    fetch(registerPostURL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': true
+        },
+        body: JSON.stringify({ "email": email.value })
+    }).then(response => {
+        console.log(response.statusText)
+        return response.json()
+    })
+}
+
 function startUp() {
+    window.LogRocket && window.LogRocket.init('9o6vsp/enolapoc0');
     generateNewLevel ()
     setInterval(runBotGuesser, botGuessInterval[Math.floor(Math.random()*botGuessInterval.length)]);
 }

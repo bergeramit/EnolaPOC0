@@ -102,14 +102,14 @@
                   <div class="tooltip">
                     <img class="vector-564" src="img/vector-564.svg" alt="Vector 564" />
                     <div class="frame-238064">
-                      <a href="javascript:SubmitForm('form1')">
+                      <a href="javascript:submitRegisterForm()">
                         <div class="group-238075">
                           <div class="overlap-group-7">
                             <img class="mask-group" src="img/mask-group@2x.png" alt="Mask group" />
                             <div class="place valign-text-middle">REGISTER</div>
                           </div>
                         </div></a>
-                        <div class="frame-238071"><div class="how-it-works valign-text-middle">Enter Email</div></div>
+                        <input id="email-input" type="email" class="frame-238071" placeholder="Enter Email">
                         <p class="play-anywhere-meet valign-text-middle">
                           <span
                           ><span class="span0"
@@ -117,7 +117,7 @@
                           ><span class="gilroy-extra-extra-bold-pixie-powder-14px"></span
                             ><span class="gilroy-extra-extra-bold-pixie-powder-14px"></span
                               ><span class="gilroy-extra-extra-bold-pixie-powder-14px"
-                              >sign up to get the<br />full experience</span
+                              ><br><br>sign up to get the<br />full experience</span
                               >
                             </span>
                           </p>
@@ -489,28 +489,8 @@
           instShowOnScroll.init();
         }, 250);
       </script>
-      <script>
-        /* Copyright (c) 2016 Tobias Buschor https://goo.gl/gl0mbf | MIT License https://goo.gl/HgajeK */
-        
-        if (!HTMLFormElement.prototype.reportValidity) {
-          HTMLFormElement.prototype.reportValidity = function () {
-            if (this.checkValidity()) return true;
-            var btn = document.createElement("button");
-            this.appendChild(btn);
-            btn.click();
-            this.removeChild(btn);
-            return false;
-          };
-        }
-        
-        function SubmitForm(form_name) {
-          var form = document.getElementsByName(form_name)[0];
-          if (form.reportValidity()) {
-            form.submit();
-            if (window.submitted) window.submitted();
-          }
-        }
-      </script>
+      <script src="https://cdn.lr-ingest.com/LogRocket.min.js" crossorigin="anonymous"></script>
+      <script></script>
       <script src="js/word_hunt.js"></script>
     </body>
     </html>
