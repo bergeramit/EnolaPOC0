@@ -1,20 +1,14 @@
-const generateLevelPostURL = "http://64.226.100.123/generate_level/";
-//const generateLevelPostURL = 'http://127.0.0.1:3000/generate_level/'
-const registerPostURL = "http://64.226.100.123/register_user/";
-let levelDataStructure
-let metaLevelDataStructure
-let deviceId
-let correctlyGuessed = {}
-let availableLetters
-let round = 1
-let lockBotGuess = false
+const BASE_URL = "http://64.226.100.123/"
+//const BASE_URL = "http://127.0.0.1:3000/";
+const generateLevelPostURL = BASE_URL + "generate_level/";
+//const generateLevelPostURL = 'generate_level/'
+const registerPostURL = BASE_URL + "register_user/";
 const timeoutBetweenLevels = 3000
 const difficulty = 'Easy'
 const ENTER_KEY_NAME = "Enter"
 const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
 const botGuessInterval = [4000, 5000, 6000, 7000, 8000, 9000]
-let selectedLettersClasses = ["keyboard-button-1", "keyboard-button-2"]
 const EMPTY_TILE = `
 <article class="tail">
     <div class="tail-1">
@@ -34,7 +28,7 @@ const FILLED_TILES = `
     </div>
 </article>
 `
-let CHAT_MESSAGE = `
+const CHAT_MESSAGE = `
     <div class="chat-row-icon"></div>
     <div class="chat-row-username-and-message">
         <div class="chat-row-username">You</div>
@@ -42,12 +36,25 @@ let CHAT_MESSAGE = `
     </div>
 `
 
+/* ---------------------- GlobalsDefine ---------------------- */
+
+let CurrentLevel
+let metaCurrentLevel
+let deviceId
+let correctlyGuessed = {}
+let availableLetters
+let round = 0
+let lockBotGuess = false
+
+/* ---------------------- /GlobalsDefine ---------------------- */
+
+
 /* ---------------------- GameLogic ---------------------- */
 
 function checkGuess (player, guess) {
-    for (let i = 0; i < levelDataStructure.length; i++) {
-        //console.log('Checks: levelDataStructure[1][i]: ' + levelDataStructure[i] + ' === ' + guess)
-        if (levelDataStructure[i] === guess && !correctlyGuessed[i]) {
+    for (let i = 0; i < CurrentLevel.length; i++) {
+        //console.log('Checks: CurrentLevel[1][i]: ' + CurrentLevel[i] + ' === ' + guess)
+        if (CurrentLevel[i] === guess && !correctlyGuessed[i]) {
             correctlyGuessed[i] = true
             console.log('Success! at row: ' + (i + 1))
             const row = document.getElementsByClassName('word')[i]
@@ -55,7 +62,7 @@ function checkGuess (player, guess) {
                 // place word correctly!
                 row.children[j].innerHTML = FILLED_TILES
                 const currentTile = row.children[j].getElementsByClassName("letter-input")[0]
-                currentTile.textContent = levelDataStructure[i][j].toUpperCase()  
+                currentTile.textContent = CurrentLevel[i][j].toUpperCase()  
                 const backgroundFill = row.children[j].getElementsByClassName("tile-fill")[0]
                 backgroundFill.style.backgroundColor = player.color
             }
@@ -72,7 +79,7 @@ function checkGuess (player, guess) {
             //appendMessage('WordHunt', 'Get Ready for level ' + (levelNumber+1))
             displayFinishedLevel()
             setTimeout(() => {
-                beginReadyLevel()
+                generateNewLevel()
             }, timeoutBetweenLevels)
             return true
         }
@@ -145,10 +152,6 @@ function beginReadyLevel() {
     roundElement.textContent = "Round " + round
     readyPopup.style.display = "flex"
     setScaleAnimation(readyPopup)
-
-    setTimeout(() => {
-        generateNewLevel()
-    }, timeoutBetweenLevels)
 }
 
 function setScaleAnimation(element) {
@@ -207,17 +210,19 @@ function appendEmptyTile(word) {
     return row
   }
 
-  function paintCurrentLevel (currentLevel) {
-    console.log(currentLevel)
-    levelDataStructure = currentLevel
-    availableLetters = Array.from(levelDataStructure[0])
+  function paintCurrentLevel () {
+    var readyPopup = document.getElementById("ready-level-popup")
+    readyPopup.style.display = "none"
+
+    lockBotGuess = false
+    availableLetters = Array.from(CurrentLevel[0])
 
     const board = document.getElementsByClassName("words-tiles")[0]
     board.innerHTML = ''
     
-    for (let i = 0; i < levelDataStructure.length; i++) {
+    for (let i = 0; i < CurrentLevel.length; i++) {
         correctlyGuessed[i] = false
-        const row = createEmptyWordRow(levelDataStructure[i])
+        const row = createEmptyWordRow(CurrentLevel[i])
         board.appendChild(row)
     }
     
@@ -229,7 +234,7 @@ function appendEmptyTile(word) {
         letterCount.textContent = ''
         if (availableLetters.includes(letter.textContent[0].toLowerCase())) {
             button.classList.add("keyboard-button-1", "keyboard-button-2")
-            letterCount.textContent = countLetter(letter.textContent, levelDataStructure[0])
+            letterCount.textContent = countLetter(letter.textContent, CurrentLevel[0])
         }
     })
 }
@@ -246,9 +251,6 @@ function displayFinishedLevel() {
 
 /* ---------------------- Server API ---------------------- */
 function generateNewLevel () {
-    var readyPopup = document.getElementById("ready-level-popup")
-    readyPopup.style.display = "none"
-
     correctlyGuessed = {}
     // const levelNumberObj = document.getElementById('level-number')
     // levelNumber += 1
@@ -270,9 +272,12 @@ function generateNewLevel () {
     })
     .then(data => {
         console.log(data)
-        metaLevelDataStructure = data.metaLevel
-        paintCurrentLevel(data.level)
-        lockBotGuess = false
+        CurrentLevel = data.level
+        metaCurrentLevel = data.metaLevel
+        beginReadyLevel()
+        setTimeout(() => {
+            paintCurrentLevel()
+        }, timeoutBetweenLevels)
     })
 }
 
@@ -302,7 +307,7 @@ function startUp() {
     }
     console.log(deviceId)
     window.LogRocket.identify(deviceId, { uuid: deviceId });
-    generateNewLevel ()
+    generateNewLevel()
     setInterval(runBotGuesser, botGuessInterval[Math.floor(Math.random()*botGuessInterval.length)]);
 }
 
@@ -382,7 +387,7 @@ function runBotGuesser() {
         return
     }
     let bot = playersList[Math.floor(Math.random()*(playersList.length-1)) + 1]
-    let botGuess = metaLevelDataStructure[Math.floor(Math.random()*metaLevelDataStructure.length)]
+    let botGuess = metaCurrentLevel[Math.floor(Math.random()*metaCurrentLevel.length)]
     if (checkGuess(bot, botGuess)) {
         appendMessage(bot, botGuess, true)
     } else {
