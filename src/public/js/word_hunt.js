@@ -150,6 +150,9 @@ function beginReadyLevel() {
 
     var timer = document.getElementById("game-timer")
     timeLeft = GAME_TIMER_TIMEOUT - (5 * round)
+    if (timeLeft <= 20) {
+        timeLeft = 20
+    }
     timer.textContent = timeLeft
 
     round += 1
