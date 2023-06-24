@@ -9,6 +9,12 @@ const ENTER_KEY_NAME = "Enter"
 const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
 const botGuessInterval = [4000, 5000, 6000, 7000, 8000, 9000]
+const LETTER_TEMPLATE = `
+<div class="overlap-group-1">
+    <div class="price valign-text-middle gilroy-extra-extra-bold-gunsmoke-12-1px top-letter">
+    </div>
+</div>
+`
 const EMPTY_TILE = `
 <article class="tail">
     <div class="tail-1">
@@ -146,6 +152,24 @@ function addKeyToInput (pressedKey, onScreen) {
     }
 }
 
+function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+  }
+
 /* ---------------------- /GameLogic ---------------------- */
 
 
@@ -238,10 +262,22 @@ function appendEmptyTile(word) {
   function startCurrentLevel () {
     var readyPopup = document.getElementById("ready-level-popup")
     readyPopup.style.display = "none"
+
     const board = document.getElementsByClassName("words-tiles")[0]
 
     freezeGame = false
-    availableLetters = Array.from(CurrentLevel[0])
+    availableLetters = shuffle(Array.from(CurrentLevel[0]))
+
+    const letters = document.getElementById("available-top-letters")
+    letters.innerHTML = ""
+    for (let i = 0; i < availableLetters.length; i++) {
+        let letterElement = document.createElement("div")
+        letterElement.classList.add("letter")
+        letterElement.innerHTML = LETTER_TEMPLATE
+        let valueElement = letterElement.getElementsByClassName("top-letter")[0]
+        valueElement.textContent = availableLetters[i].toUpperCase()
+        letters.appendChild(letterElement)
+    }
     
     for (let i = 0; i < CurrentLevel.length; i++) {
         correctlyGuessed[i] = false
