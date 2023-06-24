@@ -520,7 +520,8 @@ document.addEventListener('keyup', (e) => {
         return
     } else {
         let emailElement = document.getElementById("chat-input")
-        if (!(emailElement === document.activeElement)) {
+        let sideEmailElement = document.getElementById("email-input")
+        if (!(emailElement === document.activeElement) && !(sideEmailElement === document.activeElement)) {
             addKeyToInput(pressedKey, true)
             emailElement.focus()
         }
