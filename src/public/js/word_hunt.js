@@ -35,18 +35,20 @@ const CHAT_MESSAGE = `
         <div class="chat-row-message correct-word">Correct</div>
     </div>
 `
+const GAME_TIMER_TIMEOUT = 60 // 1 for testing
 
-/* ---------------------- GlobalsDefine ---------------------- */
+/* ---------------------- GlobalsDefines ---------------------- */
 
+let timeLeft
 let CurrentLevel
 let metaCurrentLevel
 let deviceId
 let correctlyGuessed = {}
 let availableLetters
 let round = 0
-let lockBotGuess = false
+let freezeGame = true
 
-/* ---------------------- /GlobalsDefine ---------------------- */
+/* ---------------------- /GlobalsDefines ---------------------- */
 
 
 /* ---------------------- GameLogic ---------------------- */
@@ -146,7 +148,14 @@ function beginReadyLevel() {
     let chat = document.getElementById("chat-area")
     chat.innerHTML = ""
 
+    var timer = document.getElementById("game-timer")
+    timeLeft = GAME_TIMER_TIMEOUT - (5 * round)
+    timer.textContent = timeLeft
+
     round += 1
+    const roundSideElement = document.getElementById("round-side-view")
+    roundSideElement.textContent = round
+
     const readyPopup = document.getElementById("ready-level-popup")
     let roundElement = readyPopup.getElementsByClassName("round-1")[0]
     roundElement.textContent = "Round " + round
@@ -210,11 +219,11 @@ function appendEmptyTile(word) {
     return row
   }
 
-  function paintCurrentLevel () {
+  function startCurrentLevel () {
     var readyPopup = document.getElementById("ready-level-popup")
     readyPopup.style.display = "none"
 
-    lockBotGuess = false
+    freezeGame = false
     availableLetters = Array.from(CurrentLevel[0])
 
     const board = document.getElementsByClassName("words-tiles")[0]
@@ -240,10 +249,29 @@ function appendEmptyTile(word) {
 }
 
 function displayFinishedLevel() {
-    lockBotGuess = true
+    freezeGame = true
     var completePopup = document.getElementById("complete-level-popup")
     completePopup.style.display = "flex"
     setScaleAnimation(completePopup)
+}
+
+function updateTimer() {
+    if (freezeGame) {
+        return
+    }
+    var timer = document.getElementById("game-timer")
+    timeLeft -= 1
+    timer.textContent = timeLeft
+    if (timeLeft === 0) {
+        handleOutOfTime()
+    }
+}
+
+function handleOutOfTime() {
+    freezeGame = true
+    var oot = document.getElementById("out-of-time-popup")
+    oot.style.display = "flex"
+    setScaleAnimation(oot)
 }
 
 /* ---------------------- /DOM Cyber ---------------------- */
@@ -276,7 +304,7 @@ function generateNewLevel () {
         metaCurrentLevel = data.metaLevel
         beginReadyLevel()
         setTimeout(() => {
-            paintCurrentLevel()
+            startCurrentLevel()
         }, timeoutBetweenLevels)
     })
 }
@@ -309,6 +337,7 @@ function startUp() {
     window.LogRocket.identify(deviceId, { uuid: deviceId });
     generateNewLevel()
     setInterval(runBotGuesser, botGuessInterval[Math.floor(Math.random()*botGuessInterval.length)]);
+    setInterval(updateTimer, 1000) // once every second
 }
 
 startUp()
@@ -327,21 +356,47 @@ buttons.forEach((button) => {
 
 document.getElementById("yay-message").addEventListener("click", (e) => {
     /* When yay Pressed */
+    window.LogRocket.log('clicked: dismiss complete level');
     const popup = document.getElementById("complete-level-popup")
     popup.style.display = "none"
 })
 
+document.getElementById("play-again-button").addEventListener("click", (e) => {
+    /* When play-again-click Pressed */
+    window.LogRocket.log('clicked: play again');
+    const popup = document.getElementById("out-of-time-popup")
+    popup.style.display = "none"
+    round = 0
+    generateNewLevel()
+})
+
 document.getElementById("enterButton").addEventListener("click", (e) => {
     /* When Enterkey Pressed */
+    window.LogRocket.log('clicked: Enter');
     const chatInput = document.getElementById("chat-input")
     handleSubmitChatMessage(chatInput.value)
     chatInput.value = ""
 })
 
-
 document.getElementById("info-button-id").addEventListener("click", (e) => {
     /* When "?" Pressed */
-    
+    window.LogRocket.log('clicked: "?"');
+    const howToPopup = document.getElementById("how-to-popup")
+    howToPopup.style.display = "flex"
+})
+
+document.getElementById("x-how-to-popup-button").addEventListener("click", (e) => {
+    /* When "x" Pressed in popup window */
+    window.LogRocket.log('clicked: x in how-to popup');
+    const howToPopup = document.getElementById("how-to-popup")
+    howToPopup.style.display = "none"
+})
+
+document.getElementById("how-to-nav-button").addEventListener("click", (e) => {
+    /* When pressed in popup window */
+    window.LogRocket.log('clicked: how-to popup from nav');
+    const howToPopup = document.getElementById("how-to-popup")
+    howToPopup.style.display = "flex"
 })
 
 document.getElementById("delButton").addEventListener("click", (e) => {
@@ -383,7 +438,7 @@ const playersList = [
 ]
 
 function runBotGuesser() {
-    if (lockBotGuess) {
+    if (freezeGame) {
         return
     }
     let bot = playersList[Math.floor(Math.random()*(playersList.length-1)) + 1]

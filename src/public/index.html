@@ -12,6 +12,8 @@
   <link rel="stylesheet" type="text/css" href="css/complete-popup.css" />
   <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
   <link rel="stylesheet" type="text/css" href="css/ready-level.css" />
+  <link rel="stylesheet" type="text/css" href="css/out-of-time.css" />
+  <link rel="stylesheet" type="text/css" href="css/how-to-popup.css" />
   <link rel="stylesheet" type="text/css" href="css/globals.css" />
 </head>
 <body style="margin: 0; background: #ffffff">
@@ -66,7 +68,7 @@
           </div>
           <div class="flex-col-1">
             <div class="nav-1">
-              <div class="nav-how-to-button">
+              <div id="how-to-nav-button" class="nav-how-to-button">
                 <div class="overlap-group-5">
                   <div class="how-to-play gilroy-extra-extra-bold-white-14px animate-enter">
                     HOW<br />TO<br />PLAY
@@ -168,10 +170,10 @@
               <div id="info-button-id" class="info-button"><div class="text valign-text-middle">?</div></div>
             </div>
             <div class="in-game-secondary-ui">
-              <div class="in-game-timer"><div class="text-1 valign-text-middle">1:08</div></div>
+              <div class="in-game-timer"><div id="game-timer" class="text-1 valign-text-middle">1:08</div></div>
               <div class="in-game-score-progress">
                 <div class="text-2 valign-text-middle">
-                  <span><span class="span0-1">13</span><span>/23</span> </span>
+                  <span><span id="round-side-view" class="span0-1">13</span>
                 </div>
               </div>
             </div>
@@ -303,8 +305,8 @@
                 </div>
               </div>
             </div>
+
             <div class="words-tiles">
-              
             </div>
 
             <div id="complete-level-popup" class="container-center-horizontal">
@@ -326,7 +328,7 @@
                       >
                     </span>
                   </p>
-                  <h1 class="address valign-text-middle">230 POINTS</h1>
+                  <h1 id="score" class="address valign-text-middle">230 POINTS</h1>
                   <div class="overlap-group2">
                     <img class="star-2" src="img/star-2-1.svg" alt="Star 2" />
                     <div class="round-complete">ROUND<br />COMPLETE</div>
@@ -381,8 +383,60 @@
               </div>
             </div>
 
+            <div id="how-to-popup" class="container-center-horizontal">
+              <div class="frame-238081 screen">
+                <div class="overlap-group1">
+                  <div class="flex-row">
+                    <img class="logo" src="img/logo-1@2x.png" alt="Logo" />
+                    <img id="x-how-to-popup-button" class="close_round" src="img/close-round-1.svg" alt="Close_round" />
+                  </div>
+                  <div class="how-to-play valign-text-middle gilroy-extra-extra-bold-haiti-18px">HOW TO PLAY</div>
+                  <div class="instructions-instruct valign-text-middle gilroy-extra-extra-bold-haiti-18px">
+                  This is fun word game with smart twist, chat with your friends and help each other succeed before the timer runs out! Good luck!
+                  </div>
+                  <p class="sign-up-to-get-the-full-experience valign-text-middle gilroy-extra-extra-bold-pixie-powder-14px">
+                    SIGN UP TO GET THE<br />FULL EXPERIENCE
+                  </p>
+                  <!-- <div class="frame-238071"><div class="how-it-works valign-text-middle">Enter Email</div></div>
+                  <div class="overlap-group">
+                    <img class="mask-group" src="img/mask-group-1@2x.png" alt="Mask group" />
+                    <div class="place valign-text-middle">REGISTER</div>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+
+            <div id="out-of-time-popup" class="container-center-horizontal">
+              <div class="out-of-time screen">
+                <div class="overlap-group3">
+                  <div class="overlap-group">
+                    <div class="ellipse-1938"></div>
+                    <div class="ellipse-1876"></div>
+                    <div class="ellipse-1875"></div>
+                    <img class="pip-character" src="img/pip---character@2x.png" alt="Pip - Character" />
+                  </div>
+                  <div class="bg"></div>
+                  <div id="play-again-button" class="overlap-group1">
+                    <div class="rectangle-7588"></div>
+                    <div id="new-game-in-oot-popup" class="place valign-text-middle">PLAY AGAIN</div>
+                  </div>
+                  <p class="you-can-do-more-try valign-text-middle gilroy-extra-extra-bold-haiti-18px">
+                    <span
+                      ><span class="gilroy-extra-extra-bold-haiti-18px">You can do more!<br />Try another round!<br /></span
+                      ><span class="gilroy-extra-extra-bold-haiti-18px"><br />Your group score is:</span>
+                    </span>
+                  </p>
+                  <h1 class="address valign-text-middle">80 POINTS</h1>
+                  <div class="overlap-group2">
+                    <img class="star-2" src="img/star-2-2.svg" alt="Star 2" />
+                    <div class="out-of-time-1">OUT OF<br />TIME</div>
+                    <img class="star-1" src="img/star-1-2.svg" alt="Star 1" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div id="chat-area" class="chat-2 container-center-horizontal">
-              
             </div>
           </div>
         </div>

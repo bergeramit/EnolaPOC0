@@ -88,7 +88,7 @@
 }
 
 .word-hunt .guess-words-open-do {
-  -webkit-text-stroke: 2px var(--black-2);
+  /* -webkit-text-stroke: 2px var(--black-2); */
   color: var(--pixie-powder);
   font-family: var(--font-family-gilroy-extrabold);
   font-size: var(--font-size-m);
@@ -221,6 +221,7 @@
 }
 
 .word-hunt .nav-how-to-button {
+  cursor: pointer;
   height: 65px;
   margin-right: -2.00px;
   min-width: 67px;
@@ -381,8 +382,8 @@ transform: scale(1);
 
 .word-hunt .overlap-group3 {
   align-items: flex-start;
-  background-color: #ffcb46;
-  border: 3px solid;
+  /* background-color: #ffcb46;
+  border: 3px solid; */
   border-color: var(--white);
   border-radius: 62px;
   box-shadow: 0px 8px 0px -3px #00000012;
@@ -769,7 +770,7 @@ transform: scale(1);
 .word-hunt .text-1 {
   color: var(--white);
   font-family: var(--font-family-poppins);
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-m);
   font-weight: 800;
   height: 23px;
   left: -5px;
@@ -794,10 +795,10 @@ transform: scale(1);
 .word-hunt .text-2 {
   color: var(--white);
   font-family: var(--font-family-poppins);
-  font-size: 11px;
   font-weight: 400;
+  font-size: var(--font-size-m);
   height: 23px;
-  left: -5px;
+  left: -4px;
   letter-spacing: 0;
   line-height: 10.4px;
   position: absolute;

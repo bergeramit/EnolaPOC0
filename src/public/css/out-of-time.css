@@ -1,5 +1,16 @@
 /* screen - out-of-time */
 
+#out-of-time-popup {
+  z-index: 1;
+  display: none;
+  top: 200px;
+  position: absolute;
+}
+
+#play-again-button {
+  cursor: pointer;
+}
+
 .out-of-time {
   align-items: flex-start;
   border: 1px none;
@@ -81,6 +92,7 @@
 }
 
 .out-of-time .overlap-group1 {
+  min-width: 0;
   height: 56px;
   left: 57px;
   position: absolute;
@@ -151,7 +163,7 @@
 }
 
 .out-of-time .out-of-time-1 {
-  -webkit-text-stroke: 5px var(--haiti);
+  -webkit-text-stroke: 4px var(--haiti);
   color: var(--white);
   font-family: var(--font-family-poppins);
   font-size: 31.1px;
