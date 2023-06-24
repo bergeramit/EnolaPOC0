@@ -180,6 +180,17 @@ function shuffle(array) {
 
 /* ---------------------- DOM Cyber ---------------------- */
 
+function handleEmailSubmitted() {
+    let emailElement = document.getElementById("email-input")
+    emailElement.style.display = "none"
+    let submitElement = document.getElementById("register-text-button")
+    submitElement.textContent = "We'll be in touch!"
+    submitElement.style.left = "65px"
+    
+    let fullButton = document.getElementById("full-register-button")
+    fullButton.style.cursor = "default"
+}
+
 function beginReadyLevel() {
     const popup = document.getElementById("complete-level-popup")
     popup.style.display = "none"
@@ -395,6 +406,7 @@ function submitRegisterForm() {
         body: JSON.stringify({ "email": email.value })
     }).then(response => {
         console.log(response.statusText)
+        handleEmailSubmitted()
         return response.json()
     })
 }
