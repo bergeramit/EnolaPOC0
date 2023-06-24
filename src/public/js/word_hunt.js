@@ -75,6 +75,9 @@ function checkGuess (player, guess) {
     for (let i = 0; i < CurrentLevel.length; i++) {
         //console.log('Checks: CurrentLevel[1][i]: ' + CurrentLevel[i] + ' === ' + guess)
         if (CurrentLevel[i] === guess && !correctlyGuessed[i]) {
+            if (player.username === "you") {
+                window.LogRocket.track('UserCorrectGuess', {round: round, score: groupScore});    
+            }
             correctlyGuessed[i] = true
             // console.log('Success! at row: ' + (i + 1))
             groupScore += 10 * streak
