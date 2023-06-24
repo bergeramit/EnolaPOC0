@@ -35,7 +35,7 @@ const CHAT_MESSAGE = `
         <div class="chat-row-message correct-word">Correct</div>
     </div>
 `
-const GAME_TIMER_TIMEOUT = 60 // 1 for testing
+const GAME_TIMER_TIMEOUT = 80 // 1 for testing
 
 /* ---------------------- GlobalsDefines ---------------------- */
 
@@ -47,11 +47,18 @@ let correctlyGuessed = {}
 let availableLetters
 let round = 0
 let freezeGame = true
+let groupScore
 
 /* ---------------------- /GlobalsDefines ---------------------- */
 
 
 /* ---------------------- GameLogic ---------------------- */
+
+function resetGame() {
+    round = 0
+    groupScore = 0
+    streak = 1
+}
 
 function checkGuess (player, guess) {
     for (let i = 0; i < CurrentLevel.length; i++) {
@@ -59,6 +66,8 @@ function checkGuess (player, guess) {
         if (CurrentLevel[i] === guess && !correctlyGuessed[i]) {
             correctlyGuessed[i] = true
             console.log('Success! at row: ' + (i + 1))
+            groupScore += 10 * streak
+            streak += 1
             const row = document.getElementsByClassName('word')[i]
             for (let j = 0; j < row.children.length; j++) {
                 // place word correctly!
@@ -86,6 +95,7 @@ function checkGuess (player, guess) {
             return true
         }
     }
+    streak = 1
     return false
 }
 
@@ -253,6 +263,8 @@ function appendEmptyTile(word) {
 
 function displayFinishedLevel() {
     freezeGame = true
+    var scoreElement = document.getElementById("level-finish-score")
+    scoreElement.textContent = groupScore + " POINTS"
     var completePopup = document.getElementById("complete-level-popup")
     completePopup.style.display = "flex"
     setScaleAnimation(completePopup)
@@ -272,6 +284,10 @@ function updateTimer() {
 
 function handleOutOfTime() {
     freezeGame = true
+
+    var scoreElement = document.getElementById("level-timeout-score")
+    scoreElement.textContent = groupScore + " POINTS"
+
     var oot = document.getElementById("out-of-time-popup")
     oot.style.display = "flex"
     setScaleAnimation(oot)
@@ -338,6 +354,7 @@ function startUp() {
     }
     console.log(deviceId)
     window.LogRocket.identify(deviceId, { uuid: deviceId });
+    resetGame()
     generateNewLevel()
     setInterval(runBotGuesser, botGuessInterval[Math.floor(Math.random()*botGuessInterval.length)]);
     setInterval(updateTimer, 1000) // once every second
@@ -367,9 +384,10 @@ document.getElementById("yay-message").addEventListener("click", (e) => {
 document.getElementById("play-again-button").addEventListener("click", (e) => {
     /* When play-again-click Pressed */
     window.LogRocket.log('clicked: play again');
+    window.LogRocket.log('last-game-stats: round: ' + round + ' score: ' + groupScore);
     const popup = document.getElementById("out-of-time-popup")
     popup.style.display = "none"
-    round = 0
+    resetGame()
     generateNewLevel()
 })
 
