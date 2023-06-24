@@ -400,7 +400,7 @@ function generateNewLevel () {
 
 function submitRegisterForm() {
     const email = document.getElementById("email-input")
-    window.LogRocket.track("RegisterRequest", {email: email})
+    window.LogRocket.track("RegisterRequest", {email: email.value})
     fetch(registerPostURL, {
         method: 'POST',
         headers: {
