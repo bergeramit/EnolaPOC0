@@ -65,7 +65,7 @@ function checkGuess (player, guess) {
         //console.log('Checks: CurrentLevel[1][i]: ' + CurrentLevel[i] + ' === ' + guess)
         if (CurrentLevel[i] === guess && !correctlyGuessed[i]) {
             correctlyGuessed[i] = true
-            console.log('Success! at row: ' + (i + 1))
+            // console.log('Success! at row: ' + (i + 1))
             groupScore += 10 * streak
             streak += 1
             const row = document.getElementsByClassName('word')[i]
@@ -88,9 +88,9 @@ function checkGuess (player, guess) {
             // generate new level
             //appendMessage('WordHunt', 'Great job!', false)
             //appendMessage('WordHunt', 'Get Ready for level ' + (levelNumber+1))
-            displayFinishedLevel()
+            freezeGame = true
             setTimeout(() => {
-                generateNewLevel()
+                displayFinishedLevel()
             }, timeoutBetweenLevels)
             return true
         }
@@ -154,9 +154,12 @@ function addKeyToInput (pressedKey, onScreen) {
 function beginReadyLevel() {
     const popup = document.getElementById("complete-level-popup")
     popup.style.display = "none"
+    
+    const board = document.getElementsByClassName("words-tiles")[0]
+    board.innerHTML = ''
 
-    let chat = document.getElementById("chat-area")
-    chat.innerHTML = ""
+    // let chat = document.getElementById("chat-area")
+    // chat.innerHTML = ""
 
     var timer = document.getElementById("game-timer")
     timeLeft = GAME_TIMER_TIMEOUT - (5 * round)
@@ -235,12 +238,10 @@ function appendEmptyTile(word) {
   function startCurrentLevel () {
     var readyPopup = document.getElementById("ready-level-popup")
     readyPopup.style.display = "none"
+    const board = document.getElementsByClassName("words-tiles")[0]
 
     freezeGame = false
     availableLetters = Array.from(CurrentLevel[0])
-
-    const board = document.getElementsByClassName("words-tiles")[0]
-    board.innerHTML = ''
     
     for (let i = 0; i < CurrentLevel.length; i++) {
         correctlyGuessed[i] = false
@@ -268,6 +269,10 @@ function displayFinishedLevel() {
     var completePopup = document.getElementById("complete-level-popup")
     completePopup.style.display = "flex"
     setScaleAnimation(completePopup)
+
+    setTimeout(() => {
+        generateNewLevel()
+    }, timeoutBetweenLevels)
 }
 
 function updateTimer() {
@@ -360,7 +365,11 @@ function startUp() {
     setInterval(updateTimer, 1000) // once every second
 }
 
-startUp()
+document.addEventListener("DOMContentLoaded", function(e) {
+    startUp()
+});
+
+
 /* ---------------------- /Server API ---------------------- */
 
 /* ---------------------- EventListeners ---------------------- */
