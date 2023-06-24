@@ -181,11 +181,6 @@ function shuffle(array) {
 
 /* ---------------------- DOM Cyber ---------------------- */
 
-function focusOnChatInput() {
-    let emailElement = document.getElementById("chat-input")
-    emailElement.focus()
-}
-
 function handleEmailSubmitted() {
     let emailElement = document.getElementById("email-input")
     emailElement.style.display = "none"
@@ -516,8 +511,11 @@ document.addEventListener('keyup', (e) => {
     if (!found || found.length > 1) {
         return
     } else {
-        addKeyToInput(pressedKey, true)
-        focusOnChatInput()
+        let emailElement = document.getElementById("chat-input")
+        if (!(emailElement === document.activeElement)) {
+            addKeyToInput(pressedKey, true)
+            emailElement.focus()
+        }
     }
 })
 
