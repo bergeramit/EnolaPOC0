@@ -3,6 +3,7 @@ const generateLevelPostURL = "http://64.226.100.123/generate_level/";
 const registerPostURL = "http://64.226.100.123/register_user/";
 let levelDataStructure
 let metaLevelDataStructure
+let deviceId
 let correctlyGuessed = {}
 let availableLetters
 let round = 1
@@ -294,6 +295,13 @@ function submitRegisterForm() {
 
 function startUp() {
     window.LogRocket && window.LogRocket.init('9o6vsp/enolapoc0');
+    deviceId = localStorage.getItem("deviceId");
+    if (!deviceId) {
+        deviceId = uuidv4();
+        localStorage.setItem("deviceId", deviceId);
+    }
+    console.log(deviceId)
+    window.LogRocket.identify(deviceId, { uuid: deviceId });
     generateNewLevel ()
     setInterval(runBotGuesser, botGuessInterval[Math.floor(Math.random()*botGuessInterval.length)]);
 }
