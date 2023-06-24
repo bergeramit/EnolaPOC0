@@ -8,7 +8,12 @@ const difficulty = 'Easy'
 const ENTER_KEY_NAME = "Enter"
 const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
-const botGuessInterval = [4000, 5000, 6000, 7000, 8000, 9000]
+const botGuessInterval = [5000, 6000, 7000, 8000, 9000]
+const BEGINNING_ROUND_LETTER = `
+<div class="overlap-group">
+    <div class="begin-in-letter t valign-text-middle gilroy-extra-extra-bold-haiti-20-9px"></div>
+</div>
+`
 const LETTER_TEMPLATE = `
 <div class="overlap-group-1">
     <div class="price valign-text-middle gilroy-extra-extra-bold-gunsmoke-12-1px top-letter">
@@ -41,7 +46,7 @@ const CHAT_MESSAGE = `
         <div class="chat-row-message correct-word">Correct</div>
     </div>
 `
-const GAME_TIMER_TIMEOUT = 80 // 1 for testing
+const GAME_TIMER_TIMEOUT = 120 // 1 for testing
 
 /* ---------------------- GlobalsDefines ---------------------- */
 
@@ -97,7 +102,7 @@ function checkGuess (player, guess) {
             freezeGame = true
             setTimeout(() => {
                 displayFinishedLevel()
-            }, timeoutBetweenLevels)
+            }, 1000)
             return true
         }
     }
@@ -182,9 +187,6 @@ function beginReadyLevel() {
     const board = document.getElementsByClassName("words-tiles")[0]
     board.innerHTML = ''
 
-    // let chat = document.getElementById("chat-area")
-    // chat.innerHTML = ""
-
     var timer = document.getElementById("game-timer")
     timeLeft = GAME_TIMER_TIMEOUT - (5 * round)
     if (timeLeft <= 20) {
@@ -195,6 +197,18 @@ function beginReadyLevel() {
     round += 1
     const roundSideElement = document.getElementById("round-side-view")
     roundSideElement.textContent = round
+
+    const inLetters = document.getElementById("begin-in-letters")
+    inLetters.innerHTML = ""
+
+    for (let i = 0; i < availableLetters.length; i++) {
+        let inLetter = document.createElement("div")
+        inLetter.classList.add("letter-new-round")
+        inLetter.innerHTML = BEGINNING_ROUND_LETTER
+        let beginCurrentLetter = inLetter.getElementsByClassName("begin-in-letter")[0]
+        beginCurrentLetter.textContent = availableLetters[i].toUpperCase()
+        inLetters.appendChild(inLetter)
+    }
 
     const readyPopup = document.getElementById("ready-level-popup")
     let roundElement = readyPopup.getElementsByClassName("round-1")[0]
@@ -266,8 +280,6 @@ function appendEmptyTile(word) {
     const board = document.getElementsByClassName("words-tiles")[0]
 
     freezeGame = false
-    availableLetters = shuffle(Array.from(CurrentLevel[0]))
-
     const letters = document.getElementById("available-top-letters")
     letters.innerHTML = ""
     for (let i = 0; i < availableLetters.length; i++) {
@@ -362,6 +374,7 @@ function generateNewLevel () {
         console.log(data)
         CurrentLevel = data.level
         metaCurrentLevel = data.metaLevel
+        availableLetters = shuffle(Array.from(CurrentLevel[0]))
         beginReadyLevel()
         setTimeout(() => {
             startCurrentLevel()
