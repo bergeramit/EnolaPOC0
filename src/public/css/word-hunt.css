@@ -1,32 +1,47 @@
 /* screen - word-hunt */
 
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.main-screen {
+  position: absolute;
+  /* bottom: 0; */
+}
+
 .word-hunt {
   align-items: flex-start;
   background-color: var(--white);
   border: 1px none;
   display: flex;
-  gap: 1476px;
-  height: 883px;
+  /* gap: 1476px; */
+  /* height: 883px; */
   overflow: hidden;
-  width: 1728px;
+  /* width: 1728px; */
+  width: 90%
 }
 
 .word-hunt .rectangle-7596 {
   height: 216px;
-  margin-left: -1853px;
-  margin-top: -8736px;
+  /* margin-left: -1853px;
+  margin-top: -8736px; */
   width: 377px;
 }
 
 .word-hunt .overlap-group5 {
-  height: 947px;
+  /* height: 947px;
   position: relative;
-  width: 1728px;
+  width: 1728px; */
+  width: 100%;
+  bottom: 0;
+  position: absolute;
 }
 
 .word-hunt .bg {
   height: 883px;
-  left: 0;
+  /* left: 0; */
   object-fit: cover;
   position: absolute;
   top: 0;
@@ -54,8 +69,8 @@
   align-items: flex-start;
   display: flex;
   gap: 805px;
-  height: 911px;
-  left: 18px;
+  /* height: 911px; */
+  /* left: 18px; */
   min-width: 1683px;
   position: absolute;
   top: 36px;
@@ -206,7 +221,7 @@
   display: flex;
   flex-direction: column;
   gap: 70px;
-  min-height: 911px;
+  /* min-height: 911px; */
   width: 421px;
 }
 
@@ -407,7 +422,7 @@ transform: scale(1);
 .word-hunt .register {
   align-items: flex-start;
   display: flex;
-  height: 512px;
+  /* height: 512px; */
   justify-content: flex-end;
   min-width: 421px;
   padding: 0.0px 0;
