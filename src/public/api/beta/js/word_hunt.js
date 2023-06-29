@@ -1,6 +1,6 @@
 const BASE_URL = "http://64.226.100.123/"
 //const BASE_URL = "http://127.0.0.1:3000/";
-const generateLevelPostURL = BASE_URL + "generate_level/";
+const generateLevelPostURL = BASE_URL + "beta/generate_level/";
 //const generateLevelPostURL = 'generate_level/'
 const registerPostURL = BASE_URL + "register_user/";
 const timeoutBetweenLevels = 3000

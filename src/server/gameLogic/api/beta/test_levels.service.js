@@ -18,7 +18,7 @@ function compareFn(a, b) {
     return 0;
 }
 
-fs.readFile("../gameLogic/resources/easy_levels_dataset.json", "utf8", (err, jsonString) => {
+fs.readFile("../gameLogic/api/beta/resources/easy_levels_dataset.json", "utf8", (err, jsonString) => {
     if (err) {
         console.log("File read failed:", err);
         return;
@@ -29,7 +29,7 @@ fs.readFile("../gameLogic/resources/easy_levels_dataset.json", "utf8", (err, jso
     console.log(levels[levels.length-1]);
 });
 
-fs.readFile("../gameLogic/resources/easy_meta_levels.json", "utf8", (err, jsonString) => {
+fs.readFile("../gameLogic/api/beta/resources/easy_meta_levels.json", "utf8", (err, jsonString) => {
     if (err) {
         console.log("File read failed:", err);
         return;

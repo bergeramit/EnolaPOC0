@@ -2,12 +2,16 @@ const cors = require('cors');
 const express = require("express"); 
 const path = require('path');
 const bodyParser = require('body-parser');
-const test_levels = require("../gameLogic/test_levels.service.js");
+
+const test_levels_v1 = require("../gameLogic/api/v1/test_levels.service.js");
+const test_levels_beta = require("../gameLogic/api/beta/test_levels.service.js");
+
 const LogRocket = require('logrocket');
 LogRocket.init('9o6vsp/enolapoc0');
 const app = express(); // Initializing Express App
 
-app.use('/', express.static(path.join(__dirname, '../../public')))
+app.use('/api/v1', express.static(path.join(__dirname, '../../api/v1/public')))
+app.use('/api/beta', express.static(path.join(__dirname, '../../api/beta/public')))
 
 app.use(bodyParser.json());
 app.use(cors({
@@ -15,10 +19,18 @@ app.use(cors({
 	methods: ['GET', 'POST']
 }));
 
-app.post('/generate_level', function(req, res) { 
+app.post('/v1/generate_level', function(req, res) {
   const difficulty = req.body.difficulty;
   // console.log(difficulty);
-  board = test_levels.retrieve_level(difficulty);
+  board = test_levels_v1.retrieve_level(difficulty);
+  console.log(board);
+  res.send(JSON.stringify(board));
+});
+
+app.post('/beta/generate_level', function(req, res) {
+  const difficulty = req.body.difficulty;
+  // console.log(difficulty);
+  board = test_levels_beta.retrieve_level(difficulty);
   console.log(board);
   res.send(JSON.stringify(board));
 });
