@@ -321,8 +321,8 @@ transform: scale(1);
 
 .word-hunt .overlap-group2 {
   align-items: flex-start;
-  background-image: url(../img/bg-1@2x.png);
-  background-size: 100% 100%;
+  /* background-image: url(../img/bg-1@2x.png);
+  background-size: 100% 100%; */
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -664,13 +664,11 @@ transform: scale(1);
 }
 
 .word-hunt .price {
-  height: 21px;
+  height: 18px;
+  width: 18px;
   letter-spacing: 0.24px;
   line-height: normal;
-  margin-left: -1px;
-  margin-top: -2.3px;
   text-align: center;
-  width: 21px;
 }
 
 .word-hunt .o {
@@ -1403,6 +1401,14 @@ transform: scale(1);
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.checkmark {
+  font-weight: 600;
+  color: gray;
+  font-size: 17px;
+  -webkit-text-stroke: 0;
+  font-size: 15px;
 }
 
 

@@ -98,18 +98,18 @@
 }
 
 .complete-popup .yay {
-  -webkit-text-stroke: 2.24px var(--violent-violet);
-  color: var(--white);
+  /* -webkit-text-stroke: 2.24px var(--violent-violet); */
+  color: var(--violent-violet);
   font-family: var(--font-family-gilroy-extrabold);
   font-size: 18.6px;
   font-weight: 800;
-  height: 15px;
+  height: 18px;
   left: 0;
   letter-spacing: 0.26px;
   line-height: 17.4px;
   position: absolute;
   text-align: center;
-  text-shadow: 0px 3.73px 0px #00000040;
+  /* text-shadow: 0px 3.73px 0px #00000040; */
   top: 18px;
   white-space: nowrap;
   width: 156px;
@@ -128,8 +128,8 @@
 }
 
 .complete-popup .address {
-  -webkit-text-stroke: 2.89px #2f7167;
-  color: var(--riptide);
+  /* -webkit-text-stroke: 2.89px #2f7167; */
+  color: var(--new-green);
   font-family: var(--font-family-gilroy-extrabold);
   font-size: 32px;
   font-weight: 800;

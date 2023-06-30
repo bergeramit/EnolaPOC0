@@ -246,13 +246,19 @@ function appendMessage (player, message, solved) {
     let usernameElement = messageElement.getElementsByClassName("chat-row-username")[0]
     usernameElement.textContent = player.username
     let messageContentElement = messageElement.getElementsByClassName("chat-row-message")[0]
-    
+    let tickElement = document.createElement('span')
+    tickElement.innerHTML = " &#10004;"
+    tickElement.classList.add("checkmark")
+
     if (solved) {
         messageContentElement.style.color = player.color
+        messageContentElement.textContent = message.toUpperCase()
+        messageContentElement.append(tickElement)
     } else {
         messageContentElement.classList.remove("correct-word")
+        messageContentElement.textContent = message
     }
-    messageContentElement.textContent = message
+    
 
     let imgElement = messageElement.getElementsByClassName("chat-row-icon")[0]
     imgElement.style.backgroundImage = player.icon
