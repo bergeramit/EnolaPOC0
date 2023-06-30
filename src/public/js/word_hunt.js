@@ -48,17 +48,29 @@ const CHAT_MESSAGE = `
 `
 const GAME_TIMER_TIMEOUT = 120 // 1 for testing
 
+class Player {
+    constructor(username, icon, color, textColor) {
+        this.username = username
+        this.color = color
+        this.textColor = textColor
+        this.icon = icon
+    }
+}
+
 /* ---------------------- GlobalsDefines ---------------------- */
 
+let finishedLevels = []
+let pipPlayer = new Player("PIP", "url('img/pip_icon.png')", "#1abc9c", "black")
 let timeLeft
 let CurrentLevel
 let metaCurrentLevel
 let deviceId
-let correctlyGuessed = {}
+let correctlyGuessed = []
 let availableLetters
 let round = 0
 let freezeGame = true
 let groupScore
+let shouldStartUp
 
 /* ---------------------- /GlobalsDefines ---------------------- */
 
@@ -74,11 +86,11 @@ function resetGame() {
 function checkGuess (player, guess) {
     for (let i = 0; i < CurrentLevel.length; i++) {
         //console.log('Checks: CurrentLevel[1][i]: ' + CurrentLevel[i] + ' === ' + guess)
-        if (CurrentLevel[i] === guess && !correctlyGuessed[i]) {
+        if (CurrentLevel[i] === guess && !correctlyGuessed.includes(guess)) {
             if (player.username === "you") {
                 window.LogRocket.track('UserCorrectGuess', {round: round, score: groupScore});    
             }
-            correctlyGuessed[i] = true
+            correctlyGuessed.push(guess)
             // console.log('Success! at row: ' + (i + 1))
             groupScore += 10 * streak
             streak += 1
@@ -93,11 +105,9 @@ function checkGuess (player, guess) {
             }
             setScaleAnimation(row)
 
-            for (const key of Object.keys(correctlyGuessed)) {
-                if (!correctlyGuessed[key]) {
-                    // There are still empty rows
-                    return true
-                }
+            if (correctlyGuessed.length < CurrentLevel.length) {
+                // There are still empty rows
+                return true
             }
             // generate new level
             //appendMessage('WordHunt', 'Great job!', false)
@@ -132,7 +142,13 @@ function handleSubmitChatMessage(message) {
         return
     }
     if (!checkGuess(playersList[0], message)) {
-        appendMessage(playersList[0], message, false)
+            /* Guessed Wrong - Check if close */
+        if (metaCurrentLevel.includes(message) && correctlyGuessed) {
+            appendMessage(pipPlayer, "'"+ message + "' is valid but not here!", false)
+            groupScore += 10
+        } else {
+            appendMessage(playersList[0], message, false)
+        }
         //currentStreak = 1
     } else {
         appendMessage(playersList[0], message, true)
@@ -260,6 +276,10 @@ function appendMessage (player, message, solved) {
     } else {
         messageContentElement.classList.remove("correct-word")
         messageContentElement.textContent = message
+        if (player.username == "PIP") {
+            messageContentElement.style.color = player.color
+            usernameElement.style.color = player.color
+        }
     }
     
 
@@ -314,9 +334,8 @@ function appendEmptyTile(word) {
         valueElement.textContent = availableLetters[i].toUpperCase()
         letters.appendChild(letterElement)
     }
-    
+    correctlyGuessed = []
     for (let i = 0; i < CurrentLevel.length; i++) {
-        correctlyGuessed[i] = false
         const row = createEmptyWordRow(CurrentLevel[i])
         board.appendChild(row)
     }
@@ -335,6 +354,7 @@ function appendEmptyTile(word) {
 }
 
 function displayFinishedLevel() {
+    finishedLevels.push(CurrentLevel[0]) /* insert the key level identifier */
     freezeGame = true
     var scoreElement = document.getElementById("level-finish-score")
     scoreElement.textContent = groupScore + " POINTS"
@@ -376,7 +396,7 @@ function handleOutOfTime() {
 
 /* ---------------------- Server API ---------------------- */
 function generateNewLevel () {
-    correctlyGuessed = {}
+    correctlyGuessed = []
     // const levelNumberObj = document.getElementById('level-number')
     // levelNumber += 1
     // levelNumberObj.textContent = 'Level: ' + levelNumber
@@ -397,6 +417,11 @@ function generateNewLevel () {
     })
     .then(data => {
         console.log(data)
+        if (finishedLevels.includes(data.level[0])) {
+            /* level already played - generate new level */
+            generateNewLevel()
+            return
+        }
         CurrentLevel = data.level
         metaCurrentLevel = data.metaLevel
         availableLetters = shuffle(Array.from(CurrentLevel[0]))
@@ -427,6 +452,7 @@ function submitRegisterForm() {
 }
 
 function startUp() {
+    shouldStartUp = false
     window.LogRocket && window.LogRocket.init('9o6vsp/enolapoc0');
     deviceId = localStorage.getItem("deviceId");
     if (!deviceId) {
@@ -442,7 +468,7 @@ function startUp() {
 }
 
 document.addEventListener("DOMContentLoaded", function(e) {
-    startUp()
+    shouldStartUp = true
 });
 
 
@@ -495,6 +521,9 @@ document.getElementById("x-how-to-popup-button").addEventListener("click", (e) =
     window.LogRocket.track('clickXInHowToPopup', {});
     const howToPopup = document.getElementById("how-to-popup")
     howToPopup.style.display = "none"
+    if (shouldStartUp) {
+        startUp()
+    }
 })
 
 document.getElementById("how-to-nav-button").addEventListener("click", (e) => {
@@ -541,18 +570,9 @@ document.addEventListener('keyup', (e) => {
 
 /* ---------------------- BotLogic ---------------------- */
 
-
-class Player {
-    constructor(username, icon, color, textColor) {
-        this.username = username
-        this.color = color
-        this.textColor = textColor
-        this.icon = icon
-    }
-}
-
 const playersList = [
     new Player("you", "url('img/player_1.png')", "#ffd232", "black"),
+    pipPlayer,
     new Player("user12431", "url('img/player_2.png')", "#32ff84", "white"),
     new Player("smartFox69", "url('img/player_3.png')", "#ff3364", "white"),
     new Player("WordyJack3", "url('img/player_4.png')", "#329dff", "white"),
@@ -562,7 +582,7 @@ function runBotGuesser() {
     if (freezeGame) {
         return
     }
-    let bot = playersList[Math.floor(Math.random()*(playersList.length-1)) + 1]
+    let bot = playersList[Math.floor(Math.random()*(playersList.length-2)) + 2]
     let botGuess = metaCurrentLevel[Math.floor(Math.random()*metaCurrentLevel.length)]
     if (checkGuess(bot, botGuess)) {
         appendMessage(bot, botGuess, true)

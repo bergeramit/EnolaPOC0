@@ -3,7 +3,7 @@
 
 #how-to-popup {
   z-index: 2;
-  display: none;
+  /* display: none; */
   top: 200px;
   position: absolute;
 }
