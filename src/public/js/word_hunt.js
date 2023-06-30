@@ -9,6 +9,10 @@ const ENTER_KEY_NAME = "Enter"
 const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
 const botGuessInterval = [5000, 6000, 7000, 8000, 9000]
+const botAngryMsgs = ["I had enough", "jesus these levels man...", "did someone ever pass round 10??", "...", "well...", "semek"]
+const botCockyMsgs = ["Do you guys even try?", "I M a God", "I'll slow down for you guys"]
+const EXTRA_CHAT_MESSAGE_DELAY = 1000
+const PIP_CHAT_MESSAGE_DELAY = 500
 const BEGINNING_ROUND_LETTER = `
 <div class="overlap-group">
     <div class="begin-in-letter t valign-text-middle gilroy-extra-extra-bold-haiti-20-9px"></div>
@@ -54,6 +58,23 @@ class Player {
         this.color = color
         this.textColor = textColor
         this.icon = icon
+        this.attempts = 0
+        this.sequentialMisses = 0
+        this.sequentialHits = 0
+    }
+
+    trashTalk() {
+        if (this.attempts > 10) {
+            appendMessage(this, botAngryMsgs[Math.floor(Math.random()*botAngryMsgs.length)], false, EXTRA_CHAT_MESSAGE_DELAY)
+        }
+        if (this.sequentialMisses >= 2) {
+            appendMessage(this, botAngryMsgs[Math.floor(Math.random()*botAngryMsgs.length)], false, EXTRA_CHAT_MESSAGE_DELAY)
+            this.sequentialMisses = 0
+        }
+        if (this.sequentialHits >= 2) {
+            appendMessage(this, botCockyMsgs[Math.floor(Math.random()*botCockyMsgs.length)], false, EXTRA_CHAT_MESSAGE_DELAY)
+            this.sequentialHits = 0
+        }
     }
 }
 
@@ -61,6 +82,7 @@ class Player {
 
 let finishedLevels = []
 let pipPlayer = new Player("PIP", "url('img/pip_icon.png')", "#1abc9c", "black")
+let youPlayer = new Player("you", "url('img/player_1.png')", "#ffd232", "black")
 let timeLeft
 let CurrentLevel
 let metaCurrentLevel
@@ -81,6 +103,11 @@ function resetGame() {
     round = 0
     groupScore = 0
     streak = 1
+    playersList.forEach((player) => {
+        player.currentLevelAttempts = 0
+        player.sequentialHits = 0
+        player.sequentialMisses = 0
+    })
 }
 
 function checkGuess (player, guess) {
@@ -141,17 +168,34 @@ function handleSubmitChatMessage(message) {
     if (message.length <= 0) {
         return
     }
-    if (!checkGuess(playersList[0], message)) {
-            /* Guessed Wrong - Check if close */
-        if (metaCurrentLevel.includes(message) && correctlyGuessed) {
-            appendMessage(pipPlayer, "'"+ message + "' is valid but not here!", false)
-            groupScore += 10
-        } else {
-            appendMessage(playersList[0], message, false)
-        }
+
+    if (message.toLowerCase() === "daniel trau"
+        || message.toLowerCase() === "dvir modan"
+        || message.toLowerCase() === "amit berger") {
+            appendMessage(pipPlayer, message + " is my father!", false, 0)
+        return
+    }
+
+    if (!checkGuess(youPlayer, message)) {
+        /* Guessed Wrong - Check if close */
+        youPlayer.sequentialHits = 0
+        if (metaCurrentLevel.includes(message)) {
+            if (!correctlyGuessed.includes(message)) {
+                appendMessage(pipPlayer, "'"+ message + "' is valid but not here!", false, PIP_CHAT_MESSAGE_DELAY)
+                groupScore += 10
+            } else {
+                appendMessage(pipPlayer, "'"+ message + "' was already solved!", false, PIP_CHAT_MESSAGE_DELAY)
+            }
+        } 
+        appendMessage(youPlayer, message, false, 0)
         //currentStreak = 1
     } else {
-        appendMessage(playersList[0], message, true)
+        appendMessage(youPlayer, message, true)
+        youPlayer.sequentialHits += 1
+        if (youPlayer.sequentialHits > 2) {
+            appendMessage(pipPlayer, "You're on a roll!", false, EXTRA_CHAT_MESSAGE_DELAY)
+            youPlayer.sequentialHits = 0
+        }
         // totalScore += 10 * currentStreak
         // updateScore()
     }
@@ -257,7 +301,7 @@ function setScaleAnimation(element) {
     element.style.animationName = "zoom-in-zoom-out";
 }
 
-function appendMessage (player, message, solved) {
+function appendMessageInternal(player, message, solved) {
     let chat = document.getElementById("chat-area")
     let messageElement = document.createElement('article')
     messageElement.classList.add("chat-row")
@@ -282,13 +326,20 @@ function appendMessage (player, message, solved) {
         }
     }
     
-
     let imgElement = messageElement.getElementsByClassName("chat-row-icon")[0]
     imgElement.style.backgroundImage = player.icon
     imgElement.style.borderColor = player.color
 
     chat.appendChild(messageElement)
     messageElement.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
+}
+
+function appendMessage (player, message, solved, delay) {
+    if (delay > 0) {
+        setTimeout(appendMessageInternal, delay, player, message, solved)
+    } else {
+        appendMessageInternal(player, message, solved)
+    }
 }
 
 
@@ -339,6 +390,12 @@ function appendEmptyTile(word) {
         const row = createEmptyWordRow(CurrentLevel[i])
         board.appendChild(row)
     }
+
+    playersList.forEach((player) => {
+        player.currentLevelAttempts = 0
+        player.sequentialHits = 0
+        player.sequentialMisses = 0
+    })
     
     const buttons = document.querySelectorAll('.keyboard-button')
     buttons.forEach((button) => {
@@ -571,7 +628,7 @@ document.addEventListener('keyup', (e) => {
 /* ---------------------- BotLogic ---------------------- */
 
 const playersList = [
-    new Player("you", "url('img/player_1.png')", "#ffd232", "black"),
+    youPlayer,
     pipPlayer,
     new Player("user12431", "url('img/player_2.png')", "#32ff84", "white"),
     new Player("smartFox69", "url('img/player_3.png')", "#ff3364", "white"),
@@ -584,11 +641,16 @@ function runBotGuesser() {
     }
     let bot = playersList[Math.floor(Math.random()*(playersList.length-2)) + 2]
     let botGuess = metaCurrentLevel[Math.floor(Math.random()*metaCurrentLevel.length)]
+    bot.attempts += 1
     if (checkGuess(bot, botGuess)) {
-        appendMessage(bot, botGuess, true)
+        appendMessage(bot, botGuess, true, 0)
+        bot.sequentialHits += 1
     } else {
-        appendMessage(bot, botGuess, false)
+        appendMessage(bot, botGuess, false, 0)
+        bot.sequentialMisses += 1
     }
+
+    bot.trashTalk()
 }
 
 /* ---------------------- /BotLogic ---------------------- */

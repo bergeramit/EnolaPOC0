@@ -1353,7 +1353,7 @@ transform: scale(1);
 }
 
 .chat-row-username {
-  color: var(--white);
+  color: #95a5a6;
   font-family: var(--font-family-poppins);
   font-size: var(--font-size-s);
   font-weight: 500;
