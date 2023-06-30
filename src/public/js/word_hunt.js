@@ -128,6 +128,9 @@ function countLetter (letter, str) {
 }
 
 function handleSubmitChatMessage(message) {
+    if (message.length <= 0) {
+        return
+    }
     if (!checkGuess(playersList[0], message)) {
         appendMessage(playersList[0], message, false)
         //currentStreak = 1
