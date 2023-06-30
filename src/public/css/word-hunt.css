@@ -1265,6 +1265,7 @@ transform: scale(1);
   position: absolute;
   flex-direction: column;
   overflow-y: scroll;
+  /* overflow-x: hidden; */
   scroll-behavior: smooth;
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   -webkit-mask-image: -webkit-gradient(linear, left 40%, left top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
@@ -1341,6 +1342,8 @@ transform: scale(1);
 .chat-row-icon {
   min-width: 40px;
   min-height: 40px;
+  max-width: 40px;
+  max-height: 40px;
   margin: 5px;
   background-image: url(../img/player_2.png);
   background-size: 100% 100%;
@@ -1370,9 +1373,10 @@ transform: scale(1);
   font-weight: 500;
   max-width: 220px;
   letter-spacing: 0;
+  word-wrap: break-word;
   line-height: 24.6px;
   text-shadow: 0px 1px 0px #0707078c;
-  white-space: nowrap;
+  white-space: pre-wrap;
 }
 
 .correct-word {
