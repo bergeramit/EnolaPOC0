@@ -1,5 +1,5 @@
-//const BASE_URL = "http://64.226.100.123/"
-const BASE_URL = "http://127.0.0.1:3000/";
+const BASE_URL = "http://64.226.100.123/"
+//const BASE_URL = "http://127.0.0.1:3000/";
 const generateLevelPostURL = BASE_URL + "generate_level/";
 //const generateLevelPostURL = 'generate_level/'
 const registerPostURL = BASE_URL + "register_user/";
@@ -9,8 +9,59 @@ const ENTER_KEY_NAME = "Enter"
 const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
 const botGuessInterval = [5000, 6000, 7000, 8000, 9000]
-const botAngryMsgs = ["I had enough", "jesus these levels man...", "did someone ever pass round 10??", "...", "well...", "semek"]
-const botCockyMsgs = ["Do you guys even try?", "I M a God", "I'll slow down for you guys"]
+const botAngryMsgs = [
+    "I had enough",
+    "jesus these levels man...",
+    "did someone ever pass round 10??",
+    "...",
+    "well...",
+    "semek",
+    "this level is impossible!",
+    "stuck on this level forever!",
+    "why is this level so hard?",
+    "i'm about to give up!",
+    "this level is driving me crazy!",
+    "i've tried everything, but no luck!",
+    "is this level even beatable?",
+    "so close, yet so far!",
+    "i can't believe how difficult this is!",
+    "need a break from this madness!",
+    "this lvl sux! noob trap",
+  "stuck 4eva! rage quit",
+  "y is this lvl so hrd? smh",
+  "i'm about 2 give up! fml",
+  "this lvl is drivin me cray! argh",
+  "tried evrythng, no luck! srsly",
+  "is this lvl even possible? facepalm",
+  "so close, yet so far! fml",
+  "can't believe how difficult this is! wth",
+  "need a break from this madness! gtfo",
+]
+const botCockyMsgs = [
+    "do you guys even try?",
+    "I M a God",
+    "I'll slow down for you guys",
+    "i'm unstoppable!",
+  "crushing it today!",
+  "can't be beaten!",
+  "unleashing my ultimate power!",
+  "domination mode activated!",
+  "no one can match my skills!",
+  "i'm on fire!",
+  "victory after victory!",
+  "raining destruction on my opponents!",
+  "they can't handle my awesomeness!",
+  "i'm unstoppable! #rekt",
+  "crushing it 2day! gg ez",
+  "can't be beaten! git gud",
+  "unleashing my ult pwr! 1337",
+  "domination mode activated! pwned",
+  "no one can match my skills! l33t",
+  "i'm on fire! lit af",
+  "victory after victory! ownage",
+  "raining destruction on my opponents! gg wp",
+  "they can't handle my awesomeness! pro player",
+]
 const EXTRA_CHAT_MESSAGE_DELAY = 1000
 const PIP_CHAT_MESSAGE_DELAY = 500
 const BEGINNING_ROUND_LETTER = `
