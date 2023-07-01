@@ -42,7 +42,7 @@ html, body {
   background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.51) 45.35%, rgba(0, 0, 0, 0.48) 54.17%, rgba(0, 0, 0, 0.3) 76.04%, rgba(0, 0, 0, 0) 100%);
   display: flex;
   gap: 410px;
-  height: 522px;
+  height: 422px;
   left: 2.7rem;
   min-width: 407px;
   position: absolute;
@@ -1075,12 +1075,12 @@ transform: scale(1);
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  /* gap: 0.2rem; */
   left: 767px;
   /* position: absolute; */
   top: 166px;
-  min-height: 14rem;
-  max-height: 20rem;
+  min-height: 12rem;
+  max-height: 14rem;
   min-width: var(--rem-width-screen);
   /* width: fit-content; */
 }
@@ -1094,22 +1094,25 @@ transform: scale(1);
 }
 
 .word-hunt .tail {
-  height: 38px;
-  min-width: 38px;
+  /* height: 38px;
+  min-width: 38px; */
   position: relative;
 }
 
 .word-hunt .letter-tile {
   align-items: flex-start;
   display: flex;
-  min-width: 40px;
+  min-width: 2rem;
 }
 
 .word-hunt .overlap-group-3 {
   border-radius: 10.74px;
-  height: 38px;
+  height: 2rem;
   position: relative;
-  width: 38px;
+  width: 2rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .word-hunt .tile-bg {
@@ -1118,9 +1121,9 @@ transform: scale(1);
   border-radius: 10.74px;
   box-shadow: 0px 3.33px 0px #00000026;
   display: flex;
-  height: 38px;
+  height: 2rem;
   left: 0;
-  min-width: 38px;
+  min-width: 2rem;
   position: absolute;
   top: 0;
 }
@@ -1131,19 +1134,19 @@ transform: scale(1);
   border-color: var(--cherry-pie);
   border-radius: 10.74px;
   box-shadow: inset 0px 0.92px 0px 1.27px #ffffffb2 , inset 0px -5.55px 0.37px 1.85px #0000000d;
-  height: 35px;
-  width: 38px;
+  height: 2rem;
+  width: 2.1rem;
 }
 
 .word-hunt .letter-1 {
-  height: 35px;
-  left: 0;
+  /* height: 35px;
+  left: 0; */
   letter-spacing: 0.22px;
   line-height: normal;
   position: absolute;
   text-align: center;
-  top: 0;
-  width: 38px;
+  /* top: 0;
+  width: 38px; */
 }
 
 .word-hunt .tail-1 {
@@ -1154,8 +1157,8 @@ transform: scale(1);
   border-radius: 10.78px;
   box-shadow: inset 0px 0px 0px 5px #ffffff33;
   display: flex;
-  height: 38px;
-  min-width: 38px;
+  min-height: 2rem;
+  min-width: 2rem;
 }
 
 .word-hunt .highlights {
@@ -1218,8 +1221,8 @@ transform: scale(1);
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
   -webkit-mask-image: -webkit-gradient(linear, left 40%, left top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
   scrollbar-width: none; /* for Firefox */
-  max-height: 9rem;
-  min-height: 9rem;
+  max-height: 8rem;
+  min-height: 8rem;
   max-width: 22rem;
   top: 469px;
 }
@@ -1288,14 +1291,14 @@ transform: scale(1);
 }
 
 .chat-row-icon {
-  min-width: 2.2rem;
-  min-height: 2.2rem;
-  max-width: 2.2rem;
-  max-height: 2.2rem;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+  max-width: 1.5rem;
+  max-height: 1.5rem;
   margin: 5px;
   background-image: url(../img/player_2.png);
   background-size: 100% 100%;
-  border: 3px solid red;
+  border: 2px solid red;
   border-radius: 20px;
 }
 
@@ -1306,7 +1309,7 @@ transform: scale(1);
 .chat-row-username {
   color: #95a5a6;
   font-family: var(--font-family-poppins);
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-xs);
   font-weight: 500;
   height: 16px;
   letter-spacing: 0;
@@ -1317,7 +1320,7 @@ transform: scale(1);
 .chat-row-message {
   color: var(--white);
   font-family: var(--font-family-poppins);
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-s);
   font-weight: 500;
   max-width: 220px;
   letter-spacing: 0;
@@ -1331,7 +1334,7 @@ transform: scale(1);
   /* -webkit-text-stroke: 2px #000000e3; */
   color: #5cff9e;
   font-family: var(--font-family-poppins);
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-s);
   font-weight: 900;
   letter-spacing: 0;
   line-height: 24.6px;

@@ -3,7 +3,7 @@
 #out-of-time-popup {
   z-index: 1;
   display: none;
-  top: 200px;
+  top: 100px;
   position: absolute;
 }
 
@@ -18,7 +18,7 @@
   min-width: 274px;
 }
 
-.out-of-time .overlap-group3 {
+.out-of-time .overlap-group9 {
   height: 430px;
   position: relative;
   width: 274px;
