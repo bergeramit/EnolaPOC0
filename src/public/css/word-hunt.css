@@ -1071,7 +1071,7 @@ transform: scale(1);
   left: 767px;
   /* position: absolute; */
   top: 166px;
-  min-height: 20rem;
+  min-height: 10rem;
   max-height: 20rem;
   min-width: var(--rem-width-screen);
   /* width: fit-content; */
