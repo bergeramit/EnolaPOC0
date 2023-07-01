@@ -1,7 +1,7 @@
 /* screen - word-hunt */
 
 html, body {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .word-hunt {
@@ -46,7 +46,7 @@ html, body {
   left: 2.7rem;
   min-width: 407px;
   position: absolute;
-  top: 361px;
+  top: 301px;
 }
 
 .word-hunt .line-44 {
@@ -871,6 +871,7 @@ transform: scale(1);
   letter-spacing: 0;
   line-height: 24.6px;
   min-height: 2rem;
+  margin: 0.2rem;
   /* min-width: var(--rem-width-screen); */
   white-space: nowrap;
 }
