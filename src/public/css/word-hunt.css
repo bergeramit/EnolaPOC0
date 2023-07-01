@@ -401,6 +401,19 @@ transform: scale(1);
   border-radius: 63px;
 }
 
+.word-hunt .overlap-group9 {
+  align-items: flex-start;
+  /* background-color: #ffcb46;
+  border: 3px solid; */
+  border-color: var(--white);
+  border-radius: 62px;
+  box-shadow: 0px 8px 0px -3px #00000012;
+  display: flex;
+  height: 65px;
+  min-width: 65px;
+  padding: 15.2px 6.3px;
+}
+
 .word-hunt .solo-game {
   -webkit-text-stroke: 1.76px #9a3507;
   letter-spacing: 0;
@@ -783,10 +796,8 @@ transform: scale(1);
   border: 5px solid;
   border-color: #ffffff8c;
   border-radius: 55.48px;
-  height: 1rem;
-  width: 1rem;
-  min-width: 47px;
-  min-height: 47px;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
   position: relative;
 }
 
@@ -810,10 +821,8 @@ transform: scale(1);
   border: 5px solid;
   border-color: #ffffff8c;
   border-radius: 55.48px;
-  height: 1rem;
-  width: 1rem;
-  min-width: 47px;
-  min-height: 47px;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
   position: relative;
 }
 
@@ -899,7 +908,7 @@ transform: scale(1);
   background-color: var(--zircon);
   border-radius: 11px;
   box-shadow: 0px 6px 4px #00000026 , 0px 1px 0px #a1d3cc , inset 0px -2px 0px #a2d3cc;
-  height: 3rem;
+  height: 2.2rem;
   min-width: var(--keyboard-button-size);
   position: relative;
   display: flex;
@@ -936,7 +945,7 @@ transform: scale(1);
 
 .word-hunt .q-button-letter {
   min-width: 2rem;
-  min-height: 3rem;
+  min-height: 2rem;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -1066,12 +1075,11 @@ transform: scale(1);
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  justify-content: center;
+  gap: 0.2rem;
   left: 767px;
   /* position: absolute; */
   top: 166px;
-  min-height: 10rem;
+  min-height: 14rem;
   max-height: 20rem;
   min-width: var(--rem-width-screen);
   /* width: fit-content; */
