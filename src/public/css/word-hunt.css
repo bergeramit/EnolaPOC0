@@ -873,6 +873,7 @@ transform: scale(1);
 }
 
 .word-hunt .input-to-chat {
+  caret-color: #ffffff99;
   color: #ffffff99;
   font-family: var(--font-family-inter);
   font-size: var(--chat-message-font-size);
@@ -904,6 +905,7 @@ transform: scale(1);
 .word-hunt .keyboard-button {
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
   cursor: pointer;
   background-color: var(--zircon);
   border-radius: 11px;
@@ -915,8 +917,6 @@ transform: scale(1);
   padding: 0.1rem;
   align-items: center;
   justify-content: center;
-
-
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
