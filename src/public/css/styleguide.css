@@ -21,14 +21,20 @@
   --white-2: #ffffff1c;
   --zircon: #f5fdff;
   --new-green: #25b9a2;
+
+  --rem-width-screen: 30rem;
+  --keyboard-button-size: 2.1rem;
+  --keyboard-button-height-size: 2.5rem;
+  --keyboard-button-font-size: 1.5rem;
+  --chat-message-font-size: 1rem;
  
-  --font-size-l: 20.4px;
-  --font-size-m: 18px;
-  --font-size-s: 14px;
-  --font-size-xl: 20.9px;
-  --font-size-xs: 13px;
-  --font-size-xxl: 23.7px;
-  --font-size-xxs: 12.1px;
+  --font-size-l: 1.275rem;    /* 20.4px / 16px */
+  --font-size-m: 1.125rem;    /* 18px / 16px */
+  --font-size-s: 0.875rem;    /* 14px / 16px */
+  --font-size-xl: 2.30625rem; /* 20.9px / 16px */
+  --font-size-xs: 0.8125rem;  /* 13px / 16px */
+  --font-size-xxl: 1.48125rem; /* 23.7px / 16px */
+  --font-size-xxs: 0.75625rem; /* 12.1px / 16px */
  
   --font-family-gilroy-extrabold: "Gilroy-ExtraBold", Helvetica;
   --font-family-inter: "Inter", Helvetica;
@@ -38,7 +44,7 @@
 .gilroy-extra-extra-bold-cape-cod-20-4px {
   color: var(--cape-cod);
   font-family: var(--font-family-gilroy-extrabold);
-  font-size: var(--font-size-l);
+  font-size: var(--keyboard-button-font-size);
   font-style: normal;
   font-weight: 800;
 }
@@ -63,7 +69,7 @@
 .gilroy-extra-extra-bold-haiti-20-9px {
   color: var(--haiti);
   font-family: var(--font-family-gilroy-extrabold);
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-l);
   font-style: normal;
   font-weight: 800;
 }
@@ -95,7 +101,7 @@
 .roboto-bold-cape-cod-8-9px {
   color: var(--cape-cod-2);
   font-family: var(--font-family-roboto);
-  font-size: 8.9px;
+  font-size: 0.7rem;
   font-style: normal;
   font-weight: 700;
 }

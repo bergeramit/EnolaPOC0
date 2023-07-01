@@ -136,6 +136,7 @@ let pipPlayer = new Player("PIP", "url('img/pip_icon.png')", "#1abc9c", "black")
 let youPlayer = new Player("you", "url('img/player_1.png')", "#ffd232", "black")
 let timeLeft
 let CurrentLevel
+let chatInput
 let metaCurrentLevel
 let deviceId
 let correctlyGuessed = []
@@ -560,6 +561,7 @@ function submitRegisterForm() {
 }
 
 function startUp() {
+    chatInput = document.getElementById("chat-input")
     shouldStartUp = false
     window.LogRocket && window.LogRocket.init('9o6vsp/enolapoc0');
     deviceId = localStorage.getItem("deviceId");
@@ -586,7 +588,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 const buttons = document.querySelectorAll('.keyboard-button')
 buttons.forEach((button) => {
-    button.addEventListener("click", (e) => {
+    button.addEventListener("touchstart", (e) => {
         /* Only for onscreen button presses */
         const pressedKey = e.target.textContent[0].toLowerCase()
         addKeyToInput(pressedKey, true)
@@ -609,10 +611,9 @@ document.getElementById("play-again-button").addEventListener("click", (e) => {
     generateNewLevel()
 })
 
-document.getElementById("enterButton").addEventListener("click", (e) => {
+document.getElementById("enterButton").addEventListener("touchstart", (e) => {
     /* When Enterkey Pressed */
     window.LogRocket.track('clickEnter', {});
-    const chatInput = document.getElementById("chat-input")
     handleSubmitChatMessage(chatInput.value)
     chatInput.value = ""
 })
@@ -634,22 +635,22 @@ document.getElementById("x-how-to-popup-button").addEventListener("click", (e) =
     }
 })
 
-document.getElementById("how-to-nav-button").addEventListener("click", (e) => {
-    /* When pressed in popup window */
-    window.LogRocket.track('clickHowToPopup', {});
-    const howToPopup = document.getElementById("how-to-popup")
-    howToPopup.style.display = "flex"
-})
+// document.getElementById("how-to-nav-button").addEventListener("click", (e) => {
+//     /* When pressed in popup window */
+//     window.LogRocket.track('clickHowToPopup', {});
+//     const howToPopup = document.getElementById("how-to-popup")
+//     howToPopup.style.display = "flex"
+// })
 
-document.getElementById("delButton").addEventListener("click", (e) => {
+document.getElementById("delButton").addEventListener("touchstart", (e) => {
     /* When Enterkey Pressed */
-    const chatInput = document.getElementById("chat-input")
+    // const chatInput = document.getElementById("chat-input")
     chatInput.value = chatInput.value.substring(0, chatInput.value.length - 1)
 })
 
-document.getElementById("spaceButton").addEventListener("click", (e) => {
+document.getElementById("spaceButton").addEventListener("touchstart", (e) => {
     /* When Spacekey Pressed */
-    const chatInput = document.getElementById("chat-input")
+    // const chatInput = document.getElementById("chat-input")
     chatInput.value += " "
 })
 
