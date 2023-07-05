@@ -577,32 +577,28 @@ function startUp() {
     setInterval(updateTimer, 1000) // once every second
 }
 
+let openedFromHomeScreen = false;
+
+window.addEventListener('beforeinstallprompt', (event) => {
+// The beforeinstallprompt event is triggered when the "Add to Home Screen" prompt appears
+openedFromHomeScreen = true;
+});
+
 document.addEventListener("DOMContentLoaded", function(e) {
     shouldStartUp = true
     var tiles = document.getElementsByClassName("words-tiles")[0]
 
-    // Check if the browser supports the Fullscreen API
-if (document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled || document.msFullscreenEnabled) {
-    // Fullscreen is supported
-    var isFullScreen = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
-  
-    if (isFullScreen) {
-        // The app is currently in full-screen mode
-        console.log("Mobile web app is in full-screen mode");
+    if (openedFromHomeScreen) {
+        console.log('Opened from Home Screen');
         tiles.style.minHeight = "19rem"
         tiles.style.maxHeight = "19rem"
+        // Perform actions specific to opening from Home Screen
     } else {
-      // The app is not in full-screen mode
-      console.log("Mobile web app is not in full-screen mode");
-      tiles.style.minHeight = "13rem"
+        console.log('Opened from browser');
+        tiles.style.minHeight = "13rem"
       tiles.style.maxHeight = "13rem"
+        // Perform actions specific to opening from the browser
     }
-  } else {
-    // Fullscreen is not supported
-    console.log("Fullscreen mode is not supported in this browser");
-    tiles.style.minHeight = "13rem"
-    tiles.style.maxHeight = "13rem"
-}
   
 });
 
