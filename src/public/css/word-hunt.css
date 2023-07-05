@@ -903,9 +903,9 @@ transform: scale(1);
 }
 
 .word-hunt .keyboard-button {
-  -webkit-appearance: button;
+  -webkit-appearance: none;
   /* -moz-appearance: none; */
-  appearance: button;
+  appearance: none;
   cursor: pointer;
   background-color: var(--zircon);
   border-radius: 11px;
@@ -1001,6 +1001,10 @@ transform: scale(1);
 .word-hunt .keyboard-button-key {
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
   cursor: pointer;
   background-color: var(--riptide);
   box-shadow: 0px 6px 4px #00000026 , 0px 1px 0px #75b1a9 , inset 0px -2px 0px #74b1a8;
@@ -1025,6 +1029,9 @@ transform: scale(1);
 .word-hunt .keyboard-button-key-1 {
   -webkit-appearance: none;
   -moz-appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
   cursor: pointer;
   background-color: var(--zircon);
   border-radius: 22px;
