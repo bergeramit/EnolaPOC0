@@ -579,6 +579,15 @@ function startUp() {
 
 document.addEventListener("DOMContentLoaded", function(e) {
     shouldStartUp = true
+    var tiles = document.getElementsByClassName("words-tiles")[0]
+    
+    if ((screen.availHeight || screen.height-30) <= window.innerHeight) {
+        tiles.style.minHeight = "19rem"
+        tiles.style.maxHeight = "19rem"
+    } else {
+        tiles.style.minHeight = "16rem"
+        tiles.style.maxHeight = "16rem"
+    }
 });
 
 
