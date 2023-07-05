@@ -904,8 +904,8 @@ transform: scale(1);
 
 .word-hunt .keyboard-button {
   -webkit-appearance: button;
-  /* -moz-appearance: none;
-  appearance: none; */
+  /* -moz-appearance: none; */
+  appearance: button;
   cursor: pointer;
   background-color: var(--zircon);
   border-radius: 11px;
