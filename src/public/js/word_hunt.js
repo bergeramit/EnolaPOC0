@@ -585,8 +585,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
         tiles.style.minHeight = "19rem"
         tiles.style.maxHeight = "19rem"
     } else {
-        tiles.style.minHeight = "16rem"
-        tiles.style.maxHeight = "16rem"
+        tiles.style.minHeight = "13rem"
+        tiles.style.maxHeight = "13rem"
     }
 });
 
