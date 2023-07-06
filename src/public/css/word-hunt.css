@@ -1066,7 +1066,7 @@ button, [type=button], [type=reset], [type=submit] {
 
 .word-hunt .enter-button {
   align-items: flex-end;
-  box-shadow: 1px 1px 3px #affff2;
+  /* box-shadow: 1px 1px 3px #affff2; */
   display: flex;
   /* left: 11px; */
   /* padding: 5.0px 5.0px; */
