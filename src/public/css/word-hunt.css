@@ -895,7 +895,8 @@ transform: scale(1);
 }
 
 button, [type=button], [type=reset], [type=submit] {
-  -webkit-appearance: button;
+  -webkit-appearance: button !important;
+  appearance: button !important;
 }
 
 .word-hunt .r1 {
@@ -925,7 +926,7 @@ button, [type=button], [type=reset], [type=submit] {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-  -webkit-tap-highlight-color: rgba(0,0,0,.3);
+  -webkit-tap-highlight-color: rgba(0,0,0,.3) !important;
 }
 
 .word-hunt .price-1 {
