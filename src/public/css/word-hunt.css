@@ -895,8 +895,9 @@ transform: scale(1);
 }
 
 button, [type=button], [type=reset], [type=submit] {
-  -webkit-appearance: button !important;
-  appearance: button !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  border: none;
 }
 
 .word-hunt .r1 {
