@@ -502,18 +502,12 @@ function handleOutOfTime() {
     setScaleAnimation(oot)
 }
 
-let openedFromHomeScreen = false;
-
-window.addEventListener('beforeinstallprompt', (event) => {
-// The beforeinstallprompt event is triggered when the "Add to Home Screen" prompt appears
-openedFromHomeScreen = true;
-});
 
 document.addEventListener("DOMContentLoaded", function(e) {
     shouldStartUp = true
     var tiles = document.getElementsByClassName("words-tiles")[0]
 
-    if (openedFromHomeScreen) {
+    if (window.innerHeight > 700) {
         console.log('Opened from Home Screen');
         tiles.style.minHeight = "19rem"
         tiles.style.maxHeight = "19rem"
