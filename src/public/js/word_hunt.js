@@ -353,6 +353,12 @@ function setScaleAnimation(element) {
     element.style.animationName = "zoom-in-zoom-out";
 }
 
+function setKeyTapAnimation(element) {
+    element.style.animationDuration = "0.3s";
+    element.style.animationTimingFunction = "ease";
+    element.style.animationName = "keyboard-tap";
+}
+
 function appendMessageInternal(player, message, solved) {
     let chat = document.getElementById("chat-area")
     let messageElement = document.createElement('article')
@@ -393,10 +399,6 @@ function appendMessage (player, message, solved, delay) {
         appendMessageInternal(player, message, solved)
     }
 }
-
-
-/* letter-input is key for inputting different letter values */
-/* should change tile-fill with appropritate fillings */
 
 /* tile filling */
 function appendFilledTile(word, letter) {
@@ -500,6 +502,31 @@ function handleOutOfTime() {
     setScaleAnimation(oot)
 }
 
+let openedFromHomeScreen = false;
+
+window.addEventListener('beforeinstallprompt', (event) => {
+// The beforeinstallprompt event is triggered when the "Add to Home Screen" prompt appears
+openedFromHomeScreen = true;
+});
+
+document.addEventListener("DOMContentLoaded", function(e) {
+    shouldStartUp = true
+    var tiles = document.getElementsByClassName("words-tiles")[0]
+
+    if (openedFromHomeScreen) {
+        console.log('Opened from Home Screen');
+        tiles.style.minHeight = "19rem"
+        tiles.style.maxHeight = "19rem"
+        // Perform actions specific to opening from Home Screen
+    } else {
+        console.log('Opened from browser');
+        tiles.style.minHeight = "13rem"
+      tiles.style.maxHeight = "13rem"
+        // Perform actions specific to opening from the browser
+    }
+  
+});
+
 /* ---------------------- /DOM Cyber ---------------------- */
 
 
@@ -577,32 +604,6 @@ function startUp() {
     setInterval(updateTimer, 1000) // once every second
 }
 
-let openedFromHomeScreen = false;
-
-window.addEventListener('beforeinstallprompt', (event) => {
-// The beforeinstallprompt event is triggered when the "Add to Home Screen" prompt appears
-openedFromHomeScreen = true;
-});
-
-document.addEventListener("DOMContentLoaded", function(e) {
-    shouldStartUp = true
-    var tiles = document.getElementsByClassName("words-tiles")[0]
-
-    if (openedFromHomeScreen) {
-        console.log('Opened from Home Screen');
-        tiles.style.minHeight = "19rem"
-        tiles.style.maxHeight = "19rem"
-        // Perform actions specific to opening from Home Screen
-    } else {
-        console.log('Opened from browser');
-        tiles.style.minHeight = "13rem"
-      tiles.style.maxHeight = "13rem"
-        // Perform actions specific to opening from the browser
-    }
-  
-});
-
-
 /* ---------------------- /Server API ---------------------- */
 
 /* ---------------------- EventListeners ---------------------- */
@@ -611,6 +612,7 @@ const buttons = document.querySelectorAll('.keyboard-button')
 buttons.forEach((button) => {
     button.addEventListener("touchstart", (e) => {
         /* Only for onscreen button presses */
+        // setKeyTapAnimation(e.target)
         const pressedKey = e.target.textContent[0].toLowerCase()
         addKeyToInput(pressedKey, true)
     })
@@ -693,6 +695,7 @@ document.addEventListener('keyup', (e) => {
             addKeyToInput(pressedKey, true)
             emailElement.focus()
         }
+        console.log("In Focus")
     }
 })
 

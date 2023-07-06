@@ -894,24 +894,28 @@ transform: scale(1);
   /* width: 386px; */
 }
 
+button, [type=button], [type=reset], [type=submit] {
+  -webkit-appearance: button;
+}
+
 .word-hunt .r1 {
   align-items: center;
   display: flex;
-  gap: 2px;
+  gap: 3.5px;
   justify-content: center;
   position: relative;
   width: fit-content;
 }
 
 .word-hunt .keyboard-button {
-  -webkit-appearance: none;
+  /* -webkit-appearance: button; */
   /* -moz-appearance: none; */
-  appearance: none;
+  /* appearance: button; */
   cursor: pointer;
   background-color: var(--zircon);
   border-radius: 11px;
   box-shadow: 0px 6px 4px #00000026 , 0px 1px 0px #a1d3cc , inset 0px -2px 0px #a2d3cc;
-  height: 2.2rem;
+  height: 2.5rem;
   min-width: var(--keyboard-button-size);
   position: relative;
   display: flex;
@@ -952,10 +956,9 @@ transform: scale(1);
   display: flex;
 }
 
-
 .word-hunt .keyboard-button-1 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  /* -webkit-appearance: none;
+  -moz-appearance: none; */
   background-color: var(--vis-vis);
   box-shadow: 0px 6px 4px #00000026 , 0px 1px 0px #dec481 , inset 0px -2px 0px #dec481;
   /* min-width: 35px; */
@@ -968,8 +971,6 @@ transform: scale(1);
   top: 2px;
   width: 31px;
 }
-
-
 
 .word-hunt .letter-count {
   right: 0.3rem;
@@ -1241,8 +1242,8 @@ transform: scale(1);
 }
 
 .word-hunt .keyboard-button-2 {
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  /* -webkit-appearance: none;
+  -moz-appearance: none; */
   cursor: pointer;
   border-radius: 11px;
   position: relative;
@@ -1399,5 +1400,17 @@ transform: scale(1);
   }
   100% {
     transform: scale(1, 1);
+  }
+}
+
+@keyframes keyboard-tap {
+  0% {
+    color: rgba(0, 0, 0, 0);
+  }
+  50% {
+    color: rgba(0,0,0,0.3);
+  }
+  100% {
+    color: rgba(0,0,0,0);
   }
 }
