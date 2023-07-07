@@ -91,7 +91,7 @@
 }
 
 .gilroy-extra-extra-bold-gunsmoke-12-1px {
-  color: var(--gunsmoke);
+  background-color: #0000001c;
   font-family: var(--font-family-gilroy-extrabold);
   font-size: var(--font-size-xxs);
   font-style: normal;
