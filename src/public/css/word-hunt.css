@@ -1548,6 +1548,7 @@ transform: scale(1);
 }
 
 .add-to-home-screen-view {
+  cursor: pointer;
   align-items: flex-start;
   background-color: var(--white);
   border-radius: 62px;

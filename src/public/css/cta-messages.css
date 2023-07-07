@@ -12,7 +12,7 @@
     z-index: 2;
     display: none;
     top: 10rem;
-    left: 1rem;
+    /* left: 1rem; */
     position: absolute;
 }
 
@@ -81,6 +81,7 @@
     position: absolute;
     top: -5px;
     width: 184px;
+    text-align: left;
   }
   
 .first-to-play-tooltip .first-to-play-email-button {

@@ -714,6 +714,19 @@ document.getElementById("be-the-first-to-play").addEventListener("click", (e) =>
     /* When "be-the-first" Pressed */
     window.LogRocket.track('clickBeTheFirst', {});
     const firstToPlay = document.getElementById("first-to-play-message")
+    firstToPlay.style.top = "3rem"
+    if (firstToPlay.style.display === "flex") {
+        firstToPlay.style.display = "none"
+    } else {
+        firstToPlay.style.display = "flex"
+    }
+})
+
+document.getElementById("add-to-home-id").addEventListener("click", (e) => {
+    /* When "be-the-first" Pressed */
+    window.LogRocket.track('clickBeTheFirst', {});
+    const firstToPlay = document.getElementById("first-to-play-message")
+    firstToPlay.style.top = "14rem"
     if (firstToPlay.style.display === "flex") {
         firstToPlay.style.display = "none"
     } else {
