@@ -514,8 +514,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
         // Perform actions specific to opening from Home Screen
     } else {
         console.log('Opened from browser');
-        tiles.style.minHeight = "13rem"
-      tiles.style.maxHeight = "13rem"
+        tiles.style.minHeight = "12.5rem"
+      tiles.style.maxHeight = "12.5rem"
         // Perform actions specific to opening from the browser
     }
   
