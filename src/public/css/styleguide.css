@@ -22,7 +22,7 @@
   --zircon: #f5fdff;
   --new-green: #25b9a2;
 
-  --rem-width-screen: 30rem;
+  --rem-width-screen: 15rem;
   --keyboard-button-size: 2.1rem;
   --keyboard-button-height-size: 2.5rem;
   --keyboard-button-font-size: 1.5rem;
@@ -82,6 +82,14 @@
   font-weight: 800;
 }
 
+.gilroy-extra-extra-bold-white-14px {
+  color: var(--white);
+  font-family: var(--font-family-gilroy-extrabold);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 900;
+}
+
 .gilroy-extra-extra-bold-gunsmoke-12-1px {
   color: var(--gunsmoke);
   font-family: var(--font-family-gilroy-extrabold);
@@ -93,7 +101,7 @@
 .gilroy-extra-extra-bold-white-14px {
   color: var(--white);
   font-family: var(--font-family-gilroy-extrabold);
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-m);
   font-style: normal;
   font-weight: 800;
 }

@@ -325,8 +325,8 @@ function beginReadyLevel() {
     timer.textContent = timeLeft
 
     round += 1
-    const roundSideElement = document.getElementById("round-side-view")
-    roundSideElement.textContent = round
+    // const roundSideElement = document.getElementById("round-side-view")
+    // roundSideElement.textContent = round
 
     const inLetters = document.getElementById("begin-in-letters")
     inLetters.innerHTML = ""

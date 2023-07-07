@@ -45,7 +45,7 @@ html, body {
   display: flex;
   gap: 410px;
   height: 422px;
-  left: 2.7rem;
+  /* left: 2.7rem; */
   min-width: 407px;
   position: absolute;
   top: 301px;
@@ -286,24 +286,6 @@ transform: scale(1);
   left: 2px;
   position: relative;
   width: 58px;
-}
-
-.word-hunt .pic-1 {
-  left: 2px;
-  top: 10px;
-  width: 33px;
-}
-
-.word-hunt .pic-2 {
-  left: 16px;
-  top: 30px;
-  width: 32px;
-}
-
-.word-hunt .pic-3 {
-  left: 26px;
-  top: 0;
-  width: 33px;
 }
 
 .word-hunt .online-indication-1 {
@@ -619,11 +601,13 @@ transform: scale(1);
   justify-content: center;
   left: 680px;
   padding: 3px 6px;
-  max-width: 23.6rem;
-  margin-top: 3px;
-  margin-bottom: auto;
-  margin-right: auto;
+  max-width: 15rem;
+  margin-top: 0.4rem;
   margin-left: auto;
+  margin-right: auto;
+  /* margin-bottom: auto;
+  margin-right: auto;
+  margin-left: auto; */
   /* position: absolute; */
   top: 60px;
   /* width: fit-content; */
@@ -645,20 +629,14 @@ transform: scale(1);
   border-radius: 20px;
   background-position: 50% 50%;
   background-size: cover;
-  height: 28px;
-  min-width: 28px;
-  position: relative;
 }
 
-.word-hunt .player {
+.word-hunt .player-3 {
   background-image: url(../img/player_4.png);
   border: 3px solid #329dff;
   border-radius: 20px;
   background-position: 50% 50%;
   background-size: cover;
-  height: 28px;
-  min-width: 28px;
-  position: relative;
 }
 
 .word-hunt .player-1 {
@@ -794,13 +772,12 @@ transform: scale(1);
 }
 
 .word-hunt .in-game-timer {
-  background-color: #0000001c;
-  border: 5px solid;
-  border-color: #ffffff8c;
+  background-color: #000000FF;
   border-radius: 55.48px;
   min-width: 2.5rem;
-  min-height: 2.5rem;
+  min-height: 1.5rem;
   position: relative;
+  margin: auto;
 }
 
 .word-hunt .text-1 {
@@ -1095,7 +1072,18 @@ button, [type=button], [type=reset], [type=submit] {
   min-height: 19rem;
   max-height: 19rem;
   min-width: var(--rem-width-screen);
+  justify-content: center;
   /* width: fit-content; */
+}
+
+.word-hunt .overlap-group-3 {
+  border-radius: 10.74px;
+  height: 2rem;
+  position: relative;
+  width: 2rem;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .word-hunt .word {
@@ -1119,7 +1107,7 @@ button, [type=button], [type=reset], [type=submit] {
   min-width: 2rem;
 }
 
-.word-hunt .overlap-group-3 {
+.word-hunt .pic-number-side-view {
   border-radius: 10.74px;
   height: 2rem;
   position: relative;
@@ -1278,12 +1266,6 @@ button, [type=button], [type=reset], [type=submit] {
   position: absolute;
 }
 
-.word-hunt .player-3 {
-  height: 28px;
-  min-width: 28px;
-  position: relative;
-}
-
 .word-hunt .tile-fill-4 {
   border: 2.77px solid;
   border-color: var(--cherry-pie);
@@ -1389,6 +1371,297 @@ button, [type=button], [type=reset], [type=submit] {
   -webkit-text-stroke: 0;
 }
 
+/* -----  top half css -----  */
+
+
+.top-half-view {
+  /* align-items: center; */
+  display: flex;
+  margin: auto;
+  /* gap: 8.17px; */
+  justify-content: center;
+  position: relative;
+  width: fit-content;
+}
+
+.cta-view {
+  max-width: 7rem;
+  align-items: center;
+  gap: 0.8rem;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  margin-top: 2.5rem;
+  /* justify-content: center; */
+}
+
+.middle-top-half {
+  max-width: 16.5rem;
+  min-width: 16.5rem;
+  gap: 0.2rem;
+  text-align: center;
+  justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.score-friends-view {
+  min-width: 4rem;
+  align-items: center;
+  gap: 0.4rem;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  margin-top: 2.5rem;
+}
+
+.score-progress {
+  align-items: flex-start;
+  background-image: url(../img/my-score.svg);
+  background-size: 100% 100%;
+  display: flex;
+  height: 47px;
+  min-width: 47px;
+  padding: 0 4px;
+  position: relative;
+}
+
+.number-2 {
+  color: var(--cherry-pie);
+  font-family: var(--font-family-poppins);
+  font-size: 16px;
+  font-weight: 800;
+  height: 47px;
+  line-height: 15.1px;
+  margin-top: -1px;
+  width: 39px;
+}
+
+.be-first-to-play-view {
+  align-items: flex-end;
+  background-color: var(--sunglow);
+  border-radius: 62px;
+  box-shadow: 0px 6px 0px -3px #0000002e;
+  display: flex;
+  height: 50px;
+  min-width: 50px;
+  padding: 11.2px 3.9px;
+  position: relative;
+}
+
+.be-the-first-to-play {
+  color: var(--cherry-pie);
+  cursor: pointer;
+  font-family: var(--font-family-poppins);
+  font-size: 9.5px;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 8.8px;
+  min-height: 27px;
+  min-width: 42px;
+  text-align: center;
+  transform: rotate(-5.00deg);
+  transition: all 0.2s ease;
+}
+
+.be-the-first-to-play:hover {
+  transform: scale(1.1);
+}
+
+.how-to {
+  align-items: flex-end;
+  background-color: var(--white);
+  border-radius: 62px;
+  box-shadow: 0px 6px 0px -3px #0000002e;
+  display: flex;
+  height: 50px;
+  min-width: 50px;
+  padding: 8.7px 11px;
+  position: relative;
+}
+
+.how-to-play-stroke {
+  display: block;
+  height: 31px;
+  opacity: 0;
+  transform: scale(1.1);
+  width: 28px;
+}
+
+.how-to-play-stroke.animate-enter {
+  animation: animate-enter-frames 0.20s ease-in-out 0.00s 1 normal forwards;
+  display: block;
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+@keyframes animate-enter-frames {
+  from{opacity: 0;
+transform: scale(1.1);
+}
+to{opacity: 1;
+transform: scale(1);
+}
+}
+
+.invite-friend-view {
+  align-items: flex-end;
+  background-color: var(--white);
+  border-radius: 62px;
+  box-shadow: 0px 6px 0px -3px #0000002e;
+  display: flex;
+  height: 50px;
+  justify-content: flex-end;
+  min-width: 50px;
+  padding: 15.8px 5.1px;
+  position: relative;
+}
+
+.invite-friend {
+  color: var(--dodger-blue);
+  cursor: pointer;
+  font-family: var(--font-family-poppins);
+  font-size: 10.6px;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 9.1px;
+  min-height: 18px;
+  min-width: 39px;
+  text-align: center;
+  transform: rotate(-5.00deg);
+  transition: all 0.2s ease;
+}
+
+.invite-friend:hover {
+  transform: scale(1.1);
+}
+
+.add-to-home-screen-view {
+  align-items: flex-start;
+  background-color: var(--white);
+  border-radius: 62px;
+  box-shadow: 0px 6px 0px -3px #0000002e;
+  display: flex;
+  height: 50px;
+  justify-content: flex-end;
+  min-width: 50px;
+  padding: 12.6px 6.1px;
+  position: relative;
+}
+
+.add-to-home-screen {
+  color: var(--radical-red);
+  cursor: pointer;
+  font-family: var(--font-family-poppins);
+  font-size: 9.2px;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 7.9px;
+  min-height: 24px;
+  min-width: 37px;
+  text-align: center;
+  transform: rotate(-5.00deg);
+  transition: all 0.2s ease;
+}
+
+.add-to-home-screen:hover {
+  transform: scale(1.1);
+}
+
+.players-side-view {
+  align-items: flex-start;
+  display: flex;
+  position: relative;
+  width: fit-content;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.player {
+  height: 36.49px;
+  min-width: 30px;
+  position: relative;
+}
+
+.pic-number-side-view {
+  height: 36px;
+  position: relative;
+  width: 30px;
+}
+
+.pic {
+  background-image: url(../img/pic@2x.png);
+  background-size: 100% 100%;
+  height: 28px;
+  position: absolute;
+  width: 28px;
+}
+
+.player-score-number {
+  /* -webkit-text-stroke: 1px var(--pixie-powder); */
+  left: 0;
+  letter-spacing: 0;
+  top: 1.4rem;
+  line-height: 17.2px;
+  position: absolute;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.player-score-number-1 {
+  /* -webkit-text-stroke: 1px #32ff84; */
+  -webkit-text-stroke: 1px #00001c;
+}
+
+.player-score-number-2 {
+  /* -webkit-text-stroke: 1px #ff3364; */
+  -webkit-text-stroke: 1px #00001c;
+}
+
+.player-score-number-3 {
+  /* -webkit-text-stroke: 1px #329dff; */
+  -webkit-text-stroke: 1px #00001c;
+}
+
+.player-score-number-you {
+  /* -webkit-text-stroke: 1px #ffd232; */
+  -webkit-text-stroke: 1px #00001c;
+}
+
+.player-1 {
+  height: 36.82px;
+}
+
+.player2 {
+  height: 37px;
+  position: relative;
+  width: 30px;
+}
+
+.pic-1 {
+  background-image: url(../img/pic-1@2x.png);
+  background-size: 100% 100%;
+  width: 28px;
+}
+
+.player-2 {
+  height: 35.98px;
+}
+
+.pic-2 {
+  background-image: url(../img/pic-2@2x.png);
+  background-position: 50% 50%;
+  background-size: cover;
+  width: 28px;
+}
+
+.number-1 {
+  line-height: 17.2px;
+  position: absolute;
+  white-space: nowrap;
+}
+
+/* -----  /top half css -----  */
 
 @keyframes zoom-in-zoom-out {
   0% {
