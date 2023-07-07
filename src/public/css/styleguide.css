@@ -9,6 +9,7 @@
   --gunsmoke: #868686;
   --haiti: #14113b;
   --lemon-chiffon: #fffcc2;
+  --lavender-gray: #c6b8d8;
   --mantis: #64d95a;
   --pixie-powder: #371891;
   --radical-red: #ff3364;
@@ -20,7 +21,11 @@
   --white: #ffffff;
   --white-2: #ffffff1c;
   --zircon: #f5fdff;
+  --pixie-powder-2: #371891bf;
+  --athens-gray: #ede7f5;
   --new-green: #25b9a2;
+  --daisy-bush: #530a95;
+  --purple-plum: #9c50ff;
 
   --rem-width-screen: 15rem;
   --keyboard-button-size: 2.1rem;
@@ -112,4 +117,44 @@
   font-size: 0.7rem;
   font-style: normal;
   font-weight: 700;
+}
+
+.gilroy-extra-extra-bold-haiti-13-9px {
+  color: var(--haiti);
+  font-family: var(--font-family-gilroy-extrabold);
+  font-size: var(--font-size-s);
+  font-style: normal;
+  font-weight: 800;
+}
+
+.gilroy-extra-extra-bold-celeste-56px {
+  color: var(--celeste);
+  font-family: var(--font-family-gilroy-extrabold);
+  font-size: 56px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.gilroy-extra-extra-bold-pixie-powder-15px {
+  color: var(--pixie-powder);
+  font-family: var(--font-family-gilroy-extrabold);
+  font-size: var(--font-size-m);
+  font-style: normal;
+  font-weight: 800;
+}
+
+.poppins-normal-pixie-powder-13px {
+  color: var(--pixie-powder-2);
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-xs);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.gilroy-extra-extra-bold-white-12-8px {
+  color: var(--white);
+  font-family: var(--font-family-gilroy-extrabold);
+  font-size: 12.8px;
+  font-style: normal;
+  font-weight: 800;
 }
