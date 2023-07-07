@@ -101,6 +101,21 @@ const CHAT_MESSAGE = `
         <div class="chat-row-message correct-word">Correct</div>
     </div>
 `
+const CHAT_NICE_TRY_ADDON = `
+<div class="chat-points-1">
+    <div class="nice-try-name valign-text-middle">NICE TRY!</div>
+    <div class="nice-try-score valign-text-middle nice-try-score">+1</div>
+    <img class="star-6" src="img/star-6.svg" alt="Star 6" />
+</div>
+`
+const CHAT_CORRECT_ADDON = `
+<div class="chat-points-1 chat-points-correct-word">
+    <div class="nice-try-name valign-text-middle">PERFECT!</div>
+    <div class="nice-try-score valign-text-middle nice-try-score">+1</div>
+    <img class="star-6" src="img/star-6.svg" alt="Star 6" />
+</div>
+`
+
 const GAME_TIMER_TIMEOUT = 120 // 1 for testing
 
 class Player {
@@ -118,14 +133,14 @@ class Player {
 
     trashTalk() {
         if (this.attempts > 10) {
-            appendMessage(this, botAngryMsgs[Math.floor(Math.random()*botAngryMsgs.length)], false, EXTRA_CHAT_MESSAGE_DELAY)
+            appendMessage(this, botAngryMsgs[Math.floor(Math.random()*botAngryMsgs.length)], false, false, EXTRA_CHAT_MESSAGE_DELAY)
         }
         if (this.sequentialMisses >= 2) {
-            appendMessage(this, botAngryMsgs[Math.floor(Math.random()*botAngryMsgs.length)], false, EXTRA_CHAT_MESSAGE_DELAY)
+            appendMessage(this, botAngryMsgs[Math.floor(Math.random()*botAngryMsgs.length)], false, false, EXTRA_CHAT_MESSAGE_DELAY)
             this.sequentialMisses = 0
         }
         if (this.sequentialHits >= 2) {
-            appendMessage(this, botCockyMsgs[Math.floor(Math.random()*botCockyMsgs.length)], false, EXTRA_CHAT_MESSAGE_DELAY)
+            appendMessage(this, botCockyMsgs[Math.floor(Math.random()*botCockyMsgs.length)], false, false, EXTRA_CHAT_MESSAGE_DELAY)
             this.sequentialHits = 0
         }
     }
@@ -152,6 +167,7 @@ let chatInput
 let metaCurrentLevel
 let deviceId
 let correctlyGuessed = []
+let validGuessed = []
 let availableLetters
 let round = 0
 let freezeGame = true
@@ -232,6 +248,23 @@ function countLetter (letter, str) {
     return letterCount
 }
 
+function checkNiceTry(player, message) {
+    if (metaCurrentLevel.includes(message)) {
+        if (!correctlyGuessed.includes(message)) {
+            groupScore += 1
+            if (player.username === "you") {
+                appendMessage(pipPlayer, "'"+ message + "' is valid but not here!", false, false, PIP_CHAT_MESSAGE_DELAY)
+            }
+            return true
+        } else {
+            if (player.username === "you") {
+                appendMessage(pipPlayer, "'"+ message + "' was already solved!", false, false, PIP_CHAT_MESSAGE_DELAY)
+            }
+        }
+    }
+    return false
+}
+
 function handleSubmitChatMessage(message) {
     if (message.length <= 0) {
         return
@@ -240,28 +273,24 @@ function handleSubmitChatMessage(message) {
     if (message.toLowerCase() === "daniel trau"
         || message.toLowerCase() === "dvir modan"
         || message.toLowerCase() === "amit berger") {
-            appendMessage(pipPlayer, message + " is my father!", false, 0)
+            appendMessage(pipPlayer, message + " is my father!", false, false, 0)
         return
     }
 
     if (!checkGuess(youPlayer, message)) {
         /* Guessed Wrong - Check if close */
         youPlayer.sequentialHits = 0
-        if (metaCurrentLevel.includes(message)) {
-            if (!correctlyGuessed.includes(message)) {
-                appendMessage(pipPlayer, "'"+ message + "' is valid but not here!", false, PIP_CHAT_MESSAGE_DELAY)
-                groupScore += 10
-            } else {
-                appendMessage(pipPlayer, "'"+ message + "' was already solved!", false, PIP_CHAT_MESSAGE_DELAY)
-            }
-        } 
-        appendMessage(youPlayer, message, false, 0)
+        if (checkNiceTry(youPlayer, message)) {
+            appendMessage(youPlayer, message, false, true, 0)
+        } else {
+            appendMessage(youPlayer, message, false, false, 0)
+        }
         //currentStreak = 1
     } else {
         appendMessage(youPlayer, message, true)
         youPlayer.sequentialHits += 1
         if (youPlayer.sequentialHits > 2) {
-            appendMessage(pipPlayer, "You're on a roll!", false, EXTRA_CHAT_MESSAGE_DELAY)
+            appendMessage(pipPlayer, "You're on a roll!", false, false, EXTRA_CHAT_MESSAGE_DELAY)
             youPlayer.sequentialHits = 0
         }
         // totalScore += 10 * currentStreak
@@ -375,7 +404,7 @@ function setKeyTapAnimation(element) {
     element.style.animationName = "keyboard-tap";
 }
 
-function appendMessageInternal(player, message, solved) {
+function appendMessageInternal(player, message, solved, niceTrySolved) {
     let chat = document.getElementById("chat-area")
     let messageElement = document.createElement('article')
     messageElement.classList.add("chat-row")
@@ -383,14 +412,21 @@ function appendMessageInternal(player, message, solved) {
     let usernameElement = messageElement.getElementsByClassName("chat-row-username")[0]
     usernameElement.textContent = player.username
     let messageContentElement = messageElement.getElementsByClassName("chat-row-message")[0]
-    let tickElement = document.createElement('span')
-    tickElement.innerHTML = " &#10004;"
-    tickElement.classList.add("checkmark")
-
+    
     if (solved) {
+        // let tickElement = document.createElement('span')
+        // tickElement.innerHTML = " &#10004;"
+        // tickElement.classList.add("checkmark")
         messageContentElement.style.color = player.color
         messageContentElement.textContent = message.toUpperCase()
-        messageContentElement.append(tickElement)
+        messageContentElement.innerHTML += CHAT_CORRECT_ADDON
+        let addedScore = messageContentElement.getElementsByClassName("nice-try-score")[0]
+        addedScore.textContent = "+"+message.length
+        // messageContentElement.append(tickElement)
+    } else if (niceTrySolved) {
+        messageContentElement.classList.remove("correct-word")
+        messageContentElement.textContent = message
+        messageContentElement.innerHTML += CHAT_NICE_TRY_ADDON
     } else {
         messageContentElement.classList.remove("correct-word")
         messageContentElement.textContent = message
@@ -408,11 +444,11 @@ function appendMessageInternal(player, message, solved) {
     messageElement.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" })
 }
 
-function appendMessage (player, message, solved, delay) {
+function appendMessage (player, message, solved, niceTrySolved, delay) {
     if (delay > 0) {
-        setTimeout(appendMessageInternal, delay, player, message, solved)
+        setTimeout(appendMessageInternal, delay, player, message, solved, niceTrySolved)
     } else {
-        appendMessageInternal(player, message, solved)
+        appendMessageInternal(player, message, solved, niceTrySolved)
     }
 }
 
@@ -740,10 +776,14 @@ function runBotGuesser() {
     let botGuess = metaCurrentLevel[Math.floor(Math.random()*metaCurrentLevel.length)]
     bot.attempts += 1
     if (checkGuess(bot, botGuess)) {
-        appendMessage(bot, botGuess, true, 0)
+        appendMessage(bot, botGuess, true, false, 0)
         bot.sequentialHits += 1
     } else {
-        appendMessage(bot, botGuess, false, 0)
+        if (checkNiceTry(bot, botGuess)) {
+            appendMessage(bot, botGuess, false, true, 0)
+        } else {
+            appendMessage(bot, botGuess, false, false, 0)
+        }
         bot.sequentialMisses += 1
     }
 
