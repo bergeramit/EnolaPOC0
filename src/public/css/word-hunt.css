@@ -1284,11 +1284,6 @@ button, [type=button], [type=reset], [type=submit] {
   position: relative;
 }
 
-
-  text-align: center;
-  width: 31px;
-}
-
 .word-hunt .tile-fill-4 {
   border: 2.77px solid;
   border-color: var(--cherry-pie);
