@@ -904,7 +904,7 @@ button, [type=button], [type=reset], [type=submit] {
 .word-hunt .r1 {
   align-items: center;
   display: flex;
-  gap: 3.5px;
+  gap: 0.2rem;
   justify-content: center;
   position: relative;
   width: fit-content;
