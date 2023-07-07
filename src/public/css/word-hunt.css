@@ -1402,6 +1402,13 @@ button, [type=button], [type=reset], [type=submit] {
     flex-direction: column;
 }
 
+.refresh {
+  cursor: pointer;
+  height: 18px;
+  min-width: 18px;
+  position: relative;
+}
+
 .score-friends-view {
   min-width: 4rem;
   align-items: center;
@@ -1475,6 +1482,7 @@ button, [type=button], [type=reset], [type=submit] {
   min-width: 50px;
   padding: 8.7px 11px;
   position: relative;
+  cursor: pointer;
 }
 
 .how-to-play-stroke {

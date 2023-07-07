@@ -438,13 +438,8 @@ function appendEmptyTile(word) {
     return row
   }
 
-  function startCurrentLevel () {
-    var readyPopup = document.getElementById("ready-level-popup")
-    readyPopup.style.display = "none"
-
-    const board = document.getElementsByClassName("words-tiles")[0]
-
-    freezeGame = false
+function setAvailableLetters() {
+    availableLetters = shuffle(availableLetters)
     const letters = document.getElementById("available-top-letters")
     letters.innerHTML = ""
     for (let i = 0; i < availableLetters.length; i++) {
@@ -455,6 +450,16 @@ function appendEmptyTile(word) {
         valueElement.textContent = availableLetters[i].toUpperCase()
         letters.appendChild(letterElement)
     }
+}
+
+  function startCurrentLevel () {
+    var readyPopup = document.getElementById("ready-level-popup")
+    readyPopup.style.display = "none"
+
+    const board = document.getElementsByClassName("words-tiles")[0]
+
+    freezeGame = false
+    setAvailableLetters()
     correctlyGuessed = []
     for (let i = 0; i < CurrentLevel.length; i++) {
         const row = createEmptyWordRow(CurrentLevel[i])
@@ -651,8 +656,8 @@ document.getElementById("enterButton").addEventListener("touchstart", (e) => {
     chatInput.value = ""
 })
 
-document.getElementById("info-button-id").addEventListener("click", (e) => {
-    /* When "?" Pressed */
+document.getElementById("how-to-button-id").addEventListener("touchstart", (e) => {
+    /* When "how-to" Pressed */
     window.LogRocket.track('clickQuestionMark', {});
     const howToPopup = document.getElementById("how-to-popup")
     howToPopup.style.display = "flex"
@@ -674,6 +679,12 @@ document.getElementById("x-how-to-popup-button").addEventListener("click", (e) =
 //     const howToPopup = document.getElementById("how-to-popup")
 //     howToPopup.style.display = "flex"
 // })
+
+document.getElementById("reshuffle-letters").addEventListener("touchstart", (e) => {
+    /* When yay Pressed */
+    window.LogRocket.track('reshuffle-pressed', {});
+    setAvailableLetters()
+})
 
 document.getElementById("delButton").addEventListener("touchstart", (e) => {
     /* When Enterkey Pressed */
