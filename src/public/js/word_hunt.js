@@ -509,13 +509,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     if (window.innerHeight > 700) {
         console.log('Opened from Home Screen');
-        tiles.style.minHeight = "19rem"
-        tiles.style.maxHeight = "19rem"
+        tiles.style.minHeight = "40dvh"
+        tiles.style.maxHeight = "40dvh"
         // Perform actions specific to opening from Home Screen
     } else {
         console.log('Opened from browser');
-        tiles.style.minHeight = "13rem"
-      tiles.style.maxHeight = "13rem"
+        tiles.style.minHeight = "40dvh"
+      tiles.style.maxHeight = "40dvh"
         // Perform actions specific to opening from the browser
     }
   
