@@ -710,6 +710,30 @@ document.getElementById("x-how-to-popup-button").addEventListener("click", (e) =
     }
 })
 
+document.getElementById("be-the-first-to-play").addEventListener("click", (e) => {
+    /* When "be-the-first" Pressed */
+    window.LogRocket.track('clickBeTheFirst', {});
+    const firstToPlay = document.getElementById("first-to-play-message")
+    if (firstToPlay.style.display === "flex") {
+        firstToPlay.style.display = "none"
+    } else {
+        firstToPlay.style.display = "flex"
+    }
+})
+
+document.getElementById("invite-friends-id").addEventListener("click", (e) => {
+    /* When "be-the-first" Pressed */
+    window.LogRocket.track('clickInviteFriends', {});
+    const firstToPlay = document.getElementById("share-link-message")
+    firstToPlay.style.display = "flex"
+    firstToPlay.style.animationDuration = "4s";
+    firstToPlay.style.animationTimingFunction = "ease";
+    firstToPlay.style.animationName = "fade";
+    setTimeout(() => {
+        firstToPlay.style.display = "none"
+    }, 4000)
+})
+
 // document.getElementById("how-to-nav-button").addEventListener("click", (e) => {
 //     /* When pressed in popup window */
 //     window.LogRocket.track('clickHowToPopup', {});
