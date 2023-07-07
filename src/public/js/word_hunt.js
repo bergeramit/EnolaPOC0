@@ -104,7 +104,8 @@ const CHAT_MESSAGE = `
 const GAME_TIMER_TIMEOUT = 120 // 1 for testing
 
 class Player {
-    constructor(username, icon, color, textColor) {
+    constructor(username, id, icon, color, textColor) {
+        this.id = id
         this.username = username
         this.color = color
         this.textColor = textColor
@@ -112,6 +113,7 @@ class Player {
         this.attempts = 0
         this.sequentialMisses = 0
         this.sequentialHits = 0
+        this.score = 0
     }
 
     trashTalk() {
@@ -127,13 +129,23 @@ class Player {
             this.sequentialHits = 0
         }
     }
+
+    updateDOMScore(value) {
+        this.score += value
+        if (this.id === "PIP") {
+            return
+        }
+        let scoreElement = document.getElementById(this.id +"-score")
+        scoreElement.textContent = this.score
+        setScaleAnimation(scoreElement)
+    }
 }
 
 /* ---------------------- GlobalsDefines ---------------------- */
 
 let finishedLevels = []
-let pipPlayer = new Player("PIP", "url('img/pip_icon.png')", "#1abc9c", "black")
-let youPlayer = new Player("you", "url('img/player_1.png')", "#ffd232", "black")
+let pipPlayer = new Player("PIP", "PIP", "url('img/pip_icon.png')", "#1abc9c", "black")
+let youPlayer = new Player("you", "player-you", "url('img/player_1.png')", "#ffd232", "black")
 let timeLeft
 let CurrentLevel
 let chatInput
@@ -159,7 +171,10 @@ function resetGame() {
         player.currentLevelAttempts = 0
         player.sequentialHits = 0
         player.sequentialMisses = 0
+        player.score = 0
+        player.updateDOMScore(0)
     })
+
 }
 
 function checkGuess (player, guess) {
@@ -172,6 +187,7 @@ function checkGuess (player, guess) {
             correctlyGuessed.push(guess)
             // console.log('Success! at row: ' + (i + 1))
             groupScore += 10 * streak
+            player.updateDOMScore(guess.length)
             streak += 1
             const row = document.getElementsByClassName('word')[i]
             for (let j = 0; j < row.children.length; j++) {
@@ -700,9 +716,9 @@ document.addEventListener('keyup', (e) => {
 const playersList = [
     youPlayer,
     pipPlayer,
-    new Player("user12431", "url('img/player_2.png')", "#32ff84", "white"),
-    new Player("smartFox69", "url('img/player_3.png')", "#ff3364", "white"),
-    new Player("WordyJack3", "url('img/player_4.png')", "#329dff", "white"),
+    new Player("user12431", "player-1", "url('img/player_2.png')", "#32ff84", "white"),
+    new Player("smartFox69", "player-2", "url('img/player_3.png')", "#ff3364", "white"),
+    new Player("WordyJack3", "player-3", "url('img/player_4.png')", "#329dff", "white"),
 ]
 
 function runBotGuesser() {

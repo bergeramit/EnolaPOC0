@@ -1065,10 +1065,7 @@ button, [type=button], [type=reset], [type=submit] {
   align-items: center;
   display: flex;
   flex-direction: column;
-  /* gap: 0.2rem; */
-  left: 767px;
-  /* position: absolute; */
-  top: 166px;
+  gap: 0.1rem;
   min-height: 19rem;
   max-height: 19rem;
   min-width: var(--rem-width-screen);
