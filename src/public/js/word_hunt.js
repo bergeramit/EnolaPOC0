@@ -203,7 +203,6 @@ function checkGuess (player, guess) {
             correctlyGuessed.push(guess)
             // console.log('Success! at row: ' + (i + 1))
             groupScore += 10 * streak
-            player.updateDOMScore(guess.length)
             streak += 1
             const row = document.getElementsByClassName('word')[i]
             for (let j = 0; j < row.children.length; j++) {
@@ -422,11 +421,13 @@ function appendMessageInternal(player, message, solved, niceTrySolved) {
         messageContentElement.innerHTML += CHAT_CORRECT_ADDON
         let addedScore = messageContentElement.getElementsByClassName("nice-try-score")[0]
         addedScore.textContent = "+"+message.length
+        player.updateDOMScore(message.length)
         // messageContentElement.append(tickElement)
     } else if (niceTrySolved) {
         messageContentElement.classList.remove("correct-word")
         messageContentElement.textContent = message
         messageContentElement.innerHTML += CHAT_NICE_TRY_ADDON
+        player.updateDOMScore(1)
     } else {
         messageContentElement.classList.remove("correct-word")
         messageContentElement.textContent = message
