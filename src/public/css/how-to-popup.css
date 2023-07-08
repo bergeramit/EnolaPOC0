@@ -1,6 +1,6 @@
 #how-to-popup {
   z-index: 2;
-  /* display: none; */
+  display: none;
   top: 100px;
   position: absolute;
 }
@@ -162,6 +162,7 @@
 }
 
 .new-how-to-view .submit-button-view {
+  cursor: pointer;
   background-color: var(--purple-plum);
   border: 3.99px solid;
   border-color: var(--daisy-bush);
@@ -216,6 +217,7 @@
   margin-top: -5px;
   width: 236px;
   text-align: left;
+  padding: 0.3rem;
 }
 
 .new-how-to-view .secure-your-spot-and {

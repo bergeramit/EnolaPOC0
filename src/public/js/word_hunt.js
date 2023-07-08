@@ -172,7 +172,8 @@ let availableLetters
 let round = 0
 let freezeGame = true
 let groupScore
-let shouldStartUp
+let shouldWaitForStartUp
+let registeredAlready = false
 
 /* ---------------------- /GlobalsDefines ---------------------- */
 
@@ -562,8 +563,11 @@ function handleOutOfTime() {
 
 
 document.addEventListener("DOMContentLoaded", function(e) {
-    shouldStartUp = true
     var tiles = document.getElementsByClassName("words-tiles")[0]
+    const howToPopup = document.getElementById("how-to-popup")
+    
+    chatInput = document.getElementById("chat-input")
+    
 
     if (window.innerHeight > 700) {
         console.log('Opened from Home Screen');
@@ -575,6 +579,24 @@ document.addEventListener("DOMContentLoaded", function(e) {
         tiles.style.minHeight = "12.5rem"
       tiles.style.maxHeight = "12.5rem"
         // Perform actions specific to opening from the browser
+    }
+
+    window.LogRocket && window.LogRocket.init('9o6vsp/enolapoc0');
+    deviceId = localStorage.getItem("deviceId");
+    if (!deviceId) {
+        shouldWaitForStartUp = true
+        howToPopup.style.display = "flex"
+        deviceId = uuidv4();
+        localStorage.setItem("deviceId", deviceId);
+    } else {
+        howToPopup.style.display = "none"
+        shouldWaitForStartUp = false
+    }
+    console.log(deviceId)
+    window.LogRocket.identify(deviceId, { uuid: deviceId });
+
+    if (!shouldWaitForStartUp) {
+        startUp()
     }
   
 });
@@ -620,9 +642,27 @@ function generateNewLevel () {
     })
 }
 
-function submitRegisterForm() {
-    const email = document.getElementById("email-input")
-    window.LogRocket.track("RegisterRequest", {email: email.value})
+// function submitRegisterForm() {
+//     const email = document.getElementById("email-input")
+//     window.LogRocket.track("RegisterRequest", {email: email.value})
+//     fetch(registerPostURL, {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+//             'Access-Control-Allow-Origin': '*',
+//             'Access-Control-Allow-Credentials': true
+//         },
+//         body: JSON.stringify({ "email": email.value })
+//     }).then(response => {
+//         console.log(response.statusText)
+//         handleEmailSubmitted()
+//         return response.json()
+//     })
+// }
+
+function submitRegisterForm(email, callback) {
+    window.LogRocket.track("RegisterRequest", {email: email})
     fetch(registerPostURL, {
         method: 'POST',
         headers: {
@@ -631,25 +671,16 @@ function submitRegisterForm() {
             'Access-Control-Allow-Origin': '*',
             'Access-Control-Allow-Credentials': true
         },
-        body: JSON.stringify({ "email": email.value })
+        body: JSON.stringify({ "email": email })
     }).then(response => {
         console.log(response.statusText)
-        handleEmailSubmitted()
+        callback()
         return response.json()
     })
 }
 
 function startUp() {
-    chatInput = document.getElementById("chat-input")
-    shouldStartUp = false
-    window.LogRocket && window.LogRocket.init('9o6vsp/enolapoc0');
-    deviceId = localStorage.getItem("deviceId");
-    if (!deviceId) {
-        deviceId = uuidv4();
-        localStorage.setItem("deviceId", deviceId);
-    }
-    console.log(deviceId)
-    window.LogRocket.identify(deviceId, { uuid: deviceId });
+    shouldWaitForStartUp = false
     resetGame()
     generateNewLevel()
     setInterval(runBotGuesser, botGuessInterval[Math.floor(Math.random()*botGuessInterval.length)]);
@@ -659,6 +690,34 @@ function startUp() {
 /* ---------------------- /Server API ---------------------- */
 
 /* ---------------------- EventListeners ---------------------- */
+
+function setFadeAnimation(element, timeoutStr, timeoutMS) {
+    element.style.display = "flex"
+    element.style.animationDuration = timeoutStr;
+    element.style.animationTimingFunction = "ease";
+    element.style.animationName = "fade";
+    setTimeout(() => {
+        element.style.display = "none"
+    }, timeoutMS)
+}
+
+document.getElementById("register-from-tooltip").addEventListener("click", (e) => {
+    let input = document.getElementById("email-input-tooltip")
+    submitRegisterForm(input.value, () => {
+        let view = document.getElementById("be-first-tooltip-register-view-id")
+        view.style.display = "none"
+        let messageElement = document.getElementById("tooltip-register-message")
+        messageElement.textContent = "THANK YOU FOR REGISTERING!"
+        registeredAlready = true
+        let element = document.getElementById("first-to-play-message")
+        setFadeAnimation(element, "3s", 3000)
+    })
+})
+
+document.getElementById("register-how-to-submit").addEventListener("click", (e) => {
+    let input = document.getElementById("email-input-from-how-to")
+    submitRegisterForm(input.value, () => {})
+})
 
 const buttons = document.querySelectorAll('.keyboard-button')
 buttons.forEach((button) => {
@@ -705,7 +764,7 @@ document.getElementById("x-how-to-popup-button").addEventListener("click", (e) =
     window.LogRocket.track('clickXInHowToPopup', {});
     const howToPopup = document.getElementById("how-to-popup")
     howToPopup.style.display = "none"
-    if (shouldStartUp) {
+    if (shouldWaitForStartUp) {
         startUp()
     }
 })
@@ -715,6 +774,11 @@ document.getElementById("be-the-first-to-play").addEventListener("click", (e) =>
     window.LogRocket.track('clickBeTheFirst', {});
     const firstToPlay = document.getElementById("first-to-play-message")
     firstToPlay.style.top = "3rem"
+    if (registeredAlready) {
+        setFadeAnimation(firstToPlay, "3s", 3000)
+        return
+    }
+
     if (firstToPlay.style.display === "flex") {
         firstToPlay.style.display = "none"
     } else {
@@ -727,6 +791,11 @@ document.getElementById("add-to-home-id").addEventListener("click", (e) => {
     window.LogRocket.track('clickBeTheFirst', {});
     const firstToPlay = document.getElementById("first-to-play-message")
     firstToPlay.style.top = "14rem"
+    if (registeredAlready) {
+        setFadeAnimation(firstToPlay, "3s", 3000)
+        return
+    }
+    
     if (firstToPlay.style.display === "flex") {
         firstToPlay.style.display = "none"
     } else {
@@ -738,13 +807,7 @@ document.getElementById("invite-friends-id").addEventListener("click", (e) => {
     /* When "be-the-first" Pressed */
     window.LogRocket.track('clickInviteFriends', {});
     const firstToPlay = document.getElementById("share-link-message")
-    firstToPlay.style.display = "flex"
-    firstToPlay.style.animationDuration = "4s";
-    firstToPlay.style.animationTimingFunction = "ease";
-    firstToPlay.style.animationName = "fade";
-    setTimeout(() => {
-        firstToPlay.style.display = "none"
-    }, 4000)
+    setFadeAnimation(firstToPlay, "4s", 4000)
 })
 
 // document.getElementById("how-to-nav-button").addEventListener("click", (e) => {
@@ -785,12 +848,14 @@ document.addEventListener('keyup', (e) => {
         return
     } else {
         let emailElement = document.getElementById("chat-input")
-        let sideEmailElement = document.getElementById("email-input")
-        if (!(emailElement === document.activeElement) && !(sideEmailElement === document.activeElement)) {
+        let sideEmailElement = document.getElementById("email-input-from-how-to")
+        let tooltipEmailElement = document.getElementById("email-input-tooltip")
+        if (!(emailElement === document.activeElement)
+            && !(sideEmailElement === document.activeElement
+                || tooltipEmailElement === document.activeElement)) {
             addKeyToInput(pressedKey, true)
             emailElement.focus()
         }
-        console.log("In Focus")
     }
 })
 
