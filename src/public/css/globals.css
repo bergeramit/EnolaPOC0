@@ -54,7 +54,7 @@
   box-shadow: 0px 9.7px 0px #00000026 , 0px 3.42px 0px #300d65 , inset 1.49px 1.49px 0px 3.73px #ffffff66;
   height: 56px;
   left: 2px;
-  position: absolute;
+  /* position: absolute; */
   top: 0;
   width: 156px;
 }

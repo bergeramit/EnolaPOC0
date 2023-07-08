@@ -535,7 +535,7 @@ function displayFinishedLevel() {
     finishedLevels.push(CurrentLevel[0]) /* insert the key level identifier */
     freezeGame = true
     var scoreElement = document.getElementById("level-finish-score")
-    scoreElement.textContent = groupScore + " POINTS"
+    scoreElement.textContent = youPlayer.score + " POINTS"
     var completePopup = document.getElementById("complete-level-popup")
     completePopup.style.display = "flex"
     setScaleAnimation(completePopup)

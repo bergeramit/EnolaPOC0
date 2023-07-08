@@ -15,17 +15,30 @@
 }
 
 .complete-popup .overlap-group3 {
-  height: 459px;
+  height: 18rem;
   position: relative;
   width: 274px;
+  gap: 0.5rem;
+  flex-direction: column;
+  padding-top: 4rem;
 }
 
 .complete-popup .overlap-group {
   height: 266px;
-  left: 11px;
+  display: flex;
+  justify-content: center;
+  /* left: 11px; */
   position: absolute;
-  top: 0;
+  top: -10rem;
   width: 249px;
+}
+
+.complete-popup .complete {
+  height: 84px;
+  left: 41px;
+  position: absolute;
+  top: -3rem;
+  width: 192px;
 }
 
 .complete-popup .ellipse-1939 {
@@ -68,7 +81,7 @@
 
 .complete-popup .pip-character {
   height: 203px;
-  left: 67px;
+  /* left: 67px; */
   object-fit: cover;
   position: absolute;
   top: 0;
@@ -91,7 +104,7 @@
   cursor: pointer;
   height: 56px;
   left: 57px;
-  position: absolute;
+  /* position: absolute; */
   top: 373px;
   width: 158px;
   min-width: 0;
@@ -103,11 +116,11 @@
   font-family: var(--font-family-gilroy-extrabold);
   font-size: 18.6px;
   font-weight: 800;
-  height: 18px;
+  height: 3rem;
   left: 0;
   letter-spacing: 0.26px;
   line-height: 17.4px;
-  position: absolute;
+  /* position: absolute; */
   text-align: center;
   /* text-shadow: 0px 3.73px 0px #00000040; */
   top: 18px;
@@ -121,7 +134,7 @@
   left: 15px;
   letter-spacing: 0.60px;
   line-height: 16.8px;
-  position: absolute;
+  /* position: absolute; */
   text-align: center;
   top: 214px;
   width: 240px;
@@ -137,7 +150,7 @@
   left: 46px;
   letter-spacing: 0.50px;
   line-height: 29.9px;
-  position: absolute;
+  /* position: absolute; */
   text-align: center;
   top: 315px;
   white-space: nowrap;

@@ -369,7 +369,7 @@ transform: scale(1);
 }
 
 .word-hunt .overlap-group3 {
-  align-items: flex-start;
+  align-items: center;
   /* background-color: #ffcb46;
   border: 3px solid; */
   border-color: var(--white);
@@ -582,7 +582,7 @@ transform: scale(1);
 
 .word-hunt .pip-character {
   height: 178px;
-  left: 0;
+  /* left: 0; */
   object-fit: cover;
   position: absolute;
   top: 270px;
