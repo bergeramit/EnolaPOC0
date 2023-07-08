@@ -569,7 +569,6 @@ function handleOutOfTime() {
     setScaleAnimation(oot)
 }
 
-
 document.addEventListener("DOMContentLoaded", function(e) {
     var tiles = document.getElementsByClassName("words-tiles")[0]
     var chat = document.getElementById("chat-area")
