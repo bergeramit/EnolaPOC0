@@ -1215,6 +1215,7 @@ button, [type=button], [type=reset], [type=submit] {
   margin: auto;
   flex-direction: column;
   overflow-y: scroll;
+  pointer-events: all;
   /* overflow-x: hidden; */
   scroll-behavior: smooth;
   -ms-overflow-style: none; /* for Internet Explorer, Edge */
