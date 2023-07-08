@@ -732,6 +732,11 @@ buttons.forEach((button) => {
     button.addEventListener("touchstart", (e) => {
         /* Only for onscreen button presses */
         // setKeyTapAnimation(e.target)
+        if (e.target.classList.contains("keyboard-button")) {
+            e = e.target.getElementsByClassName("button-letter")[0]
+        } else if (e.target.classList.contains("letter-count")) {
+            e = e.target.parentElement.getElementsByClassName("button-letter")[0]
+        }
         const pressedKey = e.target.textContent[0].toLowerCase()
         addKeyToInput(pressedKey, true)
     })
