@@ -806,16 +806,18 @@ document.getElementById("add-to-home-id").addEventListener("click", (e) => {
 document.getElementById("invite-friends-id").addEventListener("click", (e) => {
     /* When "be-the-first" Pressed */
     window.LogRocket.track('clickInviteFriends', {});
-    const firstToPlay = document.getElementById("share-link-message")
-    setFadeAnimation(firstToPlay, "4s", 4000)
+    navigator.clipboard.writeText("wordhunt.gg").then(() => {
+        const firstToPlay = document.getElementById("share-link-message")
+        setFadeAnimation(firstToPlay, "4s", 4000)
+        console.error('Copied to clipboard!');
+        /* Resolved - text copied to clipboard successfully */
+      },() => {
+        console.error('Failed to copy');
+        /* Rejected - text failed to copy to the clipboard */
+      });
+    
 })
 
-// document.getElementById("how-to-nav-button").addEventListener("click", (e) => {
-//     /* When pressed in popup window */
-//     window.LogRocket.track('clickHowToPopup', {});
-//     const howToPopup = document.getElementById("how-to-popup")
-//     howToPopup.style.display = "flex"
-// })
 
 document.getElementById("reshuffle-letters").addEventListener("touchstart", (e) => {
     /* When yay Pressed */
