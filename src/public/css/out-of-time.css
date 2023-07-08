@@ -30,6 +30,8 @@
   position: absolute;
   top: 0;
   width: 249px;
+  display: flex;
+  justify-content: center;
 }
 
 .out-of-time .ellipse-1938 {
@@ -71,12 +73,19 @@
 }
 
 .out-of-time .pip-character {
-  height: 207px;
+  /* height: 207px;
   left: 39px;
   object-fit: cover;
   position: absolute;
   top: 0;
-  width: 139px;
+  width: 139px; */
+
+  height: 203px;
+  /* left: 67px; */
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  width: 109px;
 }
 
 .out-of-time .bg {
@@ -163,7 +172,7 @@
 }
 
 .out-of-time .out-of-time-1 {
-  -webkit-text-stroke: 4px var(--haiti);
+  /* -webkit-text-stroke: 4px var(--haiti);
   color: var(--white);
   font-family: var(--font-family-poppins);
   font-size: 31.1px;
@@ -175,7 +184,12 @@
   text-align: center;
   text-shadow: 4.19px 4.19px 0px #0000001a;
   top: 20px;
-  transform: rotate(-5.00deg);
+  transform: rotate(-5.00deg); */
+    height: 70px;
+  left: 73px;
+  position: absolute;
+  top: 132px;
+  width: 122px;
 }
 
 .out-of-time .star-1 {

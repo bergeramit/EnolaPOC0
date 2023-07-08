@@ -562,7 +562,7 @@ function handleOutOfTime() {
     freezeGame = true
 
     var scoreElement = document.getElementById("level-timeout-score")
-    scoreElement.textContent = groupScore + " POINTS"
+    scoreElement.textContent = youPlayer.score + " POINTS"
 
     var oot = document.getElementById("out-of-time-popup")
     oot.style.display = "flex"
