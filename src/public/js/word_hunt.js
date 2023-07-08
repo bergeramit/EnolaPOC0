@@ -115,7 +115,10 @@ const CHAT_CORRECT_ADDON = `
     <img class="star-6" src="img/star-6.svg" alt="Star 6" />
 </div>
 `
-
+const FULL_TILES_SIZE = "17rem"
+const FULL_CHAT_SIZE = "10rem"
+const BROWSER_TILES_SIZE = "13.5rem" 
+const BROWSER_CHAT_SIZE = "8rem"
 const GAME_TIMER_TIMEOUT = 120 // 1 for testing
 
 class Player {
@@ -187,7 +190,6 @@ let registeredAlready = false
 
 function resetGame() {
     round = 0
-    groupScore = 0
     streak = 1
     playersList.forEach((player) => {
         player.currentLevelAttempts = 0
@@ -207,7 +209,7 @@ function checkGuess (player, guess) {
         //console.log('Checks: CurrentLevel[1][i]: ' + CurrentLevel[i] + ' === ' + guess)
         if (CurrentLevel[i] === guess && !correctlyGuessed.includes(guess)) {
             if (player.username === "you") {
-                window.LogRocket.track('UserCorrectGuess', {round: round, score: groupScore});    
+                window.LogRocket.track('UserCorrectGuess', {round: round, score: player.score});    
             }
             correctlyGuessed.push(guess)
             // console.log('Success! at row: ' + (i + 1))
@@ -232,7 +234,7 @@ function checkGuess (player, guess) {
             //appendMessage('WordHunt', 'Great job!', false)
             //appendMessage('WordHunt', 'Get Ready for level ' + (levelNumber+1))
             freezeGame = true
-            window.LogRocket.track('FinishedLevel', {round: round, score: groupScore});
+            window.LogRocket.track('FinishedLevel', {round: round, score: youPlayer.score, groupScore: groupScore});
             setTimeout(() => {
                 displayFinishedLevel()
             }, 1000)
@@ -259,7 +261,6 @@ function countLetter (letter, str) {
 function checkNiceTry(player, message) {
     if (metaCurrentLevel.includes(message)) {
         if (!correctlyGuessed.includes(message)) {
-            groupScore += 1
             if (player.username === "you") {
                 appendMessage(pipPlayer, "'"+ message + "' is valid but not here!", false, false, PIP_CHAT_MESSAGE_DELAY)
             }
@@ -293,9 +294,8 @@ function handleSubmitChatMessage(message) {
         } else {
             appendMessage(youPlayer, message, false, false, 0)
         }
-        //currentStreak = 1
     } else {
-        appendMessage(youPlayer, message, true)
+        appendMessage(youPlayer, message, true, false, 0)
         youPlayer.sequentialHits += 1
         if (youPlayer.sequentialHits > 2) {
             appendMessage(pipPlayer, "You're on a roll!", false, false, EXTRA_CHAT_MESSAGE_DELAY)
@@ -572,6 +572,7 @@ function handleOutOfTime() {
 
 document.addEventListener("DOMContentLoaded", function(e) {
     var tiles = document.getElementsByClassName("words-tiles")[0]
+    var chat = document.getElementById("chat-area")
     const howToPopup = document.getElementById("how-to-popup")
     
     chatInput = document.getElementById("chat-input")
@@ -579,13 +580,17 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     if (window.innerHeight > 700) {
         console.log('Opened from Home Screen');
-        tiles.style.minHeight = "19rem"
-        tiles.style.maxHeight = "19rem"
+        tiles.style.minHeight = FULL_TILES_SIZE
+        tiles.style.maxHeight = FULL_TILES_SIZE
+        chat.style.minHeight = FULL_CHAT_SIZE
+        chat.style.maxHeight = FULL_CHAT_SIZE
         // Perform actions specific to opening from Home Screen
     } else {
         console.log('Opened from browser');
-        tiles.style.minHeight = "12.5rem"
-      tiles.style.maxHeight = "12.5rem"
+        tiles.style.minHeight = BROWSER_TILES_SIZE
+        tiles.style.maxHeight = BROWSER_TILES_SIZE
+        chat.style.minHeight = BROWSER_CHAT_SIZE
+        chat.style.maxHeight = BROWSER_CHAT_SIZE
         // Perform actions specific to opening from the browser
     }
 

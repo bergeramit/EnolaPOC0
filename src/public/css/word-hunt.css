@@ -1069,7 +1069,7 @@ button, [type=button], [type=reset], [type=submit] {
   min-height: 19rem;
   max-height: 19rem;
   min-width: var(--rem-width-screen);
-  justify-content: center;
+  justify-content: flex-start;
   /* width: fit-content; */
 }
 
@@ -1402,7 +1402,7 @@ button, [type=button], [type=reset], [type=submit] {
 .middle-top-half {
   max-width: 16.5rem;
   min-width: 16.5rem;
-  gap: 0.2rem;
+  gap: 0.4rem;
   text-align: center;
   justify-content: center;
     display: flex;
