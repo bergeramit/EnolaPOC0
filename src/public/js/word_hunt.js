@@ -152,6 +152,10 @@ class Player {
         }
         let scoreElement = document.getElementById(this.id +"-score")
         scoreElement.textContent = this.score
+
+        groupScore += value
+        groupScoreElement.textContent = groupScore
+
         setScaleAnimation(scoreElement)
     }
 }
@@ -172,6 +176,7 @@ let availableLetters
 let round = 0
 let freezeGame = true
 let groupScore
+let groupScoreElement
 let shouldWaitForStartUp
 let registeredAlready = false
 
@@ -192,6 +197,9 @@ function resetGame() {
         player.updateDOMScore(0)
     })
 
+    groupScore = 0
+    groupScoreElement.textContent = 0
+
 }
 
 function checkGuess (player, guess) {
@@ -203,8 +211,8 @@ function checkGuess (player, guess) {
             }
             correctlyGuessed.push(guess)
             // console.log('Success! at row: ' + (i + 1))
-            groupScore += 10 * streak
             streak += 1
+            
             const row = document.getElementsByClassName('word')[i]
             for (let j = 0; j < row.children.length; j++) {
                 // place word correctly!
@@ -567,7 +575,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     const howToPopup = document.getElementById("how-to-popup")
     
     chatInput = document.getElementById("chat-input")
-    
+    groupScoreElement = document.getElementById("group-score-side-view")
 
     if (window.innerHeight > 700) {
         console.log('Opened from Home Screen');
