@@ -1397,7 +1397,7 @@ button, [type=button], [type=reset], [type=submit] {
   line-height: 24.6px;
   text-shadow: 0px 2px 0px #0707078c;
   white-space: nowrap;
-  justify-content: center;
+  /* justify-content: center; */
   text-align: center;
 }
 

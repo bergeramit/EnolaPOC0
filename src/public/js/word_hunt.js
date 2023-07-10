@@ -259,7 +259,7 @@ function countLetter (letter, str) {
 }
 
 function checkNiceTry(player, message) {
-    if (metaCurrentLevel.includes(message)) {
+    if (metaCurrentLevel.includes(message) && !validGuessed.includes(message)) {
         if (!correctlyGuessed.includes(message)) {
             if (player.username === "you") {
                 appendMessage(pipPlayer, "'"+ message + "' is valid but not here!", false, false, PIP_CHAT_MESSAGE_DELAY)
@@ -290,6 +290,7 @@ function handleSubmitChatMessage(message) {
         /* Guessed Wrong - Check if close */
         youPlayer.sequentialHits = 0
         if (checkNiceTry(youPlayer, message)) {
+            validGuessed.push(message)
             appendMessage(youPlayer, message, false, true, 0)
         } else {
             appendMessage(youPlayer, message, false, false, 0)
@@ -427,15 +428,19 @@ function appendMessageInternal(player, message, solved, niceTrySolved) {
         // tickElement.classList.add("checkmark")
         messageContentElement.style.color = player.color
         messageContentElement.textContent = message.toUpperCase()
-        messageContentElement.innerHTML += CHAT_CORRECT_ADDON
-        let addedScore = messageContentElement.getElementsByClassName("nice-try-score")[0]
-        addedScore.textContent = "+"+message.length
+        if (player.username === "you") {
+            messageContentElement.innerHTML += CHAT_CORRECT_ADDON
+            let addedScore = messageContentElement.getElementsByClassName("nice-try-score")[0]
+            addedScore.textContent = "+"+message.length
+        }
         player.updateDOMScore(message.length)
         // messageContentElement.append(tickElement)
     } else if (niceTrySolved) {
         messageContentElement.classList.remove("correct-word")
         messageContentElement.textContent = message
-        messageContentElement.innerHTML += CHAT_NICE_TRY_ADDON
+        if (player.username === "you") {
+            messageContentElement.innerHTML += CHAT_NICE_TRY_ADDON
+        }
         player.updateDOMScore(1)
     } else {
         messageContentElement.classList.remove("correct-word")
@@ -619,6 +624,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 /* ---------------------- Server API ---------------------- */
 function generateNewLevel () {
     correctlyGuessed = []
+    validGuessed = []
     // const levelNumberObj = document.getElementById('level-number')
     // levelNumber += 1
     // levelNumberObj.textContent = 'Level: ' + levelNumber
@@ -902,6 +908,7 @@ function runBotGuesser() {
         bot.sequentialHits += 1
     } else {
         if (checkNiceTry(bot, botGuess)) {
+            validGuessed.push(botGuess)
             appendMessage(bot, botGuess, false, true, 0)
         } else {
             appendMessage(bot, botGuess, false, false, 0)
