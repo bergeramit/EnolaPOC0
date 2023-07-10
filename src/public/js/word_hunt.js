@@ -395,7 +395,7 @@ function beginReadyLevel() {
     }
 
     const readyPopup = document.getElementById("ready-level-popup")
-    let roundElement = readyPopup.getElementsByClassName("round-1")[0]
+    let roundElement = document.getElementById("round-1-id")
     roundElement.textContent = "Round " + round
     readyPopup.style.display = "flex"
     setScaleAnimation(readyPopup)
@@ -716,6 +716,7 @@ function setFadeAnimation(element, timeoutStr, timeoutMS) {
     element.style.animationName = "fade";
     setTimeout(() => {
         element.style.display = "none"
+        element.style.animationName = "none"
     }, timeoutMS)
 }
 
@@ -731,6 +732,21 @@ document.getElementById("register-from-tooltip").addEventListener("click", (e) =
         setFadeAnimation(element, "3s", 3000)
     })
 })
+
+document.onclick = function (e) {
+    var firstPlayPopup = document.getElementById('first-to-play-message');
+    var firstPlayTriggerPopup = document.getElementById('be-the-first-to-play');
+    var addToHomeTriggerPopup = document.getElementById('add-to-home-id');
+    var howToPopup = document.getElementById('how-to-popup');
+    if (!howToPopup.contains(e.target)) {
+        howToPopup.style.display = "none"
+    }
+    if (!firstPlayPopup.contains(e.target)
+        && !(firstPlayTriggerPopup.contains(e.target))
+        && !(addToHomeTriggerPopup.contains(e.target))) {
+        firstPlayPopup.style.display = "none"
+    }
+}
 
 document.getElementById("register-how-to-submit").addEventListener("click", (e) => {
     let input = document.getElementById("email-input-from-how-to")
@@ -796,6 +812,7 @@ document.getElementById("be-the-first-to-play").addEventListener("click", (e) =>
     /* When "be-the-first" Pressed */
     window.LogRocket.track('clickBeTheFirst', {});
     const firstToPlay = document.getElementById("first-to-play-message")
+    // firstToPlay.focus()
     firstToPlay.style.top = "3rem"
     if (registeredAlready) {
         setFadeAnimation(firstToPlay, "3s", 3000)
@@ -813,6 +830,7 @@ document.getElementById("add-to-home-id").addEventListener("click", (e) => {
     /* When "be-the-first" Pressed */
     window.LogRocket.track('clickBeTheFirst', {});
     const firstToPlay = document.getElementById("first-to-play-message")
+    // firstToPlay.focus()
     firstToPlay.style.top = "14rem"
     if (registeredAlready) {
         setFadeAnimation(firstToPlay, "3s", 3000)
@@ -879,7 +897,7 @@ document.addEventListener('keyup', (e) => {
             && !(sideEmailElement === document.activeElement
                 || tooltipEmailElement === document.activeElement)) {
             addKeyToInput(pressedKey, true)
-            emailElement.focus()
+            // emailElement.focus()
         }
     }
 })
