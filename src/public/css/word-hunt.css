@@ -1223,7 +1223,7 @@ button, [type=button], [type=reset], [type=submit] {
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 0.1rem;
+    gap: 0.3rem;
     min-height: 15rem;
     max-height: 18rem;
     min-width: var(--rem-width-screen);
