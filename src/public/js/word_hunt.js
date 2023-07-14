@@ -353,16 +353,16 @@ function shuffle(array) {
 
 /* ---------------------- DOM Cyber ---------------------- */
 
-function handleEmailSubmitted() {
-    let emailElement = document.getElementById("email-input")
-    emailElement.style.display = "none"
-    let submitElement = document.getElementById("register-text-button")
-    submitElement.textContent = "We'll be in touch!"
-    submitElement.style.left = "65px"
+// function handleEmailSubmitted() {
+//     let emailElement = document.getElementById("email-input")
+//     emailElement.style.display = "none"
+//     let submitElement = document.getElementById("register-text-button")
+//     submitElement.textContent = "We'll be in touch!"
+//     submitElement.style.left = "65px"
     
-    let fullButton = document.getElementById("full-register-button")
-    fullButton.style.cursor = "default"
-}
+//     let fullButton = document.getElementById("full-register-button")
+//     fullButton.style.cursor = "default"
+// }
 
 function beginReadyLevel() {
     const popup = document.getElementById("complete-level-popup")
@@ -376,7 +376,7 @@ function beginReadyLevel() {
     if (timeLeft <= 20) {
         timeLeft = 20
     }
-    timer.textContent = timeLeft
+    timer.textContent = getTimerStr(timeLeft)
 
     round += 1
     // const roundSideElement = document.getElementById("round-side-view")
@@ -550,13 +550,26 @@ function displayFinishedLevel() {
     }, timeoutBetweenLevels)
 }
 
+function getTimerStr(timeLeft) {
+    if (timeLeft > 60) {
+        if (Math.floor(timeLeft % 60) === 0) {
+            return Math.floor(timeLeft / 60) + ":00"
+        } else {
+            return Math.floor(timeLeft / 60) + ":" + Math.floor(timeLeft % 60)
+        }
+    } else {
+        return timeLeft
+    }
+}
+
 function updateTimer() {
     if (freezeGame) {
         return
     }
     var timer = document.getElementById("game-timer")
     timeLeft -= 1
-    timer.textContent = timeLeft
+
+    timer.textContent = getTimerStr(timeLeft)
     if (timeLeft === 0) {
         handleOutOfTime()
     }

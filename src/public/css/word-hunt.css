@@ -664,8 +664,8 @@ transform: scale(1);
 }
 
 .word-hunt .letter {
-  height: 21px;
-  min-width: 23px;
+  /* height: 21px;
+  min-width: 23px; */
   position: relative;
 }
 
@@ -676,12 +676,12 @@ transform: scale(1);
   /* border-color: var(--gunsmoke); */
   border-radius: 4.59px;
   display: flex;
-  min-width: 21px;
+  /* min-width: 21px; */
 }
 
 .word-hunt .price {
-  height: 18px;
-  width: 18px;
+  height: 1rem;
+  width: 1rem;
   letter-spacing: 0.24px;
   line-height: normal;
   text-align: center;
@@ -1518,7 +1518,7 @@ button, [type=button], [type=reset], [type=submit] {
   max-width: 16.5rem;
   min-width: 16.5rem;
   margin-top: var(--tooltip-margin-top);
-  gap: 0.4rem;
+  gap: 0.2rem;
   text-align: center;
   justify-content: center;
     display: flex;
