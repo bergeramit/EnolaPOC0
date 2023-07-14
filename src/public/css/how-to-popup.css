@@ -1,7 +1,7 @@
 #how-to-popup {
   z-index: 2;
   display: none;
-  top: 100px;
+  top: 1rem;
   position: absolute;
 }
 
@@ -21,9 +21,9 @@
 }
 
 .new-how-to-view .how-to-overlap-group2 {
-  height: 579px;
+  /* height: 579px; */
   position: relative;
-  width: 370px;
+  /* width: 370px; */
 }
 
 .new-how-to-view .how-to-overlap-group {

@@ -813,7 +813,7 @@ document.getElementById("be-the-first-to-play").addEventListener("click", (e) =>
     window.LogRocket.track('clickBeTheFirst', {});
     const firstToPlay = document.getElementById("first-to-play-message")
     // firstToPlay.focus()
-    firstToPlay.style.top = "3rem"
+    firstToPlay.style.top = "1rem"
     if (registeredAlready) {
         setFadeAnimation(firstToPlay, "3s", 3000)
         return
@@ -831,7 +831,7 @@ document.getElementById("add-to-home-id").addEventListener("click", (e) => {
     window.LogRocket.track('clickBeTheFirst', {});
     const firstToPlay = document.getElementById("first-to-play-message")
     // firstToPlay.focus()
-    firstToPlay.style.top = "14rem"
+    firstToPlay.style.top = "13rem"
     if (registeredAlready) {
         setFadeAnimation(firstToPlay, "3s", 3000)
         return

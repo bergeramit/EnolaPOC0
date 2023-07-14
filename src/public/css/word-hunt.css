@@ -43,12 +43,12 @@ html, body {
   align-items: flex-end;
   background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.51) 45.35%, rgba(0, 0, 0, 0.48) 54.17%, rgba(0, 0, 0, 0.3) 76.04%, rgba(0, 0, 0, 0) 100%);
   display: flex;
-  gap: 410px;
-  height: 422px;
+  /* gap: 410px; */
+  height: 20rem;
   /* left: 2.7rem; */
-  min-width: 407px;
+  min-width: 22rem;
   position: absolute;
-  top: 301px;
+  top: 15rem;
 }
 
 .word-hunt .line-44 {
@@ -775,7 +775,7 @@ transform: scale(1);
   background-color: #000000FF;
   border-radius: 55.48px;
   min-width: 2.5rem;
-  min-height: 1.5rem;
+  /* min-height: 1.5rem; */
   position: relative;
   margin: auto;
 }
@@ -783,8 +783,8 @@ transform: scale(1);
 .word-hunt .text-1 {
   color: var(--white);
   font-family: var(--font-family-poppins);
-  font-size: var(--font-size-m);
-  font-weight: 800;
+  font-size: var(--font-size-s);
+  font-weight: 400;
   /* height: 23px; */
   left: -5px;
   letter-spacing: 0;
@@ -831,7 +831,8 @@ transform: scale(1);
   gap: 5px;
   /* left: 669px; */
   min-height: 27rem;
-  /* min-width: 40rem; */
+  max-width: 22rem;
+  margin: auto;
   position: relative;
   /* position: absolute; */
   /* top: 646px; */
@@ -882,7 +883,7 @@ button, [type=button], [type=reset], [type=submit] {
 .word-hunt .r1 {
   align-items: center;
   display: flex;
-  gap: 0.2rem;
+  gap: var(--keyboard-gap);
   justify-content: center;
   position: relative;
   width: fit-content;
@@ -954,7 +955,7 @@ button, [type=button], [type=reset], [type=submit] {
 }
 
 .word-hunt .letter-count {
-  right: 0.3rem;
+  right: 0.2rem;
   letter-spacing: 0;
   line-height: normal;
   position: absolute;
@@ -965,7 +966,7 @@ button, [type=button], [type=reset], [type=submit] {
 }
 
 .word-hunt .keyboard-item {
-  gap: 4px;
+  gap: var(--keyboard-gap);
   justify-content: center;
   margin-left: 1.0px;
   position: relative;
@@ -975,7 +976,7 @@ button, [type=button], [type=reset], [type=submit] {
 .word-hunt .r4 {
   align-items: flex-start;
   display: flex;
-  gap: 2px;
+  gap: var(--keyboard-gap);
   margin-left: 1.0px;
   position: relative;
   width: fit-content;
@@ -1061,15 +1062,6 @@ button, [type=button], [type=reset], [type=submit] {
   width: 1.5em;
 }
 
-.word-hunt .word {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  width: fit-content;
-  gap: 0.1rem;
-}
-
 .word-hunt .tail {
   /* height: 38px;
   min-width: 38px; */
@@ -1122,15 +1114,32 @@ button, [type=button], [type=reset], [type=submit] {
   min-width: 2rem; */
 }
 
-@media only screen and (max-height: 800px) {
+@media only screen and (max-height: 750px) {
+
+  .word-hunt .word {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: fit-content;
+    gap: 0.05rem;
+  }
+
+  .gilroy-extra-extra-bold-cherry-pie-23-7px {
+    color: var(--cherry-pie);
+    font-family: var(--font-family-gilroy-extrabold);
+    font-size: var(--font-size-l);
+    font-style: normal;
+    font-weight: 800;
+  }
 
   .word-hunt .words-tiles {
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
-    min-height: 15rem;
-    max-height: 15rem;
+    min-height: 13rem;
+    max-height: 13rem;
     min-width: var(--rem-width-screen);
     justify-content: flex-start;
     /* width: fit-content; */
@@ -1191,23 +1200,40 @@ button, [type=button], [type=reset], [type=submit] {
   }
 }
 
-@media only screen and (min-height: 800px) {
+@media only screen and (min-height: 750px) {
+
+  .word-hunt .word {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: fit-content;
+    gap: 0.1rem;
+  }
+
+  .gilroy-extra-extra-bold-cherry-pie-23-7px {
+    color: var(--cherry-pie);
+    font-family: var(--font-family-gilroy-extrabold);
+    font-size: var(--font-size-xl);
+    font-style: normal;
+    font-weight: 800;
+  }
 
   .word-hunt .words-tiles {
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
-    min-height: 19rem;
-    max-height: 19rem;
+    min-height: 15rem;
+    max-height: 18rem;
     min-width: var(--rem-width-screen);
     justify-content: flex-start;
     /* width: fit-content; */
   }
 
   #chat-area {
-    max-height: 10rem;
-    min-height: 10rem;
+    max-height: 8rem;
+    min-height: 8rem;
   }
 
   .word-hunt .tail-1 {
@@ -1439,9 +1465,9 @@ button, [type=button], [type=reset], [type=submit] {
 }
 
 .full-view {
-  background-image: url(../img/bg_mobile.png);
-  /* background-position: center; */
-  background-repeat: no-repeat;
+  background-image: url(../img/bg.png);
+  background-position: center;
+  /* background-repeat: no-repeat; */
   background-attachment: fixed;
 }
 

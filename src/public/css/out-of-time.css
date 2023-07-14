@@ -3,7 +3,7 @@
 #out-of-time-popup {
   z-index: 1;
   display: none;
-  top: 100px;
+  top: 2rem;
   position: absolute;
 }
 

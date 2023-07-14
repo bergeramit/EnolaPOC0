@@ -39,6 +39,8 @@
 
   --empty-tiles-size-width-smaller: 1.5rem;
   --empty-tiles-size-height-smaller: 1.5rem;
+
+  --keyboard-gap: 0.8dvw;
  
   --font-size-l: 1.275rem;    /* 20.4px / 16px */
   --font-size-m: 1.125rem;    /* 18px / 16px */
@@ -57,14 +59,6 @@
   color: var(--cape-cod);
   font-family: var(--font-family-gilroy-extrabold);
   font-size: var(--keyboard-button-font-size);
-  font-style: normal;
-  font-weight: 800;
-}
-
-.gilroy-extra-extra-bold-cherry-pie-23-7px {
-  color: var(--cherry-pie);
-  font-family: var(--font-family-gilroy-extrabold);
-  font-size: var(--font-size-xl);
   font-style: normal;
   font-weight: 800;
 }
