@@ -789,7 +789,7 @@ transform: scale(1);
   /* height: 23px; */
   left: -5px;
   letter-spacing: 0;
-  line-height: normal;
+  line-height: 1rem;
   /* position: absolute; */
   text-align: center;
   /* top: 7px; */
