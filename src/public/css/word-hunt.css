@@ -624,7 +624,8 @@ transform: scale(1);
 }
 
 .word-hunt .player-you {
-  background-image: url(../img/player_1.png);
+  background-image: url(../img/user-fill.svg);
+  background-color: var(--sunglow);
   border: 3px solid #ffd232;
   border-radius: 20px;
   background-position: 50% 50%;
@@ -632,7 +633,7 @@ transform: scale(1);
 }
 
 .word-hunt .player-3 {
-  background-image: url(../img/player_4.png);
+  background-image: url(../img/new_player_1.png);
   border: 3px solid #329dff;
   border-radius: 20px;
   background-position: 50% 50%;
@@ -640,7 +641,7 @@ transform: scale(1);
 }
 
 .word-hunt .player-1 {
-  background-image: url(../img/player_2.png);
+  background-image: url(../img/new_player_2.png);
   border: 3px solid #32ff84;
   border-radius: 20px;
   background-position: 50% 50%;
@@ -648,7 +649,7 @@ transform: scale(1);
 }
 
 .word-hunt .player-2 {
-  background-image: url(../img/player_3.png);
+  background-image: url(../img/new_player_3.png);
   border: 3px solid #ff3364;
   border-radius: 20px;
   background-size: 100% 100%;

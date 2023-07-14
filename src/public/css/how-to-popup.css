@@ -223,6 +223,7 @@
 .new-how-to-view .secure-your-spot-and {
   height: 28px;
   left: 54px;
+  font-size: var(--font-size-m);
   letter-spacing: 0.60px;
   line-height: 14.5px;
   position: absolute;

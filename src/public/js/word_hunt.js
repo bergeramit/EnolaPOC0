@@ -157,7 +157,10 @@ class Player {
         scoreElement.textContent = this.score
 
         groupScore += value
-        groupScoreElement.textContent = groupScore
+
+        if (this.id === "player-you") {
+            groupScoreElement.textContent = this.score
+        }
 
         setScaleAnimation(scoreElement)
     }
@@ -167,7 +170,7 @@ class Player {
 
 let finishedLevels = []
 let pipPlayer = new Player("PIP", "PIP", "url('img/pip_icon.png')", "#1abc9c", "black")
-let youPlayer = new Player("you", "player-you", "url('img/player_1.png')", "#ffd232", "black")
+let youPlayer = new Player("you", "player-you", "url('img/user-fill.svg')", "#ffd232", "black")
 let timeLeft
 let CurrentLevel
 let chatInput
@@ -936,9 +939,9 @@ document.addEventListener('keyup', (e) => {
 const playersList = [
     youPlayer,
     pipPlayer,
-    new Player("user12431", "player-1", "url('img/player_2.png')", "#32ff84", "white"),
-    new Player("smartFox69", "player-2", "url('img/player_3.png')", "#ff3364", "white"),
-    new Player("WordyJack3", "player-3", "url('img/player_4.png')", "#329dff", "white"),
+    new Player("user12431", "player-1", "url('img/new_player_2.png')", "#32ff84", "white"),
+    new Player("smartFox69", "player-2", "url('img/new_player_3.png')", "#ff3364", "white"),
+    new Player("WordyJack3", "player-3", "url('img/new_player_1.png')", "#329dff", "white"),
 ]
 
 function runBotGuesser() {
