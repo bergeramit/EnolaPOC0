@@ -867,7 +867,7 @@ transform: scale(1);
 
 .word-hunt .keyboard-1 {
   flex-direction: column;
-  gap: 9px;
+  gap: 0.3rem;
   min-height: 7rem;
   /* width: 386px; */
 }
@@ -896,11 +896,11 @@ button, [type=button], [type=reset], [type=submit] {
   background-color: var(--zircon);
   border-radius: 11px;
   box-shadow: 0px 6px 4px #00000026 , 0px 1px 0px #a1d3cc , inset 0px -2px 0px #a2d3cc;
-  height: 2.5rem;
+  /* height: 2.5rem; */
   min-width: var(--keyboard-button-size);
   position: relative;
   display: flex;
-  padding: 0.1rem;
+  padding: 0;
   align-items: center;
   justify-content: center;
   -webkit-user-select: none;
@@ -930,8 +930,8 @@ button, [type=button], [type=reset], [type=submit] {
 }
 
 .word-hunt .q-button-letter {
-  min-width: 2rem;
-  min-height: 2rem;
+  min-width: 2.2rem;
+  min-height: 2.5rem;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -1061,18 +1061,6 @@ button, [type=button], [type=reset], [type=submit] {
   width: 1.5em;
 }
 
-.word-hunt .words-tiles {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-  min-height: 19rem;
-  max-height: 19rem;
-  min-width: var(--rem-width-screen);
-  justify-content: flex-start;
-  /* width: fit-content; */
-}
-
 .word-hunt .word {
   align-items: center;
   display: flex;
@@ -1130,11 +1118,29 @@ button, [type=button], [type=reset], [type=submit] {
   border-radius: 10.78px;
   box-shadow: inset 0px 0px 0px 4px #ffffff33;
   display: flex;
-  min-height: 2rem;
-  min-width: 2rem;
+  /* min-height: 2rem;
+  min-width: 2rem; */
 }
 
-@media only screen and (max-height: 700px) {
+@media only screen and (max-height: 800px) {
+
+  .word-hunt .words-tiles {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-height: 15rem;
+    max-height: 15rem;
+    min-width: var(--rem-width-screen);
+    justify-content: flex-start;
+    /* width: fit-content; */
+  }
+
+  #chat-area {
+    max-height: 6rem;
+    min-height: 6rem;
+  }
+
   .word-hunt .tail-1 {
     align-items: flex-start;
     background-color: var(--black);
@@ -1152,10 +1158,10 @@ button, [type=button], [type=reset], [type=submit] {
     background-image: url(../img/intersect.svg);
     background-size: 100% 100%;
     display: flex;
-    height: 1.6rem;
+    height: var(--empty-tiles-size-width-smaller);
     margin-left: -3px;
     margin-top: -3.0px;
-    min-width: 1.6rem;
+    min-width: var(--empty-tiles-size-height-smaller);
     padding: 0.0px 0.0px;
   }
 
@@ -1185,7 +1191,25 @@ button, [type=button], [type=reset], [type=submit] {
   }
 }
 
-@media only screen and (min-height: 700px) {
+@media only screen and (min-height: 800px) {
+
+  .word-hunt .words-tiles {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-height: 19rem;
+    max-height: 19rem;
+    min-width: var(--rem-width-screen);
+    justify-content: flex-start;
+    /* width: fit-content; */
+  }
+
+  #chat-area {
+    max-height: 10rem;
+    min-height: 10rem;
+  }
+
   .word-hunt .tail-1 {
     align-items: flex-start;
     background-color: var(--black);
@@ -1194,8 +1218,8 @@ button, [type=button], [type=reset], [type=submit] {
     border-radius: 10.78px;
     box-shadow: inset 0px 0px 0px 4px #ffffff33;
     display: flex;
-    min-height: 2rem;
-    min-width: 2rem;
+    /* min-height: 2rem;
+    min-width: 2rem; */
   }
 
   .word-hunt .highlights {
@@ -1203,10 +1227,10 @@ button, [type=button], [type=reset], [type=submit] {
     background-image: url(../img/intersect.svg);
     background-size: 100% 100%;
     display: flex;
-    height: 1.8rem;
+    height: var(--empty-tiles-size-width);
     margin-left: -3px;
     margin-top: -3.0px;
-    min-width: 1.8rem;
+    min-width: var(--empty-tiles-size-height);
     padding: 0.0px 0.0px;
   }
 
@@ -1214,14 +1238,14 @@ button, [type=button], [type=reset], [type=submit] {
     background-color: var(--sunglow);
     border: 2.77px solid;
     border-color: var(--cherry-pie);
-    border-radius: 10.74px;
+    border-radius: 0.6rem;
     box-shadow: inset 0px 0.92px 0px 1.27px #ffffffb2 , inset 0px -5.55px 0.37px 1.85px #0000000d;
     height: 2rem;
     width: 2.1rem;
   }
 
   .word-hunt .overlap-group-3 {
-    border-radius: 10.74px;
+    border-radius: 0.6rem;
     height: 2rem;
     position: relative;
     width: 2rem;
@@ -1287,8 +1311,8 @@ button, [type=button], [type=reset], [type=submit] {
   -webkit-mask-image: -webkit-gradient(linear, left 40%, left top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none; /* for Firefox */
-  max-height: 8rem;
-  min-height: 8rem;
+  /* max-height: 8rem;
+  min-height: 8rem; */
   max-width: 22rem;
   top: 469px;
 }
@@ -1483,7 +1507,7 @@ button, [type=button], [type=reset], [type=submit] {
 }
 
 .score-friends-view {
-  min-width: 4rem;
+  /* min-width: 4rem; */
   align-items: center;
   gap: 0.4rem;
   display: flex;

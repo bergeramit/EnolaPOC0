@@ -582,21 +582,21 @@ document.addEventListener("DOMContentLoaded", function(e) {
     chatInput = document.getElementById("chat-input")
     groupScoreElement = document.getElementById("group-score-side-view")
 
-    if (window.innerHeight > 700) {
-        console.log('Opened from Home Screen');
-        tiles.style.minHeight = FULL_TILES_SIZE
-        tiles.style.maxHeight = FULL_TILES_SIZE
-        chat.style.minHeight = FULL_CHAT_SIZE
-        chat.style.maxHeight = FULL_CHAT_SIZE
-        // Perform actions specific to opening from Home Screen
-    } else {
-        console.log('Opened from browser');
-        tiles.style.minHeight = BROWSER_TILES_SIZE
-        tiles.style.maxHeight = BROWSER_TILES_SIZE
-        chat.style.minHeight = BROWSER_CHAT_SIZE
-        chat.style.maxHeight = BROWSER_CHAT_SIZE
-        // Perform actions specific to opening from the browser
-    }
+    // if (window.innerHeight > 700) {
+    //     console.log('Opened from Home Screen');
+    //     tiles.style.minHeight = FULL_TILES_SIZE
+    //     tiles.style.maxHeight = FULL_TILES_SIZE
+    //     chat.style.minHeight = FULL_CHAT_SIZE
+    //     chat.style.maxHeight = FULL_CHAT_SIZE
+    //     // Perform actions specific to opening from Home Screen
+    // } else {
+    //     console.log('Opened from browser');
+    //     tiles.style.minHeight = BROWSER_TILES_SIZE
+    //     tiles.style.maxHeight = BROWSER_TILES_SIZE
+    //     chat.style.minHeight = BROWSER_CHAT_SIZE
+    //     chat.style.maxHeight = BROWSER_CHAT_SIZE
+    //     // Perform actions specific to opening from the browser
+    // }
 
     window.LogRocket && window.LogRocket.init('9o6vsp/enolapoc0');
     deviceId = localStorage.getItem("deviceId");
