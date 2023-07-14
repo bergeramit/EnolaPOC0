@@ -32,6 +32,7 @@
   --keyboard-button-height-size: 2.5rem;
   --keyboard-button-font-size: 1.5rem;
   --chat-message-font-size: 1rem;
+  --tooltip-margin-top: 1rem;
  
   --font-size-l: 1.275rem;    /* 20.4px / 16px */
   --font-size-m: 1.125rem;    /* 18px / 16px */

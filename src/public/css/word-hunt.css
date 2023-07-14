@@ -1460,13 +1460,14 @@ button, [type=button], [type=reset], [type=submit] {
   display: flex;
   text-align: center;
   flex-direction: column;
-  margin-top: 2.5rem;
+  margin-top: var(--tooltip-margin-top);
   /* justify-content: center; */
 }
 
 .middle-top-half {
   max-width: 16.5rem;
   min-width: 16.5rem;
+  margin-top: var(--tooltip-margin-top);
   gap: 0.4rem;
   text-align: center;
   justify-content: center;
@@ -1488,7 +1489,7 @@ button, [type=button], [type=reset], [type=submit] {
   display: flex;
   text-align: center;
   flex-direction: column;
-  margin-top: 2.5rem;
+  margin-top: var(--tooltip-margin-top);
 }
 
 .score-progress {
