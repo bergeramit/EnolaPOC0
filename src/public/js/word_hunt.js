@@ -8,7 +8,7 @@ const difficulty = 'Easy'
 const ENTER_KEY_NAME = "Enter"
 const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
-const botGuessInterval = [5000, 6000, 7000, 8000, 9000]
+const botGuessInterval = [7000, 8000, 9000, 10000]
 const botAngryMsgs = [
     "I had enough",
     "jesus these levels man...",

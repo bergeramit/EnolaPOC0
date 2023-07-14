@@ -1078,19 +1078,6 @@ button, [type=button], [type=reset], [type=submit] {
   justify-content: center;
 }
 
-.word-hunt .tile-bg {
-  align-items: flex-start;
-  background-color: var(--cherry-pie);
-  border-radius: 10.74px;
-  box-shadow: 0px 3.33px 0px #00000026;
-  display: flex;
-  height: 2.2rem;
-  left: 0;
-  /* min-width: 2rem; */
-  position: absolute;
-  top: 0;
-}
-
 .word-hunt .letter-1 {
   /* height: 35px;
   left: 0; */
@@ -1115,6 +1102,19 @@ button, [type=button], [type=reset], [type=submit] {
 }
 
 @media only screen and (max-height: 750px) {
+
+  .word-hunt .tile-bg {
+    align-items: flex-start;
+    background-color: var(--cherry-pie);
+    border-radius: 10.74px;
+    box-shadow: 0px 3.33px 0px #00000026;
+    display: flex;
+    height: 1.85rem;
+    left: 0;
+    /* min-width: 2rem; */
+    position: absolute;
+    top: 0;
+  }
 
   .word-hunt .word {
     align-items: center;
@@ -1201,6 +1201,19 @@ button, [type=button], [type=reset], [type=submit] {
 }
 
 @media only screen and (min-height: 750px) {
+
+  .word-hunt .tile-bg {
+    align-items: flex-start;
+    background-color: var(--cherry-pie);
+    border-radius: 10.74px;
+    box-shadow: 0px 3.33px 0px #00000026;
+    display: flex;
+    height: 2.2rem;
+    left: 0;
+    /* min-width: 2rem; */
+    position: absolute;
+    top: 0;
+  }
 
   .word-hunt .word {
     align-items: center;
