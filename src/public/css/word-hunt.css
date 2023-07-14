@@ -1416,6 +1416,7 @@ button, [type=button], [type=reset], [type=submit] {
   max-width: 1.5rem;
   max-height: 1.5rem;
   margin: 5px;
+  background-color: var(--sunglow);
   background-image: url(../img/player_2.png);
   background-size: 100% 100%;
   border: 2px solid red;
@@ -1754,23 +1755,23 @@ transform: scale(1);
 }
 
 .player-score-number-1 {
-  /* -webkit-text-stroke: 1px #32ff84; */
-  -webkit-text-stroke: 1px #00001c;
+  -webkit-text-stroke: 1px #32ff84;
+  /* -webkit-text-stroke: 1px #00001c; */
 }
 
 .player-score-number-2 {
-  /* -webkit-text-stroke: 1px #ff3364; */
-  -webkit-text-stroke: 1px #00001c;
+  -webkit-text-stroke: 1px #ff3364;
+  /* -webkit-text-stroke: 1px #00001c; */
 }
 
 .player-score-number-3 {
-  /* -webkit-text-stroke: 1px #329dff; */
-  -webkit-text-stroke: 1px #00001c;
+  -webkit-text-stroke: 1px #329dff;
+  /* -webkit-text-stroke: 1px #00001c; */
 }
 
 .player-score-number-you {
-  /* -webkit-text-stroke: 1px #ffd232; */
-  -webkit-text-stroke: 1px #00001c;
+  -webkit-text-stroke: 1px #ffd232;
+  /* -webkit-text-stroke: 1px #00001c; */
 }
 
 .player-1 {

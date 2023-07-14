@@ -91,7 +91,7 @@
 }
 
 .gilroy-extra-extra-bold-white-14px {
-  color: var(--white);
+  color: black;
   font-family: var(--font-family-gilroy-extrabold);
   font-size: var(--font-size-m);
   font-style: normal;
@@ -102,14 +102,6 @@
   background-color: #0000001c;
   font-family: var(--font-family-gilroy-extrabold);
   font-size: var(--font-size-xxs);
-  font-style: normal;
-  font-weight: 800;
-}
-
-.gilroy-extra-extra-bold-white-14px {
-  color: var(--white);
-  font-family: var(--font-family-gilroy-extrabold);
-  font-size: var(--font-size-m);
   font-style: normal;
   font-weight: 800;
 }

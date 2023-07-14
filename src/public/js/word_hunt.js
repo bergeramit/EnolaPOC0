@@ -766,7 +766,14 @@ document.onclick = function (e) {
 
 document.getElementById("register-how-to-submit").addEventListener("click", (e) => {
     let input = document.getElementById("email-input-from-how-to")
-    submitRegisterForm(input.value, () => {})
+    submitRegisterForm(input.value, () => {
+        input.style.display = "none"
+        let view2 = document.getElementById("register-how-to-submit")
+        view2.style.display = "none"
+        let messageElement = document.getElementById("register-prompt-in-how-to-id")
+        messageElement.textContent = "THANK YOU FOR REGISTERING!"
+        registeredAlready = true
+    })
 })
 
 const buttons = document.querySelectorAll('.keyboard-button')
