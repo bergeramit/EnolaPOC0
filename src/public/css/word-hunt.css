@@ -1169,6 +1169,7 @@ button, [type=button], [type=reset], [type=submit] {
     display: flex;
     height: var(--empty-tiles-size-width-smaller);
     margin-left: -2px;
+    height: 1.5rem;
     margin-top: -2.0px;
     min-width: var(--empty-tiles-size-height-smaller);
     padding: 0.0px 0.0px;
