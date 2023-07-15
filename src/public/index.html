@@ -2500,6 +2500,20 @@
       navigator.serviceWorker.register('js/service-worker.js');
     }
     
+    var beforeInstallPrompt = null;
+  window.addEventListener("beforeinstallprompt", eventHandler, errorHandler);
+
+  function eventHandler(event){
+      beforeInstallPrompt = event;        
+  }
+  function errorHandler(e){
+      console.log('error: ' + e);
+  }
+
+  function installToHome() {
+    if (beforeInstallPrompt) beforeInstallPrompt.prompt();
+}
+
     function ShowOnScroll() {
       this.toShow = [];
       this.nextEventY = undefined;

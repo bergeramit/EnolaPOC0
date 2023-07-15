@@ -852,19 +852,22 @@ document.getElementById("be-the-first-to-play").addEventListener("click", (e) =>
 document.getElementById("add-to-home-id").addEventListener("click", (e) => {
     /* When "be-the-first" Pressed */
     window.LogRocket.track('clickBeTheFirst', {});
-    const firstToPlay = document.getElementById("first-to-play-message")
-    // firstToPlay.focus()
-    firstToPlay.style.top = "13rem"
-    if (registeredAlready) {
-        setFadeAnimation(firstToPlay, "3s", 3000)
-        return
-    }
+
+    installToHome();
+
+    // const firstToPlay = document.getElementById("first-to-play-message")
+    // // firstToPlay.focus()
+    // firstToPlay.style.top = "13rem"
+    // if (registeredAlready) {
+    //     setFadeAnimation(firstToPlay, "3s", 3000)
+    //     return
+    // }
     
-    if (firstToPlay.style.display === "flex") {
-        firstToPlay.style.display = "none"
-    } else {
-        firstToPlay.style.display = "flex"
-    }
+    // if (firstToPlay.style.display === "flex") {
+    //     firstToPlay.style.display = "none"
+    // } else {
+    //     firstToPlay.style.display = "flex"
+    // }
 })
 
 document.getElementById("invite-friends-id").addEventListener("click", (e) => {
