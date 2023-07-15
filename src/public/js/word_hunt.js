@@ -759,12 +759,11 @@ document.onclick = function (e) {
         howToPopup.style.display = "none"
     }
     if (!firstPlayPopup.contains(e.target)
-        && !(firstPlayTriggerPopup.contains(e.target))
-        && !(addToHomeTriggerPopup.contains(e.target))) {
+        && !(firstPlayTriggerPopup.contains(e.target))) {
         firstPlayPopup.style.display = "none"
-        
     }
-    if (!firstPlayPopup2.contains(e.target)) {
+    if (!firstPlayPopup2.contains(e.target)
+        && !(addToHomeTriggerPopup.contains(e.target))) {
         firstPlayPopup2.style.display = "none" 
     }
 }
