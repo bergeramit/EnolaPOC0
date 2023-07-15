@@ -1128,8 +1128,8 @@ button, [type=button], [type=reset], [type=submit] {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
-    min-height: 13rem;
-    max-height: 13rem;
+    min-height: 14rem;
+    max-height: 14rem;
     min-width: var(--rem-width-screen);
     justify-content: flex-start;
     /* width: fit-content; */
