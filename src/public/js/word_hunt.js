@@ -788,7 +788,7 @@ buttons.forEach((button) => {
         }
         const pressedKey = e.target.textContent[0].toLowerCase()
         addKeyToInput(pressedKey, true)
-    })
+    }, {passive: true})
 })
 
 document.getElementById("yay-message").addEventListener("click", (e) => {
@@ -812,14 +812,14 @@ document.getElementById("enterButton").addEventListener("touchstart", (e) => {
     window.LogRocket.track('clickEnter', {});
     handleSubmitChatMessage(chatInput.value)
     chatInput.value = ""
-})
+}, {passive: true})
 
 document.getElementById("how-to-button-id").addEventListener("touchstart", (e) => {
     /* When "how-to" Pressed */
     window.LogRocket.track('clickQuestionMark', {});
     const howToPopup = document.getElementById("how-to-popup")
     howToPopup.style.display = "flex"
-})
+}, {passive: true})
 
 document.getElementById("x-how-to-popup-button").addEventListener("click", (e) => {
     /* When "x" Pressed in popup window */
@@ -908,19 +908,19 @@ document.getElementById("reshuffle-letters").addEventListener("touchstart", (e) 
     /* When yay Pressed */
     window.LogRocket.track('reshuffle-pressed', {});
     setAvailableLetters()
-})
+}, {passive: true})
 
 document.getElementById("delButton").addEventListener("touchstart", (e) => {
     /* When Enterkey Pressed */
     // const chatInput = document.getElementById("chat-input")
     chatInput.value = chatInput.value.substring(0, chatInput.value.length - 1)
-})
+}, {passive: true})
 
 document.getElementById("spaceButton").addEventListener("touchstart", (e) => {
     /* When Spacekey Pressed */
     // const chatInput = document.getElementById("chat-input")
     chatInput.value += " "
-})
+}, {passive: true})
 
 document.addEventListener('keyup', (e) => {
     const pressedKey = String(e.key)

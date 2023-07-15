@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<title>WordHunt</title>
 <head>
   <meta charset="utf-8"/>
   <meta name=apple-mobile-web-app-capable content=yes>  <!-- <meta name="mobile-web-app-capable" content="yes"> -->
@@ -10,10 +11,2015 @@
   <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
   <!-- <meta name="og:type" content="website" /> -->
   <meta name="apple-touch-fullscreen" content="yes">
-  <meta name="twitter:card" content="photo" />
-  <link rel="stylesheet" type="text/css" href="css/word-hunt.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="css/word-hunt.css" /> -->
+  <style>
+    /* screen - word-hunt */
+    
+    html, body {
+      overflow-x: hidden;
+      overflow-y: hidden;
+      height: 100dvh;
+    }
+    
+    .word-hunt {
+      align-items: flex-start;
+      /* background-color: var(--white); */
+      border: 1px none;
+      display: flex;
+      /* gap: 1476px;
+      height: 883px;
+      overflow: hidden;
+      width: 1728px; */
+    }
+    
+    .word-hunt .rectangle-7596 {
+      height: 216px;
+      margin-left: -1853px;
+      margin-top: -8736px;
+      width: 377px;
+    }
+    
+    .word-hunt .overlap-group5 {
+      /* height: 947px;
+      width: 1728px; */
+      position: relative;
+    }
+    
+    .word-hunt .bg {
+      /* height: 883px;
+      width: 1728px; */
+      left: 0;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+    }
+    
+    .word-hunt .bottom-shading {
+      align-items: flex-end;
+      background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.51) 45.35%, rgba(0, 0, 0, 0.48) 54.17%, rgba(0, 0, 0, 0.3) 76.04%, rgba(0, 0, 0, 0) 100%);
+      display: flex;
+      /* gap: 410px; */
+      height: 20rem;
+      /* left: 2.7rem; */
+      min-width: 22rem;
+      position: absolute;
+      top: 15rem;
+    }
+    
+    .word-hunt .line-44 {
+      height: 521px;
+      width: 2px;
+    }
+    
+    .word-hunt .desktop {
+      align-items: flex-start;
+      display: flex;
+      gap: 805px;
+      height: 911px;
+      left: 18px;
+      min-width: 1683px;
+      position: absolute;
+      top: 36px;
+    }
+    
+    .word-hunt .flex-col {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      gap: 548px;
+      margin-top: 4px;
+      min-height: 843px;
+      width: 457px;
+    }
+    
+    .word-hunt .logo {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      min-height: 248px;
+      width: 297px;
+    }
+    
+    .word-hunt .logo-1 {
+      height: 186px;
+      margin-right: 2.0px;
+      object-fit: cover;
+      width: 207px;
+    }
+    
+    .word-hunt .guess-words-open-do {
+      /* -webkit-text-stroke: 2px var(--black-2); */
+      color: var(--pixie-powder);
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: var(--font-size-m);
+      font-weight: 800;
+      height: 51px;
+      letter-spacing: 0.60px;
+      line-height: 17.4px;
+      margin-right: 6.0px;
+      text-align: center;
+      width: 295px;
+    }
+    
+    .word-hunt .chat-1 {
+      align-items: flex-start;
+      align-self: flex-end;
+      cursor: pointer;
+      display: flex;
+      gap: 12px;
+      min-width: 446px;
+      transition: all 0.2s ease;
+    }
+    
+    .word-hunt .chat-1:hover {
+      transform: translate(5px, 0);
+    }
+    
+    .word-hunt .overlap-group1 {
+      align-items: center;
+      background-color: var(--white);
+      border-radius: 23px 23px 0px 0px;
+      display: flex;
+      height: 47px;
+      min-width: 266px;
+      padding: 4.8px 6.0px;
+    }
+    
+    .word-hunt .overlap-group-4 {
+      align-self: flex-end;
+      height: 37px;
+      position: relative;
+      width: 39px;
+    }
+    
+    .word-hunt .freind {
+      height: 36px;
+      left: 0;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      width: 36px;
+    }
+    
+    .word-hunt .online-indication {
+      background-color: var(--mantis);
+      border: 3px solid;
+      border-color: var(--white);
+      border-radius: 6.67px;
+      height: 13px;
+      left: 26px;
+      position: absolute;
+      top: 24px;
+      width: 13px;
+    }
+    
+    .word-hunt .name {
+      height: 13px;
+      letter-spacing: 0.34px;
+      line-height: 13.1px;
+      margin-left: 9px;
+      min-width: 101px;
+      white-space: nowrap;
+    }
+    
+    .word-hunt .close_round {
+      height: 18px;
+      margin-bottom: 1.0px;
+      margin-left: 77px;
+      width: 18px;
+    }
+    
+    .word-hunt .other {
+      align-items: flex-start;
+      display: flex;
+      gap: 12px;
+      min-width: 168px;
+    }
+    
+    .word-hunt .chat {
+      align-items: flex-end;
+      background-color: var(--white);
+      display: flex;
+      height: 47px;
+      justify-content: flex-end;
+      min-width: 48px;
+      padding: 4.8px 3.0px;
+    }
+    
+    .word-hunt .overlap-group {
+      height: 37px;
+      position: relative;
+      width: 39px;
+    }
+    
+    .word-hunt .pic {
+      height: 36px;
+      left: 0;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      width: 35px;
+    }
+    
+    .word-hunt .flex-col-1 {
+      align-items: flex-end;
+      display: flex;
+      flex-direction: column;
+      gap: 70px;
+      min-height: 911px;
+      width: 421px;
+    }
+    
+    .word-hunt .nav-1 {
+      align-items: flex-end;
+      display: flex;
+      flex-direction: column;
+      gap: 23px;
+      margin-right: 2.0px;
+      position: relative;
+      width: fit-content;
+    }
+    
+    .word-hunt .nav-how-to-button {
+      cursor: pointer;
+      height: 65px;
+      margin-right: -2.00px;
+      min-width: 67px;
+      position: relative;
+    }
+    
+    .word-hunt .overlap-group-5 {
+      align-items: flex-start;
+      background-color: var(--white);
+      border-radius: 62px;
+      box-shadow: 0px 8px 0px -3px #00000012;
+      display: flex;
+      height: 65px;
+      min-width: 65px;
+      padding: 13.7px 13.3px;
+    }
+    
+    .word-hunt .how-to-play {
+      -webkit-text-stroke: 1.76px var(--pixie-powder);
+      letter-spacing: 0;
+      line-height: 12.0px;
+      min-height: 36px;
+      min-width: 34px;
+      opacity: 0;
+      text-align: center;
+      text-shadow: 1.17px 1.17px 0px #0000001a;
+      transform: scale(1.1);
+    }
+    
+    .word-hunt .how-to-play.animate-enter {
+      animation: animate-enter-frames 0.20s ease-in-out 0.00s 1 normal forwards;
+      opacity: 0;
+      transform: scale(1.1);
+    }
+    
+    @keyframes animate-enter-frames {
+      from{opacity: 0;
+        transform: scale(1.1);
+      }
+      to{opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .word-hunt .nav-friends-button {
+      background-color: var(--white);
+      border-radius: 62px;
+      box-shadow: 0px 8px 0px -3px #00000012;
+      height: 65px;
+      min-width: 65px;
+      position: relative;
+    }
+    
+    .word-hunt .overlap-group1-1 {
+      height: 63px;
+      left: 2px;
+      position: relative;
+      width: 58px;
+    }
+    
+    .word-hunt .online-indication-1 {
+      background-color: #81df78;
+      border: 3px solid;
+      border-color: var(--white);
+      border-radius: 8px;
+      height: 16px;
+      left: 0;
+      position: absolute;
+      top: 46px;
+      width: 16px;
+    }
+    
+    .word-hunt .nav {
+      height: 65px;
+      margin-right: -2.00px;
+      min-width: 67px;
+      position: relative;
+    }
+    
+    .word-hunt .overlap-group2 {
+      align-items: flex-start;
+      /* background-image: url(img/bg-1@2x.png);
+      background-size: 100% 100%; */
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 70px;
+      padding: 5.0px 3.7px;
+      width: 65px;
+    }
+    
+    .word-hunt .room-name {
+      color: var(--white);
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: var(--font-size-xs);
+      font-weight: 800;
+      height: 19px;
+      letter-spacing: 0.34px;
+      line-height: 12.2px;
+      margin-left: 0.05px;
+      margin-top: 14px;
+      text-align: center;
+      text-shadow: 0px 0px 5px #00000059;
+      width: 57px;
+    }
+    
+    .word-hunt .overlap-group-6 {
+      align-items: flex-start;
+      background-image: url(img/subtract.svg);
+      background-size: 100% 100%;
+      display: flex;
+      flex-direction: column;
+      margin-left: 0.11px;
+      min-height: 17px;
+      padding: 0.8px 10.1px;
+      width: 58px;
+    }
+    
+    .word-hunt .ellipse-1900 {
+      align-self: flex-end;
+      background-color: #fa5043;
+      border-radius: 1.13px;
+      height: 2px;
+      margin-right: 2.29px;
+      width: 2px;
+    }
+    
+    .word-hunt .live {
+      color: #fa5043;
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: 11px;
+      font-weight: 800;
+      height: 9px;
+      letter-spacing: 0.34px;
+      line-height: 10.3px;
+      text-align: center;
+      white-space: nowrap;
+      width: 37px;
+    }
+    
+    .word-hunt .overlap-group3 {
+      align-items: center;
+      /* background-color: #ffcb46;
+      border: 3px solid; */
+      border-color: var(--white);
+      border-radius: 62px;
+      box-shadow: 0px 8px 0px -3px #00000012;
+      display: flex;
+      height: 65px;
+      min-width: 65px;
+      padding: 15.2px 6.3px;
+      background-color: var(--white);
+      border: 5px solid;
+      border-color: var(--haiti);
+      border-radius: 63px;
+    }
+    
+    .word-hunt .overlap-group9 {
+      align-items: flex-start;
+      /* background-color: #ffcb46;
+      border: 3px solid; */
+      border-color: var(--white);
+      border-radius: 62px;
+      box-shadow: 0px 8px 0px -3px #00000012;
+      display: flex;
+      height: 65px;
+      min-width: 65px;
+      padding: 15.2px 6.3px;
+    }
+    
+    .word-hunt .solo-game {
+      -webkit-text-stroke: 1.76px #9a3507;
+      letter-spacing: 0;
+      line-height: 12.0px;
+      min-height: 26px;
+      text-align: center;
+      text-shadow: 1.17px 1.17px 0px #0000001a;
+      transform: rotate(-5.00deg);
+      width: 43px;
+    }
+    
+    .word-hunt .register {
+      align-items: flex-start;
+      display: flex;
+      height: 512px;
+      justify-content: flex-end;
+      min-width: 421px;
+      padding: 0.0px 0;
+      transition: all 0.5s ease;
+    }
+    
+    .word-hunt .register:hover {
+      transform: scale(1.05);
+    }
+    
+    .word-hunt .overlap-group2-1 {
+      height: 448px;
+      position: relative;
+      width: 421px;
+    }
+    
+    .word-hunt .overlap-group1-2 {
+      height: 423px;
+      left: 120px;
+      position: absolute;
+      top: 0;
+      width: 301px;
+    }
+    
+    .word-hunt .tooltip {
+      align-items: flex-end;
+      display: flex;
+      left: 0;
+      padding: 3px;
+      position: absolute;
+      top: 122px;
+      width: fit-content;
+      min-width: 300px;
+    }
+    
+    .word-hunt .vector-564 {
+      height: 16px;
+      min-width: 21.05px;
+      position: relative;
+    }
+    
+    .word-hunt .frame-238064 {
+      box-shadow: 0px 4px 4px #00000040 , 0px 2px 0px #00000040;
+      align-items: center;
+      background: linear-gradient(180deg, rgb(254, 254, 255) 0%, rgb(241, 240, 255) 100%);
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      height: 295px;
+      margin-left: -14px;
+      overflow: hidden;
+      padding: 17px;
+      position: relative;
+      width: fit-content;
+      min-width: 300px;
+    }
+    
+    .word-hunt .group-238075 {
+      cursor: pointer;
+      height: 40.7px;
+      margin-right: -2.00px;
+      min-width: 251px;
+      position: absolute;
+      bottom: 10px;
+    }
+    
+    .word-hunt .overlap-group-7 {
+      background-color: #9c50ff;
+      border: 3.99px solid;
+      border-color: #530a95;
+      border-radius: 30.65px;
+      box-shadow: inset -1.6px 2.39px 0px 3.19px #ffffff59;
+      height: 41px;
+      position: relative;
+      width: 249px;
+    }
+    
+    .word-hunt .place {
+      color: var(--white);
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: 12.8px;
+      font-weight: 800;
+      height: 11px;
+      left: 69px;
+      letter-spacing: 0.27px;
+      line-height: 11.9px;
+      position: absolute;
+      text-align: center;
+      top: 11px;
+      white-space: nowrap;
+      width: 104px;
+    }
+    
+    .word-hunt .frame-238071 {
+      background-color: #ede7f5;
+      border: 2px solid;
+      border-color: #c6b8d8;
+      border-radius: 35px;
+      height: 34px;
+      min-width: 249px;
+      position: absolute;
+      padding: 10px;
+      bottom: 60px;
+    }
+    
+    .word-hunt .how-it-works {
+      color: #371891bf;
+      font-family: var(--font-family-poppins);
+      font-size: var(--font-size-xs);
+      font-weight: 400;
+      height: 39px;
+      left: 13px;
+      letter-spacing: 0;
+      line-height: 24.6px;
+      position: absolute;
+      top: -5px;
+      width: 236px;
+    }
+    
+    .word-hunt .play-anywhere-meet {
+      color: transparent;
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: var(--font-size-s);
+      font-weight: 800;
+      letter-spacing: 0.60px;
+      line-height: 13.5px;
+      margin-left: -2.00px;
+      position: absolute;
+      text-align: center;
+      width: 245px;
+      bottom: 120px
+    }
+    
+    .word-hunt .span0 {
+      color: #4ca881;
+    }
+    
+    .word-hunt .game-launch-soon {
+      -webkit-text-stroke: 3.27px var(--haiti);
+      color: var(--white);
+      cursor: pointer;
+      font-family: var(--font-family-poppins);
+      font-size: 31.5px;
+      font-weight: 900;
+      left: 28px;
+      letter-spacing: 0;
+      line-height: 27.1px;
+      position: absolute;
+      text-shadow: 2.74px 2.74px 0px #0000001a;
+      top: 101px;
+      transform: rotate(-5.00deg);
+      transition: all 0.2s ease;
+    }
+    
+    .word-hunt .game-launch-soon:hover {
+      transform: scale(1.1);
+    }
+    
+    .word-hunt .image-229 {
+      height: 203px;
+      left: 136px;
+      position: absolute;
+      top: 0;
+      width: 162px;
+    }
+    
+    .word-hunt .pip-character {
+      height: 178px;
+      /* left: 0; */
+      object-fit: cover;
+      position: absolute;
+      top: 270px;
+      width: 130px;
+    }
+    
+    .word-hunt .in-game-top-ui {
+      align-items: center;
+      background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgb(234, 253, 250) 100%);
+      border-radius: 20px;
+      box-shadow: 0px 3px 0px #0000000d;
+      display: flex;
+      gap: 1rem;
+      /* height: 2rem; */
+      min-height: 30px;
+      justify-content: center;
+      left: 680px;
+      padding: 3px 6px;
+      max-width: 15rem;
+      margin-top: 0.4rem;
+      margin-left: auto;
+      margin-right: auto;
+      /* margin-bottom: auto;
+      margin-right: auto;
+      margin-left: auto; */
+      /* position: absolute; */
+      top: 60px;
+      /* width: fit-content; */
+    }
+    
+    .word-hunt .players {
+      align-items: center;
+      display: flex;
+      gap: 0.2rem;
+      height: 28px;
+      position: relative;
+      width: fit-content;
+      /* padding-left: 0.8rem; */
+    }
+    
+    .word-hunt .player-you {
+      background-image: url(img/user-fill.svg);
+      background-color: var(--sunglow);
+      border: 3px solid white;
+      border-radius: 20px;
+      background-position: 50% 50%;
+      background-size: cover;
+    }
+    
+    .word-hunt .player-3 {
+      background-image: url(img/new_player_1.png);
+      border: 3px solid white;
+      border-radius: 20px;
+      background-position: 50% 50%;
+      background-size: cover;
+    }
+    
+    .word-hunt .player-1 {
+      background-image: url(img/new_player_2.png);
+      border: 3px solid white;
+      border-radius: 20px;
+      background-position: 50% 50%;
+      background-size: cover;
+    }
+    
+    .word-hunt .player-2 {
+      background-image: url(img/new_player_3.png);
+      border: 3px solid white;
+      border-radius: 20px;
+      background-size: 100% 100%;
+    }
+    
+    .word-hunt .letters {
+      align-items: center;
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+      position: relative;
+      width: fit-content;
+      padding-left: 0.5rem;
+    }
+    
+    .word-hunt .letter {
+      /* height: 21px;
+      min-width: 23px; */
+      position: relative;
+    }
+    
+    .word-hunt .overlap-group-1 {
+      align-items: flex-start;
+      background-color: var(--white-2);
+      border: 2.25px solid;
+      /* border-color: var(--gunsmoke); */
+      border-radius: 4.59px;
+      display: flex;
+      /* min-width: 21px; */
+    }
+    
+    .word-hunt .price {
+      height: 1rem;
+      width: 1rem;
+      letter-spacing: 0.24px;
+      line-height: normal;
+      text-align: center;
+    }
+    
+    .word-hunt .o {
+      height: 21px;
+      letter-spacing: 0.24px;
+      line-height: normal;
+      margin-left: -2px;
+      margin-top: -2.3px;
+      text-align: center;
+      width: 21px;
+    }
+    
+    .word-hunt .d {
+      height: 21px;
+      letter-spacing: 0.24px;
+      line-height: normal;
+      margin-left: -2px;
+      margin-top: -2.3px;
+      text-align: center;
+      width: 21px;
+    }
+    
+    .word-hunt .c {
+      height: 21px;
+      letter-spacing: 0.24px;
+      line-height: normal;
+      margin-left: -2px;
+      margin-top: -2.3px;
+      text-align: center;
+      width: 21px;
+    }
+    
+    .word-hunt .letter-2 {
+      height: 21px;
+      margin-right: -2.00px;
+      min-width: 23px;
+      position: relative;
+    }
+    
+    .word-hunt .w {
+      height: 21px;
+      letter-spacing: 0.24px;
+      line-height: normal;
+      margin-left: -2px;
+      margin-top: -2.3px;
+      text-align: center;
+      width: 21px;
+    }
+    
+    .word-hunt .info-button {
+      cursor: pointer;
+      background-color: #d9d9d9;
+      border-radius: 11.5px;
+      height: 23px;
+      min-width: 23px;
+      position: relative;
+    }
+    
+    .word-hunt .text {
+      /* -webkit-text-stroke: 2px var(--white); */
+      color: #00000069;
+      font-family: var(--font-family-poppins);
+      font-size: var(--font-size-s);
+      font-weight: 700;
+      height: 22px;
+      /* left: -1px; */
+      letter-spacing: -0.77px;
+      line-height: 15.9px;
+      position: absolute;
+      text-align: center;
+      /* top: -2px; */
+      width: 22px;
+    }
+    
+    .word-hunt .in-game-secondary-ui {
+      align-items: center;
+      display: flex;
+      gap: 268px;
+      justify-content: center;
+      left: 680px;
+      padding: 3px 1px;
+      /* position: absolute; */
+      top: 122px;
+      /* width: fit-content; */
+    }
+    
+    .word-hunt .in-game-timer {
+      background-color: #000000FF;
+      border-radius: 55.48px;
+      min-width: 2.5rem;
+      /* min-height: 1.5rem; */
+      position: relative;
+      margin: auto;
+    }
+    
+    .word-hunt .text-1 {
+      color: var(--white);
+      font-family: var(--font-family-poppins);
+      font-size: var(--font-size-s);
+      font-weight: 400;
+      /* height: 23px; */
+      left: -5px;
+      letter-spacing: 0;
+      line-height: 1rem;
+      /* position: absolute; */
+      text-align: center;
+      /* top: 7px; */
+      /* width: 47px; */
+    }
+    
+    .word-hunt .in-game-score-progress {
+      background-color: #0000001c;
+      border: 5px solid;
+      border-color: #ffffff8c;
+      border-radius: 55.48px;
+      min-width: 2.5rem;
+      min-height: 2.5rem;
+      position: relative;
+    }
+    
+    .word-hunt .text-2 {
+      color: var(--white);
+      font-family: var(--font-family-poppins);
+      font-weight: 400;
+      font-size: var(--font-size-m);
+      /* height: 23px; */
+      left: -5px;
+      letter-spacing: 0;
+      line-height: normal;
+      /* position: absolute; */
+      text-align: center;
+      /* top: 7px; */
+      /* width: 47px; */
+    }
+    
+    .word-hunt .span0-1 {
+      font-weight: 800;
+    }
+    
+    .word-hunt .keyboard {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      /* left: 669px; */
+      min-height: 27rem;
+      max-width: 22rem;
+      margin: auto;
+      position: relative;
+      /* position: absolute; */
+      /* top: 646px; */
+      /* width: 386px; */
+    }
+    
+    .word-hunt .overlap-group2-2 {
+      align-items: flex-start;
+      background-color: #04040485;
+      border: 2px solid;
+      border-color: #ffffff70;
+      border-radius: 34px;
+      display: flex;
+      /* height: 4rem; */
+      margin-top: -2px;
+      min-width: 362px;
+      padding: 0.5rem 1rem;
+    }
+    
+    .word-hunt .input-to-chat {
+      caret-color: #ffffff99;
+      color: #ffffff99;
+      font-family: var(--font-family-inter);
+      font-size: var(--chat-message-font-size);
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 24.6px;
+      min-height: 2rem;
+      margin: 0.2rem;
+      /* min-width: var(--rem-width-screen); */
+      white-space: nowrap;
+    }
+    
+    .word-hunt .keyboard-1 {
+      flex-direction: column;
+      gap: 0.3rem;
+      min-height: 7rem;
+      /* width: 386px; */
+    }
+    
+    button, [type=button], [type=reset], [type=submit] {
+      -webkit-appearance: none !important;
+      appearance: none !important;
+      border: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,.3) !important;
+    }
+    
+    .word-hunt .r1 {
+      align-items: center;
+      display: flex;
+      gap: var(--keyboard-gap);
+      justify-content: center;
+      position: relative;
+      width: fit-content;
+    }
+    
+    .word-hunt .keyboard-button {
+      /* -webkit-appearance: button; */
+      /* -moz-appearance: none; */
+      /* appearance: button; */
+      cursor: pointer;
+      background-color: var(--zircon);
+      border-radius: 11px;
+      box-shadow: 0px 6px 4px #00000026 , 0px 1px 0px #a1d3cc , inset 0px -2px 0px #a2d3cc;
+      /* height: 2.5rem; */
+      min-width: var(--keyboard-button-size);
+      position: relative;
+      display: flex;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,.3) !important;
+    }
+    
+    .word-hunt .price-1 {
+      left: 2px;
+      letter-spacing: 0;
+      line-height: normal;
+      position: absolute;
+      text-align: center;
+      top: 5px;
+      width: 31px;
+    }
+    
+    .word-hunt .q {
+      left: 2px;
+      letter-spacing: 0;
+      line-height: normal;
+      position: absolute;
+      text-align: center;
+      top: 5px;
+      width: 31px;
+    }
+    
+    .word-hunt .q-button-letter {
+      min-width: 2.2rem;
+      min-height: 2.5rem;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+    
+    .word-hunt .keyboard-button-1 {
+      /* -webkit-appearance: none;
+      -moz-appearance: none; */
+      background-color: var(--vis-vis);
+      box-shadow: 0px 6px 4px #00000026 , 0px 1px 0px #dec481 , inset 0px -2px 0px #dec481;
+      /* min-width: 35px; */
+    }
+    
+    .word-hunt .overlap-group-2 {
+      height: 28px;
+      left: 2px;
+      position: relative;
+      top: 2px;
+      width: 31px;
+    }
+    
+    .word-hunt .letter-count {
+      right: 0.2rem;
+      letter-spacing: 0;
+      line-height: normal;
+      position: absolute;
+      text-align: right;
+      top: 0.2rem;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    
+    .word-hunt .keyboard-item {
+      gap: var(--keyboard-gap);
+      justify-content: center;
+      margin-left: 1.0px;
+      position: relative;
+      width: fit-content;
+    }
+    
+    .word-hunt .r4 {
+      align-items: flex-start;
+      display: flex;
+      gap: var(--keyboard-gap);
+      margin-left: 1.0px;
+      position: relative;
+      width: fit-content;
+    }
+    
+    .word-hunt .keyboard-button-key {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      cursor: pointer;
+      background-color: var(--riptide);
+      box-shadow: 0px 6px 4px #00000026 , 0px 1px 0px #75b1a9 , inset 0px -2px 0px #74b1a8;
+      min-width: 3rem;
+      min-height: var(--keyboard-button-height-size);
+      overflow: hidden;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+    
+    .word-hunt .icon-material-icon-backspace_black_24dp {
+      height: var(--keyboard-button-font-size);
+      /* left: 13px; */
+      /* position: absolute; */
+      /* top: 7px; */
+      width: var(--keyboard-button-font-size);
+      min-width: 2rem;
+      min-height: 2rem;
+    }
+    
+    .word-hunt .keyboard-button-key-1 {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      cursor: pointer;
+      background-color: var(--zircon);
+      border-radius: 22px;
+      box-shadow: 0px 6px 4px #00000026 , 0px 1px 0px #a1d3cc , inset 0px -2px 0px #a2d3cc;
+      height: var(--keyboard-button-height-size);
+      min-width: 16rem;
+      overflow: hidden;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+    
+    .word-hunt .x {
+      color: var(--cape-cod);
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: var(--keyboard-button-font-size);
+      font-weight: 800;
+      left: 1px;
+      letter-spacing: 2.45px;
+      line-height: normal;
+      /* position: absolute; */
+      text-align: center;
+      top: 8px;
+      /* width: 150px; */
+    }
+    
+    .word-hunt .enter-button {
+      align-items: flex-end;
+      /* box-shadow: 1px 1px 3px #affff2; */
+      display: flex;
+      /* left: 11px; */
+      /* padding: 5.0px 5.0px; */
+      position: relative;
+      /* top: 3px; */
+    }
+    
+    .word-hunt .subtract {
+      /* height: var(--keyboard-button-font-size);
+      width: var(--keyboard-button-font-size);
+      min-width: 2rem;
+      min-height: 2rem; */
+      height: var(--keyboard-button-height-size);
+      width: 1.5em;
+    }
+    
+    .word-hunt .tail {
+      /* height: 38px;
+      min-width: 38px; */
+      position: relative;
+    }
+    
+    .word-hunt .pic-number-side-view {
+      border-radius: 10.74px;
+      height: 2rem;
+      position: relative;
+      /* width: 2rem; */
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .word-hunt .letter-1 {
+      /* height: 35px;
+      left: 0; */
+      letter-spacing: 0.22px;
+      /* line-height: normal; */
+      position: absolute;
+      text-align: center;
+      /* top: 0;
+      width: 38px; */
+    }
+    
+    @media only screen and (max-height: 750px) {
+      
+      .word-hunt .tile-bg {
+        align-items: flex-start;
+        background-color: var(--cherry-pie);
+        border-radius: 10.74px;
+        box-shadow: 0px 3.33px 0px #00000026;
+        display: flex;
+        height: 2.2rem;
+        /* left: 0; */
+        /* min-width: 2rem; */
+        /* position: absolute; */
+        /* top: 0; */
+      }
+      
+      .word-hunt .word {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        width: fit-content;
+        gap: 0.15rem;
+      }
+      
+      .gilroy-extra-extra-bold-cherry-pie-23-7px {
+        color: var(--cherry-pie);
+        font-family: var(--font-family-gilroy-extrabold);
+        font-size: var(--font-size-l);
+        font-style: normal;
+        font-weight: 800;
+      }
+      
+      .word-hunt .words-tiles {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+        min-height: 14rem;
+        max-height: 14rem;
+        min-width: var(--rem-width-screen);
+        justify-content: flex-start;
+        /* width: fit-content; */
+      }
+      
+      #chat-area {
+        max-height: 7.5rem;
+        min-height: 7.5rem;
+      }
+      
+      .word-hunt .tail-1 {
+        align-items: flex-start;
+        background-color: var(--black);
+        border: 3px solid;
+        border-color: var(--calypso);
+        border-radius: 0.5rem;
+        box-shadow: inset 0px 0px 0px 2px #ffffff33;
+        display: flex;
+        /* min-height: 1.5rem;
+        min-width: 1.5rem; */
+      }
+      
+      .word-hunt .highlights {
+        align-items: flex-start;
+        background-image: url(img/intersect.svg);
+        background-size: 100% 100%;
+        display: flex;
+        height: var(--empty-tiles-size-width-smaller);
+        margin-left: -3px;
+        /* height: 1.5rem; */
+        margin-top: -3.0px;
+        min-width: var(--empty-tiles-size-height-smaller);
+        padding: 0.0px 0.0px;
+      }
+      
+      .word-hunt .tile-fill {
+        background-color: var(--sunglow);
+        border: 2.77px solid;
+        border-color: var(--cherry-pie);
+        border-radius: 0.6rem;
+        box-shadow: inset 0px 0.92px 0px 1.27px #ffffffb2 , inset 0px -5.55px 0.37px 1.85px #0000000d;
+        height: 2rem;
+        width: 2.1rem;
+      }
+      
+      .word-hunt .overlap-group-3 {
+        border-radius: 10.74px;
+        height: 2rem;
+        position: relative;
+        width: 2rem;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .word-hunt .letter-tile {
+        align-items: flex-start;
+        display: flex;
+      }
+    }
+    
+    @media only screen and (min-height: 750px) {
+      
+      .word-hunt .tile-bg {
+        align-items: flex-start;
+        background-color: var(--cherry-pie);
+        border-radius: 10.74px;
+        box-shadow: 0px 3.33px 0px #00000026;
+        display: flex;
+        height: 2.2rem;
+        /* left: 0; */
+        /* min-width: 2rem; */
+        /* position: absolute; */
+        /* top: 0; */
+      }
+      
+      .word-hunt .word {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        width: fit-content;
+        gap: 0.15rem;
+      }
+      
+      .gilroy-extra-extra-bold-cherry-pie-23-7px {
+        color: var(--cherry-pie);
+        font-family: var(--font-family-gilroy-extrabold);
+        font-size: var(--font-size-xl);
+        font-style: normal;
+        font-weight: 800;
+      }
+      
+      .word-hunt .words-tiles {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        min-height: 15rem;
+        max-height: 18rem;
+        min-width: var(--rem-width-screen);
+        justify-content: flex-start;
+        /* width: fit-content; */
+      }
+      
+      #chat-area {
+        max-height: 8rem;
+        min-height: 8rem;
+      }
+      
+      .word-hunt .tail-1 {
+        align-items: flex-start;
+        background-color: var(--black);
+        border: 3px solid;
+        border-color: var(--calypso);
+        border-radius: 0.5rem;
+        box-shadow: inset 0px 0px 0px 2px #ffffff33;
+        display: flex;
+        /* min-height: 2rem;
+        min-width: 2rem; */
+      }
+      
+      .word-hunt .highlights {
+        align-items: flex-start;
+        background-image: url(img/intersect.svg);
+        background-size: 100% 100%;
+        display: flex;
+        height: var(--empty-tiles-size-width);
+        margin-left: -3px;
+        margin-top: -3.0px;
+        min-width: var(--empty-tiles-size-height);
+        padding: 0.0px 0.0px;
+      }
+      
+      .word-hunt .tile-fill {
+        background-color: var(--sunglow);
+        border: 2.77px solid;
+        border-color: var(--cherry-pie);
+        border-radius: 0.6rem;
+        box-shadow: inset 0px 0.92px 0px 1.27px #ffffffb2 , inset 0px -5.55px 0.37px 1.85px #0000000d;
+        height: 2rem;
+        width: 2.1rem;
+      }
+      
+      .word-hunt .overlap-group-3 {
+        border-radius: 0.6rem;
+        height: 2rem;
+        position: relative;
+        width: 2rem;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+      
+      .word-hunt .letter-tile {
+        align-items: flex-start;
+        display: flex;
+        min-width: 2rem;
+      }
+    }
+    
+    .word-hunt .intersect {
+      height: 0.4rem;
+      width: 0.4rem;
+    }
+    
+    .word-hunt .highlights-1 {
+      background-image: url(img/intersect-2.svg);
+    }
+    
+    .word-hunt .highlights-2 {
+      background-image: url(img/intersect-4.svg);
+    }
+    
+    .word-hunt .tile-fill-1 {
+      background-color: var(--spring-green);
+    }
+    
+    .word-hunt .tile-fill-2 {
+      background-color: var(--radical-red);
+    }
+    
+    .word-hunt .highlights-3 {
+      background-image: url(img/intersect-6.svg);
+    }
+    
+    .word-hunt .highlights-4 {
+      background-image: url(img/intersect-8.svg);
+    }
+    
+    .word-hunt .highlights-5 {
+      background-image: url(img/intersect-10.svg);
+    }
+    
+    .word-hunt .tile-fill-3 {
+      background-color: var(--dodger-blue);
+    }
+    
+    .word-hunt .chat-2 {
+      /* left: 690px; */
+      /* position: absolute; */
+      margin: auto;
+      flex-direction: column;
+      overflow-y: scroll;
+      pointer-events: all;
+      /* overflow-x: hidden; */
+      scroll-behavior: smooth;
+      -ms-overflow-style: none; /* for Internet Explorer, Edge */
+      -webkit-mask-image: -webkit-gradient(linear, left 40%, left top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* for Firefox */
+      /* max-height: 8rem;
+      min-height: 8rem; */
+      max-width: 22rem;
+      top: 469px;
+    }
+    
+    .chat-2::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .word-hunt .keyboard-button-2 {
+      /* -webkit-appearance: none;
+      -moz-appearance: none; */
+      cursor: pointer;
+      border-radius: 11px;
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+    }
+    
+    .word-hunt .highlights-6 {
+      align-items: flex-start;
+      background-size: 100% 100%;
+      display: flex;
+      height: 33px;
+      margin-left: -3px;
+      margin-top: -3.0px;
+      min-width: 33px;
+      padding: 0.0px 0.0px;
+    }
+    
+    .word-hunt .keyboard-2 {
+      align-items: center;
+      display: flex;
+    }
+    
+    .word-hunt .pic-4 {
+      height: 33px;
+      object-fit: cover;
+      position: absolute;
+    }
+    
+    .word-hunt .tile-fill-4 {
+      border: 2.77px solid;
+      border-color: var(--cherry-pie);
+      border-radius: 10.74px;
+      box-shadow: inset 0px 0.92px 0px 2.77px #ffffffb2 , inset 0px -5.55px 0.37px 1.85px #0000000d;
+      height: 35px;
+      width: 38px;
+    }
+    
+    .chat-row {
+      max-height: 100px;
+      display: flex;
+      flex-direction: row;
+    }
+    
+    .chat-row-icon {
+      min-width: 1.5rem;
+      min-height: 1.5rem;
+      max-width: 1.5rem;
+      max-height: 1.5rem;
+      margin: 5px;
+      background-color: var(--sunglow);
+      background-image: url(img/player_2.png);
+      background-size: 100% 100%;
+      border: 2px solid red;
+      border-radius: 20px;
+    }
+    
+    .chat-row-username-and-message {
+      margin: 5px;
+    }
+    
+    .chat-row-username {
+      color: #95a5a6;
+      font-family: var(--font-family-poppins);
+      font-size: var(--font-size-xs);
+      font-weight: 500;
+      height: 16px;
+      letter-spacing: 0;
+      line-height: 15.4px;
+      white-space: nowrap;
+    }
+    
+    .chat-row-message {
+      color: var(--white);
+      font-family: var(--font-family-poppins);
+      font-size: var(--font-size-s);
+      font-weight: 500;
+      max-width: 220px;
+      gap: 0.2rem;
+      letter-spacing: 0;
+      word-wrap: break-word;
+      /* line-height: 24.6px; */
+      text-shadow: 0px 1px 0px #0707078c;
+      white-space: pre-wrap;
+      display: flex;
+    }
+    
+    .correct-word {
+      /* -webkit-text-stroke: 2px #000000e3; */
+      color: #5cff9e;
+      font-family: var(--font-family-poppins);
+      font-size: var(--font-size-s);
+      font-weight: 900;
+      letter-spacing: 0;
+      line-height: 24.6px;
+      text-shadow: 0px 2px 0px #0707078c;
+      white-space: nowrap;
+      /* justify-content: center; */
+      text-align: center;
+    }
+    
+    .screen a {
+      display: contents;
+      text-decoration: none;
+    }
+    
+    .container-center-horizontal {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      pointer-events: none;
+      width: 100%;
+    }
+    
+    .full-view {
+      background-image: url(img/bg.webp);
+      background-position: center;
+      /* background-repeat: no-repeat; */
+      background-attachment: fixed;
+    }
+    
+    .container-center-horizontal > * {
+      flex-shrink: 0;
+      pointer-events: auto;
+    }
+    
+    .valign-text-middle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+    
+    .checkmark {
+      font-weight: 600;
+      color: white;
+      font-size: 12px;
+      -webkit-text-stroke: 0;
+    }
+    
+    /* -----  top half css -----  */
+    
+    
+    .top-half-view {
+      /* align-items: center; */
+      display: flex;
+      margin: auto;
+      /* gap: 8.17px; */
+      justify-content: center;
+      position: relative;
+      width: fit-content;
+    }
+    
+    .cta-view {
+      max-width: 7rem;
+      align-items: center;
+      gap: 0.8rem;
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      margin-top: var(--tooltip-margin-top);
+      /* justify-content: center; */
+    }
+    
+    .middle-top-half {
+      max-width: 16.5rem;
+      min-width: 16.5rem;
+      margin-top: var(--tooltip-margin-top);
+      gap: 0.2rem;
+      text-align: center;
+      justify-content: center;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .refresh {
+      cursor: pointer;
+      height: 1.5rem;
+      width: 1.5rem;
+      position: relative;
+    }
+    
+    .score-friends-view {
+      /* min-width: 4rem; */
+      align-items: center;
+      gap: 0.4rem;
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      margin-top: var(--tooltip-margin-top);
+    }
+    
+    .score-progress {
+      align-items: flex-start;
+      background-image: url(img/my-score.svg);
+      background-size: 100% 100%;
+      display: flex;
+      height: 47px;
+      min-width: 47px;
+      padding: 0 4px;
+      position: relative;
+    }
+    
+    .number-2 {
+      color: var(--cherry-pie);
+      font-family: var(--font-family-poppins);
+      font-size: 16px;
+      font-weight: 800;
+      height: 47px;
+      line-height: 15.1px;
+      margin-top: -1px;
+      width: 39px;
+    }
+    
+    .be-first-to-play-view {
+      align-items: center;
+      background-color: var(--sunglow);
+      border-radius: 62px;
+      box-shadow: 0px 6px 0px -3px #0000002e;
+      display: flex;
+      height: 50px;
+      min-width: 50px;
+      padding: 11.2px 3.9px;
+      position: relative;
+    }
+    
+    .be-the-first-to-play {
+      color: var(--cherry-pie);
+      cursor: pointer;
+      font-family: var(--font-family-poppins);
+      font-size: 9.5px;
+      font-weight: 900;
+      letter-spacing: 0;
+      line-height: 8.8px;
+      min-height: 27px;
+      min-width: 42px;
+      text-align: center;
+      transform: rotate(-5.00deg);
+      transition: all 0.2s ease;
+    }
+    
+    .be-the-first-to-play:hover {
+      transform: scale(1.1);
+    }
+    
+    .how-to {
+      align-items: flex-end;
+      background-color: var(--white);
+      border-radius: 62px;
+      box-shadow: 0px 6px 0px -3px #0000002e;
+      display: flex;
+      height: 50px;
+      min-width: 50px;
+      padding: 8.7px 11px;
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .how-to-play-stroke {
+      display: block;
+      height: 31px;
+      opacity: 0;
+      transform: scale(1.1);
+      width: 28px;
+    }
+    
+    .how-to-play-stroke.animate-enter {
+      animation: animate-enter-frames 0.20s ease-in-out 0.00s 1 normal forwards;
+      display: block;
+      opacity: 0;
+      transform: scale(1.1);
+    }
+    
+    @keyframes animate-enter-frames {
+      from{opacity: 0;
+        transform: scale(1.1);
+      }
+      to{opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .invite-friend-view {
+      cursor: pointer;
+      align-items: center;
+      background-color: var(--white);
+      border-radius: 62px;
+      box-shadow: 0px 6px 0px -3px #0000002e;
+      display: flex;
+      height: 50px;
+      justify-content: flex-end;
+      min-width: 50px;
+      padding: 15.8px 5.1px;
+      position: relative;
+    }
+    
+    .invite-friend {
+      color: var(--dodger-blue);
+      cursor: pointer;
+      font-family: var(--font-family-poppins);
+      font-size: 10.6px;
+      font-weight: 900;
+      letter-spacing: 0;
+      line-height: 9.1px;
+      min-height: 18px;
+      min-width: 39px;
+      text-align: center;
+      transform: rotate(-5.00deg);
+      transition: all 0.2s ease;
+    }
+    
+    .invite-friend:hover {
+      transform: scale(1.1);
+    }
+    
+    .add-to-home-screen-view {
+      cursor: pointer;
+      align-items: flex-start;
+      background-color: var(--white);
+      border-radius: 62px;
+      box-shadow: 0px 6px 0px -3px #0000002e;
+      display: flex;
+      height: 50px;
+      justify-content: flex-end;
+      min-width: 50px;
+      padding: 12.6px 6.1px;
+      position: relative;
+    }
+    
+    .add-to-home-screen {
+      color: var(--radical-red);
+      cursor: pointer;
+      font-family: var(--font-family-poppins);
+      font-size: 9.2px;
+      font-weight: 900;
+      letter-spacing: 0;
+      line-height: 7.9px;
+      min-height: 24px;
+      min-width: 37px;
+      text-align: center;
+      transform: rotate(-5.00deg);
+      transition: all 0.2s ease;
+    }
+    
+    .add-to-home-screen:hover {
+      transform: scale(1.1);
+    }
+    
+    .players-side-view {
+      align-items: flex-start;
+      display: flex;
+      position: relative;
+      width: fit-content;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    
+    .player {
+      height: 36.49px;
+      min-width: 30px;
+      position: relative;
+    }
+    
+    .pic-number-side-view {
+      height: 36px;
+      position: relative;
+      width: 30px;
+    }
+    
+    .player-score-number {
+      /* -webkit-text-stroke: 1px var(--pixie-powder); */
+      left: -0.1rem;
+      letter-spacing: 0;
+      top: 1.4rem;
+      /* line-height: 17.2px; */
+      position: absolute;
+      text-align: center;
+      white-space: nowrap;
+    }
+    
+    .player-score-number-1, .player-score-number-2, .player-score-number-3, .player-score-number-you {
+      /* -webkit-text-stroke: 1px #32ff84; */
+      /* -webkit-text-stroke: 1px white; */
+      /* -webkit-text-stroke: 1px black; */
+    }
+    
+    .player-1 {
+      height: 36.82px;
+    }
+    
+    .player2 {
+      height: 37px;
+      position: relative;
+      width: 30px;
+    }
+    
+    .pic-1 {
+      background-image: url(img/pic-1@2x.png);
+      background-size: 100% 100%;
+      width: 28px;
+    }
+    
+    .player-2 {
+      height: 35.98px;
+    }
+    
+    .pic-2 {
+      background-image: url(img/pic-2@2x.png);
+      background-position: 50% 50%;
+      background-size: cover;
+      width: 28px;
+    }
+    
+    .number-1 {
+      line-height: 17.2px;
+      position: absolute;
+      white-space: nowrap;
+    }
+    
+    /* NiceTry */
+    
+    .chat-points-1 {
+      color: var(--cherry-pie);
+      font-family: var(--font-family-poppins);
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      align-items: center;
+      background-color: var(--white);
+      border-radius: 16px;
+      display: flex;
+      gap: 2px;
+      max-height: 1rem;
+      justify-content: center;
+      text-align: center;
+      padding: 0px 7px;
+      position: relative;
+      display: flex;
+      width: fit-content;
+      text-shadow: none;
+    }
+    
+    .chat-points-correct-word {
+      top: 0.2rem;
+    }
+    
+    
+    /* -----  /top half css -----  */
+    
+    @keyframes zoom-in-zoom-out {
+      0% {
+        transform: scale(1, 1);
+      }
+      50% {
+        transform: scale(1.2, 1.2);
+      }
+      100% {
+        transform: scale(1, 1);
+      }
+    }
+    
+    @keyframes keyboard-tap {
+      0% {
+        color: rgba(0, 0, 0, 0);
+      }
+      50% {
+        color: rgba(0,0,0,0.3);
+      }
+      100% {
+        color: rgba(0,0,0,0);
+      }
+    }
+    
+    @keyframes fade {
+      0% { opacity: 0 }
+      15% { opacity: 1 }
+      75% { opacity: 1 }
+      100% { opacity: 0 }
+    }
+    
+    :root { 
+      --black: #000000;
+      --black-2: #000000a8;
+      --calypso: #3f6a8c;
+      --cape-cod: #3b4040b2;
+      --cape-cod-2: #3c4141b2;
+      --cherry-pie: #2a0756;
+      --dodger-blue: #329dff;
+      --gunsmoke: #868686;
+      --gallery: #f0f0f0;
+      --haiti: #14113b;
+      --lemon-chiffon: #fffcc2;
+      --lavender-gray: #c6b8d8;
+      --mantis: #64d95a;
+      --pixie-powder: #371891;
+      --celeste: #cccbcb;
+      --radical-red: #ff3364;
+      --riptide: #90f0e0;
+      --spring-green: #32ff84;
+      --sunglow: #ffd232;
+      --violent-violet: #300d65;
+      --vis-vis: #f9ef9c;
+      --white: #ffffff;
+      --white-2: #ffffff1c;
+      --zircon: #f5fdff;
+      --pixie-powder-2: #371891bf;
+      --athens-gray: #ede7f5;
+      --new-green: #25b9a2;
+      --daisy-bush: #530a95;
+      --purple-plum: #9c50ff;
+      
+      --rem-width-screen: 15rem;
+      --keyboard-button-size: 2.1rem;
+      --keyboard-button-height-size: 2.5rem;
+      --keyboard-button-font-size: 1.5rem;
+      --chat-message-font-size: 1rem;
+      --tooltip-margin-top: 0.5rem;
+      
+      --empty-tiles-size-width: 1.7rem;
+      --empty-tiles-size-height: 1.7rem;
+      
+      --empty-tiles-size-width-smaller: 1.7rem;
+      --empty-tiles-size-height-smaller: 1.7rem;
+      
+      --keyboard-gap: 0.8dvw;
+      
+      --font-size-l: 1.275rem;    /* 20.4px / 16px */
+      --font-size-m: 1.125rem;    /* 18px / 16px */
+      --font-size-s: 0.875rem;    /* 14px / 16px */
+      --font-size-xl: 1.38125rem; /* 20.9px / 16px */
+      --font-size-xs: 0.8125rem;  /* 13px / 16px */
+      --font-size-xxl: 2.30625rem; /* 23.7px / 16px */
+      --font-size-xxs: 0.75625rem; /* 12.1px / 16px */
+      
+      --font-family-gilroy-extrabold: "Gilroy-ExtraBold", Helvetica;
+      --font-family-inter: "Inter", Helvetica;
+      --font-family-poppins: "Poppins", Helvetica;
+      --font-family-roboto: "Roboto", Helvetica;
+    }
+    
+    @font-face {
+  font-family: 'Pacifico';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Pacifico Regular'), local('Pacifico-Regular'),
+    url(https://fonts.gstatic.com/s/pacifico/v12/FwZY7-Qmy14u9lezJ-6H6MmBp0u-.woff2)
+      format('woff2');
+  font-display: swap;
+}
+
+    .gilroy-extra-extra-bold-cape-cod-20-4px {
+      color: var(--cape-cod);
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: var(--keyboard-button-font-size);
+      font-style: normal;
+      font-weight: 800;
+    }
+    
+    .gilroy-extra-extra-bold-haiti-18px {
+      color: var(--haiti);
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: var(--font-size-m);
+      font-style: normal;
+      letter-spacing: 0.60px;
+      font-weight: 800;
+    }
+    
+    .gilroy-extra-extra-bold-haiti-20-9px {
+      color: var(--haiti);
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: var(--font-size-l);
+      font-style: normal;
+      font-weight: 800;
+    }
+    
+    .gilroy-extra-extra-bold-pixie-powder-14px {
+      color: var(--pixie-powder);
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: var(--font-size-s);
+      font-style: normal;
+      font-weight: 800;
+    }
+    
+    .gilroy-extra-extra-bold-white-14px {
+      color: black;
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: var(--font-size-s);
+      font-style: normal;
+      font-weight: 900;
+      box-shadow: 0 0 0px 3px white, inset 0px -20px 0px 16px white, 0 0 0px 2px white;
+      border-radius: 0.3rem;
+    }
+    
+    .gilroy-extra-extra-bold-gunsmoke-12-1px {
+      background-color: #0000001c;
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: var(--font-size-xxs);
+      font-style: normal;
+      font-weight: 800;
+    }
+    
+    .roboto-bold-cape-cod-8-9px {
+      color: var(--cape-cod-2);
+      font-family: var(--font-family-roboto);
+      font-size: 0.7rem;
+      font-style: normal;
+      font-weight: 700;
+    }
+    
+    .gilroy-extra-extra-bold-haiti-13-9px {
+      color: var(--haiti);
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: var(--font-size-s);
+      font-style: normal;
+      font-weight: 800;
+    }
+    
+    .gilroy-extra-extra-bold-celeste-56px {
+      color: var(--celeste);
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: 56px;
+      font-style: normal;
+      font-weight: 800;
+    }
+    
+    .gilroy-extra-extra-bold-pixie-powder-15px {
+      color: var(--pixie-powder);
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: var(--font-size-m);
+      font-style: normal;
+      font-weight: 800;
+    }
+    
+    .poppins-normal-pixie-powder-13px {
+      color: var(--pixie-powder-2);
+      font-family: var(--font-family-poppins);
+      font-size: var(--font-size-xs);
+      font-style: normal;
+      font-weight: 400;
+    }
+    
+    .gilroy-extra-extra-bold-white-12-8px {
+      color: var(--white);
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: 12.8px;
+      font-style: normal;
+      font-weight: 800;
+    }
+  </style>
   <link rel="stylesheet" type="text/css" href="css/complete-popup.css" />
-  <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="css/styleguide.css" /> -->
   <link rel="stylesheet" type="text/css" href="css/cta-messages.css" />
   <link rel="stylesheet" type="text/css" href="css/ready-level.css" />
   <link rel="stylesheet" type="text/css" href="css/out-of-time.css" />
@@ -37,9 +2043,9 @@
               </div>
               <div id="how-to-button-id" class="how-to">
                 <img
-                  class="how-to-play-stroke animate-enter"
-                  src="img/how-to-play--stroke-.svg"
-                  alt="how to play (Stroke)"
+                class="how-to-play-stroke animate-enter"
+                src="img/how-to-play--stroke-.svg"
+                alt="how to play (Stroke)"
                 />
               </div>
               <div id="invite-friends-id" data-copy="wordhunt.gg" class="invite-friend-view">
@@ -260,7 +2266,7 @@
           <div id="complete-level-popup" class="container-center-horizontal">
             <div class="complete-popup screen">
               <div class="overlap-group">
-                <img class="pip-character" src="img/pip---character-1@2x.png" alt="Pip - Character" />
+                <img class="pip-character" src="img/pip---character-1@2x.webp" alt="Pip - Character" />
               </div>
               <div class="overlap-group3">
                 <!-- <div class="bg"></div> -->
@@ -348,55 +2354,55 @@
                         <div class="number valign-text-middle gilroy-extra-extra-bold-celeste-56px">2</div>
                         <p class="get-random-5-letter valign-text-middle">
                           <span
-                            ><span class="gilroy-extra-extra-bold-haiti-13-9px">Get random 5 letter </span
+                          ><span class="gilroy-extra-extra-bold-haiti-13-9px">Get random 5 letter </span
                             ><span class="span1">highlighted</span
-                            ><span class="gilroy-extra-extra-bold-haiti-13-9px"> on the keyboard.</span>
-                          </span>
-                        </p>
-                      </div>
-                      <div class="frame-23811">
-                        <div class="number valign-text-middle gilroy-extra-extra-bold-celeste-56px">3</div>
-                        <p class="submit-your-answers-in-chat valign-text-middle gilroy-extra-extra-bold-haiti-13-9px">
-                          submit your answers in chat
-                        </p>
-                      </div>
-                      <div class="frame-23811">
-                        <div class="number valign-text-middle gilroy-extra-extra-bold-celeste-56px">4</div>
-                        <p class="correct-answer-will valign-text-middle">
-                          <span
+                              ><span class="gilroy-extra-extra-bold-haiti-13-9px"> on the keyboard.</span>
+                            </span>
+                          </p>
+                        </div>
+                        <div class="frame-23811">
+                          <div class="number valign-text-middle gilroy-extra-extra-bold-celeste-56px">3</div>
+                          <p class="submit-your-answers-in-chat valign-text-middle gilroy-extra-extra-bold-haiti-13-9px">
+                            submit your answers in chat
+                          </p>
+                        </div>
+                        <div class="frame-23811">
+                          <div class="number valign-text-middle gilroy-extra-extra-bold-celeste-56px">4</div>
+                          <p class="correct-answer-will valign-text-middle">
+                            <span
                             ><span class="gilroy-extra-extra-bold-haiti-13-9px">correct answer will appear in </span
-                            ><span class="span1">yellow</span
-                            ><span class="gilroy-extra-extra-bold-haiti-13-9px"> on the main screen.</span>
-                          </span>
-                        </p>
+                              ><span class="span1">yellow</span
+                                ><span class="gilroy-extra-extra-bold-haiti-13-9px"> on the main screen.</span>
+                              </span>
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
+                      <div id="register-how-to-submit" class="submit-button-view">
+                        <img class="mask-group" src="img/mask-group-4@2x.png" alt="Mask group" />
+                        <div class="submit-button-place valign-text-middle gilroy-extra-extra-bold-white-12-8px">REGISTER</div>
+                      </div>
+                      <input id="email-input-from-how-to" class="enter-email-view enter-email-view-how-it-works valign-text-middle poppins-normal-pixie-powder-13px" placeholder="Enter Email">
+                      <!-- <div class=""></div> -->
+                    </input>
+                    <p id="register-prompt-in-how-to-id" class="secure-your-spot-and valign-text-middle gilroy-extra-extra-bold-pixie-powder-15px">
+                      SECURE YOUR SPOT AND BE THE FIRST WHO GET THE FULL GAME
+                    </p>
+                    <img class="image-2" src="img/image-2@2x.webp" alt="image 2" />
+                    <img class="line-443" src="img/line-443.svg" alt="Line 443" />
                   </div>
-                  <div id="register-how-to-submit" class="submit-button-view">
-                    <img class="mask-group" src="img/mask-group-4@2x.png" alt="Mask group" />
-                    <div class="submit-button-place valign-text-middle gilroy-extra-extra-bold-white-12-8px">REGISTER</div>
-                  </div>
-                  <input id="email-input-from-how-to" class="enter-email-view enter-email-view-how-it-works valign-text-middle poppins-normal-pixie-powder-13px" placeholder="Enter Email">
-                    <!-- <div class=""></div> -->
-                  </input>
-                  <p id="register-prompt-in-how-to-id" class="secure-your-spot-and valign-text-middle gilroy-extra-extra-bold-pixie-powder-15px">
-                    SECURE YOUR SPOT AND BE THE FIRST WHO GET THE FULL GAME
-                  </p>
-                  <img class="image-2" src="img/image-2@2x.png" alt="image 2" />
-                  <img class="line-443" src="img/line-443.svg" alt="Line 443" />
                 </div>
               </div>
             </div>
-          </div>
-          <div id="first-to-play-message" class="container-center-horizontal">
-            <div class="first-to-play-tooltip screen">
-              <div class="x-popup">
-                <div class="first-to-play-frame">
-                  <p id="tooltip-register-message" class="secure-your-spot-and valign-text-middle gilroy-extra-extra-bold-pixie-powder-15px">
-                    SECURE YOUR SPOT AND BE THE FIRST WHO GET THE FULL GAME
-                  </p>
-                  <div id="be-first-tooltip-register-view-id" class="be-first-tooltip-register-view">
-                    <input id="email-input-tooltip" class="first-to-play-email how-it-works valign-text-middle poppins-normal-pixie-powder-13px" placeholder="Enter Email">
+            <div id="first-to-play-message" class="container-center-horizontal">
+              <div class="first-to-play-tooltip screen">
+                <div class="x-popup">
+                  <div class="first-to-play-frame">
+                    <p id="tooltip-register-message" class="secure-your-spot-and valign-text-middle gilroy-extra-extra-bold-pixie-powder-15px">
+                      SECURE YOUR SPOT AND BE THE FIRST WHO GET THE FULL GAME
+                    </p>
+                    <div id="be-first-tooltip-register-view-id" class="be-first-tooltip-register-view">
+                      <input id="email-input-tooltip" class="first-to-play-email how-it-works valign-text-middle poppins-normal-pixie-powder-13px" placeholder="Enter Email">
                     </input>
                     <div id="register-from-tooltip" class="first-to-play-email-button">
                       <div class="first-to-play-email-button-name">
@@ -414,155 +2420,154 @@
                 <div class="share-link-frame">
                   <p class="the-link-has-been-co valign-text-middle">
                     <span
-                      ><span class="gilroy-extra-extra-bold-pixie-powder-15px"
-                        >The link has been copied successfully!<br /></span
-                      ><span class="span1">Send it to a friend!</span>
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-            <div id="out-of-time-popup" class="container-center-horizontal">
-              <div class="out-of-time screen">
-                <div class="overlap-group9">
-                  <div class="overlap-group">
-                    <img class="pip-character" src="img/pip---character-1@2x.png" alt="Pip - Character" />
-                  </div>
-                  <div class="bg"></div>
-                  <div id="play-again-button" class="overlap-group1">
-                    <div class="rectangle-7588"></div>
-                    <div id="new-game-in-oot-popup" class="place valign-text-middle">PLAY AGAIN</div>
-                  </div>
-                  <img class="out-of-time-1" src="img/out-of-time@2x.png" alt="out of time" />
-                  <p class="you-can-do-more-try valign-text-middle gilroy-extra-extra-bold-haiti-18px">
-                    <span
-                    ><span class="gilroy-extra-extra-bold-haiti-18px">OH NO!<br />You can do better!<br /></span
-                      ><span class="gilroy-extra-extra-bold-haiti-18px"><br />Your personal score:</span>
-                    </span>
-                  </p>
-                  <h1 id="level-timeout-score" class="address valign-text-middle">80 POINTS</h1>
-                </div>
+                    ><span class="gilroy-extra-extra-bold-pixie-powder-15px"
+                    >The link has been copied successfully!<br /></span
+                    ><span class="span1">Send it to a friend!</span>
+                  </span>
+                </p>
               </div>
             </div>
           </div>
         </div>
+        
+        <div id="out-of-time-popup" class="container-center-horizontal">
+          <div class="out-of-time screen">
+            <div class="overlap-group9">
+              <div class="overlap-group">
+                <img class="pip-character" src="img/pip---character-1@2x.webp" alt="Pip - Character" />
+              </div>
+              <div class="bg"></div>
+              <div id="play-again-button" class="overlap-group1">
+                <div class="rectangle-7588"></div>
+                <div id="new-game-in-oot-popup" class="place valign-text-middle">PLAY AGAIN</div>
+              </div>
+              <img class="out-of-time-1" src="img/out-of-time@2x.png" alt="out of time" />
+              <p class="you-can-do-more-try valign-text-middle gilroy-extra-extra-bold-haiti-18px">
+                <span
+                ><span class="gilroy-extra-extra-bold-haiti-18px">OH NO!<br />You can do better!<br /></span
+                  ><span class="gilroy-extra-extra-bold-haiti-18px"><br />Your personal score:</span>
+                </span>
+              </p>
+              <h1 id="level-timeout-score" class="address valign-text-middle">80 POINTS</h1>
+            </div>
+          </div>
+        </div>
       </div>
-      <script>
-        function ShowOnScroll() {
-          this.toShow = [];
-          this.nextEventY = undefined;
-        }
-        
-        ShowOnScroll.prototype.show = function (e) {
-          e.style.display = "";
-        };
-        
-        ShowOnScroll.prototype.hide = function (e) {
-          e.style.display = "none";
-        };
-        
-        ShowOnScroll.prototype.getTop = function (e) {
-          if (e.Top != undefined && e.Top != 0) {
-            return e.Top;
-          }
-          var top = 0;
-          var iter = e;
-          do {
-            top += iter.offsetTop || 0;
-            iter = iter.offsetParent;
-          } while (iter);
-          e.Top = top;
-          return top;
-        };
-        
-        ShowOnScroll.prototype.onScroll = function () {
-          var screenBottom = window.pageYOffset + window.innerHeight;
-          if (this.nextEventY == undefined || this.nextEventY > screenBottom) {
-            return;
-          }
-          this.nextEventY = undefined;
-          for (var i = 0; i < this.toShow.length; i++) {
-            var e = this.toShow[i];
-            var top = this.getTop(e);
-            if (top < screenBottom) {
-              this.show(e);
-              this.toShow.shift();
-              i--;
-            } else {
-              this.nextEventY = top;
-              break;
-            }
-          }
-        };
-        
-        ShowOnScroll.prototype.resetScrolling = function () {
-          // Clear state
-          var screenBottom = window.pageYOffset + window.innerHeight;
-          for (var i = 0; i < this.toShow.length; i++) {
-            var e = this.toShow[i];
-            this.show(e);
-          }
-          this.toShow = [];
-          this.nextEventY == undefined;
-          
-          // Collect items
-          var itemsToShowOnScroll = Array.prototype.slice.call(document.getElementsByTagName("*"));
-          itemsToShowOnScroll = itemsToShowOnScroll.filter(function (e) {
-            return e.getAttribute("show-on-scroll") != undefined;
-          });
-          var getTop = this.getTop;
-          itemsToShowOnScroll.sort(function (a, b) {
-            return getTop(a) - getTop(b);
-          });
-          for (var i = 0; i < itemsToShowOnScroll.length; i++) {
-            var e = itemsToShowOnScroll[i];
-            var top = this.getTop(e);
-            if (top < screenBottom) {
-              continue;
-            }
-            this.toShow.push(e);
-            this.hide(e);
-            this.nextEventY = this.nextEventY != undefined ? this.nextEventY : top;
-          }
-        };
-        
-        ShowOnScroll.prototype.handleEvent = function (e) {
-          switch (e.type) {
-            case "scroll":
-            this.onScroll();
-            break;
-            case "resize":
-            this.resetScrolling();
-            break;
-          }
-        };
-        
-        ShowOnScroll.prototype.init = function () {
-          this.resetScrolling();
-          window.addEventListener("scroll", this);
-          window.addEventListener("resize", this);
-        };
-        
-        // After anima-src
-        setTimeout(function () {
-          var instShowOnScroll = new ShowOnScroll();
-          instShowOnScroll.init();
-        }, 250);
-      </script>
-      <script src="https://cdn.lr-ingest.com/LogRocket.min.js" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
-      <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-2SSJZRPB03"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        
-        gtag('config', 'G-2SSJZRPB03');
-      </script>
-      <script src="js/word_hunt.js"></script>
-    </body>
-    </html>
+    </div>
+  </div>
+  <script>
+    function ShowOnScroll() {
+      this.toShow = [];
+      this.nextEventY = undefined;
+    }
     
+    ShowOnScroll.prototype.show = function (e) {
+      e.style.display = "";
+    };
+    
+    ShowOnScroll.prototype.hide = function (e) {
+      e.style.display = "none";
+    };
+    
+    ShowOnScroll.prototype.getTop = function (e) {
+      if (e.Top != undefined && e.Top != 0) {
+        return e.Top;
+      }
+      var top = 0;
+      var iter = e;
+      do {
+        top += iter.offsetTop || 0;
+        iter = iter.offsetParent;
+      } while (iter);
+      e.Top = top;
+      return top;
+    };
+    
+    ShowOnScroll.prototype.onScroll = function () {
+      var screenBottom = window.pageYOffset + window.innerHeight;
+      if (this.nextEventY == undefined || this.nextEventY > screenBottom) {
+        return;
+      }
+      this.nextEventY = undefined;
+      for (var i = 0; i < this.toShow.length; i++) {
+        var e = this.toShow[i];
+        var top = this.getTop(e);
+        if (top < screenBottom) {
+          this.show(e);
+          this.toShow.shift();
+          i--;
+        } else {
+          this.nextEventY = top;
+          break;
+        }
+      }
+    };
+    
+    ShowOnScroll.prototype.resetScrolling = function () {
+      // Clear state
+      var screenBottom = window.pageYOffset + window.innerHeight;
+      for (var i = 0; i < this.toShow.length; i++) {
+        var e = this.toShow[i];
+        this.show(e);
+      }
+      this.toShow = [];
+      this.nextEventY == undefined;
+      
+      // Collect items
+      var itemsToShowOnScroll = Array.prototype.slice.call(document.getElementsByTagName("*"));
+      itemsToShowOnScroll = itemsToShowOnScroll.filter(function (e) {
+        return e.getAttribute("show-on-scroll") != undefined;
+      });
+      var getTop = this.getTop;
+      itemsToShowOnScroll.sort(function (a, b) {
+        return getTop(a) - getTop(b);
+      });
+      for (var i = 0; i < itemsToShowOnScroll.length; i++) {
+        var e = itemsToShowOnScroll[i];
+        var top = this.getTop(e);
+        if (top < screenBottom) {
+          continue;
+        }
+        this.toShow.push(e);
+        this.hide(e);
+        this.nextEventY = this.nextEventY != undefined ? this.nextEventY : top;
+      }
+    };
+    
+    ShowOnScroll.prototype.handleEvent = function (e) {
+      switch (e.type) {
+        case "scroll":
+        this.onScroll();
+        break;
+        case "resize":
+        this.resetScrolling();
+        break;
+      }
+    };
+    
+    ShowOnScroll.prototype.init = function () {
+      this.resetScrolling();
+      window.addEventListener("scroll", this);
+      window.addEventListener("resize", this);
+    };
+    
+    // After anima-src
+    setTimeout(function () {
+      var instShowOnScroll = new ShowOnScroll();
+      instShowOnScroll.init();
+    }, 250);
+  </script>
+  <script src="https://cdn.lr-ingest.com/LogRocket.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2SSJZRPB03"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    
+    gtag('config', 'G-2SSJZRPB03');
+  </script>
+  <script src="js/word_hunt.js"></script>
+</body>
+</html>
