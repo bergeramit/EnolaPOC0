@@ -1074,7 +1074,7 @@ button, [type=button], [type=reset], [type=submit] {
   border-radius: 10.74px;
   height: 2rem;
   position: relative;
-  width: 2rem;
+  /* width: 2rem; */
   align-items: center;
   display: flex;
   justify-content: center;
@@ -1734,33 +1734,19 @@ transform: scale(1);
 
 .player-score-number {
   /* -webkit-text-stroke: 1px var(--pixie-powder); */
-  left: 0;
+  left: -0.1rem;
   letter-spacing: 0;
   top: 1.4rem;
-  line-height: 17.2px;
+  /* line-height: 17.2px; */
   position: absolute;
   text-align: center;
   white-space: nowrap;
 }
 
-.player-score-number-1 {
+.player-score-number-1, .player-score-number-2, .player-score-number-3, .player-score-number-you {
   /* -webkit-text-stroke: 1px #32ff84; */
-  -webkit-text-stroke: 1px white;
-}
-
-.player-score-number-2 {
-  /* -webkit-text-stroke: 1px #ff3364; */
-  -webkit-text-stroke: 1px white;
-}
-
-.player-score-number-3 {
-  /* -webkit-text-stroke: 1px #329dff; */
-  -webkit-text-stroke: 1px white;
-}
-
-.player-score-number-you {
-  /* -webkit-text-stroke: 1px #ffd232; */
-  -webkit-text-stroke: 1px white;
+  /* -webkit-text-stroke: 1px white; */
+   /* -webkit-text-stroke: 1px black; */
 }
 
 .player-1 {

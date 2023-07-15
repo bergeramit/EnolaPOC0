@@ -93,9 +93,11 @@
 .gilroy-extra-extra-bold-white-14px {
   color: black;
   font-family: var(--font-family-gilroy-extrabold);
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-s);
   font-style: normal;
   font-weight: 900;
+  box-shadow: 0 0 0px 3px white, inset 0px -20px 0px 16px white, 0 0 0px 2px white;
+  border-radius: 0.3rem;
 }
 
 .gilroy-extra-extra-bold-gunsmoke-12-1px {
