@@ -1136,8 +1136,8 @@ button, [type=button], [type=reset], [type=submit] {
   }
 
   #chat-area {
-    max-height: 6rem;
-    min-height: 6rem;
+    max-height: 7.5rem;
+    min-height: 7.5rem;
   }
 
   .word-hunt .tail-1 {
