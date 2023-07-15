@@ -754,8 +754,10 @@ document.onclick = function (e) {
     var firstPlayPopup2 = document.getElementById('first-to-play-message2');
     var firstPlayTriggerPopup = document.getElementById('be-the-first-to-play');
     var addToHomeTriggerPopup = document.getElementById('add-to-home-id');
+    var howToTriggerPopup = document.getElementById('how-to-button-id');
     var howToPopup = document.getElementById('how-to-popup');
-    if (!howToPopup.contains(e.target)) {
+    if (!howToPopup.contains(e.target)
+        && !(howToTriggerPopup.contains(e.target))) {
         howToPopup.style.display = "none"
     }
     if (!firstPlayPopup.contains(e.target)
