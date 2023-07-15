@@ -875,25 +875,32 @@ document.getElementById("invite-friends-id").addEventListener("click", (e) => {
     dummy.value = "wordhunt.gg";
     dummy.contentEditable = true;
     dummy.readOnly = true;
-    var range = document.createRange();
-    range.selectNodeContents(dummy);
-    var selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range);
-    dummy.select();
-    dummy.setSelectionRange(0, 999999);
+    // var range = document.createRange();
+    // range.selectNodeContents(dummy);
+    // var selection = window.getSelection();
+    // selection.removeAllRanges();
+    // selection.addRange(range);
+    // dummy.select();
+    // dummy.setSelectionRange(0, 999999);
 
-    navigator.clipboard.writeText(dummy.value).then(() => {
+    document.body.appendChild(dummy);
+    dummy.select();
+    document.execCommand('copy');
+    document.body.removeChild(dummy);
     const firstToPlay = document.getElementById("share-link-message")
     setFadeAnimation(firstToPlay, "2s", 2000)
-        console.log('Copied to clipboard!');
-    /* Resolved - text copied to clipboard successfully */
-    },() => {
-        console.error('Failed to copy');
-        /* Rejected - text failed to copy to the clipboard */
-        });
+
+    // navigator.clipboard.writeText(dummy.value).then(() => {
+    // const firstToPlay = document.getElementById("share-link-message")
+    // setFadeAnimation(firstToPlay, "2s", 2000)
+    //     console.log('Copied to clipboard!');
+    // /* Resolved - text copied to clipboard successfully */
+    // },() => {
+    //     console.error('Failed to copy');
+    //     /* Rejected - text failed to copy to the clipboard */
+    //     });
             
-    document.body.removeChild(dummy);
+    // document.body.removeChild(dummy);
 })
 
 
