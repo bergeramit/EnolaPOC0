@@ -21,3 +21,9 @@ node app.js # or if you use PM2 then pm2 start app.js
 ```
 http://localhost:3000/
 ```
+
+## To generate all needed PWA logos
+```
+npx pwa-asset-generator --background "#000000" .\src\public\img\logo@2x.png .\icons
+```
+the copy everything to the manifest.json and index.html and the icon folder
