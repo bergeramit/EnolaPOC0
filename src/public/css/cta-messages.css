@@ -8,6 +8,14 @@
     position: absolute;
 }
 
+#first-to-play-message2 {
+  z-index: 2;
+  display: none;
+  top: 13rem;
+  left: 1rem;
+  position: absolute;
+}
+
 #share-link-message {
     z-index: 2;
     display: none;
