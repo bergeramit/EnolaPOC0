@@ -882,7 +882,7 @@ document.getElementById("invite-friends-id").addEventListener("click", (e) => {
     window.LogRocket.track('clickInviteFriends', {});
     var dummy = document.createElement("textarea");
     document.body.appendChild(dummy);
-    dummy.value = "wordhunt.gg";
+    dummy.value = "http://wordhunt.gg";
     dummy.contentEditable = true;
     dummy.readOnly = true;
     // var range = document.createRange();
