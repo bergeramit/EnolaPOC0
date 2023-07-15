@@ -626,7 +626,7 @@ transform: scale(1);
 .word-hunt .player-you {
   background-image: url(../img/user-fill.svg);
   background-color: var(--sunglow);
-  border: 3px solid #ffd232;
+  border: 3px solid white;
   border-radius: 20px;
   background-position: 50% 50%;
   background-size: cover;
@@ -634,7 +634,7 @@ transform: scale(1);
 
 .word-hunt .player-3 {
   background-image: url(../img/new_player_1.png);
-  border: 3px solid #329dff;
+  border: 3px solid white;
   border-radius: 20px;
   background-position: 50% 50%;
   background-size: cover;
@@ -642,7 +642,7 @@ transform: scale(1);
 
 .word-hunt .player-1 {
   background-image: url(../img/new_player_2.png);
-  border: 3px solid #32ff84;
+  border: 3px solid white;
   border-radius: 20px;
   background-position: 50% 50%;
   background-size: cover;
@@ -650,7 +650,7 @@ transform: scale(1);
 
 .word-hunt .player-2 {
   background-image: url(../img/new_player_3.png);
-  border: 3px solid #ff3364;
+  border: 3px solid white;
   border-radius: 20px;
   background-size: 100% 100%;
 }
@@ -658,10 +658,11 @@ transform: scale(1);
 .word-hunt .letters {
   align-items: center;
   display: flex;
-  gap: 8.17px;
+  gap: 0.6rem;
   justify-content: center;
   position: relative;
   width: fit-content;
+  padding-left: 0.5rem;
 }
 
 .word-hunt .letter {
@@ -1111,7 +1112,7 @@ button, [type=button], [type=reset], [type=submit] {
     justify-content: center;
     position: relative;
     width: fit-content;
-    gap: 0.1rem;
+    gap: 0.15rem;
   }
 
   .gilroy-extra-extra-bold-cherry-pie-23-7px {
@@ -1211,7 +1212,7 @@ button, [type=button], [type=reset], [type=submit] {
     justify-content: center;
     position: relative;
     width: fit-content;
-    gap: 0.1rem;
+    gap: 0.15rem;
   }
 
   .gilroy-extra-extra-bold-cherry-pie-23-7px {
@@ -1743,23 +1744,23 @@ transform: scale(1);
 }
 
 .player-score-number-1 {
-  -webkit-text-stroke: 1px #32ff84;
-  /* -webkit-text-stroke: 1px #00001c; */
+  /* -webkit-text-stroke: 1px #32ff84; */
+  -webkit-text-stroke: 1px white;
 }
 
 .player-score-number-2 {
-  -webkit-text-stroke: 1px #ff3364;
-  /* -webkit-text-stroke: 1px #00001c; */
+  /* -webkit-text-stroke: 1px #ff3364; */
+  -webkit-text-stroke: 1px white;
 }
 
 .player-score-number-3 {
-  -webkit-text-stroke: 1px #329dff;
-  /* -webkit-text-stroke: 1px #00001c; */
+  /* -webkit-text-stroke: 1px #329dff; */
+  -webkit-text-stroke: 1px white;
 }
 
 .player-score-number-you {
-  -webkit-text-stroke: 1px #ffd232;
-  /* -webkit-text-stroke: 1px #00001c; */
+  /* -webkit-text-stroke: 1px #ffd232; */
+  -webkit-text-stroke: 1px white;
 }
 
 .player-1 {
