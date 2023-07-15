@@ -764,9 +764,7 @@ document.onclick = function (e) {
         firstPlayPopup.style.display = "none"
         
     }
-    if (!firstPlayPopup2.contains(e.target)
-        && !(firstPlayTriggerPopup.contains(e.target))
-        && !(addToHomeTriggerPopup.contains(e.target))) {
+    if (!firstPlayPopup2.contains(e.target)) {
         firstPlayPopup2.style.display = "none" 
     }
 }
