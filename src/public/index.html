@@ -1108,8 +1108,18 @@
       /* top: 0;
       width: 38px; */
     }
+
+
     
     @media only screen and (max-height: 750px) {
+
+      .full-view {
+        background-image: url(img/bg_375_667.webp);
+        /* background-position: center;
+        background-size: cover; */
+        /* background-repeat: no-repeat; */
+        background-attachment: fixed;
+      }
       
       .word-hunt .tile-bg {
         align-items: flex-start;
@@ -1210,6 +1220,14 @@
     }
     
     @media only screen and (min-height: 750px) {
+
+      .full-view {
+        background-image: url(img/bg_428_926.webp);
+        /* background-position: center;
+        background-size: cover; */
+        /* background-repeat: no-repeat; */
+        background-attachment: fixed;
+      }
       
       .word-hunt .tile-bg {
         align-items: flex-start;
@@ -1485,13 +1503,6 @@
       justify-content: center;
       pointer-events: none;
       width: 100%;
-    }
-    
-    .full-view {
-      background-image: url(img/bg.webp);
-      background-position: center;
-      /* background-repeat: no-repeat; */
-      background-attachment: fixed;
     }
     
     .container-center-horizontal > * {
