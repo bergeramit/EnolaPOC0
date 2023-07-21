@@ -669,6 +669,7 @@ function generateNewLevel () {
         CurrentLevel = data.level
         metaCurrentLevel = data.metaLevel
         availableLetters = shuffle(Array.from(CurrentLevel[0]))
+        CurrentLevel = shuffle(Array.from(CurrentLevel))
         beginReadyLevel()
         setTimeout(() => {
             startCurrentLevel()
