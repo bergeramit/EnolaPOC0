@@ -820,7 +820,7 @@ document.getElementById("enterButton").addEventListener("touchstart", (e) => {
     chatInput.value = ""
 }, {passive: true})
 
-document.getElementById("how-to-button-id").addEventListener("touchstart", (e) => {
+document.getElementById("how-to-button-id").addEventListener("click", (e) => {
     /* When "how-to" Pressed */
     window.LogRocket.track('clickQuestionMark', {});
     const howToPopup = document.getElementById("how-to-popup")
