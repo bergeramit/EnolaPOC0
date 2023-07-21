@@ -8,7 +8,7 @@ const difficulty = 'Easy'
 const ENTER_KEY_NAME = "Enter"
 const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
-const botGuessInterval = [7000, 8000, 9000, 10000]
+const botGuessInterval = [7000, 8000, 9000, 10000, 11000, 12000]
 const botAngryMsgs = [
     "I had enough",
     "jesus these levels man...",
@@ -119,7 +119,7 @@ const FULL_TILES_SIZE = "17rem"
 const FULL_CHAT_SIZE = "10rem"
 const BROWSER_TILES_SIZE = "13.5rem" 
 const BROWSER_CHAT_SIZE = "8rem"
-const GAME_TIMER_TIMEOUT = 120 // 1 for testing
+const GAME_TIMER_TIMEOUT = 240 // 1 for testing
 
 class Player {
     constructor(username, id, icon, color, textColor) {
@@ -554,7 +554,7 @@ function displayFinishedLevel() {
 }
 
 function getTimerStr(timeLeft) {
-    if (timeLeft > 60) {
+    if (timeLeft >= 60) {
         if (Math.floor(timeLeft % 60) < 10) {
             return Math.floor(timeLeft / 60) + ":0" + Math.floor(timeLeft % 60)
         } else {
@@ -631,7 +631,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     if (!shouldWaitForStartUp) {
         startUp()
     }
-    
+
     // Call the function to lock the orientation on page load
     lockOrientation();
 });
