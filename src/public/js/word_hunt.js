@@ -212,7 +212,7 @@ function checkGuess (player, guess) {
         //console.log('Checks: CurrentLevel[1][i]: ' + CurrentLevel[i] + ' === ' + guess)
         if (CurrentLevel[i] === guess && !correctlyGuessed.includes(guess)) {
             if (player.username === "you") {
-                window.LogRocket.track('UserCorrectGuess', {round: round, score: player.score});    
+                // window.LogRocket.track('UserCorrectGuess', {round: round, score: player.score});    
             }
             correctlyGuessed.push(guess)
             // console.log('Success! at row: ' + (i + 1))
@@ -237,7 +237,7 @@ function checkGuess (player, guess) {
             //appendMessage('WordHunt', 'Great job!', false)
             //appendMessage('WordHunt', 'Get Ready for level ' + (levelNumber+1))
             freezeGame = true
-            window.LogRocket.track('FinishedLevel', {round: round, score: youPlayer.score, groupScore: groupScore});
+            // window.LogRocket.track('FinishedLevel', {round: round, score: youPlayer.score, groupScore: groupScore});
             setTimeout(() => {
                 displayFinishedLevel()
             }, 1000)
@@ -579,7 +579,7 @@ function updateTimer() {
 }
 
 function handleOutOfTime() {
-    window.LogRocket.track('FinishedGameStats', {round: round, score: groupScore});
+    // window.LogRocket.track('FinishedGameStats', {round: round, score: groupScore});
     freezeGame = true
 
     var scoreElement = document.getElementById("level-timeout-score")
@@ -614,7 +614,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     //     // Perform actions specific to opening from the browser
     // }
 
-    window.LogRocket && window.LogRocket.init('9o6vsp/enolapoc0');
+    // window.LogRocket && window.LogRocket.init('9o6vsp/enolapoc0');
     deviceId = localStorage.getItem("deviceId");
     if (!deviceId) {
         shouldWaitForStartUp = true
@@ -626,7 +626,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         shouldWaitForStartUp = false
     }
     console.log(deviceId)
-    window.LogRocket.identify(deviceId, { uuid: deviceId });
+    // window.LogRocket.identify(deviceId, { uuid: deviceId });
 
     if (!shouldWaitForStartUp) {
         startUp()
@@ -681,7 +681,7 @@ function generateNewLevel () {
 
 // function submitRegisterForm() {
 //     const email = document.getElementById("email-input")
-//     window.LogRocket.track("RegisterRequest", {email: email.value})
+    // window.LogRocket.track("RegisterRequest", {email: email.value})
 //     fetch(registerPostURL, {
 //         method: 'POST',
 //         headers: {
@@ -699,7 +699,7 @@ function generateNewLevel () {
 // }
 
 function submitRegisterForm(email, callback) {
-    window.LogRocket.track("RegisterRequest", {email: email})
+    // window.LogRocket.track("RegisterRequest", {email: email})
     fetch(registerPostURL, {
         method: 'POST',
         headers: {
@@ -814,14 +814,14 @@ buttons.forEach((button) => {
 
 document.getElementById("yay-message").addEventListener("click", (e) => {
     /* When yay Pressed */
-    window.LogRocket.track('clickDismissCompleteLevel', {});
+    // window.LogRocket.track('clickDismissCompleteLevel', {});
     const popup = document.getElementById("complete-level-popup")
     popup.style.display = "none"
 })
 
 document.getElementById("play-again-button").addEventListener("click", (e) => {
     /* When play-again-click Pressed */
-    window.LogRocket.track('clickPlayAgain', {});
+    // window.LogRocket.track('clickPlayAgain', {});
     const popup = document.getElementById("out-of-time-popup")
     popup.style.display = "none"
     resetGame()
@@ -830,21 +830,21 @@ document.getElementById("play-again-button").addEventListener("click", (e) => {
 
 document.getElementById("enterButton").addEventListener("touchstart", (e) => {
     /* When Enterkey Pressed */
-    window.LogRocket.track('clickEnter', {});
+    // window.LogRocket.track('clickEnter', {});
     handleSubmitChatMessage(chatInput.value)
     chatInput.value = ""
 }, {passive: true})
 
 document.getElementById("how-to-button-id").addEventListener("click", (e) => {
     /* When "how-to" Pressed */
-    window.LogRocket.track('clickQuestionMark', {});
+    // window.LogRocket.track('clickQuestionMark', {});
     const howToPopup = document.getElementById("how-to-popup")
     howToPopup.style.display = "flex"
 }, {passive: true})
 
 document.getElementById("x-how-to-popup-button").addEventListener("click", (e) => {
     /* When "x" Pressed in popup window */
-    window.LogRocket.track('clickXInHowToPopup', {});
+    // window.LogRocket.track('clickXInHowToPopup', {});
     const howToPopup = document.getElementById("how-to-popup")
     howToPopup.style.display = "none"
     if (shouldWaitForStartUp) {
@@ -854,7 +854,7 @@ document.getElementById("x-how-to-popup-button").addEventListener("click", (e) =
 
 document.getElementById("be-the-first-to-play").addEventListener("click", (e) => {
     /* When "be-the-first" Pressed */
-    window.LogRocket.track('clickBeTheFirst', {});
+    // window.LogRocket.track('clickBeTheFirst', {});
     const firstToPlay = document.getElementById("first-to-play-message")
     // firstToPlay.focus()
     firstToPlay.style.top = "1rem"
@@ -872,7 +872,7 @@ document.getElementById("be-the-first-to-play").addEventListener("click", (e) =>
 
 document.getElementById("add-to-home-id").addEventListener("click", (e) => {
     /* When "be-the-first" Pressed */
-    window.LogRocket.track('clickBeTheFirst', {});
+    // window.LogRocket.track('clickBeTheFirst', {});
 
     installToHome();
 
@@ -894,7 +894,7 @@ document.getElementById("add-to-home-id").addEventListener("click", (e) => {
 
 document.getElementById("invite-friends-id").addEventListener("click", (e) => {
     /* When "be-the-first" Pressed */
-    window.LogRocket.track('clickInviteFriends', {});
+    // window.LogRocket.track('clickInviteFriends', {});
     var dummy = document.createElement("textarea");
     document.body.appendChild(dummy);
     dummy.value = "http://wordhunt.gg";
@@ -931,7 +931,7 @@ document.getElementById("invite-friends-id").addEventListener("click", (e) => {
 
 document.getElementById("reshuffle-letters").addEventListener("touchstart", (e) => {
     /* When yay Pressed */
-    window.LogRocket.track('reshuffle-pressed', {});
+    // window.LogRocket.track('reshuffle-pressed', {});
     setAvailableLetters()
 }, {passive: true})
 
@@ -952,7 +952,7 @@ document.addEventListener('keyup', (e) => {
     addKeyToInput(pressedKey, false)
 
     if (pressedKey === ENTER_KEY_NAME) {
-        window.LogRocket.track('clickEnter', {});
+        // window.LogRocket.track('clickEnter', {});
     }
 
     let found = pressedKey.match(/[a-z]/gi)
