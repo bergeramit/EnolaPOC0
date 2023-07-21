@@ -251,7 +251,7 @@ function checkGuess (player, guess) {
 function countLetter (letter, str) {
     let letterCount = 0
     const lowercaseLetter = letter.toLowerCase()
-    const lowercaseString = str.toLowerCase()
+    const lowercaseString = str.join("").toLowerCase()
     
     for (let i = 0; i < lowercaseString.length; i++) {
         if (lowercaseString[i] === lowercaseLetter) {
@@ -534,7 +534,7 @@ function setAvailableLetters() {
         letterCount.textContent = ''
         if (availableLetters.includes(letter.textContent[0].toLowerCase())) {
             button.classList.add("keyboard-button-1", "keyboard-button-2")
-            letterCount.textContent = countLetter(letter.textContent, CurrentLevel[0])
+            letterCount.textContent = countLetter(letter.textContent, availableLetters)
         }
     })
 }
