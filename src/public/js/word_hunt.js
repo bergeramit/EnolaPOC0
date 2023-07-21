@@ -729,7 +729,7 @@ function startUp() {
 /* ---------------------- EventListeners ---------------------- */
 
 function lockOrientation() {
-    if (screen.orientation && !screen.orientation.lock) {
+    if (screen.orientation) {
       screen.orientation.lock("portrait").catch(function(error) {
         // If the orientation cannot be locked, handle the error (if needed)
         console.error("Orientation lock failed:", error);
