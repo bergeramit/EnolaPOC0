@@ -631,7 +631,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
     if (!shouldWaitForStartUp) {
         startUp()
     }
-  
+    
+    // Call the function to lock the orientation on page load
+    lockOrientation();
 });
 
 /* ---------------------- /DOM Cyber ---------------------- */
@@ -725,6 +727,18 @@ function startUp() {
 /* ---------------------- /Server API ---------------------- */
 
 /* ---------------------- EventListeners ---------------------- */
+
+function lockOrientation() {
+    if (screen.orientation && screen.orientation.lock) {
+      screen.orientation.lock("portrait").catch(function(error) {
+        // If the orientation cannot be locked, handle the error (if needed)
+        console.error("Orientation lock failed:", error);
+      });
+    }
+  }
+
+  // Listen for the orientationchange event and lock the orientation when triggered
+  window.addEventListener("orientationchange", lockOrientation);
 
 function setFadeAnimation(element, timeoutStr, timeoutMS) {
     element.style.display = "flex"
