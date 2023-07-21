@@ -3,8 +3,8 @@ const express = require("express");
 const path = require('path');
 const bodyParser = require('body-parser');
 const test_levels = require("../gameLogic/test_levels.service.js");
-const LogRocket = require('logrocket');
-LogRocket.init('9o6vsp/enolapoc0');
+// const LogRocket = require('logrocket');
+// LogRocket.init('9o6vsp/enolapoc0');
 const app = express(); // Initializing Express App
 
 app.use('/', express.static(path.join(__dirname, '../../public')))
