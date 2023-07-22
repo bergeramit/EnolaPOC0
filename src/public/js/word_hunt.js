@@ -1,4 +1,4 @@
-const BASE_URL = "http://64.226.100.123/"
+const BASE_URL = "https://wordhunt.gg/"
 //const BASE_URL = "http://127.0.0.1:3000/";
 const generateLevelPostURL = BASE_URL + "generate_level/";
 //const generateLevelPostURL = 'generate_level/'
