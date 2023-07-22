@@ -213,6 +213,7 @@ function checkGuess (player, guess) {
         if (CurrentLevel[i] === guess && !correctlyGuessed.includes(guess)) {
             if (player.username === "you") {
                 // window.LogRocket.track('UserCorrectGuess', {round: round, score: player.score});   
+                mixpanel.track("UserCorrectGuess", {round: round, score: player.score})
                 gtag('event', 'UserCorrectGuess', {round: round, score: player.score});
             }
             correctlyGuessed.push(guess)
@@ -236,6 +237,7 @@ function checkGuess (player, guess) {
             }
             // generate new level
             freezeGame = true
+            mixpanel.track("FinishedRound", {round: round, score: player.score})
             gtag('event', 'FinishedRound', {round: round, score: player.score});
             setTimeout(() => {
                 displayFinishedLevel()
@@ -567,6 +569,7 @@ function updateTimer() {
 
 function handleOutOfTime() {
     // window.LogRocket.track('FinishedGameStats', {round: round, score: groupScore});
+    mixpanel.track("FinishedGameOutOfTime", {round: round, score: youPlayer.score})
     gtag('event', 'FinishedGameOutOfTime', {round: round, score: youPlayer.score});
     freezeGame = true
     
@@ -646,6 +649,7 @@ function generateNewLevel () {
 
 function submitRegisterForm(email, callback) {
     // window.LogRocket.track("RegisterRequest", {email: email})
+    mixpanel.track("RegisterRequest", {email: email})
     gtag('event', 'RegisterRequest', {email: email});
     fetch(registerPostURL, {
         method: 'POST',
@@ -688,6 +692,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     gtag('config', 'G-2SSJZRPB03');
     
     // window.LogRocket && window.LogRocket.init('9o6vsp/enolapoc0');
+    mixpanel.init('6119beb395944431684c67ef0b8fde81', { debug: true, track_pageview: true, persistence: 'localStorage' });
     deviceId = localStorage.getItem("deviceId");
     if (!deviceId) {
         shouldWaitForStartUp = true
@@ -700,6 +705,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     }
     console.log(deviceId)
     // gtag()
+    mixpanel.identify(deviceId)
     // window.LogRocket.identify(deviceId, { uuid: deviceId });
     
     if (!shouldWaitForStartUp) {
@@ -707,7 +713,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     }
     
     // Call the function to lock the orientation on page load
-    lockOrientation();
+    // lockOrientation();
 });
 
 // Listen for the orientationchange event and lock the orientation when triggered
@@ -777,6 +783,7 @@ buttons.forEach((button) => {
 document.getElementById("yay-message").addEventListener("click", (e) => {
     /* When yay Pressed */
     // window.LogRocket.track('clickDismissCompleteLevel', {});
+    mixpanel.track("clickDismissCompleteLevel", {})
     gtag('event', 'clickDismissCompleteLevel', {});
     const popup = document.getElementById("complete-level-popup")
     popup.style.display = "none"
@@ -785,6 +792,7 @@ document.getElementById("yay-message").addEventListener("click", (e) => {
 document.getElementById("play-again-button").addEventListener("click", (e) => {
     /* When play-again-click Pressed */
     // window.LogRocket.track('clickPlayAgain', {});
+    mixpanel.track("clickPlayAgain", {})
     gtag('event', 'clickPlayAgain', {});
     const popup = document.getElementById("out-of-time-popup")
     popup.style.display = "none"
@@ -795,6 +803,7 @@ document.getElementById("play-again-button").addEventListener("click", (e) => {
 document.getElementById("enterButton").addEventListener("touchstart", (e) => {
     /* When Enterkey Pressed */
     // window.LogRocket.track('clickEnter', {});
+    mixpanel.track("clickEnter", {})
     gtag('event', 'clickEnter', {});
     handleSubmitChatMessage(chatInput.value)
     chatInput.value = ""
@@ -803,6 +812,7 @@ document.getElementById("enterButton").addEventListener("touchstart", (e) => {
 document.getElementById("how-to-button-id").addEventListener("click", (e) => {
     /* When "how-to" Pressed */
     // window.LogRocket.track('clickQuestionMark', {});
+    mixpanel.track("clickQuestionMark", {})
     gtag('event', 'clickQuestionMark', {});
     const howToPopup = document.getElementById("how-to-popup")
     howToPopup.style.display = "flex"
@@ -811,6 +821,7 @@ document.getElementById("how-to-button-id").addEventListener("click", (e) => {
 document.getElementById("x-how-to-popup-button").addEventListener("click", (e) => {
     /* When "x" Pressed in popup window */
     // window.LogRocket.track('clickXInHowToPopup', {});
+    mixpanel.track("clickXInHowToPopup", {})
     gtag('event', 'clickXInHowToPopup', {});
     const howToPopup = document.getElementById("how-to-popup")
     howToPopup.style.display = "none"
@@ -822,6 +833,7 @@ document.getElementById("x-how-to-popup-button").addEventListener("click", (e) =
 document.getElementById("be-the-first-to-play").addEventListener("click", (e) => {
     /* When "be-the-first" Pressed */
     // window.LogRocket.track('clickBeTheFirst', {});
+    mixpanel.track("clickBeTheFirst", {})
     gtag('event', 'clickBeTheFirst', {});
     const firstToPlay = document.getElementById("first-to-play-message")
     // firstToPlay.focus()
@@ -841,6 +853,7 @@ document.getElementById("be-the-first-to-play").addEventListener("click", (e) =>
 document.getElementById("add-to-home-id").addEventListener("click", (e) => {
     /* When "be-the-first" Pressed */
     // window.LogRocket.track('clickBeTheFirst', {});
+    mixpanel.track("clickAddToHome", {})
     gtag('event', 'clickAddToHome', {});
     installToHome();
     
@@ -863,10 +876,11 @@ document.getElementById("add-to-home-id").addEventListener("click", (e) => {
 document.getElementById("invite-friends-id").addEventListener("click", (e) => {
     /* When "be-the-first" Pressed */
     // window.LogRocket.track('clickInviteFriends', {});
+    mixpanel.track("clickInviteFriends", {})
     gtag('event', 'clickInviteFriends', {});
     var dummy = document.createElement("textarea");
     document.body.appendChild(dummy);
-    dummy.value = "http://wordhunt.gg";
+    dummy.value = "https://wordhunt.gg";
     dummy.contentEditable = true;
     dummy.readOnly = true;
     
@@ -882,6 +896,7 @@ document.getElementById("invite-friends-id").addEventListener("click", (e) => {
 document.getElementById("reshuffle-letters").addEventListener("touchstart", (e) => {
     /* When yay Pressed */
     // window.LogRocket.track('reshuffle-pressed', {});
+    mixpanel.track("clickReshuffleLetters", {})
     gtag('event', 'clickReshuffleLetters', {});
     setAvailableLetters()
 }, {passive: true})
@@ -904,6 +919,7 @@ document.addEventListener('keyup', (e) => {
     
     if (pressedKey === ENTER_KEY_NAME) {
         // window.LogRocket.track('clickEnter', {});
+        mixpanel.track("clickEnter", {})
         gtag('event', 'clickEnter', {});
     }
     
