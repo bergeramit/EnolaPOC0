@@ -552,7 +552,7 @@ function startCurrentLevel () {
     })
     if (maxScore - 10 > youPlayer.score) {
         // make it easier
-        botGuessInterval.push(12000)
+        botGuessInterval.push(14000)
     } else if (maxScore + 10 < youPlayer.score) {
         // make it harder
         botGuessInterval.push(5000)
