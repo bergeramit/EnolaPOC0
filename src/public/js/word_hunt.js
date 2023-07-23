@@ -390,7 +390,7 @@ function beginReadyLevel() {
     var timer = document.getElementById("game-timer")
     var timerBackground = document.getElementById("in-game-timer-background")
     timerBackground.style.backgroundColor = "#000000FF";
-    timeLeft = GAME_TIMER_TIMEOUT - (5 * round)
+    timeLeft = GAME_TIMER_TIMEOUT - (10 * round)
     if (timeLeft <= 20) {
         timeLeft = 20
     }
