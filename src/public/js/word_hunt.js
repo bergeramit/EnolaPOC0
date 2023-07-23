@@ -11,7 +11,7 @@ const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
 const outOfTimeString = "OUT OF TIME!"
 const OOTRed = "#EF2253";
-const botGuessInterval = [7000, 8000, 9000, 10000, 11000, 12000]
+const botGuessInterval = [9000, 10000, 11000, 12000]
 const EXTRA_CHAT_MESSAGE_DELAY = 1000
 const PIP_CHAT_MESSAGE_DELAY = 500
 const GAME_TIMER_TIMEOUT = 240 // 1 for testing
@@ -541,12 +541,22 @@ function startCurrentLevel () {
         board.appendChild(row)
     }
     
+    let avgScore = 0
     playersList.forEach((player) => {
         player.currentLevelAttempts = 0
         player.sequentialHits = 0
         player.sequentialMisses = 0
+        avgScore += player.score
     })
-    
+    avgScore /= playersList.length;
+    if (avgScore - 10 > youPlayer.score) {
+        // make it easier
+        botGuessInterval.push(12000)
+    } else if (avgScore + 10 < youPlayer.score) {
+        // make it harder
+        botGuessInterval.push(5000)
+    }
+
     const buttons = document.querySelectorAll('.keyboard-button')
     buttons.forEach((button) => {
         button.classList.remove("keyboard-button-1", "keyboard-button-2")
@@ -640,10 +650,6 @@ function setFadeAnimation(element, timeoutStr, timeoutMS) {
 function generateNewLevel () {
     correctlyGuessed = []
     validGuessed = []
-    // const levelNumberObj = document.getElementById('level-number')
-    // levelNumber += 1
-    // levelNumberObj.textContent = 'Level: ' + levelNumber
-    // updateScore()
     
     fetch(generateLevelPostURL, {
         method: 'POST',
@@ -655,7 +661,7 @@ function generateNewLevel () {
         },
         body: JSON.stringify({ difficulty })
     }).then(response => {
-        console.log(response.statusText)
+        // console.log(response.statusText)
         return response.json()
     })
     .then(data => {
