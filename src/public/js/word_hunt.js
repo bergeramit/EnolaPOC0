@@ -541,18 +541,19 @@ function startCurrentLevel () {
         board.appendChild(row)
     }
     
-    let avgScore = 0
+    let maxScore = 0
     playersList.forEach((player) => {
         player.currentLevelAttempts = 0
         player.sequentialHits = 0
         player.sequentialMisses = 0
-        avgScore += player.score
+        if (maxScore < player.score) {
+            maxScore = player.score
+        }
     })
-    avgScore /= playersList.length;
-    if (avgScore - 10 > youPlayer.score) {
+    if (maxScore - 10 > youPlayer.score) {
         // make it easier
         botGuessInterval.push(12000)
-    } else if (avgScore + 10 < youPlayer.score) {
+    } else if (maxScore + 10 < youPlayer.score) {
         // make it harder
         botGuessInterval.push(5000)
     }
