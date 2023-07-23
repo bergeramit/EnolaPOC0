@@ -4,10 +4,13 @@ const generateLevelPostURL = BASE_URL + "generate_level/";
 //const generateLevelPostURL = 'generate_level/'
 const registerPostURL = BASE_URL + "register_user/";
 const timeoutBetweenLevels = 3000
+const OutOfTimeSolutionViewMS = 6000
 const difficulty = 'Easy'
 const ENTER_KEY_NAME = "Enter"
 const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
+const outOfTimeString = "OUT OF TIME!"
+const OOTRed = "#e74c3c";
 const botGuessInterval = [7000, 8000, 9000, 10000, 11000, 12000]
 const botAngryMsgs = [
     "I had enough",
@@ -207,6 +210,31 @@ function resetGame() {
     
 }
 
+function addCorrectWord(wordIndex, fillColor, opacity=1) {
+    const row = document.getElementsByClassName('word')[wordIndex]
+    for (let j = 0; j < row.children.length; j++) {
+        // place word correctly!
+        row.children[j].innerHTML = FILLED_TILES
+        const currentTile = row.children[j].getElementsByClassName("letter-input")[0]
+        currentTile.textContent = CurrentLevel[wordIndex][j].toUpperCase()  
+        const backgroundFill = row.children[j].getElementsByClassName("tile-fill")[0]
+        const backgroundOpac = row.children[j].getElementsByClassName("letter-tile")[0]
+        backgroundFill.style.backgroundColor = fillColor
+        backgroundOpac.style.opacity = opacity
+    }
+    setScaleAnimation(row)
+}
+
+function showRemainSolution() {
+    for (let i = 0; i < CurrentLevel.length; i++) {
+        if (!correctlyGuessed.includes(CurrentLevel[i])) {
+            correctlyGuessed.push(CurrentLevel[i])
+            addCorrectWord(i, "white", opacity=0.6)
+        }
+    }
+    appendMessage(pipPlayer, outOfTimeString + " Here are the words you've missed", false, false, 0)
+}
+
 function checkGuess (player, guess) {
     for (let i = 0; i < CurrentLevel.length; i++) {
         //console.log('Checks: CurrentLevel[1][i]: ' + CurrentLevel[i] + ' === ' + guess)
@@ -220,21 +248,13 @@ function checkGuess (player, guess) {
             // console.log('Success! at row: ' + (i + 1))
             streak += 1
             
-            const row = document.getElementsByClassName('word')[i]
-            for (let j = 0; j < row.children.length; j++) {
-                // place word correctly!
-                row.children[j].innerHTML = FILLED_TILES
-                const currentTile = row.children[j].getElementsByClassName("letter-input")[0]
-                currentTile.textContent = CurrentLevel[i][j].toUpperCase()  
-                const backgroundFill = row.children[j].getElementsByClassName("tile-fill")[0]
-                backgroundFill.style.backgroundColor = player.color
-            }
-            setScaleAnimation(row)
+            addCorrectWord(i, player.color)
             
             if (correctlyGuessed.length < CurrentLevel.length) {
                 // There are still empty rows
                 return true
             }
+
             // generate new level
             freezeGame = true
             mixpanel.track("FinishedRound", {round: round, score: player.score})
@@ -376,6 +396,8 @@ function beginReadyLevel() {
     board.innerHTML = ''
     
     var timer = document.getElementById("game-timer")
+    var timerBackground = document.getElementById("in-game-timer-background")
+    timerBackground.style.backgroundColor = "#000000FF";
     timeLeft = GAME_TIMER_TIMEOUT - (5 * round)
     if (timeLeft <= 20) {
         timeLeft = 20
@@ -450,8 +472,14 @@ function appendMessageInternal(player, message, solved, niceTrySolved) {
         messageContentElement.classList.remove("correct-word")
         messageContentElement.textContent = message
         if (player.username == "PIP") {
-            messageContentElement.style.color = player.color
-            usernameElement.style.color = player.color
+            if (message.includes(outOfTimeString)) {
+                messageContentElement.style.color = OOTRed
+                messageContentElement.style.fontWeight = "700"
+                usernameElement.style.color = player.color
+            } else {
+                messageContentElement.style.color = player.color
+                usernameElement.style.color = player.color
+            }
         }
     }
     
@@ -554,6 +582,13 @@ function displayFinishedLevel() {
     }, timeoutBetweenLevels)
 }
 
+function displaySolutionInOutOfTime() {
+    freezeGame = true
+    var timer = document.getElementById("in-game-timer-background")
+    timer.style.backgroundColor = OOTRed;
+    showRemainSolution()
+}
+
 function updateTimer() {
     if (freezeGame) {
         return
@@ -563,7 +598,10 @@ function updateTimer() {
     
     timer.textContent = getTimerStr(timeLeft)
     if (timeLeft === 0) {
-        handleOutOfTime()
+        displaySolutionInOutOfTime()
+        setTimeout(() => {
+            handleOutOfTime()
+        }, OutOfTimeSolutionViewMS)
     }
 }
 
@@ -571,7 +609,6 @@ function handleOutOfTime() {
     // window.LogRocket.track('FinishedGameStats', {round: round, score: groupScore});
     mixpanel.track("FinishedGameOutOfTime", {round: round, score: youPlayer.score})
     gtag('event', 'FinishedGameOutOfTime', {round: round, score: youPlayer.score});
-    freezeGame = true
     
     var scoreElement = document.getElementById("level-timeout-score")
     scoreElement.textContent = youPlayer.score + " POINTS"
