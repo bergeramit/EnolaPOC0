@@ -10,8 +10,11 @@ const ENTER_KEY_NAME = "Enter"
 const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
 const outOfTimeString = "OUT OF TIME!"
-const OOTRed = "#e74c3c";
+const OOTRed = "#EF2253";
 const botGuessInterval = [7000, 8000, 9000, 10000, 11000, 12000]
+const EXTRA_CHAT_MESSAGE_DELAY = 1000
+const PIP_CHAT_MESSAGE_DELAY = 500
+const GAME_TIMER_TIMEOUT = 240 // 1 for testing
 const botAngryMsgs = [
     "I had enough",
     "jesus these levels man...",
@@ -65,8 +68,6 @@ const botCockyMsgs = [
     "raining destruction on my opponents! gg wp",
     "they can't handle my awesomeness! pro player",
 ]
-const EXTRA_CHAT_MESSAGE_DELAY = 1000
-const PIP_CHAT_MESSAGE_DELAY = 500
 const BEGINNING_ROUND_LETTER = `
 <div class="overlap-group">
 <div class="begin-in-letter t valign-text-middle gilroy-extra-extra-bold-haiti-20-9px"></div>
@@ -118,11 +119,6 @@ const CHAT_CORRECT_ADDON = `
 <img class="star-6" src="img/star-6.svg" alt="Star 6" />
 </div>
 `
-const FULL_TILES_SIZE = "17rem"
-const FULL_CHAT_SIZE = "10rem"
-const BROWSER_TILES_SIZE = "13.5rem" 
-const BROWSER_CHAT_SIZE = "8rem"
-const GAME_TIMER_TIMEOUT = 240 // 1 for testing
 
 class Player {
     constructor(username, id, icon, color, textColor) {
@@ -372,14 +368,10 @@ function shuffle(array) {
         return array;
     }
 function getTimerStr(timeLeft) {
-    if (timeLeft >= 60) {
-        if (Math.floor(timeLeft % 60) < 10) {
-            return Math.floor(timeLeft / 60) + ":0" + Math.floor(timeLeft % 60)
-        } else {
-            return Math.floor(timeLeft / 60) + ":" + Math.floor(timeLeft % 60)
-        }
+    if (Math.floor(timeLeft % 60) < 10) {
+        return Math.floor(timeLeft / 60) + ":0" + Math.floor(timeLeft % 60)
     } else {
-        return timeLeft
+        return Math.floor(timeLeft / 60) + ":" + Math.floor(timeLeft % 60)
     }
 }
 
@@ -474,7 +466,7 @@ function appendMessageInternal(player, message, solved, niceTrySolved) {
         if (player.username == "PIP") {
             if (message.includes(outOfTimeString)) {
                 messageContentElement.style.color = OOTRed
-                messageContentElement.style.fontWeight = "700"
+                messageContentElement.style.fontWeight = "800"
                 usernameElement.style.color = player.color
             } else {
                 messageContentElement.style.color = player.color
