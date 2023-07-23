@@ -14,7 +14,7 @@ const OOTRed = "#EF2253";
 const botGuessInterval = [9000, 10000, 11000, 12000, 13000, 14000]
 const EXTRA_CHAT_MESSAGE_DELAY = 1000
 const PIP_CHAT_MESSAGE_DELAY = 500
-const GAME_TIMER_TIMEOUT = 180 // 1 for testing
+const GAME_TIMER_TIMEOUT = 120 // 1 for testing
 const botAngryMsgs = [
     "I had enough",
     "jesus these levels man...",
