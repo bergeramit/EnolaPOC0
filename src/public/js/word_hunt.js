@@ -279,6 +279,10 @@ function countLetter (letter, str) {
 }
 
 function checkNiceTry(player, message) {
+    if (validGuessed.includes(message)) {
+        appendMessage(pipPlayer, "'"+ message + "' was already tried!", false, false, PIP_CHAT_MESSAGE_DELAY)
+        return false
+    }
     if (metaCurrentLevel.includes(message) && !validGuessed.includes(message)) {
         if (!correctlyGuessed.includes(message)) {
             if (player.username === "you") {

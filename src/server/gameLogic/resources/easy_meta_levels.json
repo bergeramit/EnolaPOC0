@@ -22,7 +22,9 @@
         "grow",
         "row",
         "now",
-        "own"
+        "own",
+        "nor",
+        "gown"
     ],
     [
         "faces",
@@ -31,7 +33,8 @@
         "safe",
         "ace",
         "case",
-        "sea"
+        "sea",
+        "cafe"
     ],
     [
         "likes",
@@ -50,7 +53,8 @@
         "cap",
         "lap",
         "pal",
-        "clap"
+        "clap",
+        "amp"
     ],
     [
         "habit",
@@ -71,7 +75,9 @@
         "read",
         "add",
         "dare",
-        "era"
+        "era",
+        "dead",
+        "rad"
     ],
     [
         "place",
