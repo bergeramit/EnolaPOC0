@@ -196,6 +196,7 @@ let last10SecondsSound
 let niceTrySound
 let wonRoundSound
 let outOfTimeSound
+let botCorrectSound
 
 /* ---------------------- /GlobalsDefines ---------------------- */
 
@@ -356,6 +357,7 @@ function handleSubmitChatMessage(message) {
 }
 
 function addKeyToInput (pressedKey, onScreen) {
+    keyboardClickSound.start()
     const guess = document.getElementById('chat-input')
     if (pressedKey === BACKSPACE_KEY_NAME && onScreen) {
         guess.value = guess.value.substring(0, guess.value.length - 1)
@@ -801,6 +803,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
     niceTrySound = new gameSound("audio/HumanKiss_S08HU.307.wav")
     wonRoundSound = new gameSound("audio/CrowdTeensCheer_BW.15936 (1).wav")
     outOfTimeSound = new gameSound("audio/HumanVoiceClip_S08HU.521.wav")
+    botCorrectSound = new gameSound("audio/ESM_Puzzle_Game_UI_Pop_B_05_Cartoon_App_Mobile_FX_Menu_Click_Switch_Tap_Hat_Perc_Pop.wav")
+    
 
     gtag('js', new Date());
     gtag('config', 'G-2SSJZRPB03');
@@ -890,7 +894,7 @@ document.getElementById("register-how-to-submit").addEventListener("click", (e) 
 const buttons = document.querySelectorAll('.keyboard-button')
 buttons.forEach((button) => {
     button.addEventListener("touchstart", (e) => {
-        keyboardClickSound.start()
+        // keyboardClickSound.start()
         /* Only for onscreen button presses */
         // setKeyTapAnimation(e.target)
         if (e.target.classList.contains("keyboard-button")) {
@@ -1081,6 +1085,7 @@ function runBotGuesser() {
     let botGuess = metaCurrentLevel[Math.floor(Math.random()*metaCurrentLevel.length)]
     bot.attempts += 1
     if (checkGuess(bot, botGuess)) {
+        botCorrectSound.start()
         appendMessage(bot, botGuess, true, false, 0)
         bot.sequentialHits += 1
     } else {
