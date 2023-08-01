@@ -187,7 +187,15 @@ let groupScore
 let groupScoreElement
 let shouldWaitForStartUp
 let registeredAlready = false
+
+/* Sounds */
 let keyboardClickSound
+let submitSound
+let correctAnswerSound
+let last10SecondsSound
+let niceTrySound
+let wonRoundSound
+let outOfTimeSound
 
 /* ---------------------- /GlobalsDefines ---------------------- */
 
@@ -261,6 +269,7 @@ function checkGuess (player, guess) {
 
             // generate new level
             freezeGame = true
+            wonRoundSound.start()
             mixpanel.track("FinishedRound", {round: round, score: youPlayer.score, solveCorrectlyCurrentRound: youPlayer.solveCorrectlyCurrentRound, totalCorrect: youPlayer.totalCorrect})
             gtag('event', 'FinishedRound', {round: round, score: youPlayer.score, totalCorrect: youPlayer.totalCorrect});
             setTimeout(() => {
@@ -294,6 +303,7 @@ function checkNiceTry(player, message) {
     if (metaCurrentLevel.includes(message) && !validGuessed.includes(message)) {
         if (!correctlyGuessed.includes(message)) {
             if (player.username === youUsername) {
+                niceTrySound.start();
                 appendMessage(pipPlayer, "'"+ message + "' is valid but not here!", false, false, PIP_CHAT_MESSAGE_DELAY)
             }
             return true
@@ -307,12 +317,12 @@ function checkNiceTry(player, message) {
 }
 
 function handleSubmitChatMessage(message) {
-    mixpanel.track("submitMessage", {})
-    gtag('event', 'submitMessage', {});
     if (message.length <= 0) {
         return
     }
     
+    mixpanel.track("submitMessage", {})
+    gtag('event', 'submitMessage', {});
     if (message.toLowerCase() === "daniel trau"
     || message.toLowerCase() === "dvir modan" ) {
         appendMessage(pipPlayer, message + " is my father!", false, false, 0)
@@ -329,9 +339,11 @@ function handleSubmitChatMessage(message) {
             validGuessed.push(message)
             appendMessage(youPlayer, message, false, true, 0)
         } else {
+            submitSound.start()
             appendMessage(youPlayer, message, false, false, 0)
         }
     } else {
+        correctAnswerSound.start()
         appendMessage(youPlayer, message, true, false, 0)
         youPlayer.sequentialHits += 1
         if (youPlayer.sequentialHits > 2) {
@@ -607,6 +619,7 @@ function displaySolutionInOutOfTime() {
     freezeGame = true
     var timer = document.getElementById("in-game-timer-background")
     timer.style.backgroundColor = OOTRed;
+    outOfTimeSound.start()
     showRemainSolution()
 }
 
@@ -616,6 +629,9 @@ function updateTimer() {
     }
     var timer = document.getElementById("game-timer")
     timeLeft -= 1
+    if (timeLeft < 10) {
+        last10SecondsSound.start()
+    }
     
     timer.textContent = getTimerStr(timeLeft)
     if (timeLeft === 0) {
@@ -687,6 +703,7 @@ class gameSound {
         this.sound.setAttribute("controls", "none");
         this.sound.style.display = "none";
         document.body.appendChild(this.sound);
+        this.isPlaying = false
     }
     start(){
       this.sound.play();
@@ -778,7 +795,13 @@ document.addEventListener("DOMContentLoaded", function(e) {
     window.dataLayer = window.dataLayer || [];
 
     keyboardClickSound = new gameSound("audio/DAE_noise_vk_space_bar_02.wav");
-    
+    submitSound = new gameSound("audio/OLIVER_percussion_one_shot_small_click_A.wav");
+    correctAnswerSound = new gameSound("audio/ESM_Explainer_Video_One_Shot_Positive_Notification_Alert_Fanfare_Ta_Da_Brass_Horn_2.wav")
+    last10SecondsSound = new gameSound("audio/ESM_Countdown_10sec_effects_Clock_Synth_Electronic_Timer.wav")
+    niceTrySound = new gameSound("audio/HumanKiss_S08HU.307.wav")
+    wonRoundSound = new gameSound("audio/CrowdTeensCheer_BW.15936 (1).wav")
+    outOfTimeSound = new gameSound("audio/HumanVoiceClip_S08HU.521.wav")
+
     gtag('js', new Date());
     gtag('config', 'G-2SSJZRPB03');
     
