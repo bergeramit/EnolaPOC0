@@ -660,7 +660,7 @@ function setFadeAnimation(element, timeoutStr, timeoutMS) {
     }, timeoutMS)
 }
 
-function popBeTheFirstMessage(offset="1rem") {
+function popBeTheFirstMessage(offset="1rem", message="AddFriend") {
     const firstToPlay = document.getElementById("first-to-play-message")
     // firstToPlay.focus()
     firstToPlay.style.top = offset
@@ -672,6 +672,8 @@ function popBeTheFirstMessage(offset="1rem") {
     if (firstToPlay.style.display === "flex") {
         firstToPlay.style.display = "none"
     } else {
+        mixpanel.track(message, {})
+        gtag('event', message, {});
         firstToPlay.style.display = "flex"
     }
 }
@@ -907,10 +909,7 @@ document.getElementById("x-how-to-popup-button").addEventListener("click", (e) =
 
 document.getElementById("be-the-first-to-play").addEventListener("click", (e) => {
     /* When "be-the-first" Pressed */
-    // window.LogRocket.track('clickBeTheFirst', {});
-    mixpanel.track("clickBeTheFirst", {})
-    gtag('event', 'clickBeTheFirst', {});
-    popBeTheFirstMessage(offset="1rem")
+    popBeTheFirstMessage(offset="1rem", message="clickBeTheFirst")
 })
 
 document.getElementById("add-to-home-id").addEventListener("click", (e) => {
@@ -969,21 +968,15 @@ var addPlayer2 = document.getElementById('add-player-2');
 var addPlayer3 = document.getElementById('add-player-3');
 
 addPlayer1.addEventListener("touchstart", (e) => {
-    mixpanel.track("AddFriend", {})
-    gtag('event', 'AddFriend', {});
-    popBeTheFirstMessage(offset="4rem")
+    popBeTheFirstMessage(offset="4rem", message="AddFriend")
 })
 
 addPlayer2.addEventListener("touchstart", (e) => {
-    mixpanel.track("AddFriend", {})
-    gtag('event', 'AddFriend', {});
-    popBeTheFirstMessage(offset="7rem")
+    popBeTheFirstMessage(offset="7rem", message="AddFriend")
 })
 
 addPlayer3.addEventListener("touchstart", (e) => {
-    mixpanel.track("AddFriend", {})
-    gtag('event', 'AddFriend', {});
-    popBeTheFirstMessage(offset="10rem")
+    popBeTheFirstMessage(offset="10rem", message="AddFriend")
 })
 
 document.getElementById("delButton").addEventListener("touchstart", (e) => {
