@@ -11,6 +11,7 @@ const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
 const outOfTimeString = "OUT OF TIME!"
 const OOTRed = "#EF2253";
+const youUsername = "You"
 const botGuessInterval = [9000, 10000, 11000, 12000, 13000, 14000]
 const EXTRA_CHAT_MESSAGE_DELAY = 1000
 const PIP_CHAT_MESSAGE_DELAY = 500
@@ -131,6 +132,8 @@ class Player {
         this.sequentialMisses = 0
         this.sequentialHits = 0
         this.score = 0
+        this.solveCorrectlyCurrentRound = 0
+        this.totalCorrect = 0
     }
     
     trashTalk() {
@@ -169,7 +172,7 @@ class Player {
 
 let finishedLevels = []
 let pipPlayer = new Player("PIP", "PIP", "url('img/pip_icon.png')", "#1abc9c", "black")
-let youPlayer = new Player("you", "player-you", "url('img/user-fill.svg')", "#ffd232", "black")
+let youPlayer = new Player(youUsername, "player-you", "url('img/user-fill.svg')", "#ffd232", "black")
 let timeLeft
 let CurrentLevel
 let chatInput
@@ -198,6 +201,8 @@ function resetGame() {
         player.sequentialHits = 0
         player.sequentialMisses = 0
         player.score = 0
+        player.solveCorrectlyCurrentRound = 0
+        player.totalCorrect = 0
         player.updateDOMScore(0)
     })
     
@@ -235,9 +240,11 @@ function checkGuess (player, guess) {
     for (let i = 0; i < CurrentLevel.length; i++) {
         //console.log('Checks: CurrentLevel[1][i]: ' + CurrentLevel[i] + ' === ' + guess)
         if (CurrentLevel[i] === guess && !correctlyGuessed.includes(guess)) {
-            if (player.username === "you") {
+            if (player.username === youUsername) {
                 // window.LogRocket.track('UserCorrectGuess', {round: round, score: player.score});   
                 mixpanel.track("UserCorrectGuess", {round: round, score: player.score})
+                player.solveCorrectlyCurrentRound += 1
+                player.totalCorrect += 1
                 gtag('event', 'UserCorrectGuess', {round: round, score: player.score});
             }
             correctlyGuessed.push(guess)
@@ -253,8 +260,8 @@ function checkGuess (player, guess) {
 
             // generate new level
             freezeGame = true
-            mixpanel.track("FinishedRound", {round: round, score: player.score})
-            gtag('event', 'FinishedRound', {round: round, score: player.score});
+            mixpanel.track("FinishedRound", {round: round, score: youPlayer.score, solveCorrectlyCurrentRound: youPlayer.solveCorrectlyCurrentRound, totalCorrect: youPlayer.totalCorrect})
+            gtag('event', 'FinishedRound', {round: round, score: youPlayer.score, totalCorrect: youPlayer.totalCorrect});
             setTimeout(() => {
                 displayFinishedLevel()
             }, 1000)
@@ -279,18 +286,18 @@ function countLetter (letter, str) {
 }
 
 function checkNiceTry(player, message) {
-    if (validGuessed.includes(message)) {
+    if (validGuessed.includes(message) && player.username === youUsername) {
         appendMessage(pipPlayer, "'"+ message + "' was already tried!", false, false, PIP_CHAT_MESSAGE_DELAY)
         return false
     }
     if (metaCurrentLevel.includes(message) && !validGuessed.includes(message)) {
         if (!correctlyGuessed.includes(message)) {
-            if (player.username === "you") {
+            if (player.username === youUsername) {
                 appendMessage(pipPlayer, "'"+ message + "' is valid but not here!", false, false, PIP_CHAT_MESSAGE_DELAY)
             }
             return true
         } else {
-            if (player.username === "you") {
+            if (player.username === youUsername) {
                 appendMessage(pipPlayer, "'"+ message + "' was already solved!", false, false, PIP_CHAT_MESSAGE_DELAY)
             }
         }
@@ -450,7 +457,7 @@ function appendMessageInternal(player, message, solved, niceTrySolved) {
         // tickElement.classList.add("checkmark")
         messageContentElement.style.color = player.color
         messageContentElement.textContent = message.toUpperCase()
-        if (player.username === "you") {
+        if (player.username === youUsername) {
             messageContentElement.innerHTML += CHAT_CORRECT_ADDON
             let addedScore = messageContentElement.getElementsByClassName("nice-try-score")[0]
             addedScore.textContent = "+"+message.length
@@ -460,7 +467,7 @@ function appendMessageInternal(player, message, solved, niceTrySolved) {
     } else if (niceTrySolved) {
         messageContentElement.classList.remove("correct-word")
         messageContentElement.textContent = message
-        if (player.username === "you") {
+        if (player.username === youUsername) {
             messageContentElement.innerHTML += CHAT_NICE_TRY_ADDON
         }
         player.updateDOMScore(1)
@@ -550,6 +557,8 @@ function startCurrentLevel () {
         player.currentLevelAttempts = 0
         player.sequentialHits = 0
         player.sequentialMisses = 0
+        player.solveCorrectlyCurrentRound = 0
+        player.totalCorrect = 0
         if (maxScore < player.score) {
             maxScore = player.score
         }
