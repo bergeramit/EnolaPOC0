@@ -660,10 +660,10 @@ function setFadeAnimation(element, timeoutStr, timeoutMS) {
     }, timeoutMS)
 }
 
-function popBeTheFirstMessage() {
+function popBeTheFirstMessage(offset="1rem") {
     const firstToPlay = document.getElementById("first-to-play-message")
     // firstToPlay.focus()
-    firstToPlay.style.top = "1rem"
+    firstToPlay.style.top = offset
     if (registeredAlready) {
         setFadeAnimation(firstToPlay, "3s", 3000)
         return
@@ -910,7 +910,7 @@ document.getElementById("be-the-first-to-play").addEventListener("click", (e) =>
     // window.LogRocket.track('clickBeTheFirst', {});
     mixpanel.track("clickBeTheFirst", {})
     gtag('event', 'clickBeTheFirst', {});
-    popBeTheFirstMessage()
+    popBeTheFirstMessage(offset="1rem")
 })
 
 document.getElementById("add-to-home-id").addEventListener("click", (e) => {
@@ -971,19 +971,19 @@ var addPlayer3 = document.getElementById('add-player-3');
 addPlayer1.addEventListener("touchstart", (e) => {
     mixpanel.track("AddFriend", {})
     gtag('event', 'AddFriend', {});
-    popBeTheFirstMessage()
+    popBeTheFirstMessage(offset="4rem")
 })
 
 addPlayer2.addEventListener("touchstart", (e) => {
     mixpanel.track("AddFriend", {})
     gtag('event', 'AddFriend', {});
-    popBeTheFirstMessage()
+    popBeTheFirstMessage(offset="7rem")
 })
 
 addPlayer3.addEventListener("touchstart", (e) => {
     mixpanel.track("AddFriend", {})
     gtag('event', 'AddFriend', {});
-    popBeTheFirstMessage()
+    popBeTheFirstMessage(offset="10rem")
 })
 
 document.getElementById("delButton").addEventListener("touchstart", (e) => {
