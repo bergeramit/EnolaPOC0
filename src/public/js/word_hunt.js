@@ -306,14 +306,18 @@ function checkNiceTry(player, message) {
 }
 
 function handleSubmitChatMessage(message) {
+    mixpanel.track("submitMessage", {})
+    gtag('event', 'submitMessage', {});
     if (message.length <= 0) {
         return
     }
     
     if (message.toLowerCase() === "daniel trau"
-    || message.toLowerCase() === "dvir modan"
-    || message.toLowerCase() === "amit berger") {
+    || message.toLowerCase() === "dvir modan" ) {
         appendMessage(pipPlayer, message + " is my father!", false, false, 0)
+        return
+    } else if (message.toLowerCase() === "amit berger") {
+        appendMessage(pipPlayer, message + " was my father!", false, false, 0)
         return
     }
     
@@ -852,8 +856,6 @@ document.getElementById("play-again-button").addEventListener("click", (e) => {
 document.getElementById("enterButton").addEventListener("touchstart", (e) => {
     /* When Enterkey Pressed */
     // window.LogRocket.track('clickEnter', {});
-    mixpanel.track("clickEnter", {})
-    gtag('event', 'clickEnter', {});
     handleSubmitChatMessage(chatInput.value)
     chatInput.value = ""
 }, {passive: true})
