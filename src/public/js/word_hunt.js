@@ -623,8 +623,8 @@ function updateTimer() {
 
 function handleOutOfTime() {
     // window.LogRocket.track('FinishedGameStats', {round: round, score: groupScore});
-    mixpanel.track("FinishedGameOutOfTime", {round: round, score: youPlayer.score})
-    gtag('event', 'FinishedGameOutOfTime', {round: round, score: youPlayer.score});
+    mixpanel.track("FinishedGameOutOfTime", {round: round, score: youPlayer.score, totalCorrect: youPlayer.totalCorrect})
+    gtag('event', 'FinishedGameOutOfTime', {round: round, score: youPlayer.score, totalCorrect: youPlayer.totalCorrect});
     
     var scoreElement = document.getElementById("level-timeout-score")
     scoreElement.textContent = youPlayer.score + " POINTS"
