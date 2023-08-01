@@ -187,6 +187,7 @@ let groupScore
 let groupScoreElement
 let shouldWaitForStartUp
 let registeredAlready = false
+let keyboardClickSound
 
 /* ---------------------- /GlobalsDefines ---------------------- */
 
@@ -678,6 +679,23 @@ function popBeTheFirstMessage(offset="1rem", message="AddFriend") {
     }
 }
 
+class gameSound {
+    constructor(src) {
+        this.sound = document.createElement("audio");
+        this.sound.src = src;
+        this.sound.setAttribute("preload", "auto");
+        this.sound.setAttribute("controls", "none");
+        this.sound.style.display = "none";
+        document.body.appendChild(this.sound);
+    }
+    start(){
+      this.sound.play();
+    }
+    stop(){
+      this.sound.pause();
+    }
+  }
+
 /* ---------------------- /DOM Cyber ---------------------- */
 
 
@@ -758,6 +776,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
     groupScoreElement = document.getElementById("group-score-side-view")
     
     window.dataLayer = window.dataLayer || [];
+
+    keyboardClickSound = new gameSound("audio/DAE_noise_vk_space_bar_02.wav");
     
     gtag('js', new Date());
     gtag('config', 'G-2SSJZRPB03');
@@ -847,6 +867,7 @@ document.getElementById("register-how-to-submit").addEventListener("click", (e) 
 const buttons = document.querySelectorAll('.keyboard-button')
 buttons.forEach((button) => {
     button.addEventListener("touchstart", (e) => {
+        keyboardClickSound.start()
         /* Only for onscreen button presses */
         // setKeyTapAnimation(e.target)
         if (e.target.classList.contains("keyboard-button")) {
