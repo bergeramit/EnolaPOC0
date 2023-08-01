@@ -660,6 +660,22 @@ function setFadeAnimation(element, timeoutStr, timeoutMS) {
     }, timeoutMS)
 }
 
+function popBeTheFirstMessage() {
+    const firstToPlay = document.getElementById("first-to-play-message")
+    // firstToPlay.focus()
+    firstToPlay.style.top = "1rem"
+    if (registeredAlready) {
+        setFadeAnimation(firstToPlay, "3s", 3000)
+        return
+    }
+    
+    if (firstToPlay.style.display === "flex") {
+        firstToPlay.style.display = "none"
+    } else {
+        firstToPlay.style.display = "flex"
+    }
+}
+
 /* ---------------------- /DOM Cyber ---------------------- */
 
 
@@ -789,15 +805,23 @@ document.onclick = function (e) {
     var firstPlayPopup = document.getElementById('first-to-play-message');
     var firstPlayPopup2 = document.getElementById('first-to-play-message2');
     var firstPlayTriggerPopup = document.getElementById('be-the-first-to-play');
+    var addPlayer1 = document.getElementById('add-player-1');
+    var addPlayer2 = document.getElementById('add-player-2');
+    var addPlayer3 = document.getElementById('add-player-3');
+
     var addToHomeTriggerPopup = document.getElementById('add-to-home-id');
     var howToTriggerPopup = document.getElementById('how-to-button-id');
     var howToPopup = document.getElementById('how-to-popup');
+    
     if (!howToPopup.contains(e.target)
     && !(howToTriggerPopup.contains(e.target))) {
         howToPopup.style.display = "none"
     }
     if (!firstPlayPopup.contains(e.target)
-    && !(firstPlayTriggerPopup.contains(e.target))) {
+    && !(firstPlayTriggerPopup.contains(e.target))
+    && !(addPlayer1.contains(e.target))
+    && !(addPlayer2.contains(e.target))
+    && !(addPlayer3.contains(e.target))) {
         firstPlayPopup.style.display = "none"
     }
     if (!firstPlayPopup2.contains(e.target)
@@ -886,19 +910,7 @@ document.getElementById("be-the-first-to-play").addEventListener("click", (e) =>
     // window.LogRocket.track('clickBeTheFirst', {});
     mixpanel.track("clickBeTheFirst", {})
     gtag('event', 'clickBeTheFirst', {});
-    const firstToPlay = document.getElementById("first-to-play-message")
-    // firstToPlay.focus()
-    firstToPlay.style.top = "1rem"
-    if (registeredAlready) {
-        setFadeAnimation(firstToPlay, "3s", 3000)
-        return
-    }
-    
-    if (firstToPlay.style.display === "flex") {
-        firstToPlay.style.display = "none"
-    } else {
-        firstToPlay.style.display = "flex"
-    }
+    popBeTheFirstMessage()
 })
 
 document.getElementById("add-to-home-id").addEventListener("click", (e) => {
@@ -951,6 +963,28 @@ document.getElementById("reshuffle-letters").addEventListener("touchstart", (e) 
     gtag('event', 'clickReshuffleLetters', {});
     setAvailableLetters()
 }, {passive: true})
+
+var addPlayer1 = document.getElementById('add-player-1');
+var addPlayer2 = document.getElementById('add-player-2');
+var addPlayer3 = document.getElementById('add-player-3');
+
+addPlayer1.addEventListener("touchstart", (e) => {
+    mixpanel.track("AddFriend", {})
+    gtag('event', 'AddFriend', {});
+    popBeTheFirstMessage()
+})
+
+addPlayer2.addEventListener("touchstart", (e) => {
+    mixpanel.track("AddFriend", {})
+    gtag('event', 'AddFriend', {});
+    popBeTheFirstMessage()
+})
+
+addPlayer3.addEventListener("touchstart", (e) => {
+    mixpanel.track("AddFriend", {})
+    gtag('event', 'AddFriend', {});
+    popBeTheFirstMessage()
+})
 
 document.getElementById("delButton").addEventListener("touchstart", (e) => {
     /* When Enterkey Pressed */
