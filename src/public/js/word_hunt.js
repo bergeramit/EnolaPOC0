@@ -189,7 +189,7 @@ let shouldWaitForStartUp
 let registeredAlready = false
 
 /* Sounds */
-let keyboardClickSound
+// let keyboardClickSound
 let submitSound
 let correctAnswerSound
 let last10SecondsSound
@@ -357,7 +357,7 @@ function handleSubmitChatMessage(message) {
 }
 
 function addKeyToInput (pressedKey, onScreen) {
-    keyboardClickSound.start()
+    // keyboardClickSound.start()
     const guess = document.getElementById('chat-input')
     if (pressedKey === BACKSPACE_KEY_NAME && onScreen) {
         guess.value = guess.value.substring(0, guess.value.length - 1)
@@ -796,7 +796,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     
     window.dataLayer = window.dataLayer || [];
 
-    keyboardClickSound = new gameSound("audio/DAE_noise_vk_space_bar_02.wav");
+    // keyboardClickSound = new gameSound("audio/DAE_noise_vk_space_bar_02.wav");
     submitSound = new gameSound("audio/OLIVER_percussion_one_shot_small_click_A.wav");
     correctAnswerSound = new gameSound("audio/ESM_Explainer_Video_One_Shot_Positive_Notification_Alert_Fanfare_Ta_Da_Brass_Horn_2.wav")
     last10SecondsSound = new gameSound("audio/ESM_Countdown_10sec_effects_Clock_Synth_Electronic_Timer.wav")
@@ -894,7 +894,7 @@ document.getElementById("register-how-to-submit").addEventListener("click", (e) 
 const buttons = document.querySelectorAll('.keyboard-button')
 buttons.forEach((button) => {
     button.addEventListener("touchstart", (e) => {
-        // keyboardClickSound.start()
+        //keyboardClickSound.start()
         /* Only for onscreen button presses */
         // setKeyTapAnimation(e.target)
         if (e.target.classList.contains("keyboard-button")) {
