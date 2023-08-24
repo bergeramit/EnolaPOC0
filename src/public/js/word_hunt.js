@@ -252,10 +252,9 @@ function checkGuess (player, guess) {
         if (CurrentLevel[i] === guess && !correctlyGuessed.includes(guess)) {
             if (player.username === youUsername) {
                 // window.LogRocket.track('UserCorrectGuess', {round: round, score: player.score});   
-                mixpanel.track("UserCorrectGuess", {round: round, score: player.score})
+                reportAnalytics("UserCorrectGuess", {round: round, score: player.score})
                 player.solveCorrectlyCurrentRound += 1
                 player.totalCorrect += 1
-                gtag('event', 'UserCorrectGuess', {round: round, score: player.score});
             }
             correctlyGuessed.push(guess)
             // console.log('Success! at row: ' + (i + 1))
@@ -271,8 +270,7 @@ function checkGuess (player, guess) {
             // generate new level
             freezeGame = true
             wonRoundSound.start()
-            mixpanel.track("FinishedRound", {round: round, score: youPlayer.score, solveCorrectlyCurrentRound: youPlayer.solveCorrectlyCurrentRound, totalCorrect: youPlayer.totalCorrect})
-            gtag('event', 'FinishedRound', {round: round, score: youPlayer.score, totalCorrect: youPlayer.totalCorrect});
+            reportAnalytics("FinishedRound", {round: round, score: youPlayer.score, solveCorrectlyCurrentRound: youPlayer.solveCorrectlyCurrentRound, totalCorrect: youPlayer.totalCorrect})
             setTimeout(() => {
                 displayFinishedLevel()
             }, 1000)
@@ -322,8 +320,7 @@ function handleSubmitChatMessage(message) {
         return
     }
     
-    mixpanel.track("submitMessage", {})
-    gtag('event', 'submitMessage', {});
+    reportAnalytics("submitMessage", {})
     if (message.toLowerCase() === "daniel trau"
     || message.toLowerCase() === "dvir modan" ) {
         appendMessage(pipPlayer, message + " is my father!", false, false, 0)
@@ -646,9 +643,8 @@ function updateTimer() {
 
 function handleOutOfTime() {
     // window.LogRocket.track('FinishedGameStats', {round: round, score: groupScore});
-    mixpanel.track("FinishedGameOutOfTime", {round: round, score: youPlayer.score, totalCorrect: youPlayer.totalCorrect})
-    gtag('event', 'FinishedGameOutOfTime', {round: round, score: youPlayer.score, totalCorrect: youPlayer.totalCorrect});
-    
+    reportAnalytics("FinishedGameOutOfTime", {round: round, score: youPlayer.score, totalCorrect: youPlayer.totalCorrect})
+
     var scoreElement = document.getElementById("level-timeout-score")
     scoreElement.textContent = youPlayer.score + " POINTS"
     
@@ -691,8 +687,7 @@ function popBeTheFirstMessage(offset="1rem", message="AddFriend") {
     if (firstToPlay.style.display === "flex") {
         firstToPlay.style.display = "none"
     } else {
-        mixpanel.track(message, {})
-        gtag('event', message, {});
+        reportAnalytics("formMessage", {message: message})
         firstToPlay.style.display = "flex"
     }
 }
@@ -757,8 +752,7 @@ function generateNewLevel () {
 
 function submitRegisterForm(email, callback) {
     // window.LogRocket.track("RegisterRequest", {email: email})
-    mixpanel.track("RegisterRequest", {email: email})
-    gtag('event', 'RegisterRequest', {email: email});
+    reportAnalytics("SubmitApplication", {email: email})
     fetch(registerPostURL, {
         method: 'POST',
         headers: {
@@ -781,6 +775,12 @@ function startUp() {
     generateNewLevel()
     setInterval(runBotGuesser, botGuessInterval[Math.floor(Math.random()*botGuessInterval.length)]);
     setInterval(updateTimer, 1000) // once every second
+}
+
+function reportAnalytics(eventName, JSONData) {
+    mixpanel.track(eventName, JSONData)
+    fbq('track', eventName, JSONData)
+    gtag('event', eventName, JSONData);
 }
 
 /* ---------------------- /Server API ---------------------- */
@@ -810,7 +810,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     gtag('config', 'G-2SSJZRPB03');
     
     // window.LogRocket && window.LogRocket.init('9o6vsp/enolapoc0');
-    mixpanel.init('6119beb395944431684c67ef0b8fde81', { debug: true, track_pageview: true, persistence: 'localStorage' });
+    mixpanel.init('0a52e147364e256c34add1b9b04c0e79', { debug: true, track_pageview: true, persistence: 'localStorage' });
     deviceId = localStorage.getItem("deviceId");
     if (!deviceId) {
         shouldWaitForStartUp = true
@@ -910,8 +910,8 @@ buttons.forEach((button) => {
 document.getElementById("yay-message").addEventListener("click", (e) => {
     /* When yay Pressed */
     // window.LogRocket.track('clickDismissCompleteLevel', {});
-    mixpanel.track("clickDismissCompleteLevel", {})
-    gtag('event', 'clickDismissCompleteLevel', {});
+    reportAnalytics("clickDismissCompleteLevel", {})
+    
     const popup = document.getElementById("complete-level-popup")
     popup.style.display = "none"
 })
@@ -919,8 +919,7 @@ document.getElementById("yay-message").addEventListener("click", (e) => {
 document.getElementById("play-again-button").addEventListener("click", (e) => {
     /* When play-again-click Pressed */
     // window.LogRocket.track('clickPlayAgain', {});
-    mixpanel.track("clickPlayAgain", {})
-    gtag('event', 'clickPlayAgain', {});
+    reportAnalytics("clickPlayAgain", {})
     const popup = document.getElementById("out-of-time-popup")
     popup.style.display = "none"
     resetGame()
@@ -937,8 +936,7 @@ document.getElementById("enterButton").addEventListener("touchstart", (e) => {
 document.getElementById("how-to-button-id").addEventListener("click", (e) => {
     /* When "how-to" Pressed */
     // window.LogRocket.track('clickQuestionMark', {});
-    mixpanel.track("clickQuestionMark", {})
-    gtag('event', 'clickQuestionMark', {});
+    reportAnalytics("clickQuestionMark", {})
     const howToPopup = document.getElementById("how-to-popup")
     howToPopup.style.display = "flex"
 }, {passive: true})
@@ -946,8 +944,7 @@ document.getElementById("how-to-button-id").addEventListener("click", (e) => {
 document.getElementById("x-how-to-popup-button").addEventListener("click", (e) => {
     /* When "x" Pressed in popup window */
     // window.LogRocket.track('clickXInHowToPopup', {});
-    mixpanel.track("clickXInHowToPopup", {})
-    gtag('event', 'clickXInHowToPopup', {});
+    reportAnalytics("clickXInHowToPopup", {})
     const howToPopup = document.getElementById("how-to-popup")
     howToPopup.style.display = "none"
     if (shouldWaitForStartUp) {
@@ -963,8 +960,7 @@ document.getElementById("be-the-first-to-play").addEventListener("click", (e) =>
 document.getElementById("add-to-home-id").addEventListener("click", (e) => {
     /* When "be-the-first" Pressed */
     // window.LogRocket.track('clickBeTheFirst', {});
-    mixpanel.track("clickAddToHome", {})
-    gtag('event', 'clickAddToHome', {});
+    reportAnalytics("clickAddToHome", {})
     installToHome();
     
     if (!beforeInstallPrompt) {
@@ -986,8 +982,7 @@ document.getElementById("add-to-home-id").addEventListener("click", (e) => {
 document.getElementById("invite-friends-id").addEventListener("click", (e) => {
     /* When "be-the-first" Pressed */
     // window.LogRocket.track('clickInviteFriends', {});
-    mixpanel.track("clickInviteFriends", {})
-    gtag('event', 'clickInviteFriends', {});
+    reportAnalytics("clickInviteFriends", {})
     var dummy = document.createElement("textarea");
     document.body.appendChild(dummy);
     dummy.value = "https://wordhunt.gg";
@@ -1006,8 +1001,7 @@ document.getElementById("invite-friends-id").addEventListener("click", (e) => {
 document.getElementById("reshuffle-letters").addEventListener("touchstart", (e) => {
     /* When yay Pressed */
     // window.LogRocket.track('reshuffle-pressed', {});
-    mixpanel.track("clickReshuffleLetters", {})
-    gtag('event', 'clickReshuffleLetters', {});
+    reportAnalytics("clickReshuffleLetters", {})
     setAvailableLetters()
 }, {passive: true})
 
@@ -1045,8 +1039,7 @@ document.addEventListener('keyup', (e) => {
     
     if (pressedKey === ENTER_KEY_NAME) {
         // window.LogRocket.track('clickEnter', {});
-        mixpanel.track("clickEnter", {})
-        gtag('event', 'clickEnter', {});
+        reportAnalytics("clickEnter", {})
     }
     
     let found = pressedKey.match(/[a-z]/gi)
