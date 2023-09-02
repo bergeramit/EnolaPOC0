@@ -816,14 +816,11 @@ document.addEventListener("DOMContentLoaded", function(e) {
     mixpanel.init('0a52e147364e256c34add1b9b04c0e79', { debug: true, track_pageview: true, persistence: 'localStorage' });
     deviceId = localStorage.getItem("deviceId");
     if (!deviceId) {
-        shouldWaitForStartUp = true
-        howToPopup.style.display = "flex"
         deviceId = uuidv4();
         localStorage.setItem("deviceId", deviceId);
-    } else {
-        howToPopup.style.display = "none"
-        shouldWaitForStartUp = false
     }
+    howToPopup.style.display = "none"
+    shouldWaitForStartUp = false
     console.log(deviceId)
     // gtag()
     mixpanel.identify(deviceId)
