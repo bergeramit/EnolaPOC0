@@ -752,6 +752,9 @@ function generateNewLevel () {
 
 function submitRegisterForm(email, callback) {
     // window.LogRocket.track("RegisterRequest", {email: email})
+    if (!email) {
+        return
+    }
     reportAnalytics("SubmitApplication", {email: email})
     fetch(registerPostURL, {
         method: 'POST',
