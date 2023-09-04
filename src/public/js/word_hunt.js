@@ -187,6 +187,9 @@ let groupScore
 let groupScoreElement
 let shouldWaitForStartUp
 let registeredAlready = false
+let inFTUE = false
+let turnOffBots = false
+let tutorialProgress = 0
 
 /* Sounds */
 // let keyboardClickSound
@@ -608,6 +611,11 @@ function displayFinishedLevel() {
     var completePopup = document.getElementById("complete-level-popup")
     completePopup.style.display = "flex"
     setScaleAnimation(completePopup)
+
+    if (inFTUE) {
+        startTutorial(tutorialProgress + 1)
+        return
+    }
     
     setTimeout(() => {
         generateNewLevel()
@@ -715,6 +723,13 @@ class gameSound {
 
 /* ---------------------- Server API ---------------------- */
 
+function setLevelDS(completeLevel) {
+    CurrentLevel = completeLevel.level
+    metaCurrentLevel = completeLevel.metaLevel
+    availableLetters = shuffle(Array.from(CurrentLevel[0]))
+    CurrentLevel = shuffle(Array.from(CurrentLevel))
+}
+
 function generateNewLevel () {
     correctlyGuessed = []
     validGuessed = []
@@ -739,10 +754,11 @@ function generateNewLevel () {
             generateNewLevel()
             return
         }
-        CurrentLevel = data.level
-        metaCurrentLevel = data.metaLevel
-        availableLetters = shuffle(Array.from(CurrentLevel[0]))
-        CurrentLevel = shuffle(Array.from(CurrentLevel))
+        // CurrentLevel = data.level
+        // metaCurrentLevel = data.metaLevel
+        // availableLetters = shuffle(Array.from(CurrentLevel[0]))
+        // CurrentLevel = shuffle(Array.from(CurrentLevel))
+        setLevelDS(data)
         beginReadyLevel()
         setTimeout(() => {
             startCurrentLevel()
@@ -785,12 +801,16 @@ function submitRegisterForm(email, callback) {
     })
 }
 
-function startUp() {
+function startUp(initTimer=true) {
+    let sideView = document.getElementById("players-side-view-id")
+    sideView.style.display = "flex"
     shouldWaitForStartUp = false
     resetGame()
     generateNewLevel()
     setInterval(runBotGuesser, botGuessInterval[Math.floor(Math.random()*botGuessInterval.length)]);
-    setInterval(updateTimer, 1000) // once every second
+    if (initTimer) {
+        setInterval(updateTimer, 1000) // once every second
+    }
 }
 
 function reportAnalytics(eventName, JSONData) {
@@ -832,14 +852,16 @@ document.addEventListener("DOMContentLoaded", function(e) {
     if (!deviceId) {
         deviceId = uuidv4();
         localStorage.setItem("deviceId", deviceId);
+        inFTUE = true
     }
+    // inFTUE = true
 
     shouldWaitForStartUp = true
     console.log(deviceId)
     // gtag()
     mixpanel.identify(deviceId)
     // window.LogRocket.identify(deviceId, { uuid: deviceId });
-    
+
     if (!shouldWaitForStartUp) {
         startUp()
     }
@@ -958,7 +980,10 @@ document.getElementById("how-to-button-id").addEventListener("click", (e) => {
 document.getElementById("register-play").addEventListener("click", (e) => {
     const howToPopup = document.getElementById("welcome-popup")
     howToPopup.style.display = "none"
-    if (shouldWaitForStartUp) {
+
+    if (inFTUE) {
+        startTutorial(0)
+    } else if (shouldWaitForStartUp) {
         shouldWaitForStartUp = false
         startUp()
     }
@@ -1101,7 +1126,7 @@ const playersList = [
 ]
 
 function runBotGuesser() {
-    if (freezeGame) {
+    if (freezeGame || turnOffBots) {
         return
     }
     let bot = playersList[Math.floor(Math.random()*(playersList.length-2)) + 2]
@@ -1125,3 +1150,65 @@ function runBotGuesser() {
 }
 
 /* ---------------------- /BotLogic ---------------------- */
+
+/* ---------------------- Tutorial ----------------------- */
+
+class CompleteLevel {
+    constructor(level, metaLevel=[]) {
+        this.level = level
+        if (metaLevel == []) {
+            this.metaLevel = level
+        } else {
+            this.metaLevel = metaLevel
+        }
+    }
+}
+
+const FIRST_LEVELS = [
+    new CompleteLevel(level=["now", "own", "won"], metaLevel=[]),
+    new CompleteLevel(level=["easy", "say", "yes", "sea"], metaLevel=[]),
+    new CompleteLevel(level=["many", "may", "any", "man"], metaLevel=[])
+]
+
+function startTutorial(step=0) {
+    tutorialProgress = step
+    // inFTUE = false
+    switch(tutorialProgress) {
+        case 0:
+            resetGame()
+            setLevelDS(FIRST_LEVELS[0])
+            beginReadyLevel()
+            setTimeout(() => {
+                appendMessage(pipPlayer, "Hey there, I'm PIP your in-game buddy :)", false, false, EXTRA_CHAT_MESSAGE_DELAY)
+                appendMessage(pipPlayer, "Complete the missing words using the highlighted letters on the keyboard.", false, false, 4000)
+                setInterval(updateTimer, 1000) // once every second
+                startCurrentLevel()
+            }, timeoutBetweenLevels)
+            break
+
+        case 1:        
+        case 2:
+            setLevelDS(FIRST_LEVELS[tutorialProgress])
+            beginReadyLevel()
+            setTimeout(() => {
+                startCurrentLevel()
+            }, timeoutBetweenLevels)
+            break
+        
+        case 3: // final
+            inFTUE = false
+            appendMessage(pipPlayer, "Congratulations! now get ready to play against others!", false, false, EXTRA_CHAT_MESSAGE_DELAY)
+            setTimeout(() => {
+                startUp(false)
+            }, 4000)
+            
+            break
+
+
+    }
+    
+    
+    // startUp()
+}
+
+/* ---------------------- /Tutorial ----------------------- */
