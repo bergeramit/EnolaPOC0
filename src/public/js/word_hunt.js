@@ -251,8 +251,6 @@ function checkGuess (player, guess) {
         //console.log('Checks: CurrentLevel[1][i]: ' + CurrentLevel[i] + ' === ' + guess)
         if (CurrentLevel[i] === guess && !correctlyGuessed.includes(guess)) {
             if (player.username === youUsername) {
-                // window.LogRocket.track('UserCorrectGuess', {round: round, score: player.score});   
-                reportAnalytics("UserCorrectGuess", {round: round, score: player.score})
                 player.solveCorrectlyCurrentRound += 1
                 player.totalCorrect += 1
             }
@@ -320,7 +318,7 @@ function handleSubmitChatMessage(message) {
         return
     }
     
-    reportAnalytics("submitMessage", {})
+    reportAnalytics("submitMessage", {message: message})
     if (message.toLowerCase() === "daniel trau"
     || message.toLowerCase() === "dvir modan" ) {
         appendMessage(pipPlayer, message + " is my father!", false, false, 0)
@@ -479,6 +477,7 @@ function appendMessageInternal(player, message, solved, niceTrySolved) {
             addedScore.textContent = "+"+message.length
         }
         player.updateDOMScore(message.length)
+        reportAnalytics("UserCorrectGuess", {round: round, score: player.score})
         // messageContentElement.append(tickElement)
     } else if (niceTrySolved) {
         messageContentElement.classList.remove("correct-word")
@@ -487,6 +486,7 @@ function appendMessageInternal(player, message, solved, niceTrySolved) {
             messageContentElement.innerHTML += CHAT_NICE_TRY_ADDON
         }
         player.updateDOMScore(1)
+        reportAnalytics("UserNiceTry", {round: round, score: player.score})
     } else {
         messageContentElement.classList.remove("correct-word")
         messageContentElement.textContent = message
