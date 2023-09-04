@@ -750,9 +750,22 @@ function generateNewLevel () {
     })
 }
 
+function ValidateEmail(email)
+{
+    var mailformat = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+    if(email.match(mailformat))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 function submitRegisterForm(email, callback) {
     // window.LogRocket.track("RegisterRequest", {email: email})
-    if (!email) {
+    if (!email || !ValidateEmail(email)) {
         return
     }
     reportAnalytics("SubmitApplication", {email: email})
@@ -816,14 +829,11 @@ document.addEventListener("DOMContentLoaded", function(e) {
     mixpanel.init('0a52e147364e256c34add1b9b04c0e79', { debug: true, track_pageview: true, persistence: 'localStorage' });
     deviceId = localStorage.getItem("deviceId");
     if (!deviceId) {
-        shouldWaitForStartUp = true
-        howToPopup.style.display = "flex"
         deviceId = uuidv4();
         localStorage.setItem("deviceId", deviceId);
-    } else {
-        howToPopup.style.display = "none"
-        shouldWaitForStartUp = false
     }
+    howToPopup.style.display = "none"
+    shouldWaitForStartUp = false
     console.log(deviceId)
     // gtag()
     mixpanel.identify(deviceId)
