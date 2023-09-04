@@ -1175,6 +1175,7 @@ function startTutorial(step=0) {
     // inFTUE = false
     switch(tutorialProgress) {
         case 0:
+            reportAnalytics("BeginFTUE", {})
             resetGame()
             setLevelDS(FIRST_LEVELS[0])
             beginReadyLevel()
@@ -1188,6 +1189,7 @@ function startTutorial(step=0) {
 
         case 1:        
         case 2:
+            reportAnalytics("StepFTUE", {step: tutorialProgress})
             setLevelDS(FIRST_LEVELS[tutorialProgress])
             beginReadyLevel()
             setTimeout(() => {
@@ -1196,6 +1198,7 @@ function startTutorial(step=0) {
             break
         
         case 3: // final
+            reportAnalytics("FinishedFTUE", {})
             inFTUE = false
             appendMessage(pipPlayer, "Congratulations! now get ready to play against others!", false, false, EXTRA_CHAT_MESSAGE_DELAY)
             setTimeout(() => {
