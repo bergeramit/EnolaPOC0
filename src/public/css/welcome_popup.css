@@ -1,0 +1,212 @@
+.new-welcome-view,
+.new-welcome-view .how-to-play-popup {
+    align-items: flex-start;
+    min-width: 352px;
+    display: flex;
+}
+#welcome-popup {
+    z-index: 3;
+    display: none;
+    top: 1rem;
+    position: absolute;
+}
+.new-welcome-view {
+    border: 1px;
+}
+.new-welcome-view .how-to-overlap-group2 {
+    position: relative;
+}
+.new-welcome-view .how-to-overlap-group {
+    height: 579px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 352px;
+}
+.new-welcome-view .background-popup {
+    background-image: url(../img/first_screen_popup.jpeg);
+    border: 5px solid;
+    border-color: var(--haiti);
+    border-radius: 38px;
+    height: 579px;
+    left: 12px;
+    position: absolute;
+    top: 0;
+    width: 328px;
+}
+.new-welcome-view .how-to-close-round {
+    cursor: pointer;
+    height: 24px;
+    left: 300px;
+    position: absolute;
+    top: 19px;
+    width: 24px;
+}
+.new-welcome-view .new-how-to-how-to-play-text {
+    color: #5819a6;
+    font-family: var(--font-family-gilroy-extrabold);
+    font-size: 21px;
+    font-weight: 800;
+    height: 20px;
+    left: 0;
+    letter-spacing: 0.6px;
+    line-height: 19.6px;
+    position: absolute;
+    text-align: center;
+    top: 33px;
+    white-space: nowrap;
+    width: 352px;
+}
+.new-welcome-view .correct-answer-will,
+.new-welcome-view .get-random-5-letter {
+    font-family: var(--font-family-gilroy-extrabold);
+    font-size: var(--font-size-s);
+    font-weight: 800;
+}
+.new-welcome-view .frame-238114 {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 7.87px;
+    left: 39px;
+    position: absolute;
+    top: 69px;
+    width: fit-content;
+}
+.new-welcome-view .frame-23811,
+.new-welcome-view .frame-238110 {
+    background-color: var(--gallery);
+    border-radius: 20.11px;
+    gap: 8.74px;
+    padding: 9.62px 20.99px 9.62px 11.37px;
+    display: flex;
+}
+.new-welcome-view .frame-238110 {
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 275px;
+}
+.new-welcome-view .number {
+    letter-spacing: 0.52px;
+    line-height: 52.3px;
+    margin-top: -0.87px;
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    width: fit-content;
+}
+.new-welcome-view .correct-answer-will,
+.new-welcome-view .get-random-5-letter,
+.new-welcome-view .solve-word-puzzles-w,
+.new-welcome-view .submit-your-answers-in-chat {
+    letter-spacing: 0.46px;
+    line-height: 13px;
+    position: relative;
+    text-align: left;
+}
+.new-welcome-view .solve-word-puzzles-w {
+    width: 203.74px;
+}
+.new-welcome-view .frame-23811 {
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: fit-content;
+}
+.new-welcome-view .get-random-5-letter {
+    color: transparent;
+    width: 203.74px;
+}
+.new-welcome-view .span1 {
+    color: #ff8d09;
+}
+.new-welcome-view .submit-your-answers-in-chat {
+    width: 111.05px;
+}
+.new-welcome-view .correct-answer-will {
+    color: transparent;
+    margin-top: -0.87px;
+    width: 108.43px;
+}
+.new-welcome-view .submit-button-view {
+    cursor: pointer;
+    background-color: var(--purple-plum);
+    border: 3.99px solid;
+    border-color: var(--daisy-bush);
+    border-radius: 30.65px;
+    box-shadow: inset -1.6px 2.39px 0 3.19px #ffffff59;
+    height: 61px;
+    left: 52px;
+    position: absolute;
+    top: 491px;
+    width: 249px;
+}
+.new-welcome-view .mask-group {
+    height: 33px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 241px;
+}
+.new-welcome-view .submit-button-place {
+    height: 11px;
+    left: 69px;
+    letter-spacing: 0.27px;
+    line-height: 11.9px;
+    position: absolute;
+    text-align: center;
+    top: 22px;
+    white-space: nowrap;
+    width: 104px;
+    font-size: 25.8px;
+}
+.new-welcome-view .enter-email-view {
+    align-items: flex-start;
+    background-color: var(--athens-gray);
+    border: 2px solid;
+    border-color: var(--lavender-gray);
+    border-radius: 35px;
+    display: flex;
+    height: 34px;
+    justify-content: flex-end;
+    left: 52px;
+    min-width: 249px;
+    position: absolute;
+    top: 465px;
+}
+.new-welcome-view .enter-email-view-how-it-works {
+    height: 39px;
+    letter-spacing: 0;
+    line-height: 24.6px;
+    margin-top: -5px;
+    width: 236px;
+    text-align: left;
+    padding: 0.3rem;
+}
+.new-welcome-view .secure-your-spot-and {
+    height: 28px;
+    left: 54px;
+    font-size: var(--font-size-m);
+    letter-spacing: 0.6px;
+    line-height: 14.5px;
+    position: absolute;
+    text-align: center;
+    top: 423px;
+    width: 245px;
+}
+.new-welcome-view .image-2 {
+    height: 277px;
+    left: 190px;
+    object-fit: cover;
+    position: absolute;
+    top: 193px;
+    width: 180px;
+}
+.new-welcome-view .line-443 {
+    height: 2px;
+    left: 34px;
+    position: absolute;
+    top: 400px;
+    width: 284px;
+}

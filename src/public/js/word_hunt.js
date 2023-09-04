@@ -805,7 +805,8 @@ function reportAnalytics(eventName, JSONData) {
 /* ---------------------- EventListeners ---------------------- */
 
 document.addEventListener("DOMContentLoaded", function(e) {
-    const howToPopup = document.getElementById("how-to-popup")
+    const welcomePopup = document.getElementById("welcome-popup")
+    welcomePopup.style.display = "flex"
     
     chatInput = document.getElementById("chat-input")
     groupScoreElement = document.getElementById("group-score-side-view")
@@ -832,8 +833,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
         deviceId = uuidv4();
         localStorage.setItem("deviceId", deviceId);
     }
-    howToPopup.style.display = "none"
-    shouldWaitForStartUp = false
+
+    shouldWaitForStartUp = true
     console.log(deviceId)
     // gtag()
     mixpanel.identify(deviceId)
@@ -864,9 +865,9 @@ document.getElementById("register-from-tooltip").addEventListener("click", (e) =
 })
 
 document.onclick = function (e) {
-    var firstPlayPopup = document.getElementById('first-to-play-message');
-    var firstPlayPopup2 = document.getElementById('first-to-play-message2');
-    var firstPlayTriggerPopup = document.getElementById('be-the-first-to-play');
+    // var firstPlayPopup = document.getElementById('first-to-play-message');
+    // var firstPlayPopup2 = document.getElementById('first-to-play-message2');
+    // var firstPlayTriggerPopup = document.getElementById('be-the-first-to-play');
     var addPlayer1 = document.getElementById('add-player-1');
     var addPlayer2 = document.getElementById('add-player-2');
     var addPlayer3 = document.getElementById('add-player-3');
@@ -879,17 +880,17 @@ document.onclick = function (e) {
     && !(howToTriggerPopup.contains(e.target))) {
         howToPopup.style.display = "none"
     }
-    if (!firstPlayPopup.contains(e.target)
-    && !(firstPlayTriggerPopup.contains(e.target))
-    && !(addPlayer1.contains(e.target))
-    && !(addPlayer2.contains(e.target))
-    && !(addPlayer3.contains(e.target))) {
-        firstPlayPopup.style.display = "none"
-    }
-    if (!firstPlayPopup2.contains(e.target)
-    && !(addToHomeTriggerPopup.contains(e.target))) {
-        firstPlayPopup2.style.display = "none" 
-    }
+    // if (!firstPlayPopup.contains(e.target)
+    // && !(firstPlayTriggerPopup.contains(e.target))
+    // && !(addPlayer1.contains(e.target))
+    // && !(addPlayer2.contains(e.target))
+    // && !(addPlayer3.contains(e.target))) {
+    //     firstPlayPopup.style.display = "none"
+    // }
+    // if (!firstPlayPopup2.contains(e.target)
+    // && !(addToHomeTriggerPopup.contains(e.target))) {
+    //     firstPlayPopup2.style.display = "none" 
+    // }
 }
 
 document.getElementById("register-how-to-submit").addEventListener("click", (e) => {
@@ -940,7 +941,7 @@ document.getElementById("play-again-button").addEventListener("click", (e) => {
 })
 
 document.getElementById("enterButton").addEventListener("touchstart", (e) => {
-    /* When Enterkey Pressed */
+    /* When Enter key Pressed */
     // window.LogRocket.track('clickEnter', {});
     handleSubmitChatMessage(chatInput.value)
     chatInput.value = ""
@@ -954,6 +955,22 @@ document.getElementById("how-to-button-id").addEventListener("click", (e) => {
     howToPopup.style.display = "flex"
 }, {passive: true})
 
+document.getElementById("register-play").addEventListener("click", (e) => {
+    const howToPopup = document.getElementById("welcome-popup")
+    howToPopup.style.display = "none"
+    if (shouldWaitForStartUp) {
+        shouldWaitForStartUp = false
+        startUp()
+    }
+})
+
+// document.getElementById("x-play-popup-button").addEventListener("click", (e) => {
+//     /* When "x" Pressed in popup window */
+//     // window.LogRocket.track('clickXInHowToPopup', {});
+//     reportAnalytics("clickXInPlayPopup", {})
+//     const howToPopup = document.getElementById("welcome-popup")
+// })
+
 document.getElementById("x-how-to-popup-button").addEventListener("click", (e) => {
     /* When "x" Pressed in popup window */
     // window.LogRocket.track('clickXInHowToPopup', {});
@@ -965,50 +982,50 @@ document.getElementById("x-how-to-popup-button").addEventListener("click", (e) =
     }
 })
 
-document.getElementById("be-the-first-to-play").addEventListener("click", (e) => {
-    /* When "be-the-first" Pressed */
-    popBeTheFirstMessage(offset="1rem", message="clickBeTheFirst")
-})
+// document.getElementById("be-the-first-to-play").addEventListener("click", (e) => {
+//     /* When "be-the-first" Pressed */
+//     popBeTheFirstMessage(offset="1rem", message="clickBeTheFirst")
+// })
 
-document.getElementById("add-to-home-id").addEventListener("click", (e) => {
-    /* When "be-the-first" Pressed */
-    // window.LogRocket.track('clickBeTheFirst', {});
-    reportAnalytics("clickAddToHome", {})
-    installToHome();
+// document.getElementById("add-to-home-id").addEventListener("click", (e) => {
+//     /* When "be-the-first" Pressed */
+//     // window.LogRocket.track('clickBeTheFirst', {});
+//     reportAnalytics("clickAddToHome", {})
+//     installToHome();
     
-    if (!beforeInstallPrompt) {
-        const firstToPlay = document.getElementById("first-to-play-message2")
-        if (registeredAlready) {
-            setFadeAnimation(firstToPlay, "3s", 3000)
-            return
-        }
+//     if (!beforeInstallPrompt) {
+//         const firstToPlay = document.getElementById("first-to-play-message2")
+//         if (registeredAlready) {
+//             setFadeAnimation(firstToPlay, "3s", 3000)
+//             return
+//         }
         
-        if (firstToPlay.style.display === "flex") {
-            firstToPlay.style.display = "none"
-        } else {
-            firstToPlay.style.display = "flex"
-        }
-    }
+//         if (firstToPlay.style.display === "flex") {
+//             firstToPlay.style.display = "none"
+//         } else {
+//             firstToPlay.style.display = "flex"
+//         }
+//     }
     
-})
+// })
 
-document.getElementById("invite-friends-id").addEventListener("click", (e) => {
-    /* When "be-the-first" Pressed */
-    // window.LogRocket.track('clickInviteFriends', {});
-    reportAnalytics("clickInviteFriends", {})
-    var dummy = document.createElement("textarea");
-    document.body.appendChild(dummy);
-    dummy.value = "https://wordhunt.gg";
-    dummy.contentEditable = true;
-    dummy.readOnly = true;
+// document.getElementById("invite-friends-id").addEventListener("click", (e) => {
+//     /* When "be-the-first" Pressed */
+//     // window.LogRocket.track('clickInviteFriends', {});
+//     reportAnalytics("clickInviteFriends", {})
+//     var dummy = document.createElement("textarea");
+//     document.body.appendChild(dummy);
+//     dummy.value = "https://wordhunt.gg";
+//     dummy.contentEditable = true;
+//     dummy.readOnly = true;
     
-    document.body.appendChild(dummy);
-    dummy.select();
-    document.execCommand('copy');
-    document.body.removeChild(dummy);
-    const firstToPlay = document.getElementById("share-link-message")
-    setFadeAnimation(firstToPlay, "2s", 2000)
-})
+//     document.body.appendChild(dummy);
+//     dummy.select();
+//     document.execCommand('copy');
+//     document.body.removeChild(dummy);
+//     const firstToPlay = document.getElementById("share-link-message")
+//     setFadeAnimation(firstToPlay, "2s", 2000)
+// })
 
 
 document.getElementById("reshuffle-letters").addEventListener("touchstart", (e) => {
