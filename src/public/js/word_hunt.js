@@ -281,9 +281,15 @@ function checkGuess (player, guess) {
 
     if (inFTUE) {
         for (let i=0; i<guess.length; i++) {
-            let count = countLetter(guess[i], guess)
+            let count = 0
+            for (let j = 0; j < guess.length; j++) {
+                if (guess[i] === guess[j]) {
+                    count++
+                }
+            }
             if (count > 1) { // FTUE only has single letters
                 appendMessage(pipPlayer, "Be careful not to use more letters that are allowed! (indicated by a number above each letter)", false, false, PIP_CHAT_MESSAGE_DELAY)
+                return false
             }
         }
     }
