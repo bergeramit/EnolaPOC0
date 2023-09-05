@@ -15,7 +15,7 @@ const youUsername = "You"
 const botGuessInterval = [9000, 10000, 11000, 12000, 13000, 14000]
 const EXTRA_CHAT_MESSAGE_DELAY = 1000
 const PIP_CHAT_MESSAGE_DELAY = 500
-const GAME_TIMER_TIMEOUT = 120 // 1 for testing
+const GAME_TIMER_TIMEOUT = 180 // 1 for testing
 const botAngryMsgs = [
     "I had enough",
     "jesus these levels man...",
@@ -276,6 +276,15 @@ function checkGuess (player, guess) {
                 displayFinishedLevel()
             }, 1000)
             return true
+        }
+    }
+
+    if (inFTUE) {
+        for (let i=0; i<guess.length; i++) {
+            let count = countLetter(guess[i], guess)
+            if (count > 1) { // FTUE only has single letters
+                appendMessage(pipPlayer, "Be careful not to use more letters that are allowed! (indicated by a number above each letter)", false, false, PIP_CHAT_MESSAGE_DELAY)
+            }
         }
     }
     streak = 1
