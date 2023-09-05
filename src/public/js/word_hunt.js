@@ -1005,7 +1005,7 @@ document.getElementById("register-play").addEventListener("click", (e) => {
         startTutorial(0)
     } else if (shouldWaitForStartUp) {
         shouldWaitForStartUp = false
-        startUp()
+        startUp(true)
     }
 })
 
