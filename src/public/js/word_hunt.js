@@ -816,7 +816,7 @@ function submitRegisterForm(email, callback) {
     })
 }
 
-function startUp(initTimer=true) {
+function startUp(initTimer=false) {
     let sideView = document.getElementById("players-side-view-id")
     sideView.style.display = "flex"
     shouldWaitForStartUp = false
@@ -878,7 +878,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
     // window.LogRocket.identify(deviceId, { uuid: deviceId });
 
     if (!shouldWaitForStartUp) {
-        startUp()
+        startUp(true)
     }
     
     // Call the function to lock the orientation on page load
