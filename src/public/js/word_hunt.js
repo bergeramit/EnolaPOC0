@@ -968,7 +968,12 @@ document.getElementById("play-again-button").addEventListener("click", (e) => {
     const popup = document.getElementById("out-of-time-popup")
     popup.style.display = "none"
     resetGame()
-    generateNewLevel()
+    if (inFTUE) {
+        startTutorial()
+    } else {
+        generateNewLevel()
+    }
+    
 })
 
 document.getElementById("enterButton").addEventListener("touchstart", (e) => {
