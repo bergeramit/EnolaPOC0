@@ -1185,9 +1185,9 @@ class CompleteLevel {
 }
 
 const FIRST_LEVELS = [
-    new CompleteLevel(level=["now", "own", "won"], metaLevel=[]),
-    new CompleteLevel(level=["easy", "say", "yes", "sea"], metaLevel=[]),
-    new CompleteLevel(level=["many", "may", "any", "man"], metaLevel=[])
+    new CompleteLevel(level=["cat"], metaLevel=["act","cat"]),
+    new CompleteLevel(level=["now", "won"], metaLevel=["now", "own", "won"]),
+    new CompleteLevel(level=["easy", "yes"], metaLevel=["easy", "say", "yes", "sea"])
 ]
 
 function startTutorial(step=0) {
