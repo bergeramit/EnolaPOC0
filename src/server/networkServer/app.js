@@ -2,7 +2,8 @@ const cors = require('cors');
 const express = require("express"); 
 const path = require('path');
 const bodyParser = require('body-parser');
-const test_levels = require("../gameLogic/test_levels.service.js");
+// const test_levels = require("../gameLogic/test_levels.service.js");
+const picwiz_levels = require("../gameLogic/picwiz_levels.service.js");
 // const LogRocket = require('logrocket');
 // LogRocket.init('9o6vsp/enolapoc0');
 const app = express(); // Initializing Express App
@@ -15,11 +16,10 @@ app.use(cors({
 	methods: ['GET', 'POST']
 }));
 
-app.post('/generate_level', function(req, res) { 
-  const difficulty = req.body.difficulty;
+app.post('/get_level', function(req, res) { 
   // console.log(difficulty);
-  board = test_levels.retrieve_level(difficulty);
-  console.log(board);
+  board = picwiz_levels.retrieve_level();
+  // console.log(board);
   res.send(JSON.stringify(board));
 });
 
