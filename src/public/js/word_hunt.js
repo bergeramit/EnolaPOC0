@@ -155,8 +155,8 @@ class Player {
         if (this.id === "PIP") {
             return
         }
-        let scoreElement = document.getElementById(this.id +"-score")
-        scoreElement.textContent = this.score
+        // let scoreElement = document.getElementById(this.id +"-score")
+        // scoreElement.textContent = this.score
         
         groupScore += value
         
@@ -164,7 +164,7 @@ class Player {
             groupScoreElement.textContent = this.score
         }
         
-        setScaleAnimation(scoreElement)
+        // setScaleAnimation(scoreElement)
     }
 }
 
@@ -209,15 +209,15 @@ let botCorrectSound
 function resetGame() {
     round = 0
     streak = 1
-    playersList.forEach((player) => {
-        player.currentLevelAttempts = 0
-        player.sequentialHits = 0
-        player.sequentialMisses = 0
-        player.score = 0
-        player.solveCorrectlyCurrentRound = 0
-        player.totalCorrect = 0
-        player.updateDOMScore(0)
-    })
+    // playersList.forEach((player) => {
+    //     player.currentLevelAttempts = 0
+    //     player.sequentialHits = 0
+    //     player.sequentialMisses = 0
+    //     player.score = 0
+    //     player.solveCorrectlyCurrentRound = 0
+    //     player.totalCorrect = 0
+    //     player.updateDOMScore(0)
+    // })
     
     groupScore = 0
     groupScoreElement.textContent = 0
@@ -430,14 +430,14 @@ function beginReadyLevel() {
     const board = document.getElementsByClassName("words-tiles")[0]
     board.innerHTML = ''
     
-    var timer = document.getElementById("game-timer")
-    var timerBackground = document.getElementById("in-game-timer-background")
-    timerBackground.style.backgroundColor = "#000000FF";
-    timeLeft = GAME_TIMER_TIMEOUT - (10 * round)
-    if (timeLeft <= 20) {
-        timeLeft = 20
-    }
-    timer.textContent = getTimerStr(timeLeft)
+    // var timer = document.getElementById("game-timer")
+    // var timerBackground = document.getElementById("in-game-timer-background")
+    // timerBackground.style.backgroundColor = "#000000FF";
+    // timeLeft = GAME_TIMER_TIMEOUT - (10 * round)
+    // if (timeLeft <= 20) {
+    //     timeLeft = 20
+    // }
+    // timer.textContent = getTimerStr(timeLeft)
     
     round += 1
     // const roundSideElement = document.getElementById("round-side-view")
@@ -559,17 +559,17 @@ function createEmptyWordRow(word) {
 }
 
 function setAvailableLetters() {
-    availableLetters = shuffle(availableLetters)
-    const letters = document.getElementById("available-top-letters")
-    letters.innerHTML = ""
-    for (let i = 0; i < availableLetters.length; i++) {
-        let letterElement = document.createElement("div")
-        letterElement.classList.add("letter")
-        letterElement.innerHTML = LETTER_TEMPLATE
-        let valueElement = letterElement.getElementsByClassName("top-letter")[0]
-        valueElement.textContent = availableLetters[i].toUpperCase()
-        letters.appendChild(letterElement)
-    }
+    // availableLetters = shuffle(availableLetters)
+    // const letters = document.getElementById("available-top-letters")
+    // letters.innerHTML = ""
+    // for (let i = 0; i < availableLetters.length; i++) {
+    //     let letterElement = document.createElement("div")
+    //     letterElement.classList.add("letter")
+    //     letterElement.innerHTML = LETTER_TEMPLATE
+    //     let valueElement = letterElement.getElementsByClassName("top-letter")[0]
+    //     valueElement.textContent = availableLetters[i].toUpperCase()
+    //     letters.appendChild(letterElement)
+    // }
 }
 
 function startCurrentLevel () {
@@ -578,7 +578,7 @@ function startCurrentLevel () {
     
     const board = document.getElementsByClassName("words-tiles")[0]
     
-    freezeGame = false
+    //freezeGame = false
     setAvailableLetters()
     correctlyGuessed = []
     for (let i = 0; i < CurrentLevel.length; i++) {
@@ -587,16 +587,16 @@ function startCurrentLevel () {
     }
     
     let maxScore = 0
-    playersList.forEach((player) => {
-        player.currentLevelAttempts = 0
-        player.sequentialHits = 0
-        player.sequentialMisses = 0
-        player.solveCorrectlyCurrentRound = 0
-        player.totalCorrect = 0
-        if (maxScore < player.score) {
-            maxScore = player.score
-        }
-    })
+    // playersList.forEach((player) => {
+    //     player.currentLevelAttempts = 0
+    //     player.sequentialHits = 0
+    //     player.sequentialMisses = 0
+    //     player.solveCorrectlyCurrentRound = 0
+    //     player.totalCorrect = 0
+    //     if (maxScore < player.score) {
+    //         maxScore = player.score
+    //     }
+    // })
     if (maxScore - 10 > youPlayer.score) {
         // make it easier
         botGuessInterval.push(14000)
@@ -817,9 +817,17 @@ function submitRegisterForm(email, callback) {
 }
 
 function startUp(initTimer=false) {
-    let sideView = document.getElementById("players-side-view-id")
-    sideView.style.display = "flex"
+    // let sideView = document.getElementById("players-side-view-id")
+    // sideView.style.display = "flex"
     shouldWaitForStartUp = false
+    const month_array = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    const d = new Date();
+    let month = month_array[d.getMonth()];
+    let day = d.getDay();
+
+    let date = document.getElementById("current-date");
+    date.innerText = month + " " + day;
+
     resetGame()
     generateNewLevel()
     setInterval(runBotGuesser, botGuessInterval[Math.floor(Math.random()*botGuessInterval.length)]);
@@ -905,9 +913,9 @@ document.onclick = function (e) {
     // var firstPlayPopup = document.getElementById('first-to-play-message');
     // var firstPlayPopup2 = document.getElementById('first-to-play-message2');
     // var firstPlayTriggerPopup = document.getElementById('be-the-first-to-play');
-    var addPlayer1 = document.getElementById('add-player-1');
-    var addPlayer2 = document.getElementById('add-player-2');
-    var addPlayer3 = document.getElementById('add-player-3');
+    // var addPlayer1 = document.getElementById('add-player-1');
+    // var addPlayer2 = document.getElementById('add-player-2');
+    // var addPlayer3 = document.getElementById('add-player-3');
 
     var addToHomeTriggerPopup = document.getElementById('add-to-home-id');
     var howToTriggerPopup = document.getElementById('how-to-button-id');
@@ -1080,21 +1088,21 @@ document.getElementById("reshuffle-letters").addEventListener("touchstart", (e) 
     setAvailableLetters()
 }, {passive: true})
 
-var addPlayer1 = document.getElementById('add-player-1');
-var addPlayer2 = document.getElementById('add-player-2');
-var addPlayer3 = document.getElementById('add-player-3');
+// var addPlayer1 = document.getElementById('add-player-1');
+// var addPlayer2 = document.getElementById('add-player-2');
+// var addPlayer3 = document.getElementById('add-player-3');
 
-addPlayer1.addEventListener("touchstart", (e) => {
-    popBeTheFirstMessage(offset="4rem", message="AddFriend")
-})
+// addPlayer1.addEventListener("touchstart", (e) => {
+//     popBeTheFirstMessage(offset="4rem", message="AddFriend")
+// })
 
-addPlayer2.addEventListener("touchstart", (e) => {
-    popBeTheFirstMessage(offset="7rem", message="AddFriend")
-})
+// addPlayer2.addEventListener("touchstart", (e) => {
+//     popBeTheFirstMessage(offset="7rem", message="AddFriend")
+// })
 
-addPlayer3.addEventListener("touchstart", (e) => {
-    popBeTheFirstMessage(offset="10rem", message="AddFriend")
-})
+// addPlayer3.addEventListener("touchstart", (e) => {
+//     popBeTheFirstMessage(offset="10rem", message="AddFriend")
+// })
 
 document.getElementById("delButton").addEventListener("touchstart", (e) => {
     /* When Enterkey Pressed */
@@ -1137,36 +1145,16 @@ document.addEventListener('keyup', (e) => {
 
 /* ---------------------- BotLogic ---------------------- */
 
-const playersList = [
-    youPlayer,
-    pipPlayer,
-    new Player("user12431", "player-1", "url('img/new_player_2.png')", "#32ff84", "white"),
-    new Player("smartFox69", "player-2", "url('img/new_player_3.png')", "#ff3364", "white"),
-    new Player("WordyJack3", "player-3", "url('img/new_player_1.png')", "#329dff", "white"),
-]
+// const playersList = [
+//     youPlayer,
+//     pipPlayer,
+//     new Player("user12431", "player-1", "url('img/new_player_2.png')", "#32ff84", "white"),
+//     new Player("smartFox69", "player-2", "url('img/new_player_3.png')", "#ff3364", "white"),
+//     new Player("WordyJack3", "player-3", "url('img/new_player_1.png')", "#329dff", "white"),
+// ]
 
 function runBotGuesser() {
-    if (freezeGame || turnOffBots) {
-        return
-    }
-    let bot = playersList[Math.floor(Math.random()*(playersList.length-2)) + 2]
-    let botGuess = metaCurrentLevel[Math.floor(Math.random()*metaCurrentLevel.length)]
-    bot.attempts += 1
-    if (checkGuess(bot, botGuess)) {
-        botCorrectSound.start()
-        appendMessage(bot, botGuess, true, false, 0)
-        bot.sequentialHits += 1
-    } else {
-        if (checkNiceTry(bot, botGuess)) {
-            validGuessed.push(botGuess)
-            appendMessage(bot, botGuess, false, true, 0)
-        } else {
-            appendMessage(bot, botGuess, false, false, 0)
-        }
-        bot.sequentialMisses += 1
-    }
-    
-    bot.trashTalk()
+    return
 }
 
 /* ---------------------- /BotLogic ---------------------- */
