@@ -514,11 +514,10 @@ document.getElementById("register-from-tooltip").addEventListener("click", (e) =
 
 document.onclick = function (e) {
     var addToHomeTriggerPopup = document.getElementById('add-to-home-id');
-    var howToTriggerPopup = document.getElementById('how-to-button-id');
+    // var howToTriggerPopup = document.getElementById('how-to-button-id');
     var howToPopup = document.getElementById('how-to-popup');
     
-    if (!howToPopup.contains(e.target)
-    && !(howToTriggerPopup.contains(e.target))) {
+    if (!howToPopup.contains(e.target)) {
         howToPopup.style.display = "none"
     }
 }
@@ -582,13 +581,13 @@ document.getElementById("enterButton").addEventListener("touchstart", (e) => {
     chatInput.value = ""
 }, {passive: true})
 
-document.getElementById("how-to-button-id").addEventListener("click", (e) => {
-    /* When "how-to" Pressed */
-    // window.LogRocket.track('clickQuestionMark', {});
-    reportAnalytics("clickQuestionMark", {})
-    const howToPopup = document.getElementById("how-to-popup")
-    howToPopup.style.display = "flex"
-}, {passive: true})
+// document.getElementById("how-to-button-id").addEventListener("click", (e) => {
+//     /* When "how-to" Pressed */
+//     // window.LogRocket.track('clickQuestionMark', {});
+//     reportAnalytics("clickQuestionMark", {})
+//     const howToPopup = document.getElementById("how-to-popup")
+//     howToPopup.style.display = "flex"
+// }, {passive: true})
 
 document.getElementById("register-play").addEventListener("click", (e) => {
     const howToPopup = document.getElementById("welcome-popup")

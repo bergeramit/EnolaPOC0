@@ -697,16 +697,6 @@
       position: relative;
     }
     
-    .word-hunt .overlap-group-1 {
-      align-items: flex-start;
-      background-color: var(--white-2);
-      border: 2.25px solid;
-      /* border-color: var(--gunsmoke); */
-      border-radius: 4.59px;
-      display: flex;
-      /* min-width: 21px; */
-    }
-    
     .word-hunt .price {
       height: 1rem;
       width: 1rem;
@@ -1599,7 +1589,7 @@
     .score-friends-view {
       /* min-width: 4rem; */
       align-items: center;
-      gap: 0.4rem;
+      /* gap: 0.4rem; */
       display: flex;
       text-align: center;
       flex-direction: column;
@@ -1677,11 +1667,7 @@
     }
     
     .how-to-play-stroke {
-      display: block;
-      height: 31px;
-      opacity: 0;
-      transform: scale(1.1);
-      width: 28px;
+      width: 2.5rem;
     }
     
     .how-to-play-stroke.animate-enter {
@@ -1915,7 +1901,7 @@
       --violent-violet: #300d65;
       --vis-vis: #f9ef9c;
       --white: #ffffff;
-      --white-2: #ffffff1c;
+      --white-2: #ffffffbf;
       --zircon: #f5fdff;
       --pixie-powder-2: #371891bf;
       --athens-gray: #ede7f5;
@@ -1928,7 +1914,7 @@
       --keyboard-button-height-size: 2.5rem;
       --keyboard-button-font-size: 1.5rem;
       --chat-message-font-size: 1rem;
-      --tooltip-margin-top: 0.5rem;
+      --tooltip-margin-top: 1rem;
       
       --empty-tiles-size-width: 2.3rem;
       --empty-tiles-size-height: 2.3rem;
@@ -1947,6 +1933,8 @@
       --font-size-xxs: 0.75625rem; /* 12.1px / 16px */
       
       --font-family-gilroy-extrabold: "Gilroy-ExtraBold", Helvetica;
+      --font-family-gilroy-bold: "Gilroy-Bold", Helvetica;
+      --font-family-gilroy-medium: "Gilroy-Medium", Helvetica;
       --font-family-inter: "Inter", Helvetica;
       --font-family-poppins: "Poppins", Helvetica;
       --font-family-roboto: "Roboto", Helvetica;
@@ -2068,6 +2056,39 @@
   .game-header {
     min-height: 10rem;
   }
+
+  .date-category {
+    color: var(--white-2);
+    font-family: var(--font-family-gilroy-medium);
+    font-size: var(--font-size-xxs);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-bottom: 3px;
+    text-align: center;
+}
+
+  .span1 {
+    font-family: var(--font-family-gilroy-extrabold);
+    font-weight: 800;
+  }
+
+  .get-picwiz {
+    color: #f9f1ff;
+    font-family: var(--font-family-gilroy-extrabold);
+    font-size: var(--font-size-s);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1rem;
+    margin-top: 0.1rem;
+    text-align: center;
+  }
+
+  .link {
+    background-color: var(--white);
+    border-radius: 62.27px;
+  }
+
   </style>
   <link defer rel="stylesheet" type="text/css" href="css/complete-popup.min.css" />
   <!-- <link rel="stylesheet" type="text/css" href="css/styleguide.min.css" /> -->
@@ -2124,24 +2145,28 @@
         <!-- <img class="bg" src="img/bg.png" alt="BG"/> -->
           <div class="top-half-view">
             <div class="cta-view">
-              <div id="how-to-button-id" class="how-to">
-                <img
-                class="how-to-play-stroke animate-enter"
-                src="img/how-to-play--stroke-.svg"
-                alt="how to play (Stroke)"
-                />
-              </div>
+              <img
+              class="how-to-play-stroke animate-enter"
+              src="img/rectangle-7778@2x.png"
+              alt="how to play (Stroke)"
+              />
+              <h1 class="get-picwiz">GET<br />PIC WIZ</h1>
+              <!-- <div id="how-to-button-id" class="how-to"></div> -->
             </div>
             <div class="middle-top-half">
-              <div class="game-header">
-                <div id="current-date" class="date">November 14th</div>
-                <div id="level-category" class="category">Famous Movie</div>
+              <div class="date-category">
+                <span id="current-date" class="">15 nov 23</span><br /><span  id="current-category" class="span1">famous phrases</span>
               </div>
               <div class="words-tiles">
               </div>
             </div>
             <div class="score-friends-view">
-              <div class="score-progress"><div id="group-score-side-view" class="number-2 valign-text-middle number-3">0</div></div>
+              <img
+              class="how-to-play-stroke link"
+              src="img/link-1.svg"
+              alt="how to play (Stroke)"
+              />
+              <div class="get-picwiz">SHARE<br />THIS</div>
             </div>
           </div>
           <div class="keyboard">
@@ -2269,7 +2294,7 @@
                   <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">M</div>
                   <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
                 </button>
-                <button id="delButton" class="keyboard-button-key keyboard-button-2">
+                <button id="spaceButton" class="keyboard-button-key keyboard-button-2">
                   <img
                   class="icon-material-icon-backspace_black_24dp"
                   src="img/space_bar.svg"
