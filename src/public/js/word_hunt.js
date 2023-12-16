@@ -21,6 +21,11 @@ const LETTER_TEMPLATE = `
 </div>
 </div>
 `
+const LETTER_FILL_V2 = `
+<article class="letter-tile-v2">
+    <div class="letter valign-text-middle gilroy-extra-extra-bold-cherry-pie-65-1px"> </div>
+</article>
+`
 const EMPTY_TILE = `
 <article class="tail">
 <div class="tail-1">
@@ -45,7 +50,9 @@ const FILLED_TILES = `
 
 // let finishedLevels = []
 let timeoutBetweenLevels = 1500
-let CurrentLevel
+let CurrentPhrase
+let CurrentImage
+let CurrentLevelDS = []
 let chatInput
 let deviceId
 let correctlyGuessed = []
@@ -71,25 +78,43 @@ function resetGame() {
     streak = 1
 }
 
-function addCorrectWord(wordIndex, fillColor, opacity=1) {
+// function addCorrectWord(wordIndex, fillColor, opacity=1) {
+//     const row = document.getElementsByClassName('word')[wordIndex]
+//     for (let j = 0; j < row.children.length; j++) {
+//         // place word correctly!
+//         row.children[j].innerHTML = FILLED_TILES
+//         const currentTile = row.children[j].getElementsByClassName("letter-input")[0]
+//         currentTile.textContent = CurrentPhrase[wordIndex][j].toUpperCase()  
+//         const backgroundFill = row.children[j].getElementsByClassName("tile-fill")[0]
+//         const backgroundOpac = row.children[j].getElementsByClassName("letter-tile")[0]
+//         backgroundFill.style.backgroundColor = fillColor
+//         backgroundOpac.style.opacity = opacity
+//     }
+//     setScaleAnimation(row)
+// }
+
+function addCorrectWord(word, wordIndex) {
     const row = document.getElementsByClassName('word')[wordIndex]
     for (let j = 0; j < row.children.length; j++) {
+        let letter = row.children[j].getElementsByClassName("letter")[0]
+        letter.innerText = word[j].toUpperCase()
         // place word correctly!
-        row.children[j].innerHTML = FILLED_TILES
-        const currentTile = row.children[j].getElementsByClassName("letter-input")[0]
-        currentTile.textContent = CurrentLevel[wordIndex][j].toUpperCase()  
-        const backgroundFill = row.children[j].getElementsByClassName("tile-fill")[0]
-        const backgroundOpac = row.children[j].getElementsByClassName("letter-tile")[0]
-        backgroundFill.style.backgroundColor = fillColor
-        backgroundOpac.style.opacity = opacity
+        // row.children[j].innerHTML = FILLED_TILES
+        // const currentTile = row.children[j].getElementsByClassName("letter-input")[0]
+        // currentTile.textContent = CurrentPhrase[wordIndex][j].toUpperCase()  
+        // const backgroundFill = row.children[j].getElementsByClassName("tile-fill")[0]
+        // const backgroundOpac = row.children[j].getElementsByClassName("letter-tile")[0]
+        // backgroundFill.style.backgroundColor = fillColor
+        // backgroundOpac.style.opacity = opacity
+        
     }
     setScaleAnimation(row)
 }
 
 function checkGuess(player, guess) {
-    for (let i = 0; i < CurrentLevel.length; i++) {
-        //console.log('Checks: CurrentLevel[1][i]: ' + CurrentLevel[i] + ' === ' + guess)
-        if (CurrentLevel[i] === guess && !correctlyGuessed.includes(guess)) {
+    for (let i = 0; i < CurrentPhrase.length; i++) {
+        //console.log('Checks: CurrentPhrase[1][i]: ' + CurrentPhrase[i] + ' === ' + guess)
+        if (CurrentPhrase[i] === guess && !correctlyGuessed.includes(guess)) {
             if (player.username === youUsername) {
                 player.solveCorrectlyCurrentRound += 1
                 player.totalCorrect += 1
@@ -99,7 +124,7 @@ function checkGuess(player, guess) {
             
             addCorrectWord(i, player.color)
             
-            if (correctlyGuessed.length < CurrentLevel.length) {
+            if (correctlyGuessed.length < CurrentPhrase.length) {
                 // There are still empty rows
                 return true
             }
@@ -146,12 +171,25 @@ function countLetter (letter, str) {
     return letterCount
 }
 
+function checkInputWord(word) {
+    for (let i=0; i< CurrentPhrase.length; i++) {
+        if (word == CurrentPhrase[i]) {
+            addCorrectWord(word, i)
+        }
+    }
+}
+
 function handleSubmitChatMessage(message) {
     if (message.length <= 0) {
         return
     }
     
-    console.log("Handle Chat Message")
+    let messageWords = message.split(" ")
+    for (let i =0; i < messageWords.length; i++) {
+        checkInputWord(messageWords[i])
+    }
+
+    // console.log("Handle Chat Message")
 }
 
 function addKeyToInput (pressedKey, onScreen) {
@@ -232,7 +270,7 @@ function beginReadyLevel() {
 }
 
 function setScaleAnimation(element) {
-    element.style.animationDuration = "1s";
+    element.style.animationDuration = "0.7s";
     element.style.animationTimingFunction = "ease";
     element.style.animationName = "zoom-in-zoom-out";
 }
@@ -269,20 +307,56 @@ function setAvailableLetters() {
 
 }
 
-function startCurrentLevel () {
-    var readyPopup = document.getElementById("ready-level-popup")
-    readyPopup.style.display = "none"
+function createPhraseTiles(board) {
+    CurrentLevelDS = []
+    //split into rows
+    let rowStrings = []
+    let rowString = CurrentPhrase[0]
+    for (let i = 1; i < CurrentPhrase.length; i++) { // potential issue if there is a word of length 12
+        if (rowString.length + CurrentPhrase[i].length + 1 <= 12) {
+            // the +1 is for the " " that we have to add between letters
+            rowString += " " + CurrentPhrase[i]
+        } else {
+            rowStrings.push(rowString)
+            rowString = CurrentPhrase[i]
+            if (i == CurrentPhrase.length - 1) {
+                rowStrings.push(rowString)
+            }
+        }
+    }
+
+    // create matching rows
+    for (let index = 0; index < rowStrings.length; index++) {
+        let rowString = rowStrings[index]
+        const row = document.createElement('div')
+        row.className = 'line'
+
+        // create row with tiles and spaces
+        words = rowString.split(' ')
+        CurrentLevelDS.push(words)
+        for (let i = 0; i < words.length; i++) {
+            const word = document.createElement('div')
+            word.className = 'word'
+            for (let j = 0; j < words[i].length; j++) {
+                word.innerHTML += LETTER_FILL_V2
+            }
+            row.appendChild(word)
+        }
+
+        board.appendChild(row)
+    }
+}
+
+function startTodaysPhrase () {
+    // var readyPopup = document.getElementById("ready-level-popup")
+    // readyPopup.style.display = "none"
     
     const board = document.getElementsByClassName("words-tiles")[0]
     
     //freezeGame = false
-
     correctlyGuessed = []
-    for (let i = 0; i < CurrentLevel.length; i++) {
-        const row = createEmptyWordRow(CurrentLevel[i])
-        board.appendChild(row)
-    }
-
+    createPhraseTiles(board)
+    
     const buttons = document.querySelectorAll('.keyboard-button')
     buttons.forEach((button) => {
         button.classList.remove("keyboard-button-1", "keyboard-button-2")
@@ -297,7 +371,7 @@ function startCurrentLevel () {
 }
 
 function displayFinishedLevel() {
-    // finishedLevels.push(CurrentLevel[0]) /* insert the key level identifier */
+    // finishedLevels.push(CurrentPhrase[0]) /* insert the key level identifier */
     freezeGame = true
     var scoreElement = document.getElementById("level-finish-score")
     scoreElement.textContent = youPlayer.score + " POINTS"
@@ -360,9 +434,10 @@ function popBeTheFirstMessage(offset="1rem", message="AddFriend") {
 /* ---------------------- Server API ---------------------- */
 
 function setLevelDS(completeLevel) {
-    CurrentLevel = completeLevel.level
-    availableLetters = shuffle(Array.from(CurrentLevel[0]))
-    // CurrentLevel = shuffle(Array.from(CurrentLevel))
+    CurrentPhrase = completeLevel.phrase.split(' ')
+    CurrentImage = completeLevel.imageURL
+    availableLetters = [] //shuffle(Array.from(CurrentPhrase[0])) //TODO: fox to all letters from current phrase
+    // CurrentPhrase = shuffle(Array.from(CurrentPhrase))
 }
 
 function generateNewLevel () {
@@ -391,9 +466,9 @@ function generateNewLevel () {
     
         const board = document.getElementsByClassName("words-tiles")[0]
         board.innerHTML = ''
-        startCurrentLevel()
+        startTodaysPhrase()
         // setTimeout(() => {
-        //     startCurrentLevel()
+        //     startTodaysPhrase()
         // }, timeoutBetweenLevels)
     })
 }
@@ -682,7 +757,7 @@ function startTutorial(step=0) {
             setTimeout(() => {
                 appendMessage(pipPlayer, "Hey there, I'm PIP your in-game buddy :)", false, false, EXTRA_CHAT_MESSAGE_DELAY)
                 appendMessage(pipPlayer, "Complete the missing words using the highlighted letters on the keyboard.", false, false, 4000)
-                startCurrentLevel()
+                startTodaysPhrase()
             }, timeoutBetweenLevels)
             break
 
@@ -692,7 +767,7 @@ function startTutorial(step=0) {
             setLevelDS(FIRST_LEVELS[tutorialProgress])
             beginReadyLevel()
             setTimeout(() => {
-                startCurrentLevel()
+                startTodaysPhrase()
             }, timeoutBetweenLevels)
             break
         

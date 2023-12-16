@@ -152,15 +152,6 @@
       width: 39px;
     }
     
-    .word-hunt .freind {
-      height: 36px;
-      left: 0;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      width: 36px;
-    }
-    
     .word-hunt .online-indication {
       /* background-color: var(--mantis); */
       border: 3px solid;
@@ -692,9 +683,18 @@
     .word-hunt .letter {
       /* height: 21px;
       min-width: 23px; */
-      margin-right: 0.3rem;
-      margin-left: 0.3rem;
       position: relative;
+      color: var(--cherry-pie);
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: var(--font-size-l);
+      font-style: normal;
+      font-weight: 800;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: normal;
+      /* position: absolute; */
+      text-align: center;
     }
     
     .word-hunt .price {
@@ -902,7 +902,7 @@
     .word-hunt .r1 {
       align-items: center;
       display: flex;
-      /* gap: var(--keyboard-gap); */
+      gap: 0.05rem;
       margin-bottom: 0.4rem;
       justify-content: center;
       position: relative;
@@ -954,7 +954,7 @@
     }
     
     .word-hunt .q-button-letter {
-      min-width: 2.2rem;
+      min-width: 2.1rem;
       min-height: 2.5rem;
       justify-content: center;
       align-items: center;
@@ -1146,7 +1146,7 @@
         position: relative;
         width: fit-content;
         margin-bottom: 0.3rem;
-        /* gap: 0.15rem; */
+        gap: 0.15rem;
       }
       
       .gilroy-extra-extra-bold-cherry-pie-23-7px {
@@ -1162,10 +1162,10 @@
         display: flex;
         flex-direction: column;
         /* gap: 0.2rem; */
-        min-height: 14rem;
+        min-height: 24rem;
         min-width: var(--rem-width-screen);
         position: relative;
-        /* justify-content: center; */
+        justify-content: end;
         /* width: fit-content; */
       }
       
@@ -1253,7 +1253,7 @@
         position: relative;
         width: fit-content;
         margin-bottom: 0.3rem;
-        /* gap: 0.15rem; */
+        gap: 0.15rem;
       }
       
       .gilroy-extra-extra-bold-cherry-pie-23-7px {
@@ -1269,10 +1269,10 @@
         display: flex;
         flex-direction: column;
         /* gap: 0.3rem; */
-        min-height: 18rem;
+        min-height: 28rem;
         min-width: var(--rem-width-screen);
         position: relative;
-        /* justify-content: center; */
+        justify-content: end;
         /* width: fit-content; */
       }
       
@@ -1428,6 +1428,23 @@
     
     .word-hunt .keyboard-2 {
       align-items: center;
+      gap: 0.2rem;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0.4rem;
+    }
+
+    .word-hunt .r2 {
+      align-items: center;
+      gap: 0.2rem;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 0.4rem;
+    }
+    
+    .word-hunt .r3 {
+      align-items: center;
+      gap: 0.1rem;
       display: flex;
       margin-bottom: 0.4rem;
     }
@@ -1553,7 +1570,7 @@
       justify-content: center;
       position: relative;
       width: fit-content;
-      min-height: 40rem;
+      min-height: 30rem;
     }
     
     .cta-view {
@@ -1851,7 +1868,7 @@
         transform: scale(1, 1);
       }
       50% {
-        transform: scale(1.2, 1.2);
+        transform: scale(1.1, 1.1);
       }
       100% {
         transform: scale(1, 1);
@@ -1883,12 +1900,12 @@
       --calypso: #3f6a8c;
       --cape-cod: #3b4040b2;
       --cape-cod-2: #3c4141b2;
-      /* --cherry-pie: #2a0756; */
       --dodger-blue: #329dff;
       --gunsmoke: #868686;
       --gallery: #f0f0f0;
       --haiti: #14113b;
       --lemon-chiffon: #fffcc2;
+      --cherry-pie: #2a0756;
       /* --lavender-gray: #c6b8d8; */
       --mantis: #64d95a;
       /* --pixie-powder: #371891; */
@@ -1911,9 +1928,9 @@
       --rem-width-screen: 15rem;
       --keyboard-button-size: 2.1rem;
       --keyboard-button-height-size: 2.5rem;
-      --keyboard-button-font-size: 1.5rem;
+      --keyboard-button-font-size: 1.2rem;
       --chat-message-font-size: 1rem;
-      --tooltip-margin-top: 1rem;
+      --tooltip-margin-top: 2rem;
       
       --empty-tiles-size-width: 2.3rem;
       --empty-tiles-size-height: 2.3rem;
@@ -2073,11 +2090,14 @@
   }
 
   .get-picwiz {
-    color: #f9f1ff;
+    pointer-events: none;
+    color: #ffffffff;
+    text-decoration: none;
     font-family: var(--font-family-gilroy-extrabold);
     font-size: var(--font-size-s);
     font-weight: 700;
     letter-spacing: 0;
+    display: block;
     /* line-height: 1rem; */
     margin-top: 0.1rem;
     text-align: center;
@@ -2089,6 +2109,28 @@
     background-color: var(--white);
     border-radius: 62.27px;
   }
+
+  .line {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    position: relative;
+  }
+
+  .letter-tile-v2 {
+    background-color: var(--vis-vis);
+    border: 0.2rem solid;
+    border-color: var(--cherry-pie);
+    border-radius: 0.2rem;
+    height: 2.3rem;
+    position: relative;
+    width: 1.7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+    
 
   </style>
   <link defer rel="stylesheet" type="text/css" href="css/complete-popup.min.css" />
@@ -2151,12 +2193,12 @@
               src="img/rectangle-7778@2x.png"
               alt="how to play (Stroke)"
               />
-              <h1 class="get-picwiz">GET<br />PIC WIZ</h1>
+              <div rel="noopener" target="_blank" class="get-picwiz">GET<br />PIC WIZ</div>
               <!-- <div id="how-to-button-id" class="how-to"></div> -->
             </div>
             <div class="middle-top-half">
               <div class="date-category">
-                <span id="current-date" class="">15 nov 23</span><br /><span  id="current-category" class="span1">famous phrases</span>
+                <div id="current-date" class="">15 nov 23</div><div  id="current-category" class="span1">famous phrases</div>
               </div>
               <div class="words-tiles">
               </div>
@@ -2167,7 +2209,7 @@
               src="img/link-1.svg"
               alt="how to play (Stroke)"
               />
-              <div class="get-picwiz">SHARE<br />THIS</div>
+              <div rel="noopener" target="_blank" class="get-picwiz">SHARE<br />THIS</div>
             </div>
           </div>
           <div class="keyboard">
@@ -2221,7 +2263,7 @@
                   <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
                 </button>
               </div>
-              <div class="keyboard-item keyboard-2">
+              <div class="keyboard-item r2">
                 <button type="button" class="keyboard-button">
                   <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">A</div>
                   <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
@@ -2259,7 +2301,7 @@
                   <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
                 </button>
               </div>
-              <div class="keyboard-item keyboard-2">
+              <div class="keyboard-item r3">
                 <button id="delButton" class="keyboard-button-key keyboard-button-2">
                   <img
                   class="icon-material-icon-backspace_black_24dp"
