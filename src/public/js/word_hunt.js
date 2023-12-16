@@ -449,9 +449,9 @@ function startUp(initTimer=false) {
 }
 
 function reportAnalytics(eventName, JSONData) {
-    mixpanel.track(eventName, JSONData)
-    fbq('track', eventName, JSONData)
-    gtag('event', eventName, JSONData);
+    // mixpanel.track(eventName, JSONData)
+    // fbq('track', eventName, JSONData)
+    // gtag('event', eventName, JSONData);
 }
 
 /* ---------------------- /Server API ---------------------- */

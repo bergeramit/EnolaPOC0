@@ -24,7 +24,7 @@
       align-items: flex-start;
       /* background-color: var(--white); */
       border: 1px none;
-      display: flex;
+      /* display: flex; */
       /* gap: 1476px;
       height: 883px;
       overflow: hidden;
@@ -55,7 +55,7 @@
     
     .word-hunt .bottom-shading {
       align-items: flex-end;
-      background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.51) 45.35%, rgba(0, 0, 0, 0.48) 54.17%, rgba(0, 0, 0, 0.3) 76.04%, rgba(0, 0, 0, 0) 100%);
+      /* background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.51) 45.35%, rgba(0, 0, 0, 0.48) 54.17%, rgba(0, 0, 0, 0.3) 76.04%, rgba(0, 0, 0, 0) 100%); */
       display: flex;
       /* gap: 410px; */
       height: 20rem;
@@ -162,7 +162,7 @@
     }
     
     .word-hunt .online-indication {
-      background-color: var(--mantis);
+      /* background-color: var(--mantis); */
       border: 3px solid;
       border-color: var(--white);
       border-radius: 6.67px;
@@ -260,7 +260,7 @@
     }
     
     .word-hunt .how-to-play {
-      -webkit-text-stroke: 1.76px var(--pixie-powder);
+      /* -webkit-text-stroke: 1.76px var(--pixie-powder); */
       letter-spacing: 0;
       line-height: 12.0px;
       min-height: 36px;
@@ -395,7 +395,7 @@
       padding: 15.2px 6.3px;
       background-color: var(--white);
       border: 5px solid;
-      border-color: var(--haiti);
+      /* border-color: var(--haiti); */
       border-radius: 63px;
     }
     
@@ -413,7 +413,7 @@
     }
     
     .word-hunt .solo-game {
-      -webkit-text-stroke: 1.76px #9a3507;
+      /* -webkit-text-stroke: 1.76px #9a3507; */
       letter-spacing: 0;
       line-height: 12.0px;
       min-height: 26px;
@@ -572,7 +572,7 @@
     }
     
     .word-hunt .game-launch-soon {
-      -webkit-text-stroke: 3.27px var(--haiti);
+      /* -webkit-text-stroke: 3.27px var(--haiti); */
       color: var(--white);
       cursor: pointer;
       font-family: var(--font-family-poppins);
@@ -1118,7 +1118,8 @@
     @media only screen and (max-height: 750px) {
       
       .full-view {
-        background-image: url(img/darker_428_927.webp);
+        background-image: url(img/backgroundlevel.png);
+        background-size: contain;
         /* background-position: center; */
         /* background-size: cover; */
         /* background-repeat: no-repeat; */
@@ -1227,10 +1228,8 @@
     @media only screen and (min-height: 750px) {
       
       .full-view {
-        background-image: url(img/darker_428_927.webp);
-        /* background-position: center;
-        background-size: cover; */
-        /* background-repeat: no-repeat; */
+        background-image: url(img/backgroundlevel.png);
+        background-size: contain;
         background-attachment: fixed;
       }
       
@@ -1554,7 +1553,7 @@
       justify-content: center;
       position: relative;
       width: fit-content;
-      min-height: 29rem;
+      min-height: 40rem;
     }
     
     .cta-view {
@@ -1586,7 +1585,7 @@
       position: relative;
     }
     
-    .score-friends-view {
+    .share-tooltip {
       /* min-width: 4rem; */
       align-items: center;
       /* gap: 0.4rem; */
@@ -1884,30 +1883,30 @@
       --calypso: #3f6a8c;
       --cape-cod: #3b4040b2;
       --cape-cod-2: #3c4141b2;
-      --cherry-pie: #2a0756;
+      /* --cherry-pie: #2a0756; */
       --dodger-blue: #329dff;
       --gunsmoke: #868686;
       --gallery: #f0f0f0;
       --haiti: #14113b;
       --lemon-chiffon: #fffcc2;
-      --lavender-gray: #c6b8d8;
+      /* --lavender-gray: #c6b8d8; */
       --mantis: #64d95a;
-      --pixie-powder: #371891;
+      /* --pixie-powder: #371891; */
       --celeste: #cccbcb;
       --radical-red: #ff3364;
       --riptide: #90f0e0;
       --spring-green: #32ff84;
       --sunglow: #ffd232;
-      --violent-violet: #300d65;
+      /* --violent-violet: #300d65; */
       --vis-vis: #f9ef9c;
       --white: #ffffff;
       --white-2: #ffffffbf;
       --zircon: #f5fdff;
-      --pixie-powder-2: #371891bf;
+      /* --pixie-powder-2: #371891bf; */
       --athens-gray: #ede7f5;
       --new-green: #25b9a2;
-      --daisy-bush: #530a95;
-      --purple-plum: #9c50ff;
+      /* --daisy-bush: #530a95;
+      --purple-plum: #9c50ff; */
       
       --rem-width-screen: 15rem;
       --keyboard-button-size: 2.1rem;
@@ -2079,9 +2078,11 @@
     font-size: var(--font-size-s);
     font-weight: 700;
     letter-spacing: 0;
-    line-height: 1rem;
+    /* line-height: 1rem; */
     margin-top: 0.1rem;
     text-align: center;
+    -webkit-text-stroke: 0;
+    -webkit-text-stroke-color: #000000;
   }
 
   .link {
@@ -2138,7 +2139,7 @@
   
 </head>
 <body class="full-view">
-  <div class="container-center-horizontal">
+  <!-- <div class="container-center-horizontal"> -->
     <div class="word-hunt screen" name="form1" action="form1" method="post">
       <!-- <img class="rectangle-7596" src="img/rectangle-7596-2@2x.png" alt="Rectangle 7596" /> -->
       <div class="overlap-group5">
@@ -2160,7 +2161,7 @@
               <div class="words-tiles">
               </div>
             </div>
-            <div class="score-friends-view">
+            <div class="share-tooltip">
               <img
               class="how-to-play-stroke link"
               src="img/link-1.svg"
@@ -2515,7 +2516,7 @@
         </div>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
   <script>
       
       if (typeof navigator.serviceWorker !== 'undefined') {
