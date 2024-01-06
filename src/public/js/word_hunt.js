@@ -48,7 +48,7 @@ const FILLED_TILES = `
 
 // let finishedLevels = []
 let timeoutBetweenLevels = 1500
-let CurrentPhrase
+let completeLevel
 let CurrentImage
 let CurrentLevelDS = []
 let chatInput
@@ -70,6 +70,75 @@ let tutorialProgress = 0
 
 
 /* ---------------------- GameLogic ---------------------- */
+
+class CompleteLevel {
+    constructor(currentPhrase) {
+        this.currentPhrase = currentPhrase
+        this.leftToGuess = this.currentPhrase.length
+        this.finishedLevel = false
+        this.triesLeft = 5
+        this.outOfTries = false
+    }
+
+    guessWord(word) {
+        for (let i=0; i< this.currentPhrase.length; i++) {
+            if (word == this.currentPhrase[i]) {
+                this.leftToGuess--;
+                if (this.leftToGuess == 0) {
+                    this.finishedLevel = true;
+                }
+                return i
+            }
+        }
+        return -1
+    }
+
+    checkInputWord(word) {
+        let position = this.guessWord(word)
+        if (position != -1) {
+            addCorrectWord(word, position)
+        }
+    }
+
+    makeGuess(words) {
+        this.triesLeft--;
+        if (this.triesLeft == 0) {
+            this.outOfTries = true
+        }
+        for (let i =0; i < words.length; i++) {
+            this.checkInputWord(words[i])
+        }
+    }
+
+    isFinished() {
+        return this.finishedLevel
+    }
+
+    highlighAnotherLetter() {
+        //TODO: add highlight functionality
+    }
+}
+
+function deleteStar() {
+    let stars = document.getElementsByClassName("star-class")
+    for (var i=stars.length-1; i>=0; i--) {
+        if (stars[i].src.endsWith("img/filled-star.png")) {
+            stars[i].src = "img/broken-star.png"
+            setScaleAnimation(stars[i])
+            return
+        }
+    }
+}
+
+function processWrongGuess() {
+    console.log(">processWrongGuess")
+    deleteStar()
+    completeLevel.highlighAnotherLetter()
+}
+
+function processOutOfTries() {
+    console.log(">processOutOfTries")
+}
 
 function resetGame() {
     round = 0
@@ -101,22 +170,19 @@ function countLetter (letter, str) {
     return letterCount
 }
 
-function checkInputWord(word) {
-    for (let i=0; i< CurrentPhrase.length; i++) {
-        if (word == CurrentPhrase[i]) {
-            addCorrectWord(word, i)
-        }
-    }
-}
-
 function handleSubmitChatMessage(message) {
     if (message.length <= 0) {
         return
     }
     
     let messageWords = message.split(" ")
-    for (let i =0; i < messageWords.length; i++) {
-        checkInputWord(messageWords[i])
+    completeLevel.makeGuess(messageWords)
+
+    if (!completeLevel.isFinished()) {
+        if (completeLevel.outOfTries) {
+            processOutOfTries()
+        }    
+        processWrongGuess()
     }
 
     // console.log("Handle Chat Message")
@@ -223,18 +289,17 @@ function setAvailableLetters() {
 }
 
 function createPhraseTiles(board) {
-    CurrentLevelDS = []
     //split into rows
     let rowStrings = []
-    let rowString = CurrentPhrase[0]
-    for (let i = 1; i < CurrentPhrase.length; i++) { // potential issue if there is a word of length 12
-        if (rowString.length + CurrentPhrase[i].length + 1 <= 12) {
+    let rowString = completeLevel.currentPhrase[0]
+    for (let i = 1; i < completeLevel.currentPhrase.length; i++) { // potential issue if there is a word of length 12
+        if (rowString.length + completeLevel.currentPhrase[i].length + 1 <= 12) {
             // the +1 is for the " " that we have to add between letters
-            rowString += " " + CurrentPhrase[i]
+            rowString += " " + completeLevel.currentPhrase[i]
         } else {
             rowStrings.push(rowString)
-            rowString = CurrentPhrase[i]
-            if (i == CurrentPhrase.length - 1) {
+            rowString = completeLevel.currentPhrase[i]
+            if (i == completeLevel.currentPhrase.length - 1) {
                 rowStrings.push(rowString)
             }
         }
@@ -294,11 +359,6 @@ function displayFinishedLevel() {
     completePopup.style.display = "flex"
     setScaleAnimation(completePopup)
 
-    // if (inFTUE) {
-    //     startTutorial(tutorialProgress + 1)
-    //     return
-    // }
-    
     setTimeout(() => {
         generateNewLevel()
     }, timeoutBetweenLevels)
@@ -348,9 +408,9 @@ function popBeTheFirstMessage(offset="1rem", message="AddFriend") {
 
 /* ---------------------- Server API ---------------------- */
 
-function setLevelDS(completeLevel) {
-    CurrentPhrase = completeLevel.phrase.split(' ')
-    CurrentImage = completeLevel.imageURL
+function setLevelDS(currentLevel) {
+    completeLevel = new CompleteLevel(currentLevel.phrase.split(' '))
+    CurrentImage = currentLevel.imageURL
     availableLetters = [] //shuffle(Array.from(CurrentPhrase[0])) //TODO: fox to all letters from current phrase
     // CurrentPhrase = shuffle(Array.from(CurrentPhrase))
 }
@@ -640,62 +700,3 @@ document.addEventListener('keyup', (e) => {
     }
 })
 /* ---------------------- /EventListeners ---------------------- */
-
-/* ---------------------- Tutorial ----------------------- */
-
-class CompleteLevel {
-    constructor(level, metaLevel=[]) {
-        this.level = level
-        if (metaLevel == []) {
-            this.metaLevel = level
-        } else {
-            this.metaLevel = metaLevel
-        }
-    }
-}
-
-const FIRST_LEVELS = [
-    new CompleteLevel(level=["cat"], metaLevel=["act","cat"]),
-    new CompleteLevel(level=["now", "won"], metaLevel=["now", "own", "won"]),
-    new CompleteLevel(level=["easy", "yes"], metaLevel=["easy", "say", "yes", "sea"])
-]
-
-function startTutorial(step=0) {
-    tutorialProgress = step
-    // inFTUE = false
-    switch(tutorialProgress) {
-        case 0:
-            reportAnalytics("BeginFTUE", {})
-            resetGame()
-            setLevelDS(FIRST_LEVELS[0])
-            beginReadyLevel()
-            setTimeout(() => {
-                appendMessage(pipPlayer, "Hey there, I'm PIP your in-game buddy :)", false, false, EXTRA_CHAT_MESSAGE_DELAY)
-                appendMessage(pipPlayer, "Complete the missing words using the highlighted letters on the keyboard.", false, false, 4000)
-                startTodaysPhrase()
-            }, timeoutBetweenLevels)
-            break
-
-        case 1:        
-        case 2:
-            reportAnalytics("StepFTUE", {step: tutorialProgress})
-            setLevelDS(FIRST_LEVELS[tutorialProgress])
-            beginReadyLevel()
-            setTimeout(() => {
-                startTodaysPhrase()
-            }, timeoutBetweenLevels)
-            break
-        
-        case 3: // final
-            reportAnalytics("FinishedFTUE", {})
-            inFTUE = false
-            appendMessage(pipPlayer, "Congratulations! now get ready to play against others!", false, false, EXTRA_CHAT_MESSAGE_DELAY)
-            setTimeout(() => {
-                startUp(false)
-            }, 4000)
-            break
-    }
-    // startUp()
-}
-
-/* ---------------------- /Tutorial ----------------------- */
