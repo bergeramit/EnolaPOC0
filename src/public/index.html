@@ -1933,7 +1933,7 @@
       --keyboard-button-height-size: 2.5rem;
       --keyboard-button-font-size: 1.2rem;
       --chat-message-font-size: 1rem;
-      --tooltip-margin-top: 2rem;
+      --tooltip-margin-top: 0.5rem;
       
       --empty-tiles-size-width: 2.3rem;
       --empty-tiles-size-height: 2.3rem;
@@ -2179,9 +2179,26 @@
       left: 0.1rem;
     }
     
-    .question-mark-class, .analytic-class {
+    .question-mark-class {
       height: 1rem;
       width: 0.5rem;
+    }
+
+    .analytic-class {
+      width: 1rem;
+    }
+
+    .analytic-border-class {
+      align-items: flex-start;
+      background-color: #00000040;
+      border: 2px solid;
+      border-color: var(--white);
+      border-radius: 53px;
+      display: flex;
+      flex-direction: column;
+      /* gap: 1px; */
+      /* min-height: 76px; */
+      padding: 0.2rem 0.2rem;
     }
     
     .star-class {
@@ -2191,6 +2208,7 @@
     
     .status-class {
       align-items: flex-end;
+      /* color: var(--cape-cod); */
       background-color: var(--white);
       border-radius: 3rem;
       display: flex;
@@ -2203,7 +2221,9 @@
       align-items: center;
       display: flex;
       gap: 0.1rem;
-      margin: 0.6rem;
+      margin-top: 1rem;
+      margin-left: 0.6rem;
+      margin-right: 0.6rem;
       justify-content: center;
       position: relative;
     }
@@ -2346,8 +2366,8 @@
             </div>
           </div>
           <div class="share-tooltip">
-            <div id="analytic-id" class="how-to-class">
-              <img class="analytic-class" src="img/layer-1.svg" alt="question-mark-class" />
+            <div id="analytic-id" class="analytic-border-class">
+              <img class="analytic-class" src="img/share-var.png" alt="question-mark-class" />
             </div>
             <!-- <img
             class="how-to-play-stroke link"
@@ -2359,7 +2379,7 @@
         </div>
         <div class="keyboard">
           <div class="input-submit">
-            <input id="chat-input"  inputmode='none' autocomplete="off" placeholder="Add Comment" class="overlap-group2-2 input-to-chat">
+            <input id="chat-input"  inputmode='none' autocomplete="off" placeholder="Add your guess..." class="overlap-group2-2 input-to-chat">
             <button id="enterButton" class="keyboard-button-submit">
               <div class="enter-button"><img class="subtract" src="img/subtract-2.svg" alt="Subtract" />
               </div>
