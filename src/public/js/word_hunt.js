@@ -72,12 +72,15 @@ let tutorialProgress = 0
 /* ---------------------- GameLogic ---------------------- */
 
 class CompleteLevel {
-    constructor(currentPhrase) {
+    constructor(currentPhrase, hints) {
         this.currentPhrase = currentPhrase
         this.leftToGuess = this.currentPhrase.length
         this.finishedLevel = false
-        this.triesLeft = 5
+        this.maxTries = 5
+        this.tries = 0
         this.outOfTries = false
+        // this.availableLetters = shuffle(new Set(this.currentPhrase.join(''))) // TODO: fix to all letters from current phrase
+        this.hints = hints
     }
 
     guessWord(word) {
@@ -101,8 +104,8 @@ class CompleteLevel {
     }
 
     makeGuess(words) {
-        this.triesLeft--;
-        if (this.triesLeft == 0) {
+        this.tries++;
+        if (this.tries == this.maxTries) {
             this.outOfTries = true
         }
         for (let i =0; i < words.length; i++) {
@@ -115,6 +118,19 @@ class CompleteLevel {
     }
 
     highlighAnotherLetter() {
+        let hintLetter = this.hints[0]
+        this.hints = this.hints.slice(1)
+
+        const buttons = document.querySelectorAll('.keyboard-button')
+        buttons.forEach((button) => {
+            // button.classList.remove("highlight")
+            const letterCount = button.getElementsByClassName('letter-count')[0]
+            const letter = button.getElementsByClassName('button-letter')[0]
+            letterCount.textContent = ''
+            if (letter.textContent[0].toLowerCase() == hintLetter) {
+                button.classList.add("keyboard-button-1", "keyboard-button-2")
+            }
+        })
         //TODO: add highlight functionality
     }
 }
@@ -181,7 +197,7 @@ function handleSubmitChatMessage(message) {
     if (!completeLevel.isFinished()) {
         if (completeLevel.outOfTries) {
             processOutOfTries()
-        }    
+        }
         processWrongGuess()
     }
 
@@ -336,18 +352,6 @@ function startTodaysPhrase () {
     //freezeGame = false
     correctlyGuessed = []
     createPhraseTiles(board)
-    
-    const buttons = document.querySelectorAll('.keyboard-button')
-    buttons.forEach((button) => {
-        button.classList.remove("keyboard-button-1", "keyboard-button-2")
-        const letterCount = button.getElementsByClassName('letter-count')[0]
-        const letter = button.getElementsByClassName('button-letter')[0]
-        letterCount.textContent = ''
-        if (availableLetters.includes(letter.textContent[0].toLowerCase())) {
-            button.classList.add("keyboard-button-1", "keyboard-button-2")
-            // letterCount.textContent = countLetter(letter.textContent, availableLetters)
-        }
-    })
 }
 
 function displayFinishedLevel() {
@@ -409,9 +413,8 @@ function popBeTheFirstMessage(offset="1rem", message="AddFriend") {
 /* ---------------------- Server API ---------------------- */
 
 function setLevelDS(currentLevel) {
-    completeLevel = new CompleteLevel(currentLevel.phrase.split(' '))
+    completeLevel = new CompleteLevel(currentLevel.phrase.split(' '), currentLevel.hints)
     CurrentImage = currentLevel.imageURL
-    availableLetters = [] //shuffle(Array.from(CurrentPhrase[0])) //TODO: fox to all letters from current phrase
     // CurrentPhrase = shuffle(Array.from(CurrentPhrase))
 }
 

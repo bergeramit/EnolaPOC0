@@ -17,7 +17,7 @@ function retrieve_level() {
     let date = new Date()
     console.log("Levela for " + MONTH_NAMES[date.getMonth()] + " " + date.getDate() + "th")
     let selectedLevel = levels[date.getDate() % levels.length]
-    return {"imageURL": selectedLevel[0], "title": selectedLevel[1],"phrase": selectedLevel[2]};
+    return {"imageURL": selectedLevel[0], "title": selectedLevel[1], "hints": selectedLevel[2], "phrase": selectedLevel[3]};
 }
 
 module.exports.retrieve_level = retrieve_level;
