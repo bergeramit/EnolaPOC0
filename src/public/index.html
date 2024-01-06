@@ -848,7 +848,7 @@
       flex-direction: column;
       gap: 5px;
       /* left: 669px; */
-      min-height: 27rem;
+      /* min-height: 27rem; */
       max-width: 22rem;
       margin: auto;
       position: relative;
@@ -1133,8 +1133,9 @@
         background-size: contain;
         /* background-position: center; */
         /* background-size: cover; */
-        /* background-repeat: no-repeat; */
+        background-repeat: no-repeat;
         background-attachment: fixed;
+        background-color: var(--cape-cod-2);
       }
       
       .word-hunt .tile-bg {
@@ -1242,6 +1243,8 @@
         background-image: url(img/backgroundlevel.png);
         background-size: contain;
         background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-color: var(--cape-cod-2);
       }
       
       .word-hunt .tile-bg {
@@ -2310,11 +2313,11 @@
       /* display: none; */
       z-index: 3;
       background-color: var(--black-8);
-      height: 2025px;
+      height: 100%;
       /* left: 925px; */
       position: absolute;
       /* top: 294px; */
-      width: 1179px;
+      width: 100%;
     }
     
     .welcome-bg-div {
@@ -2326,6 +2329,7 @@
       background-size: 26rem;
       vertical-align: bottom;
       gap: 0.5rem;
+      min-height: 40rem;
       
       flex-direction: column;
       align-items: center;
@@ -2355,7 +2359,7 @@
       /* background-attachment: fixed;
       background-size: cover; */
       width: 26rem;
-      height: 14rem;
+      /* height: 14rem; */
       background-size: 26rem;
       vertical-align: bottom;
       gap: 1rem;
@@ -2368,6 +2372,10 @@
     
     .daily-quiz-class {
       width: 10rem;
+    }
+
+    .stars-pic-class {
+      width: 26rem;
     }
     
     .daily-date-class {
@@ -2392,6 +2400,17 @@
       letter-spacing: 0;
       line-height: 1.5rem;
       text-align: center;
+    }
+
+    .you-made-it-explanation {
+      color: var(--violet);
+      font-family: var(--font-family-gilroy-extrabold);
+      font-size: var(--font-size-m);
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
     }
     
     .how-to-play-title {
@@ -2418,6 +2437,23 @@
       justify-content: center;
       align-content: center;
     }
+
+    .brag-button-view {
+      cursor: pointer;
+      background-color: var(--purple-plum);
+      border: 3.99px solid;
+      border-color: var(--daisy-bush);
+      border-radius: 30.65px;
+      box-shadow: inset -1.6px 2.39px 0 3.19px #ffffff59;
+      min-height: 4rem;
+      width: 18rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+
+      margin-bottom: 5rem;
+    }
     
     
     .howto-button-view {
@@ -2440,7 +2476,16 @@
       /* height: 11px; */
       letter-spacing: 0.27px;
       text-align: center;
-      font-size: var(--font-size-xl);
+      font-size: var(--font-size-l);
+    }
+
+
+
+    .brag-button-place {
+      /* height: 11px; */
+      letter-spacing: 0.27px;
+      text-align: center;
+      font-size: var(--font-size-l);
     }
     
     .howto-button-place {
@@ -2448,10 +2493,15 @@
       letter-spacing: 0.27px;
       /* height: 3rem; */
       text-align: center;
-      font-size: var(--font-size-m);
+      font-size: var(--font-size-s);
     }
     
     .uptop {
+      position: relative;
+      top:-4rem;
+    }
+
+    .uptop-low {
       position: relative;
       top:-3rem;
     }
@@ -2463,7 +2513,15 @@
       position: absolute;
       vertical-align: bottom;
       bottom:0;
-      height: 40rem;
+    }
+
+    #endgame-popup {
+      display: none;
+      z-index: 3;
+      /* top: 1rem; */
+      position: absolute;
+      vertical-align: bottom;
+      bottom:0;
     }
     
     #welcome-popup {
@@ -2473,7 +2531,6 @@
       position: absolute;
       vertical-align: bottom;
       bottom:0;
-      height: 40rem;
     }
     
     
@@ -2534,7 +2591,7 @@
       <img class="uptop daily-date-class" src="img/date-frame.png">
       <p class="uptop try-to-guess-what-is">Try To Guess What Is Hidden Behind The Picture In Less Than 5 Attempts</p>
       <div id="register-play" class="uptop play-button-view">
-        <div class="play-button-place gilroy-extra-extra-bold-white-12-8px">Start Now</div>
+        <div class="play-button-place gilroy-extra-extra-bold-white-12-8px">START NOW</div>
       </div>
       <div id="how-to-play" class="uptop howto-button-view">
         <div class="howto-button-place gilroy-extra-extra-bold-white-12-8px">HOW TO PLAY?</div>
@@ -2562,6 +2619,23 @@
         </div>
       </div>
     </div>
+  </div>
+  <div id="endgame-popup" class="">
+    <div class="welcome-bg-div" src="img/popup-bg.svg">
+      <img class="uptop-low stars-pic-class" src="img/stars.png">
+      <p class="uptop how-to-play-title">AMAZING</p>
+      <p class="uptop you-made-it-explanation">YOU MADE IT ON THE SECOND TRY!</p>
+      <div id="brag-button" class="uptop brag-button-view">
+        <div class="brag-button-place gilroy-extra-extra-bold-white-12-8px">BRAG YOUR SCORE</div>
+      </div>
+      <div class="welcome-bottom-div" src="img/mask-group-1.png">
+        <img class="uptop daily-quiz-class" src="img/pic-wiz-logo.png">
+        <div id="get-the-app" class="uptop howto-button-view">
+          <div class="howto-button-place gilroy-extra-extra-bold-white-12-8px">GET THE APP NOW</div>
+        </div>
+      </div>
+    </div>
+  </div>
     <!-- <div class="container-center-horizontal"> -->
       <div class="word-hunt screen" name="form1" action="form1" method="post">
         <!-- <img class="rectangle-7596" src="img/rectangle-7596-2@2x.png" alt="Rectangle 7596" /> -->

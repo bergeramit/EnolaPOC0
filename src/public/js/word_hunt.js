@@ -186,6 +186,19 @@ function countLetter (letter, str) {
     return letterCount
 }
 
+function displayFinishPopup() {
+    let endGameView = document.getElementById("endgame-popup")
+    endGameView.style.display = "flex"
+    setDark()
+}
+
+function processEndGame() {
+
+    setTimeout(() => {
+        displayFinishPopup()
+    }, timeoutBetweenLevels)
+}
+
 function handleSubmitChatMessage(message) {
     if (message.length <= 0) {
         return
@@ -199,6 +212,8 @@ function handleSubmitChatMessage(message) {
             processOutOfTries()
         }
         processWrongGuess()
+    } else {
+        processEndGame()
     }
 
     // console.log("Handle Chat Message")
