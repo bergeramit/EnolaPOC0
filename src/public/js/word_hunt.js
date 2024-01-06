@@ -27,10 +27,8 @@ const LETTER_FILL_V2 = `
 </article>
 `
 const EMPTY_TILE = `
-<article class="tail">
-<div class="tail-1">
-<div class="highlights"><img class="intersect" src="img/intersect-1.svg" alt="Intersect" /></div>
-</div>
+<article class="letter-tile-empty">
+    <div class="letter valign-text-middle gilroy-extra-extra-bold-cherry-pie-65-1px"> </div>
 </article>
 `
 const FILLED_TILES = `
@@ -77,85 +75,17 @@ function resetGame() {
     round = 0
     streak = 1
 }
-
-// function addCorrectWord(wordIndex, fillColor, opacity=1) {
-//     const row = document.getElementsByClassName('word')[wordIndex]
-//     for (let j = 0; j < row.children.length; j++) {
-//         // place word correctly!
-//         row.children[j].innerHTML = FILLED_TILES
-//         const currentTile = row.children[j].getElementsByClassName("letter-input")[0]
-//         currentTile.textContent = CurrentPhrase[wordIndex][j].toUpperCase()  
-//         const backgroundFill = row.children[j].getElementsByClassName("tile-fill")[0]
-//         const backgroundOpac = row.children[j].getElementsByClassName("letter-tile")[0]
-//         backgroundFill.style.backgroundColor = fillColor
-//         backgroundOpac.style.opacity = opacity
-//     }
-//     setScaleAnimation(row)
-// }
-
+ 
 function addCorrectWord(word, wordIndex) {
     const row = document.getElementsByClassName('word')[wordIndex]
     for (let j = 0; j < row.children.length; j++) {
         let letter = row.children[j].getElementsByClassName("letter")[0]
         letter.innerText = word[j].toUpperCase()
-        // place word correctly!
-        // row.children[j].innerHTML = FILLED_TILES
-        // const currentTile = row.children[j].getElementsByClassName("letter-input")[0]
-        // currentTile.textContent = CurrentPhrase[wordIndex][j].toUpperCase()  
-        // const backgroundFill = row.children[j].getElementsByClassName("tile-fill")[0]
-        // const backgroundOpac = row.children[j].getElementsByClassName("letter-tile")[0]
-        // backgroundFill.style.backgroundColor = fillColor
-        // backgroundOpac.style.opacity = opacity
-        
+        row.children[j].classList.remove("letter-tile-empty")
+        row.children[j].classList.add("letter-tile-v2")
     }
+    row.style.gap = "0.1rem"
     setScaleAnimation(row)
-}
-
-function checkGuess(player, guess) {
-    for (let i = 0; i < CurrentPhrase.length; i++) {
-        //console.log('Checks: CurrentPhrase[1][i]: ' + CurrentPhrase[i] + ' === ' + guess)
-        if (CurrentPhrase[i] === guess && !correctlyGuessed.includes(guess)) {
-            if (player.username === youUsername) {
-                player.solveCorrectlyCurrentRound += 1
-                player.totalCorrect += 1
-            }
-            correctlyGuessed.push(guess)
-            streak += 1
-            
-            addCorrectWord(i, player.color)
-            
-            if (correctlyGuessed.length < CurrentPhrase.length) {
-                // There are still empty rows
-                return true
-            }
-
-            // generate new level
-            freezeGame = true
-            wonRoundSound.start()
-            reportAnalytics("FinishedRound", {round: round, score: youPlayer.score, solveCorrectlyCurrentRound: youPlayer.solveCorrectlyCurrentRound, totalCorrect: youPlayer.totalCorrect})
-            setTimeout(() => {
-                displayFinishedLevel()
-            }, 1000)
-            return true
-        }
-    }
-
-    if (inFTUE) {
-        for (let i=0; i<guess.length; i++) {
-            let count = 0
-            for (let j = 0; j < guess.length; j++) {
-                if (guess[i] === guess[j]) {
-                    count++
-                }
-            }
-            if (count > 1) { // FTUE only has single letters
-                appendMessage(pipPlayer, "Be careful not to use more letters that are allowed! (indicated by a number above each letter)", false, false, PIP_CHAT_MESSAGE_DELAY)
-                return false
-            }
-        }
-    }
-    streak = 1
-    return false
 }
 
 function countLetter (letter, str) {
@@ -288,21 +218,6 @@ function appendFilledTile(word, letter) {
     input.innerText = letter
 }
 
-function appendEmptyTile(word) {
-    word.innerHTML += EMPTY_TILE
-}
-
-function createEmptyWordRow(word) {
-    const row = document.createElement('div')
-    row.className = 'word'
-    
-    /* for letter in word create empty tile and append to row */
-    for (let i = 0; i < word.length; i++) {
-        appendEmptyTile(row)
-    }
-    return row
-}
-
 function setAvailableLetters() {
 
 }
@@ -338,7 +253,7 @@ function createPhraseTiles(board) {
             const word = document.createElement('div')
             word.className = 'word'
             for (let j = 0; j < words[i].length; j++) {
-                word.innerHTML += LETTER_FILL_V2
+                word.innerHTML += EMPTY_TILE
             }
             row.appendChild(word)
         }

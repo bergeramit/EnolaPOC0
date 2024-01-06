@@ -15,8 +15,8 @@ fs.readFile("../gameLogic/resources/pic_quiz_levels.json", "utf8", (err, jsonStr
 
 function retrieve_level() {
     let date = new Date()
-    console.log("Level for " + MONTH_NAMES[date.getMonth()] + " " + date.getDay() + "th")
-    let selectedLevel = levels[date.getDay() % levels.length]
+    console.log("Levela for " + MONTH_NAMES[date.getMonth()] + " " + date.getDate() + "th")
+    let selectedLevel = levels[date.getDate() % levels.length]
     return {"imageURL": selectedLevel[0], "title": selectedLevel[1],"phrase": selectedLevel[2]};
 }
 
