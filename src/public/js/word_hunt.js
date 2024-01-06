@@ -642,16 +642,24 @@ document.getElementById("enterButton").addEventListener("touchstart", (e) => {
 //     howToPopup.style.display = "flex"
 // }, {passive: true})
 
-document.getElementById("register-play").addEventListener("click", (e) => {
-    const howToPopup = document.getElementById("welcome-popup")
-    howToPopup.style.display = "none"
+function removeDark() {
+    const darken = document.getElementById("darken-id")
+    darken.style.display = "none"
+}
 
-    if (inFTUE) {
-        startTutorial(0)
-    } else if (shouldWaitForStartUp) {
-        shouldWaitForStartUp = false
-        startUp(true)
-    }
+function setDark() {
+    const darken = document.getElementById("darken-id")
+    darken.style.display = "block"
+}
+
+
+document.getElementById("register-play").addEventListener("click", (e) => {
+    const welcomPopup = document.getElementById("welcome-popup")
+    
+    removeDark()
+    welcomPopup.style.display = "none"
+
+    startUp(true)
 })
 
 

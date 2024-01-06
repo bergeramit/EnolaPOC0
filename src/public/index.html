@@ -1910,6 +1910,7 @@
     :root { 
       --black: #000000;
       --black-2: #000000a8;
+      --black-8: #000000bf;
       --calypso: #3f6a8c;
       --cape-cod: #3b4040b2;
       --cape-cod-2: #3c4141b2;
@@ -1935,8 +1936,8 @@
       /* --pixie-powder-2: #371891bf; */
       --athens-gray: #ede7f5;
       --new-green: #25b9a2;
-      /* --daisy-bush: #530a95;
-      --purple-plum: #9c50ff; */
+       --daisy-bush: #530a95;
+      --purple-plum: #9c50ff; 
       
       --rem-width-screen: 15rem;
       --keyboard-button-size: 2.1rem;
@@ -2304,6 +2305,31 @@
       border-radius: 10rem;
       padding: 0.5rem;
     }
+
+    .darken {
+      /* display: none; */
+      z-index: 3;
+      background-color: var(--black-8);
+      height: 2025px;
+      /* left: 925px; */
+      position: absolute;
+      /* top: 294px; */
+      width: 1179px;
+    }
+
+    .welcome-bg {
+      background-image: url(img/popup-bg.svg);
+      background-repeat: no-repeat;
+      /* background-attachment: fixed;
+      background-size: cover; */
+      width: 26rem;
+      background-size: 26rem;
+      vertical-align: bottom;
+      display: table-cell;
+      bottom:0;
+      overflow-clip-margin: content-box;
+      overflow: clip;
+    }
     
   </style>
   <link defer rel="stylesheet" type="text/css" href="css/complete-popup.min.css" />
@@ -2354,6 +2380,14 @@
   
 </head>
 <body class="full-view">
+  <div id="darken-id" class="darken"></div>
+  <div id="welcome-popup" class="">
+    <div class="welcome-bg" src="img/popup-bg.svg">
+      <div id="register-play" class="submit-button-view">
+        <div class="submit-button-place valign-text-middle gilroy-extra-extra-bold-white-12-8px">PLAY</div>
+      </div>
+    </div>
+  </div>
   <!-- <div class="container-center-horizontal"> -->
     <div class="word-hunt screen" name="form1" action="form1" method="post">
       <!-- <img class="rectangle-7596" src="img/rectangle-7596-2@2x.png" alt="Rectangle 7596" /> -->
@@ -2668,21 +2702,6 @@
                     </p>
                     <img class="image-2" src="img/image-2@2x.webp" alt="image 2" />
                     <img class="line-443" src="img/line-443.svg" alt="Line 443" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="welcome-popup" class="container-center-horizontal">
-              <div class="new-welcome-view screen">
-                <div class="how-to-play-popup">
-                  <div class="how-to-overlap-group2">
-                    <div class="how-to-overlap-group">
-                      <div class="background-popup"></div>
-                      <!-- <img id="x-play-popup-button" class="how-to-close-round" src="img/close-round-1.svg" alt="Close_round" /> -->
-                    </div>
-                    <div id="register-play" class="submit-button-view">
-                      <div class="submit-button-place valign-text-middle gilroy-extra-extra-bold-white-12-8px">PLAY</div>
-                    </div>
                   </div>
                 </div>
               </div>

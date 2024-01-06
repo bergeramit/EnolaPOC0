@@ -7,8 +7,12 @@
 #welcome-popup {
     z-index: 3;
     display: none;
-    top: 1rem;
+    /* top: 1rem; */
     position: absolute;
+    vertical-align: bottom;
+      display: table-cell;
+      bottom:0;
+      height: 40rem;
 }
 .new-welcome-view {
     border: 1px;
@@ -24,7 +28,7 @@
     width: 352px;
 }
 .new-welcome-view .background-popup {
-    background-image: url(../img/first_screen_popup.jpeg);
+    background-image: url(../img/popup-bg.svg);
     border: 5px solid;
     border-color: var(--haiti);
     border-radius: 38px;
@@ -129,7 +133,7 @@
     margin-top: -0.87px;
     width: 108.43px;
 }
-.new-welcome-view .submit-button-view {
+.welcome-bg .submit-button-view {
     cursor: pointer;
     background-color: var(--purple-plum);
     border: 3.99px solid;
@@ -149,7 +153,7 @@
     top: 0;
     width: 241px;
 }
-.new-welcome-view .submit-button-place {
+.welcome-bg .submit-button-place {
     height: 11px;
     left: 69px;
     letter-spacing: 0.27px;
