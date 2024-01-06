@@ -634,13 +634,15 @@ document.getElementById("enterButton").addEventListener("touchstart", (e) => {
     chatInput.value = ""
 }, {passive: true})
 
-// document.getElementById("how-to-button-id").addEventListener("click", (e) => {
-//     /* When "how-to" Pressed */
-//     // window.LogRocket.track('clickQuestionMark', {});
-//     reportAnalytics("clickQuestionMark", {})
-//     const howToPopup = document.getElementById("how-to-popup")
-//     howToPopup.style.display = "flex"
-// }, {passive: true})
+document.getElementById("how-to-play").addEventListener("click", (e) => {
+    /* When "how-to" Pressed */
+    // window.LogRocket.track('clickQuestionMark', {});
+    reportAnalytics("clickQuestionMark", {})
+    const welcomPopup = document.getElementById("welcome-popup")
+    welcomPopup.style.display = "none"
+    const howToPopup = document.getElementById("howto-popup")
+    howToPopup.style.display = "flex"
+}, {passive: true})
 
 function removeDark() {
     const darken = document.getElementById("darken-id")
@@ -656,8 +658,19 @@ function setDark() {
 document.getElementById("register-play").addEventListener("click", (e) => {
     const welcomPopup = document.getElementById("welcome-popup")
     
+    
     removeDark()
     welcomPopup.style.display = "none"
+    
+
+    startUp(true)
+})
+
+document.getElementById("howto-play-button").addEventListener("click", (e) => {
+    const howtoPopup = document.getElementById("howto-popup")
+    
+    removeDark()
+    howtoPopup.style.display = "none"
 
     startUp(true)
 })

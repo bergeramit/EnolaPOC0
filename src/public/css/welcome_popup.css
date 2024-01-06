@@ -4,16 +4,7 @@
     min-width: 352px;
     display: flex;
 }
-#welcome-popup {
-    z-index: 3;
-    display: none;
-    /* top: 1rem; */
-    position: absolute;
-    vertical-align: bottom;
-      display: table-cell;
-      bottom:0;
-      height: 40rem;
-}
+
 .new-welcome-view {
     border: 1px;
 }
@@ -133,37 +124,14 @@
     margin-top: -0.87px;
     width: 108.43px;
 }
-.welcome-bg .submit-button-view {
-    cursor: pointer;
-    background-color: var(--purple-plum);
-    border: 3.99px solid;
-    border-color: var(--daisy-bush);
-    border-radius: 30.65px;
-    box-shadow: inset -1.6px 2.39px 0 3.19px #ffffff59;
-    height: 61px;
-    left: 52px;
-    position: absolute;
-    top: 491px;
-    width: 249px;
-}
+
+
 .new-welcome-view .mask-group {
     height: 33px;
     left: 0;
     position: absolute;
     top: 0;
     width: 241px;
-}
-.welcome-bg .submit-button-place {
-    height: 11px;
-    left: 69px;
-    letter-spacing: 0.27px;
-    line-height: 11.9px;
-    position: absolute;
-    text-align: center;
-    top: 22px;
-    white-space: nowrap;
-    width: 104px;
-    font-size: 25.8px;
 }
 .new-welcome-view .enter-email-view {
     align-items: flex-start;
