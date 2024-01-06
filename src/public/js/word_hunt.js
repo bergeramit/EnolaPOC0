@@ -550,15 +550,12 @@ document.addEventListener("DOMContentLoaded", function(e) {
     }
     // inFTUE = true
 
-    shouldWaitForStartUp = true
     console.log(deviceId)
     // gtag()
     mixpanel.identify(deviceId)
     // window.LogRocket.identify(deviceId, { uuid: deviceId });
 
-    if (!shouldWaitForStartUp) {
-        startUp(true)
-    }
+    startUp(true)
     
     // Call the function to lock the orientation on page load
     // lockOrientation();
@@ -676,9 +673,6 @@ document.getElementById("register-play").addEventListener("click", (e) => {
     
     removeDark()
     welcomPopup.style.display = "none"
-    
-
-    startUp(true)
 })
 
 document.getElementById("howto-play-button").addEventListener("click", (e) => {
@@ -686,8 +680,6 @@ document.getElementById("howto-play-button").addEventListener("click", (e) => {
     
     removeDark()
     howtoPopup.style.display = "none"
-
-    startUp(true)
 })
 
 
