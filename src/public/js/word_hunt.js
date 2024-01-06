@@ -154,6 +154,11 @@ function processWrongGuess() {
 
 function processOutOfTries() {
     console.log(">processOutOfTries")
+    let tryStatus = document.getElementById("try-status")
+    tryStatus.style.backgroundColor = "#f03a47"
+
+    let tryStatusX = document.getElementById("try-status-x")
+    tryStatusX.style.color = "white"
 }
 
 function resetGame() {
@@ -575,6 +580,13 @@ document.getElementById("register-from-tooltip").addEventListener("click", (e) =
         let element = document.getElementById("first-to-play-message")
         setFadeAnimation(element, "3s", 3000)
     })
+})
+
+document.getElementById("how-to-button-id").addEventListener("click", (e) => {
+    const howtoPopup = document.getElementById("howto-popup")
+    setDark()
+    howtoPopup.style.display = "flex"
+    
 })
 
 document.onclick = function (e) {

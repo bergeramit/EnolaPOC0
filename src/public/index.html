@@ -1982,6 +1982,16 @@
       format('woff2');
       font-display: swap;
     }
+
+    .status-extra-extra-bold-cape-cod-20-4px {
+      color: var(--cape-cod);
+      /* font-family: var(--font-family-gilroy-extrabold); */
+      /* font-family: var(--font-family-roboto); */
+      font-family: var(--font-family-inter);
+      font-size: var(--keyboard-button-font-size);
+      font-style: normal;
+      font-weight: 700;
+    }
     
     .gilroy-extra-extra-bold-cape-cod-20-4px {
       color: var(--cape-cod);
@@ -2224,10 +2234,16 @@
       align-items: flex-end;
       /* color: var(--cape-cod); */
       background-color: var(--white);
-      border-radius: 3rem;
-      display: flex;
+      border: 0.2rem solid;
+      border-color: var(--white);
+    border-radius: 76px;
+      display: block;
       /* height: 1rem; */
       padding: 0.2rem;
+      width: 2rem;
+      align-content: center;
+      align-items: center;
+      text-align: center;
       /* position: absolute; */
     }
     
@@ -2650,8 +2666,8 @@
           <!-- <img class="bg" src="img/bg.png" alt="BG"/> -->
           <div class="status-bar-class">
             <div class="bg"></div>
-            <div class="status-class">
-              <img src="img/x.svg">
+            <div id="try-status" class="status-class">
+                <div id="try-status-x" class="status-extra-extra-bold-cape-cod-20-4px">X</div>
             </div>
             <img class="star-class" src="img/filled-star.png" alt="Group 238296" />
             <img class="star-class" src="img/filled-star.png" alt="Group 238306" />
