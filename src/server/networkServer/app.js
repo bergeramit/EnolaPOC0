@@ -2,10 +2,8 @@ const cors = require('cors');
 const express = require("express"); 
 const path = require('path');
 const bodyParser = require('body-parser');
-// const test_levels = require("../gameLogic/test_levels.service.js");
 const picwiz_levels = require("../gameLogic/picwiz_levels.service.js");
-// const LogRocket = require('logrocket');
-// LogRocket.init('9o6vsp/enolapoc0');
+const functions = require("firebase-functions");
 const app = express(); // Initializing Express App
 
 app.use('/', express.static(path.join(__dirname, '../../public')))
@@ -30,3 +28,4 @@ app.post('/register_user', function(req, res) {
 });
 
 app.listen(3300, ()=> console.log("App Listening on port 3000"));
+exports.api = functions.https.onRequest(app);
