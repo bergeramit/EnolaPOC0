@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>WordHunt</title>
+<title>PicWiz</title>
 <head>
   <meta charset="utf-8"/>
   <meta name=apple-mobile-web-app-capable content=yes>  <!-- <meta name="mobile-web-app-capable" content="yes"> -->
@@ -1958,9 +1958,9 @@
       --keyboard-gap: 3px;
       
       --font-size-l: 1.275rem;    /* 20.4px / 16px */
-      --font-size-m: 1.125rem;    /* 18px / 16px */
+      --font-size-m: 1.025rem;    /* 18px / 16px */
       --font-size-s: 0.875rem;    /* 14px / 16px */
-      --font-size-xl: 1.8125rem; /* 20.9px / 16px */
+      --font-size-xl: 1.6125rem; /* 20.9px / 16px */
       --font-size-xs: 0.8125rem;  /* 13px / 16px */
       --font-size-xxl: 2.30625rem; /* 23.7px / 16px */
       --font-size-xxs: 0.75625rem; /* 12.1px / 16px */
@@ -1982,7 +1982,7 @@
       format('woff2');
       font-display: swap;
     }
-
+    
     .status-extra-extra-bold-cape-cod-20-4px {
       color: var(--cape-cod);
       /* font-family: var(--font-family-gilroy-extrabold); */
@@ -2186,7 +2186,7 @@
       border-color: var(--white);
       border-radius: 73px;
       width: 1.7rem;
-    height: 1.7rem;
+      height: 1.7rem;
       display: flex;
       align-items: center;
       flex-direction: column;
@@ -2243,7 +2243,7 @@
       background-color: var(--white);
       border: 0.2rem solid;
       border-color: var(--white);
-    border-radius: 76px;
+      border-radius: 76px;
       display: block;
       /* height: 1rem; */
       padding: 0.2rem;
@@ -2282,6 +2282,7 @@
       padding: 0.3rem 0.3rem;
       /* top: 54px; */
       margin-left: 1rem;
+      cursor: pointer;
       
       align-items: center;
       display: flex;
@@ -2365,7 +2366,7 @@
       background-repeat: no-repeat;
       /* background-attachment: fixed;
       background-size: cover; */
-      /* width: 26rem; */
+      width: 26rem;
       background-size: 26rem;
       vertical-align: bottom;
       gap: 2rem;
@@ -2396,7 +2397,7 @@
     .daily-quiz-class {
       width: 10rem;
     }
-
+    
     .stars-pic-class {
       width: 26rem;
     }
@@ -2424,7 +2425,7 @@
       line-height: 1.5rem;
       text-align: center;
     }
-
+    
     .you-made-it-explanation {
       color: var(--violet);
       font-family: var(--font-family-gilroy-extrabold);
@@ -2460,7 +2461,7 @@
       justify-content: center;
       align-content: center;
     }
-
+    
     .brag-button-view {
       cursor: pointer;
       background-color: var(--purple-plum);
@@ -2474,18 +2475,19 @@
       flex-direction: column;
       justify-content: center;
       align-content: center;
-
+      
       margin-bottom: 5rem;
     }
     
     
     .howto-button-view {
       cursor: pointer;
-      background-color: var(--purple-plum);
+      background-color: var(--white);
+      color: var(--daisy-bush);
       border: 3.99px solid;
       border-color: var(--daisy-bush);
       border-radius: 30.65px;
-      box-shadow: inset -1.6px 2.39px 0 3.19px #ffffff59;
+      /* box-shadow: inset -1.6px 2.39px 0 3.19px #ffffff59; */
       height: 3rem;
       width: 10rem;
       display: flex;
@@ -2494,6 +2496,41 @@
       align-content: center;
     }
     
+    .get-the-app-class {
+      cursor: pointer;
+      background: linear-gradient(180deg, rgb(44, 214, 101) 0%, rgb(38, 221, 160) 100%);
+      border: 0.3rem solid;
+      border-color: var(--white);
+      border-radius: 107px;
+      box-shadow: 0px 0.3rem 0px #ffffff;
+      height: 4rem;
+      width: 20rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+    }
+
+    .start-now-class {
+      background: linear-gradient(180deg, rgb(180, 45, 215) 0%, rgb(221, 39, 181) 100%);
+      width: 16rem;
+    }
+
+    .brag-class {
+      width: 20rem;
+    }
+    
+    .get-the-app-shadow {
+      border: 0.3rem solid;
+      border-color: var(--violet);
+      border-radius: 107px;
+      box-shadow: 0px 0.3rem 0px #2c0a42;
+      height: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+    }
     
     .play-button-place {
       /* height: 11px; */
@@ -2501,9 +2538,7 @@
       text-align: center;
       font-size: var(--font-size-l);
     }
-
-
-
+    
     .brag-button-place {
       /* height: 11px; */
       letter-spacing: 0.27px;
@@ -2516,20 +2551,32 @@
       letter-spacing: 0.27px;
       /* height: 3rem; */
       text-align: center;
-      font-size: var(--font-size-s);
+      color: var(--daisy-bush);
+      font-size: var(--font-size-m);
+    }
+    
+    .getapp-button-place {
+      /* height: 11px; */
+      letter-spacing: 0.27px;
+      /* height: 3rem; */
+      text-align: center;
+      font-size: var(--font-size-xl);
+      /* color: black; */
+      /* -webkit-text-stroke: 1px black; */
     }
     
     .uptop {
       position: relative;
       top:-4rem;
+      max-width: 20rem;
     }
-
+    
     .uptop-frame {
       position: relative;
       top:-10rem;
       max-width: 5rem;
     }
-
+    
     .uptop-low {
       position: relative;
       top:-3rem;
@@ -2543,7 +2590,7 @@
       vertical-align: bottom;
       bottom:0;
     }
-
+    
     #endgame-popup {
       display: none;
       z-index: 3;
@@ -2562,6 +2609,14 @@
       bottom:0;
     }
     
+    #current-day {
+      font-size: 3rem;
+      font-weight: 200;
+    }
+    
+    #current-month {
+      font-size: var(--font-size-s);
+    }
     
     
   </style>
@@ -2618,18 +2673,23 @@
     <div class="welcome-bg-div" src="img/popup-bg.svg">
       <img class="uptop daily-quiz-class" src="img/daily-quiz.png">
       <img class="uptop daily-date-class" src="img/date-frame.png">
-      <p id="current-date" class="uptop-frame try-to-guess-what-is">January <br> 6th</p>
+      <p id="current-day" class="uptop-frame try-to-guess-what-is">6</p>
+      <p id="current-month" class="uptop-frame try-to-guess-what-is">January</p>
       <p class="uptop try-to-guess-what-is">Try To Guess What Is Hidden Behind The Picture In Less Than 5 Attempts</p>
-      <div id="register-play" class="uptop play-button-view">
-        <div class="play-button-place gilroy-extra-extra-bold-white-12-8px">START NOW</div>
+      <div id="register-play" class="uptop get-the-app-class start-now-class">
+        <div class="get-the-app-shadow">
+          <div class="getapp-button-place gilroy-extra-extra-bold-white-12-8px">START NOW</div>
+        </div>
       </div>
       <div id="how-to-play" class="uptop howto-button-view">
         <div class="howto-button-place gilroy-extra-extra-bold-white-12-8px">HOW TO PLAY?</div>
       </div>
       <div class="welcome-bottom-div" src="img/mask-group-1.png">
         <img class="uptop daily-quiz-class" src="img/pic-wiz-logo.png">
-        <div id="get-the-app" class="uptop howto-button-view">
-          <div class="howto-button-place gilroy-extra-extra-bold-white-12-8px">GET THE APP NOW</div>
+        <div id="get-the-app" class="uptop get-the-app-class">
+          <div class="get-the-app-shadow">
+            <div class="getapp-button-place gilroy-extra-extra-bold-white-12-8px">GET THE APP NOW</div>
+          </div>
         </div>
       </div>
     </div>
@@ -2655,556 +2715,560 @@
       <img class="uptop-low stars-pic-class" src="img/stars.png">
       <p class="uptop how-to-play-title">AMAZING</p>
       <p class="uptop you-made-it-explanation">YOU MADE IT ON THE SECOND TRY!</p>
-      <div id="brag-button" class="uptop brag-button-view">
-        <div class="brag-button-place gilroy-extra-extra-bold-white-12-8px">BRAG YOUR SCORE</div>
+      <div id="brag-button" class="uptop get-the-app-class start-now-class brag-class">
+        <div class="get-the-app-shadow">
+          <div class="getapp-button-place gilroy-extra-extra-bold-white-12-8px">BRAG YOUR SCORE</div>
+        </div>
       </div>
       <div class="welcome-bottom-div" src="img/mask-group-1.png">
         <img class="uptop daily-quiz-class" src="img/pic-wiz-logo.png">
-        <div id="get-the-app" class="uptop howto-button-view">
-          <div class="howto-button-place gilroy-extra-extra-bold-white-12-8px">GET THE APP NOW</div>
+        <div id="get-the-app-aftergame" class="uptop get-the-app-class">
+          <div class="get-the-app-shadow">
+            <div class="getapp-button-place gilroy-extra-extra-bold-white-12-8px">GET THE APP NOW</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-    <!-- <div class="container-center-horizontal"> -->
-      <div class="word-hunt screen" name="form1" action="form1" method="post">
-        <!-- <img class="rectangle-7596" src="img/rectangle-7596-2@2x.png" alt="Rectangle 7596" /> -->
-        <div class="overlap-group5">
-          <!-- <img class="bg" src="img/bg.png" alt="BG"/> -->
-          <div class="status-bar-class">
-            <div class="bg"></div>
-            <div id="try-status" class="status-class">
-                <div id="try-status-x" class="status-extra-extra-bold-cape-cod-20-4px">X</div>
+  <!-- <div class="container-center-horizontal"> -->
+    <div class="word-hunt screen" name="form1" action="form1" method="post">
+      <!-- <img class="rectangle-7596" src="img/rectangle-7596-2@2x.png" alt="Rectangle 7596" /> -->
+      <div class="overlap-group5">
+        <!-- <img class="bg" src="img/bg.png" alt="BG"/> -->
+        <div class="status-bar-class">
+          <div class="bg"></div>
+          <div id="try-status" class="status-class">
+            <div id="try-status-x" class="status-extra-extra-bold-cape-cod-20-4px">X</div>
+          </div>
+          <img class="star-class" src="img/filled-star.png" alt="Group 238296" />
+          <img class="star-class" src="img/filled-star.png" alt="Group 238306" />
+          <img class="star-class" src="img/filled-star.png" alt="Group 238307" />
+          <img class="star-class" src="img/filled-star.png" alt="Group 238308" />
+          <img class="star-class" src="img/filled-star.png" alt="Group 238309" />
+          <div class="get-picwiz-bar-class">
+            <img class="spot-top" src="img/vector.svg" alt="spot-top" />  
+            <p class="get-the-pic-wiz-app valign-text-middle">GET THE PIC WIZ APP!</p>
+          </div>
+        </div>  
+        <div class="top-half-view">
+          <div class="cta-view">
+            <!-- <img
+              class="how-to-play-stroke animate-enter"
+              src="img/rectangle-7778@2x.png"
+              alt="how to play (Stroke)"
+              />
+              <div rel="noopener" target="_blank" class="get-picwiz">GET<br />PIC WIZ</div> -->
+              <!-- <div id="how-to-button-id" class="how-to"></div> -->
+              <div id="how-to-button-id" class="how-to-class">
+                <img class="question-mark-class" src="img/layer-1.svg" alt="question-mark-class" />
+                <div class="how-to-dot-class"></div>
+              </div>
             </div>
-            <img class="star-class" src="img/filled-star.png" alt="Group 238296" />
-            <img class="star-class" src="img/filled-star.png" alt="Group 238306" />
-            <img class="star-class" src="img/filled-star.png" alt="Group 238307" />
-            <img class="star-class" src="img/filled-star.png" alt="Group 238308" />
-            <img class="star-class" src="img/filled-star.png" alt="Group 238309" />
-            <div class="get-picwiz-bar-class">
-              <img class="spot-top" src="img/vector.svg" alt="spot-top" />  
-              <p class="get-the-pic-wiz-app valign-text-middle">GET THE PIC WIZ APP!</p>
+            <div class="middle-top-half">
+              <div class="date-category">
+                <!-- <div id="current-date" class="">15 nov 23</div> -->
+                <div  id="current-category" class="span1">famous phrases</div>
+              </div>
+              <div class="words-tiles">
+              </div>
             </div>
-          </div>  
-          <div class="top-half-view">
-            <div class="cta-view">
+            <div class="share-tooltip">
+              <div id="analytic-id" class="analytic-border-class">
+                <img class="analytic-class" src="img/share-var.png" alt="question-mark-class" />
+              </div>
               <!-- <img
-                class="how-to-play-stroke animate-enter"
-                src="img/rectangle-7778@2x.png"
+                class="how-to-play-stroke link"
+                src="img/link-1.svg"
                 alt="how to play (Stroke)"
                 />
-                <div rel="noopener" target="_blank" class="get-picwiz">GET<br />PIC WIZ</div> -->
-                <!-- <div id="how-to-button-id" class="how-to"></div> -->
-                <div id="how-to-button-id" class="how-to-class">
-                  <img class="question-mark-class" src="img/layer-1.svg" alt="question-mark-class" />
-                  <div class="how-to-dot-class"></div>
-                </div>
+                <div rel="noopener" target="_blank" class="get-picwiz">SHARE<br />THIS</div> -->
               </div>
-              <div class="middle-top-half">
-                <div class="date-category">
-                  <!-- <div id="current-date" class="">15 nov 23</div> -->
-                  <div  id="current-category" class="span1">famous phrases</div>
+            </div>
+            <div class="keyboard">
+              <div class="input-to-chat">
+                <input id="chat-input" class="chat-input-class"  inputmode='none' autocomplete="off" placeholder="Add your guess..." class="">
+                <button id="enterButton" class="keyboard-button-submit">
+                  <div class="enter-button"><img class="subtract" src="img/subtract.svg" alt="Subtract" />
+                  </div>
+                </button>
+              </input>
+              <!-- <button id="enterButton" class="keyboard-button-key keyboard-button-submit">
+                <div class="enter-button"><img class="subtract" src="img/subtract-2.svg" alt="Subtract" />
                 </div>
-                <div class="words-tiles">
-                </div>
+              </button> -->
+            </div>
+            <div class="keyboard-1 keyboard-2">
+              <div class="r1">
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">Q</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">W</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">E</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">R</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">T</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">Y</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">U</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">I</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">O</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">P</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
               </div>
-              <div class="share-tooltip">
-                <div id="analytic-id" class="analytic-border-class">
-                  <img class="analytic-class" src="img/share-var.png" alt="question-mark-class" />
-                </div>
-                <!-- <img
-                  class="how-to-play-stroke link"
-                  src="img/link-1.svg"
-                  alt="how to play (Stroke)"
+              <div class="keyboard-item r2">
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">A</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">S</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">D</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">F</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">G</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">H</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class= "q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">J</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">K</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">L</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+              </div>
+              <div class="keyboard-item r3">
+                <button id="delButton" class="keyboard-button-key keyboard-button-2">
+                  <img
+                  class="icon-material-icon-backspace_black_24dp"
+                  src="img/icon---material-icon---backspace-black-24dp.svg"
+                  alt="Icon / material-icon / backspace_black_24dp"
                   />
-                  <div rel="noopener" target="_blank" class="get-picwiz">SHARE<br />THIS</div> -->
-                </div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">Z</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">X</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">C</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">V</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">B</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">N</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button type="button" class="keyboard-button">
+                  <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">M</div>
+                  <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
+                </button>
+                <button id="spaceButton" class="keyboard-button-key keyboard-button-2">
+                  <img
+                  class="icon-material-icon-backspace_black_24dp"
+                  src="img/space-bar-light.png"
+                  alt="Icon / material-icon / backspace_black_24dp"/>
+                </button>
               </div>
-              <div class="keyboard">
-                <div class="input-to-chat">
-                  <input id="chat-input" class="chat-input-class"  inputmode='none' autocomplete="off" placeholder="Add your guess..." class="">
-                  <button id="enterButton" class="keyboard-button-submit">
-                    <div class="enter-button"><img class="subtract" src="img/subtract.svg" alt="Subtract" />
-                    </div>
-                  </button>
-                </input>
-                <!-- <button id="enterButton" class="keyboard-button-key keyboard-button-submit">
-                  <div class="enter-button"><img class="subtract" src="img/subtract-2.svg" alt="Subtract" />
-                  </div>
-                </button> -->
+            </div>
+          </div>
+          <div id="complete-level-popup" class="container-center-horizontal">
+            <div class="complete-popup screen">
+              <div class="overlap-group">
+                <img class="pip-character" src="img/pip---character-1@2x.webp" alt="Pip - Character" />
               </div>
-              <div class="keyboard-1 keyboard-2">
-                <div class="r1">
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">Q</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">W</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">E</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">R</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">T</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">Y</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">U</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">I</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">O</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">P</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                </div>
-                <div class="keyboard-item r2">
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">A</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">S</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">D</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">F</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">G</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">H</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class= "q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">J</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">K</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">L</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                </div>
-                <div class="keyboard-item r3">
-                  <button id="delButton" class="keyboard-button-key keyboard-button-2">
-                    <img
-                    class="icon-material-icon-backspace_black_24dp"
-                    src="img/icon---material-icon---backspace-black-24dp.svg"
-                    alt="Icon / material-icon / backspace_black_24dp"
-                    />
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">Z</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">X</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">C</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">V</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">B</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">N</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button type="button" class="keyboard-button">
-                    <div type="button" class="q-button-letter button-letter gilroy-extra-extra-bold-cape-cod-20-4px">M</div>
-                    <div class="letter-count roboto-bold-cape-cod-8-9px"></div>
-                  </button>
-                  <button id="spaceButton" class="keyboard-button-key keyboard-button-2">
-                    <img
-                    class="icon-material-icon-backspace_black_24dp"
-                    src="img/space-bar-light.png"
-                    alt="Icon / material-icon / backspace_black_24dp"/>
-                  </button>
+              <div class="overlap-group3">
+                <!-- <div class="bg"></div> -->
+                <p class="you-did-it-you-gues valign-text-middle gilroy-extra-extra-bold-haiti-18px">
+                  <span
+                  ><span class="gilroy-extra-extra-bold-haiti-18px">You did it!<br /></span
+                    ><span class="gilroy-extra-extra-bold-haiti-18px"
+                    >You guessed all the words in time!<br /><br />Your personal score is:</span
+                    >
+                  </span>
+                </p>
+                <h1 id="level-finish-score" class="address valign-text-middle">230 POINTS</h1>
+                <img class="complete" src="img/complete@2x.png" alt="complete" />
+                <div id="yay-message" class="overlap-group1">
+                  <div class="rectangle-7588 yay valign-text-middle">YAY!</div>
                 </div>
               </div>
             </div>
-            <div id="complete-level-popup" class="container-center-horizontal">
-              <div class="complete-popup screen">
-                <div class="overlap-group">
-                  <img class="pip-character" src="img/pip---character-1@2x.webp" alt="Pip - Character" />
+          </div>
+          <div id="ready-level-popup" class="container-center-horizontal">
+            <div class="frame-238080 screen">
+              <div class="overlap-group6">
+                <!-- <div class="start-in-0005 valign-text-middle gilroy-extra-extra-bold-white-14px"></div> -->
+                <div class="round">
+                  <div class="frame-238072 frame"><img class="star-2 star" src="img/star-2.svg" alt="Star 2" /></div>
+                  <h1 id="round-1-id" class="round-1">Round 1</h1>
+                  <div class="frame-238073 frame"><img class="star-1 star" src="img/star-1.svg" alt="Star 1" /></div>
                 </div>
-                <div class="overlap-group3">
-                  <!-- <div class="bg"></div> -->
-                  <p class="you-did-it-you-gues valign-text-middle gilroy-extra-extra-bold-haiti-18px">
-                    <span
-                    ><span class="gilroy-extra-extra-bold-haiti-18px">You did it!<br /></span
-                      ><span class="gilroy-extra-extra-bold-haiti-18px"
-                      >You guessed all the words in time!<br /><br />Your personal score is:</span
-                      >
-                    </span>
-                  </p>
-                  <h1 id="level-finish-score" class="address valign-text-middle">230 POINTS</h1>
-                  <img class="complete" src="img/complete@2x.png" alt="complete" />
-                  <div id="yay-message" class="overlap-group1">
-                    <div class="rectangle-7588 yay valign-text-middle">YAY!</div>
+              </div>
+              <div id="begin-in-letters" class="letter-new-round-1">
+                <div class="letter-new-round">
+                  <div class="overlap-group">
+                    <div class="t valign-text-middle gilroy-extra-extra-bold-haiti-20-9px">?</div>
+                  </div>
+                </div>
+                <div class="letter-new-round">
+                  <div class="overlap-group">
+                    <div class="o valign-text-middle gilroy-extra-extra-bold-haiti-20-9px">?</div>
+                  </div>
+                </div>
+                <div class="letter-new-round">
+                  <div class="overlap-group">
+                    <div class="price valign-text-middle gilroy-extra-extra-bold-haiti-20-9px">?</div>
+                  </div>
+                </div>
+                <div class="letter-new-round">
+                  <div class="overlap-group">
+                    <div class="price-1 valign-text-middle gilroy-extra-extra-bold-haiti-20-9px">?</div>
+                  </div>
+                </div>
+                <div class="letter-new-round">
+                  <div class="overlap-group">
+                    <div class="c valign-text-middle gilroy-extra-extra-bold-haiti-20-9px">?</div>
+                  </div>
+                </div>
+                <div class="letter-new-round-2">
+                  <div class="overlap-group">
+                    <div class="a valign-text-middle gilroy-extra-extra-bold-haiti-20-9px">?</div>
                   </div>
                 </div>
               </div>
             </div>
-            <div id="ready-level-popup" class="container-center-horizontal">
-              <div class="frame-238080 screen">
-                <div class="overlap-group6">
-                  <!-- <div class="start-in-0005 valign-text-middle gilroy-extra-extra-bold-white-14px"></div> -->
-                  <div class="round">
-                    <div class="frame-238072 frame"><img class="star-2 star" src="img/star-2.svg" alt="Star 2" /></div>
-                    <h1 id="round-1-id" class="round-1">Round 1</h1>
-                    <div class="frame-238073 frame"><img class="star-1 star" src="img/star-1.svg" alt="Star 1" /></div>
-                  </div>
-                </div>
-                <div id="begin-in-letters" class="letter-new-round-1">
-                  <div class="letter-new-round">
-                    <div class="overlap-group">
-                      <div class="t valign-text-middle gilroy-extra-extra-bold-haiti-20-9px">?</div>
-                    </div>
-                  </div>
-                  <div class="letter-new-round">
-                    <div class="overlap-group">
-                      <div class="o valign-text-middle gilroy-extra-extra-bold-haiti-20-9px">?</div>
-                    </div>
-                  </div>
-                  <div class="letter-new-round">
-                    <div class="overlap-group">
-                      <div class="price valign-text-middle gilroy-extra-extra-bold-haiti-20-9px">?</div>
-                    </div>
-                  </div>
-                  <div class="letter-new-round">
-                    <div class="overlap-group">
-                      <div class="price-1 valign-text-middle gilroy-extra-extra-bold-haiti-20-9px">?</div>
-                    </div>
-                  </div>
-                  <div class="letter-new-round">
-                    <div class="overlap-group">
-                      <div class="c valign-text-middle gilroy-extra-extra-bold-haiti-20-9px">?</div>
-                    </div>
-                  </div>
-                  <div class="letter-new-round-2">
-                    <div class="overlap-group">
-                      <div class="a valign-text-middle gilroy-extra-extra-bold-haiti-20-9px">?</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="how-to-popup" class="container-center-horizontal">
-              <div class="new-how-to-view screen">
-                <div class="how-to-play-popup">
-                  <div class="how-to-overlap-group2">
-                    <div class="how-to-overlap-group">
-                      <div class="rectangle-7628"></div>
-                      <img id="x-how-to-popup-button" class="how-to-close-round" src="img/close-round-1.svg" alt="Close_round" />
-                      <div class="new-how-to-how-to-play-text valign-text-middle">HOW TO PLAY?</div>
-                      <div class="frame-238114">
-                        <div class="frame-238110">
-                          <div class="number valign-text-middle gilroy-extra-extra-bold-celeste-56px">1</div>
-                          <p class="solve-word-puzzles-w valign-text-middle gilroy-extra-extra-bold-haiti-13-9px">
-                            solve word puzzles with others and fill the board
+          </div>
+          <div id="how-to-popup" class="container-center-horizontal">
+            <div class="new-how-to-view screen">
+              <div class="how-to-play-popup">
+                <div class="how-to-overlap-group2">
+                  <div class="how-to-overlap-group">
+                    <div class="rectangle-7628"></div>
+                    <img id="x-how-to-popup-button" class="how-to-close-round" src="img/close-round-1.svg" alt="Close_round" />
+                    <div class="new-how-to-how-to-play-text valign-text-middle">HOW TO PLAY?</div>
+                    <div class="frame-238114">
+                      <div class="frame-238110">
+                        <div class="number valign-text-middle gilroy-extra-extra-bold-celeste-56px">1</div>
+                        <p class="solve-word-puzzles-w valign-text-middle gilroy-extra-extra-bold-haiti-13-9px">
+                          solve word puzzles with others and fill the board
+                        </p>
+                      </div>
+                      <div class="frame-23811">
+                        <div class="number valign-text-middle gilroy-extra-extra-bold-celeste-56px">2</div>
+                        <p class="get-random-5-letter valign-text-middle">
+                          <span
+                          ><span class="gilroy-extra-extra-bold-haiti-13-9px">Get random 5 letter </span
+                            ><span class="span1">highlighted</span
+                              ><span class="gilroy-extra-extra-bold-haiti-13-9px"> on the keyboard.</span>
+                            </span>
                           </p>
                         </div>
                         <div class="frame-23811">
-                          <div class="number valign-text-middle gilroy-extra-extra-bold-celeste-56px">2</div>
-                          <p class="get-random-5-letter valign-text-middle">
+                          <div class="number valign-text-middle gilroy-extra-extra-bold-celeste-56px">3</div>
+                          <p class="submit-your-answers-in-chat valign-text-middle gilroy-extra-extra-bold-haiti-13-9px">
+                            submit your answers in chat
+                          </p>
+                        </div>
+                        <div class="frame-23811">
+                          <div class="number valign-text-middle gilroy-extra-extra-bold-celeste-56px">4</div>
+                          <p class="correct-answer-will valign-text-middle">
                             <span
-                            ><span class="gilroy-extra-extra-bold-haiti-13-9px">Get random 5 letter </span
-                              ><span class="span1">highlighted</span
-                                ><span class="gilroy-extra-extra-bold-haiti-13-9px"> on the keyboard.</span>
+                            ><span class="gilroy-extra-extra-bold-haiti-13-9px">correct answer will appear in </span
+                              ><span class="span1">yellow</span
+                                ><span class="gilroy-extra-extra-bold-haiti-13-9px"> on the main screen.</span>
                               </span>
                             </p>
                           </div>
-                          <div class="frame-23811">
-                            <div class="number valign-text-middle gilroy-extra-extra-bold-celeste-56px">3</div>
-                            <p class="submit-your-answers-in-chat valign-text-middle gilroy-extra-extra-bold-haiti-13-9px">
-                              submit your answers in chat
-                            </p>
-                          </div>
-                          <div class="frame-23811">
-                            <div class="number valign-text-middle gilroy-extra-extra-bold-celeste-56px">4</div>
-                            <p class="correct-answer-will valign-text-middle">
-                              <span
-                              ><span class="gilroy-extra-extra-bold-haiti-13-9px">correct answer will appear in </span
-                                ><span class="span1">yellow</span
-                                  ><span class="gilroy-extra-extra-bold-haiti-13-9px"> on the main screen.</span>
-                                </span>
-                              </p>
-                            </div>
-                          </div>
                         </div>
-                        <div id="register-how-to-submit" class="play-button-view">
-                          <img class="mask-group" src="img/mask-group-4@2x.png" alt="Mask group" />
-                          <div class="play-button-place valign-text-middle gilroy-extra-extra-bold-white-12-8px">REGISTER</div>
-                        </div>
-                        <input type="email" id="email-input-from-how-to" class="enter-email-view enter-email-view-how-it-works valign-text-middle poppins-normal-pixie-powder-13px" placeholder="Enter Email">
-                        <!-- <div class=""></div> -->
-                      </input>
-                      <p id="register-prompt-in-how-to-id" class="secure-your-spot-and valign-text-middle gilroy-extra-extra-bold-pixie-powder-15px">
-                        SECURE YOUR SPOT AND BE THE FIRST WHO GET THE FULL GAME
-                      </p>
-                      <img class="image-2" src="img/image-2@2x.webp" alt="image 2" />
-                      <img class="line-443" src="img/line-443.svg" alt="Line 443" />
-                    </div>
+                      </div>
+                      <div id="register-how-to-submit" class="play-button-view">
+                        <img class="mask-group" src="img/mask-group-4@2x.png" alt="Mask group" />
+                        <div class="play-button-place valign-text-middle gilroy-extra-extra-bold-white-12-8px">REGISTER</div>
+                      </div>
+                      <input type="email" id="email-input-from-how-to" class="enter-email-view enter-email-view-how-it-works valign-text-middle poppins-normal-pixie-powder-13px" placeholder="Enter Email">
+                      <!-- <div class=""></div> -->
+                    </input>
+                    <p id="register-prompt-in-how-to-id" class="secure-your-spot-and valign-text-middle gilroy-extra-extra-bold-pixie-powder-15px">
+                      SECURE YOUR SPOT AND BE THE FIRST WHO GET THE FULL GAME
+                    </p>
+                    <img class="image-2" src="img/image-2@2x.webp" alt="image 2" />
+                    <img class="line-443" src="img/line-443.svg" alt="Line 443" />
                   </div>
                 </div>
               </div>
-              <div id="first-to-play-message" class="container-center-horizontal">
-                <div class="first-to-play-tooltip screen">
-                  <div class="x-popup">
-                    <div class="first-to-play-frame">
-                      <p id="tooltip-register-message" class="secure-your-spot-and valign-text-middle gilroy-extra-extra-bold-pixie-powder-15px">
-                        SECURE YOUR SPOT AND BE THE FIRST WHO GET THE FULL GAME
-                      </p>
-                      <div id="be-first-tooltip-register-view-id" class="be-first-tooltip-register-view">
-                        <input type="email" id="email-input-tooltip" class="first-to-play-email how-it-works valign-text-middle poppins-normal-pixie-powder-13px" placeholder="Enter Email">
-                      </input>
-                      <div id="register-from-tooltip" class="first-to-play-email-button">
-                        <div class="first-to-play-email-button-name">
-                          <div class="first-to-play-email-button-name1 valign-text-middle gilroy-extra-extra-bold-white-12-8px">SEND</div>
-                        </div>
+            </div>
+            <div id="first-to-play-message" class="container-center-horizontal">
+              <div class="first-to-play-tooltip screen">
+                <div class="x-popup">
+                  <div class="first-to-play-frame">
+                    <p id="tooltip-register-message" class="secure-your-spot-and valign-text-middle gilroy-extra-extra-bold-pixie-powder-15px">
+                      SECURE YOUR SPOT AND BE THE FIRST WHO GET THE FULL GAME
+                    </p>
+                    <div id="be-first-tooltip-register-view-id" class="be-first-tooltip-register-view">
+                      <input type="email" id="email-input-tooltip" class="first-to-play-email how-it-works valign-text-middle poppins-normal-pixie-powder-13px" placeholder="Enter Email">
+                    </input>
+                    <div id="register-from-tooltip" class="first-to-play-email-button">
+                      <div class="first-to-play-email-button-name">
+                        <div class="first-to-play-email-button-name1 valign-text-middle gilroy-extra-extra-bold-white-12-8px">SEND</div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div id="first-to-play-message2" class="container-center-horizontal">
-              <div class="first-to-play-tooltip screen">
-                <div class="x-popup">
-                  <div class="first-to-play-frame">
-                    <p id="tooltip-register-message" class="secure-your-spot-and valign-text-middle gilroy-extra-extra-bold-pixie-powder-15px">
-                      To add this game to your home screen press <b>Share -> Add to Home Screen</b>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="share-link-message" class="container-center-horizontal">
-              <div class="share-link-tooltip screen">
-                <div class="x-popup">
-                  <div class="share-link-frame">
-                    <p class="the-link-has-been-co valign-text-middle">
-                      <span
-                      ><span class="gilroy-extra-extra-bold-pixie-powder-15px"
-                      >The link has been copied successfully!<br /></span
-                      ><span class="span1">Send it to a friend!</span>
-                    </span>
+          </div>
+          <div id="first-to-play-message2" class="container-center-horizontal">
+            <div class="first-to-play-tooltip screen">
+              <div class="x-popup">
+                <div class="first-to-play-frame">
+                  <p id="tooltip-register-message" class="secure-your-spot-and valign-text-middle gilroy-extra-extra-bold-pixie-powder-15px">
+                    To add this game to your home screen press <b>Share -> Add to Home Screen</b>
                   </p>
                 </div>
               </div>
             </div>
           </div>
-          
-          <div id="out-of-time-popup" class="container-center-horizontal">
-            <div class="out-of-time screen">
-              <div class="overlap-group9">
-                <div class="overlap-group">
-                  <img class="pip-character" src="img/pip---character-1@2x.webp" alt="Pip - Character" />
-                </div>
-                <div class="bg"></div>
-                <div id="play-again-button" class="overlap-group1">
-                  <div class="rectangle-7588"></div>
-                  <div id="new-game-in-oot-popup" class="place valign-text-middle">PLAY AGAIN</div>
-                </div>
-                <img class="out-of-time-1" src="img/out-of-time@2x.png" alt="out of time" />
-                <p class="you-can-do-more-try valign-text-middle gilroy-extra-extra-bold-haiti-18px">
-                  <span
-                  ><span class="gilroy-extra-extra-bold-haiti-18px">OH NO!<br />You can do better!<br /></span
-                    ><span class="gilroy-extra-extra-bold-haiti-18px"><br />Your personal score:</span>
+          <div id="share-link-message" class="container-center-horizontal">
+            <div class="share-link-tooltip screen">
+              <div class="x-popup">
+                <div class="share-link-frame">
+                  <p class="the-link-has-been-co valign-text-middle">
+                    <span
+                    ><span class="gilroy-extra-extra-bold-pixie-powder-15px"
+                    >The link has been copied successfully!<br /></span
+                    ><span class="span1">Send it to a friend!</span>
                   </span>
                 </p>
-                <h1 id="level-timeout-score" class="address valign-text-middle">80 POINTS</h1>
               </div>
             </div>
           </div>
         </div>
+        
+        <div id="out-of-time-popup" class="container-center-horizontal">
+          <div class="out-of-time screen">
+            <div class="overlap-group9">
+              <div class="overlap-group">
+                <img class="pip-character" src="img/pip---character-1@2x.webp" alt="Pip - Character" />
+              </div>
+              <div class="bg"></div>
+              <div id="play-again-button" class="overlap-group1">
+                <div class="rectangle-7588"></div>
+                <div id="new-game-in-oot-popup" class="place valign-text-middle">PLAY AGAIN</div>
+              </div>
+              <img class="out-of-time-1" src="img/out-of-time@2x.png" alt="out of time" />
+              <p class="you-can-do-more-try valign-text-middle gilroy-extra-extra-bold-haiti-18px">
+                <span
+                ><span class="gilroy-extra-extra-bold-haiti-18px">OH NO!<br />You can do better!<br /></span
+                  ><span class="gilroy-extra-extra-bold-haiti-18px"><br />Your personal score:</span>
+                </span>
+              </p>
+              <h1 id="level-timeout-score" class="address valign-text-middle">80 POINTS</h1>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- </div> -->
-      <script>
-        
-        if (typeof navigator.serviceWorker !== 'undefined') {
-          navigator.serviceWorker.register('js/pwabuilder-sw.js')
+    </div>
+    <!-- </div> -->
+    <script>
+      
+      if (typeof navigator.serviceWorker !== 'undefined') {
+        navigator.serviceWorker.register('js/pwabuilder-sw.js')
+      }
+      
+      var beforeInstallPrompt = null;
+      window.addEventListener("beforeinstallprompt", eventHandler, errorHandler);
+      
+      function eventHandler(event){
+        beforeInstallPrompt = event;        
+      }
+      function errorHandler(e){
+        console.log('error: ' + e);
+      }
+      
+      function installToHome() {
+        if (beforeInstallPrompt) beforeInstallPrompt.prompt();
+      }
+      
+      function ShowOnScroll() {
+        this.toShow = [];
+        this.nextEventY = undefined;
+      }
+      
+      ShowOnScroll.prototype.show = function (e) {
+        e.style.display = "";
+      };
+      
+      ShowOnScroll.prototype.hide = function (e) {
+        e.style.display = "none";
+      };
+      
+      ShowOnScroll.prototype.getTop = function (e) {
+        if (e.Top != undefined && e.Top != 0) {
+          return e.Top;
         }
-        
-        var beforeInstallPrompt = null;
-        window.addEventListener("beforeinstallprompt", eventHandler, errorHandler);
-        
-        function eventHandler(event){
-          beforeInstallPrompt = event;        
+        var top = 0;
+        var iter = e;
+        do {
+          top += iter.offsetTop || 0;
+          iter = iter.offsetParent;
+        } while (iter);
+        e.Top = top;
+        return top;
+      };
+      
+      ShowOnScroll.prototype.onScroll = function () {
+        var screenBottom = window.pageYOffset + window.innerHeight;
+        if (this.nextEventY == undefined || this.nextEventY > screenBottom) {
+          return;
         }
-        function errorHandler(e){
-          console.log('error: ' + e);
-        }
-        
-        function installToHome() {
-          if (beforeInstallPrompt) beforeInstallPrompt.prompt();
-        }
-        
-        function ShowOnScroll() {
-          this.toShow = [];
-          this.nextEventY = undefined;
-        }
-        
-        ShowOnScroll.prototype.show = function (e) {
-          e.style.display = "";
-        };
-        
-        ShowOnScroll.prototype.hide = function (e) {
-          e.style.display = "none";
-        };
-        
-        ShowOnScroll.prototype.getTop = function (e) {
-          if (e.Top != undefined && e.Top != 0) {
-            return e.Top;
-          }
-          var top = 0;
-          var iter = e;
-          do {
-            top += iter.offsetTop || 0;
-            iter = iter.offsetParent;
-          } while (iter);
-          e.Top = top;
-          return top;
-        };
-        
-        ShowOnScroll.prototype.onScroll = function () {
-          var screenBottom = window.pageYOffset + window.innerHeight;
-          if (this.nextEventY == undefined || this.nextEventY > screenBottom) {
-            return;
-          }
-          this.nextEventY = undefined;
-          for (var i = 0; i < this.toShow.length; i++) {
-            var e = this.toShow[i];
-            var top = this.getTop(e);
-            if (top < screenBottom) {
-              this.show(e);
-              this.toShow.shift();
-              i--;
-            } else {
-              this.nextEventY = top;
-              break;
-            }
-          }
-        };
-        
-        ShowOnScroll.prototype.resetScrolling = function () {
-          // Clear state
-          var screenBottom = window.pageYOffset + window.innerHeight;
-          for (var i = 0; i < this.toShow.length; i++) {
-            var e = this.toShow[i];
+        this.nextEventY = undefined;
+        for (var i = 0; i < this.toShow.length; i++) {
+          var e = this.toShow[i];
+          var top = this.getTop(e);
+          if (top < screenBottom) {
             this.show(e);
-          }
-          this.toShow = [];
-          this.nextEventY == undefined;
-          
-          // Collect items
-          var itemsToShowOnScroll = Array.prototype.slice.call(document.getElementsByTagName("*"));
-          itemsToShowOnScroll = itemsToShowOnScroll.filter(function (e) {
-            return e.getAttribute("show-on-scroll") != undefined;
-          });
-          var getTop = this.getTop;
-          itemsToShowOnScroll.sort(function (a, b) {
-            return getTop(a) - getTop(b);
-          });
-          for (var i = 0; i < itemsToShowOnScroll.length; i++) {
-            var e = itemsToShowOnScroll[i];
-            var top = this.getTop(e);
-            if (top < screenBottom) {
-              continue;
-            }
-            this.toShow.push(e);
-            this.hide(e);
-            this.nextEventY = this.nextEventY != undefined ? this.nextEventY : top;
-          }
-        };
-        
-        ShowOnScroll.prototype.handleEvent = function (e) {
-          switch (e.type) {
-            case "scroll":
-            this.onScroll();
-            break;
-            case "resize":
-            this.resetScrolling();
+            this.toShow.shift();
+            i--;
+          } else {
+            this.nextEventY = top;
             break;
           }
-        };
+        }
+      };
+      
+      ShowOnScroll.prototype.resetScrolling = function () {
+        // Clear state
+        var screenBottom = window.pageYOffset + window.innerHeight;
+        for (var i = 0; i < this.toShow.length; i++) {
+          var e = this.toShow[i];
+          this.show(e);
+        }
+        this.toShow = [];
+        this.nextEventY == undefined;
         
-        ShowOnScroll.prototype.init = function () {
+        // Collect items
+        var itemsToShowOnScroll = Array.prototype.slice.call(document.getElementsByTagName("*"));
+        itemsToShowOnScroll = itemsToShowOnScroll.filter(function (e) {
+          return e.getAttribute("show-on-scroll") != undefined;
+        });
+        var getTop = this.getTop;
+        itemsToShowOnScroll.sort(function (a, b) {
+          return getTop(a) - getTop(b);
+        });
+        for (var i = 0; i < itemsToShowOnScroll.length; i++) {
+          var e = itemsToShowOnScroll[i];
+          var top = this.getTop(e);
+          if (top < screenBottom) {
+            continue;
+          }
+          this.toShow.push(e);
+          this.hide(e);
+          this.nextEventY = this.nextEventY != undefined ? this.nextEventY : top;
+        }
+      };
+      
+      ShowOnScroll.prototype.handleEvent = function (e) {
+        switch (e.type) {
+          case "scroll":
+          this.onScroll();
+          break;
+          case "resize":
           this.resetScrolling();
-          window.addEventListener("scroll", this);
-          window.addEventListener("resize", this);
-        };
-        
-        // After anima-src
-        setTimeout(function () {
-          var instShowOnScroll = new ShowOnScroll();
-          instShowOnScroll.init();
-        }, 250);
+          break;
+        }
+      };
+      
+      ShowOnScroll.prototype.init = function () {
+        this.resetScrolling();
+        window.addEventListener("scroll", this);
+        window.addEventListener("resize", this);
+      };
+      
+      // After anima-src
+      setTimeout(function () {
+        var instShowOnScroll = new ShowOnScroll();
+        instShowOnScroll.init();
+      }, 250);
+    </script>
+    <!-- Meta Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1034851027502772');
+        fbq('track', 'PageView');
       </script>
-      <!-- Meta Pixel Code -->
-      <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '1034851027502772');
-          fbq('track', 'PageView');
+      <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1034851027502772&ev=PageView&noscript=1"
+        /></noscript>
+        <!-- End Meta Pixel Code -->
+        <!-- <script src="https://cdn.lr-ingest.com/LogRocket.min.js" crossorigin="anonymous"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-2SSJZRPB03"></script>
+        <!-- Paste this right before your closing </head> tag -->
+        <script type="text/javascript">
+          (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+          for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
         </script>
-        <noscript><img height="1" width="1" style="display:none"
-          src="https://www.facebook.com/tr?id=1034851027502772&ev=PageView&noscript=1"
-          /></noscript>
-          <!-- End Meta Pixel Code -->
-          <!-- <script src="https://cdn.lr-ingest.com/LogRocket.min.js" crossorigin="anonymous"></script> -->
-          <script src="https://cdn.jsdelivr.net/npm/uuid@8.3.2/dist/umd/uuidv4.min.js"></script>
-          <!-- Google tag (gtag.js) -->
-          <script async src="https://www.googletagmanager.com/gtag/js?id=G-2SSJZRPB03"></script>
-          <!-- Paste this right before your closing </head> tag -->
-          <script type="text/javascript">
-            (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
-            for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}for(var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0)),c=0;c<j.length;c++)b(j[c]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
-          </script>
-          <script src="js/word_hunt.js"></script>
-        </body>
-        </html>
-        
+        <script src="js/word_hunt.js"></script>
+      </body>
+      </html>
+      

@@ -72,13 +72,14 @@ let tutorialProgress = 0
 /* ---------------------- GameLogic ---------------------- */
 
 class CompleteLevel {
-    constructor(currentPhrase, hints) {
+    constructor(currentPhrase, hints, title) {
         this.currentPhrase = currentPhrase
         this.leftToGuess = this.currentPhrase.length
         this.finishedLevel = false
         this.maxTries = 5
         this.tries = 0
         this.outOfTries = false
+        this.title = title
         // this.availableLetters = shuffle(new Set(this.currentPhrase.join(''))) // TODO: fix to all letters from current phrase
         this.hints = hints
     }
@@ -367,6 +368,9 @@ function startTodaysPhrase () {
     // var readyPopup = document.getElementById("ready-level-popup")
     // readyPopup.style.display = "none"
     
+    const titleElement = document.getElementById("current-category")
+    titleElement.innerText = completeLevel.title
+
     const board = document.getElementsByClassName("words-tiles")[0]
     
     //freezeGame = false
@@ -433,8 +437,9 @@ function popBeTheFirstMessage(offset="1rem", message="AddFriend") {
 /* ---------------------- Server API ---------------------- */
 
 function setLevelDS(currentLevel) {
-    completeLevel = new CompleteLevel(currentLevel.phrase.split(' '), currentLevel.hints)
+    completeLevel = new CompleteLevel(currentLevel.phrase.split(' '), currentLevel.hints, currentLevel.title)
     CurrentImage = currentLevel.imageURL
+
     // CurrentPhrase = shuffle(Array.from(CurrentPhrase))
 }
 
@@ -506,16 +511,19 @@ function submitRegisterForm(email, callback) {
     })
 }
 
-function startUp(initTimer=false) {
+function startUp() {
     // let sideView = document.getElementById("players-side-view-id")
     // sideView.style.display = "flex"
     shouldWaitForStartUp = false
     const d = new Date();
     let month = MONTH_NAMES[d.getMonth()];
-    let day = d.getDay();
+    let day = d.getDate();
 
-    let date = document.getElementById("current-date");
-    date.innerText = month + " " + day;
+    let dayElement = document.getElementById("current-day");
+    dayElement.innerText = day;
+
+    let monthElement = document.getElementById("current-month");
+    monthElement.innerText = month;
 
     resetGame()
     generateNewLevel()
