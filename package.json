@@ -24,6 +24,7 @@
     "eslint-plugin-promise": "^6.1.1"
   },
   "dependencies": {
+    "node-schedule": "^2.1.1",
     "pwa-asset-generator": "^6.3.1"
   }
 }

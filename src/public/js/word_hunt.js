@@ -367,6 +367,11 @@ function createPhraseTiles(board) {
         }
     }
 
+    if (rowStrings.length == 0) {
+        // one word challenge
+        rowStrings.push(rowString)
+    }
+
     // create matching rows
     for (let index = 0; index < rowStrings.length; index++) {
         let rowString = rowStrings[index]
