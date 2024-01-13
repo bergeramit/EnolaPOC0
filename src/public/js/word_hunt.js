@@ -82,6 +82,13 @@ class CompleteLevel {
         this.title = title
         // this.availableLetters = shuffle(new Set(this.currentPhrase.join(''))) // TODO: fix to all letters from current phrase
         this.hints = hints
+        this.AFTERGAME_MESSAGE = [
+            ["AMAZING","You made it on first try!"],
+            ["AMAZING","You made it on second try!"],
+            ["AMAZING","You made it on third try!"],
+            ["AMAZING","You made it on fourth try!"],
+            ["NICE","You made it!"]
+        ]
     }
 
     guessWord(word) {
@@ -133,6 +140,20 @@ class CompleteLevel {
             }
         })
         //TODO: add highlight functionality
+    }
+
+    getAfterGameTitle() {
+        if (this.tries >= 5) {
+            return this.AFTERGAME_MESSAGE[4][0]
+        }
+        return this.AFTERGAME_MESSAGE[this.tries-1][0]
+    }
+
+    getAfterGameMsg() {
+        if (this.tries >= 5) {
+            return this.AFTERGAME_MESSAGE[4][1]
+        }
+        return this.AFTERGAME_MESSAGE[this.tries-1][1]
     }
 }
 
@@ -199,6 +220,10 @@ function displayFinishPopup() {
 }
 
 function processEndGame() {
+    let afterGameTitle = document.getElementById("aftergame-title")
+    afterGameTitle.innerText = completeLevel.getAfterGameTitle()
+    let afterGameMsg = document.getElementById("aftergame-msg")
+    afterGameMsg.innerText = completeLevel.getAfterGameMsg()
 
     setTimeout(() => {
         displayFinishPopup()
@@ -376,20 +401,6 @@ function startTodaysPhrase () {
     //freezeGame = false
     correctlyGuessed = []
     createPhraseTiles(board)
-}
-
-function displayFinishedLevel() {
-    // finishedLevels.push(CurrentPhrase[0]) /* insert the key level identifier */
-    freezeGame = true
-    var scoreElement = document.getElementById("level-finish-score")
-    scoreElement.textContent = youPlayer.score + " POINTS"
-    var completePopup = document.getElementById("complete-level-popup")
-    completePopup.style.display = "flex"
-    setScaleAnimation(completePopup)
-
-    setTimeout(() => {
-        generateNewLevel()
-    }, timeoutBetweenLevels)
 }
 
 function gtag(){dataLayer.push(arguments);}
