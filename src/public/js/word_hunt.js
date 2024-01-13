@@ -607,6 +607,8 @@ document.getElementById("register-from-tooltip").addEventListener("click", (e) =
 })
 
 document.getElementById("how-to-button-id").addEventListener("click", (e) => {
+    const howtoLabel = document.getElementById("how-to-button-text")
+    howtoLabel.innerText = "CONTINUE"
     const howtoPopup = document.getElementById("howto-popup")
     setDark()
     howtoPopup.style.display = "flex"
