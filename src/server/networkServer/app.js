@@ -27,5 +27,5 @@ app.post('/register_user', function(req, res) {
   res.send();
 });
 
-app.listen(8080, ()=> console.log("App Listening on port 3000"));
+app.listen(8080, ()=> console.log("App Listening on port 8080"));
 // exports.api = functions.https.onRequest(app);

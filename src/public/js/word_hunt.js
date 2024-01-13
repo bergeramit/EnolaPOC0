@@ -1,5 +1,5 @@
 //const BASE_URL = "https://wordhunt.gg/"
-const BASE_URL = "http://127.0.0.1:3300/";
+const BASE_URL = "https://goldfish-app-e7war.ondigitalocean.app/";
 const generateLevelPostURL = BASE_URL + "get_level/";
 //const generateLevelPostURL = 'generate_level/'
 const registerPostURL = BASE_URL + "register_user/";
