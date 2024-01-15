@@ -1,5 +1,6 @@
 //const BASE_URL = "https://wordhunt.gg/"
 const BASE_URL = "https://goldfish-app-e7war.ondigitalocean.app/";
+// const BASE_URL = "http://127.0.0.1/";
 const generateLevelPostURL = BASE_URL + "get_level/";
 //const generateLevelPostURL = 'generate_level/'
 const registerPostURL = BASE_URL + "register_user/";
@@ -363,9 +364,9 @@ function createPhraseTiles(board) {
         } else {
             rowStrings.push(rowString)
             rowString = completeLevel.currentPhrase[i]
-            if (i == completeLevel.currentPhrase.length - 1) {
-                rowStrings.push(rowString)
-            }
+        }
+        if (i == completeLevel.currentPhrase.length - 1) {
+            rowStrings.push(rowString)
         }
     }
 
