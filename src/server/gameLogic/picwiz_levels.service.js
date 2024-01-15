@@ -1,7 +1,7 @@
 const fs = require('fs');
 const schedule = require('node-schedule');
 
-const MONTH_NAMES = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const MONTH_NAMES = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
 const BG_PATH = '../../public/img/LevelsBackground/bg.png'
 var levels;
 let currentDate;
@@ -42,7 +42,8 @@ function retrieve_level() {
     return {"imageURL": selectedLevel[0],
             "phrase": selectedLevel[0].split('.')[0],
             "title": selectedLevel[1],
-            "hints": selectedLevel[2]};
+            "hints": selectedLevel[2],
+            "color": selectedLevel[3]};
 }
 
 

@@ -9,6 +9,7 @@ const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
 const outOfTimeString = "OUT OF TIME!"
 const OOTRed = "#EF2253";
+const DEFAULT_BACKGROUND_COLOR = "#3c4141b2"
 
 const BEGINNING_ROUND_LETTER = `
 <div class="overlap-group">
@@ -72,7 +73,7 @@ let tutorialProgress = 0
 /* ---------------------- GameLogic ---------------------- */
 
 class CompleteLevel {
-    constructor(currentPhrase, hints, title) {
+    constructor(currentPhrase, hints, title, color) {
         this.currentPhrase = currentPhrase
         this.leftToGuess = this.currentPhrase.length
         this.finishedLevel = false
@@ -80,6 +81,7 @@ class CompleteLevel {
         this.tries = 0
         this.outOfTries = false
         this.title = title
+        this.color = color
         // this.availableLetters = shuffle(new Set(this.currentPhrase.join(''))) // TODO: fix to all letters from current phrase
         this.hints = hints
         this.AFTERGAME_MESSAGE = [
@@ -397,7 +399,12 @@ function createPhraseTiles(board) {
 function startTodaysPhrase () {
     // var readyPopup = document.getElementById("ready-level-popup")
     // readyPopup.style.display = "none"
-    
+    const keyBackground = document.getElementById("main-view")
+    if (completeLevel.color.length > 3) {
+        keyBackground.style.backgroundColor = completeLevel.color
+    } else {
+        keyBackground.style.backgroundColor = DEFAULT_BACKGROUND_COLOR
+    }
     const titleElement = document.getElementById("current-category")
     titleElement.innerText = completeLevel.title
 
@@ -453,7 +460,7 @@ function popBeTheFirstMessage(offset="1rem", message="AddFriend") {
 /* ---------------------- Server API ---------------------- */
 
 function setLevelDS(currentLevel) {
-    completeLevel = new CompleteLevel(currentLevel.phrase.split(' '), currentLevel.hints, currentLevel.title)
+    completeLevel = new CompleteLevel(currentLevel.phrase.split(' '), currentLevel.hints, currentLevel.title, currentLevel.color)
     CurrentImage = currentLevel.imageURL
 
     // CurrentPhrase = shuffle(Array.from(CurrentPhrase))
