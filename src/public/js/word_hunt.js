@@ -4,7 +4,7 @@ const BASE_URL = "https://goldfish-app-e7war.ondigitalocean.app/";
 const generateLevelPostURL = BASE_URL + "get_level/";
 //const generateLevelPostURL = 'generate_level/'
 const registerPostURL = BASE_URL + "register_user/";
-const MONTH_NAMES = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const MONTH_NAMES = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
 const ENTER_KEY_NAME = "Enter"
 const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
@@ -49,7 +49,7 @@ const FILLED_TILES = `
 /* ---------------------- GlobalsDefines ---------------------- */
 
 // let finishedLevels = []
-let timeoutBetweenLevels = 1500
+let timeoutBetweenLevels = 2500
 let completeLevel
 let CurrentImage
 let CurrentLevelDS = []
@@ -83,6 +83,7 @@ class CompleteLevel {
         this.outOfTries = false
         this.title = title
         this.color = color
+        this.gaveUp = false
         // this.availableLetters = shuffle(new Set(this.currentPhrase.join(''))) // TODO: fix to all letters from current phrase
         this.hints = hints
         this.AFTERGAME_MESSAGE = [
@@ -177,10 +178,22 @@ function processWrongGuess() {
     completeLevel.highlighAnotherLetter()
 }
 
+function giveUp(e) {
+    if (completeLevel.outOfTries) {
+        completeLevel.gaveUp = true
+        completeLevel.makeGuess(completeLevel.currentPhrase) // solve it for the user
+        processEndGame()
+    }
+}
+
+document.getElementById("try-status").addEventListener("click", giveUp)
+document.getElementById("try-status").addEventListener("touchstart", giveUp)
+
 function processOutOfTries() {
     console.log(">processOutOfTries")
     let tryStatus = document.getElementById("try-status")
     tryStatus.style.backgroundColor = "#f03a47"
+    tryStatus.style.cursor = "pointer"
 
     let tryStatusX = document.getElementById("try-status-x")
     tryStatusX.style.color = "white"
@@ -395,6 +408,24 @@ function createPhraseTiles(board) {
 
         board.appendChild(row)
     }
+
+    let view = document.getElementById("picture-view")
+    let padd = ""
+    switch(rowStrings.length) {
+        case 1:
+            padd = "21rem"
+            break
+        case 2:
+            padd = "18rem"
+            break
+        case 3:
+            padd = "15rem"
+            break
+        case 4:
+            padd = "12rem"
+            break
+    }
+    view.style.paddingTop = padd
 }
 
 function startTodaysPhrase () {
