@@ -202,6 +202,13 @@ function giveUp(e) {
         completeLevel.gaveUp = true
         completeLevel.makeGuess(completeLevel.currentPhrase) // solve it for the user
         processEndGame()
+    } else {
+        let notAvElement = document.getElementById("not-available-id")
+        // notAvElement.style.display = "inline-flex"
+        setFadeAnimation(notAvElement, "3s", 3000)
+        setTimeout(() => {
+            notAvElement.style.display = "none"
+        }, 3000)
     }
 }
 
