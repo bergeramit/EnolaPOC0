@@ -250,7 +250,7 @@ function countLetter (letter, str) {
 function displayFinishPopup() {
     let endGameView = document.getElementById("endgame-popup")
     endGameView.style.display = "flex"
-    setDark()
+    // setDark()
 }
 
 function processEndGame() {
@@ -629,7 +629,7 @@ document.getElementById("how-to-button-id").addEventListener("click", (e) => {
     const howtoLabel = document.getElementById("how-to-button-text")
     howtoLabel.innerText = "CONTINUE"
     const howtoPopup = document.getElementById("howto-popup")
-    setDark()
+    // setDark()
     howtoPopup.style.display = "flex"
     
 })
@@ -675,6 +675,16 @@ document.getElementById("how-to-play").addEventListener("click", (e) => {
     welcomPopup.style.display = "none"
     const howToPopup = document.getElementById("howto-popup")
     howToPopup.style.display = "flex"
+}, {passive: true})
+
+document.getElementById("x-howto-button").addEventListener("click", (e) => {
+    /* When "how-to" Pressed */
+    // window.LogRocket.track('clickQuestionMark', {});
+    reportAnalytics("clickQuestionMark", {})
+    const welcomPopup = document.getElementById("welcome-popup")
+    welcomPopup.style.display = "flex"
+    const howToPopup = document.getElementById("howto-popup")
+    howToPopup.style.display = "none"
 }, {passive: true})
 
 function setDark() {
