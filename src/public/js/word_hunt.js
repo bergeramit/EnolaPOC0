@@ -313,35 +313,6 @@ function shuffle(array) {
 
 /* ---------------------- DOM Cyber ---------------------- */
 
-function beginReadyLevel() {
-    const popup = document.getElementById("complete-level-popup")
-    popup.style.display = "none"
-    
-    const board = document.getElementsByClassName("words-tiles")[0]
-    board.innerHTML = ''
-    
-    round += 1
-    // const roundSideElement = document.getElementById("round-side-view")
-    // roundSideElement.textContent = round
-    
-    const inLetters = document.getElementById("begin-in-letters")
-    inLetters.innerHTML = ""
-    
-    for (let i = 0; i < availableLetters.length; i++) {
-        let inLetter = document.createElement("div")
-        inLetter.classList.add("letter-new-round")
-        inLetter.innerHTML = BEGINNING_ROUND_LETTER
-        let beginCurrentLetter = inLetter.getElementsByClassName("begin-in-letter")[0]
-        beginCurrentLetter.textContent = availableLetters[i].toUpperCase()
-        inLetters.appendChild(inLetter)
-    }
-    
-    const readyPopup = document.getElementById("ready-level-popup")
-    let roundElement = document.getElementById("round-1-id")
-    roundElement.textContent = "Round " + round
-    readyPopup.style.display = "flex"
-    setScaleAnimation(readyPopup)
-}
 
 function setScaleAnimation(element) {
     element.style.animationDuration = "0.7s";
@@ -519,8 +490,6 @@ function generateNewLevel () {
         console.log(data)
         setLevelDS(data)
         // beginReadyLevel()
-        const popup = document.getElementById("complete-level-popup")
-        popup.style.display = "none"
     
         const board = document.getElementsByClassName("words-tiles")[0]
         board.innerHTML = ''
@@ -632,18 +601,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
 // Listen for the orientationchange event and lock the orientation when triggered
 window.addEventListener("orientationchange", lockOrientation);
 
-document.getElementById("register-from-tooltip").addEventListener("click", (e) => {
-    let input = document.getElementById("email-input-tooltip")
-    submitRegisterForm(input.value, () => {
-        let view = document.getElementById("be-first-tooltip-register-view-id")
-        view.style.display = "none"
-        let messageElement = document.getElementById("tooltip-register-message")
-        messageElement.textContent = "THANK YOU FOR REGISTERING!"
-        registeredAlready = true
-        let element = document.getElementById("first-to-play-message")
-        setFadeAnimation(element, "3s", 3000)
-    })
-})
 
 document.getElementById("how-to-button-id").addEventListener("click", (e) => {
     const howtoLabel = document.getElementById("how-to-button-text")
@@ -664,18 +621,6 @@ document.onclick = function (e) {
     }
 }
 
-document.getElementById("register-how-to-submit").addEventListener("click", (e) => {
-    let input = document.getElementById("email-input-from-how-to")
-    submitRegisterForm(input.value, () => {
-        input.style.display = "none"
-        let view2 = document.getElementById("register-how-to-submit")
-        view2.style.display = "none"
-        let messageElement = document.getElementById("register-prompt-in-how-to-id")
-        messageElement.textContent = "THANK YOU FOR REGISTERING!"
-        registeredAlready = true
-    })
-})
-
 const buttons = document.querySelectorAll('.keyboard-button')
 buttons.forEach((button) => {
     button.addEventListener("touchstart", (e) => {
@@ -690,30 +635,6 @@ buttons.forEach((button) => {
         const pressedKey = e.target.textContent[0].toLowerCase()
         addKeyToInput(pressedKey, true)
     }, {passive: true})
-})
-
-document.getElementById("yay-message").addEventListener("click", (e) => {
-    /* When yay Pressed */
-    // window.LogRocket.track('clickDismissCompleteLevel', {});
-    reportAnalytics("clickDismissCompleteLevel", {})
-    
-    const popup = document.getElementById("complete-level-popup")
-    popup.style.display = "none"
-})
-
-document.getElementById("play-again-button").addEventListener("click", (e) => {
-    /* When play-again-click Pressed */
-    // window.LogRocket.track('clickPlayAgain', {});
-    reportAnalytics("clickPlayAgain", {})
-    const popup = document.getElementById("out-of-time-popup")
-    popup.style.display = "none"
-    resetGame()
-    if (inFTUE) {
-        startTutorial()
-    } else {
-        generateNewLevel()
-    }
-    
 })
 
 document.getElementById("enterButton").addEventListener("touchstart", (e) => {
@@ -733,11 +654,6 @@ document.getElementById("how-to-play").addEventListener("click", (e) => {
     howToPopup.style.display = "flex"
 }, {passive: true})
 
-function removeDark() {
-    const darken = document.getElementById("darken-id")
-    darken.style.display = "none"
-}
-
 function setDark() {
     const darken = document.getElementById("darken-id")
     darken.style.display = "block"
@@ -747,28 +663,12 @@ function setDark() {
 document.getElementById("register-play").addEventListener("click", (e) => {
     const welcomPopup = document.getElementById("welcome-popup")
     
-    
-    removeDark()
     welcomPopup.style.display = "none"
 })
 
 document.getElementById("howto-play-button").addEventListener("click", (e) => {
     const howtoPopup = document.getElementById("howto-popup")
-    
-    removeDark()
     howtoPopup.style.display = "none"
-})
-
-
-document.getElementById("x-how-to-popup-button").addEventListener("click", (e) => {
-    /* When "x" Pressed in popup window */
-    // window.LogRocket.track('clickXInHowToPopup', {});
-    reportAnalytics("clickXInHowToPopup", {})
-    const howToPopup = document.getElementById("how-to-popup")
-    howToPopup.style.display = "none"
-    if (shouldWaitForStartUp) {
-        startUp()
-    }
 })
 
 document.getElementById("delButton").addEventListener("touchstart", (e) => {
