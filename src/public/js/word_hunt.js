@@ -407,16 +407,16 @@ function createPhraseTiles(board) {
     let padd = ""
     switch(rowStrings.length) {
         case 1:
-            padd = "21rem"
-            break
-        case 2:
             padd = "18rem"
             break
-        case 3:
+        case 2:
             padd = "15rem"
             break
-        case 4:
+        case 3:
             padd = "12rem"
+            break
+        case 4:
+            padd = "9rem"
             break
     }
     view.style.paddingTop = padd
