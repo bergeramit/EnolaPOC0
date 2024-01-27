@@ -77,6 +77,7 @@ class CompleteLevel {
     constructor(currentPhrase, hints, title, color) {
         this.currentPhrase = currentPhrase
         this.leftToGuess = this.currentPhrase.length
+        this.solvedIndices = []
         this.finishedLevel = false
         this.maxTries = 5
         this.tries = 0
@@ -87,20 +88,26 @@ class CompleteLevel {
         // this.availableLetters = shuffle(new Set(this.currentPhrase.join(''))) // TODO: fix to all letters from current phrase
         this.hints = hints
         this.AFTERGAME_MESSAGE = [
-            ["AMAZING","You made it on first try!"],
-            ["AMAZING","You made it on second try!"],
-            ["AMAZING","You made it on third try!"],
-            ["AMAZING","You made it on fourth try!"],
-            ["NICE","You made it!"]
+            ["INCREDIBLE!","YOU MADE IT ON FIRST TRY!"],
+            ["AMAZING!","YOU MADE IT ON SECOND TRY!"],
+            ["WELL DONE!","YOU MADE IT ON THIRD TRY!"],
+            ["GOOD!","YOU MADE IT ON FOURTH TRY!"],
+            ["NICE!","YOU MADE IT AT THE LAST MINUTE!"],
+            ["AT LEAST YOU TRIED!","THERE'S ALWAYS TOMORROW!"]
         ]
     }
 
     guessWord(word) {
         for (let i=0; i< this.currentPhrase.length; i++) {
             if (word == this.currentPhrase[i]) {
+                if (this.solvedIndices.includes(i)) {
+                    continue
+                }
+                this.solvedIndices.push(i)
                 this.leftToGuess--;
                 if (this.leftToGuess == 0) {
                     this.finishedLevel = true;
+                    this.tries--;
                 }
                 return i
             }
@@ -147,17 +154,25 @@ class CompleteLevel {
     }
 
     getAfterGameTitle() {
-        if (this.tries >= 5) {
-            return this.AFTERGAME_MESSAGE[4][0]
+        if (this.tries > 5) {
+            return this.AFTERGAME_MESSAGE[5][0]
         }
-        return this.AFTERGAME_MESSAGE[this.tries-1][0]
+        return this.AFTERGAME_MESSAGE[this.tries][0]
     }
 
     getAfterGameMsg() {
-        if (this.tries >= 5) {
-            return this.AFTERGAME_MESSAGE[4][1]
+        if (this.tries > 5) {
+            return this.AFTERGAME_MESSAGE[5][1]
         }
-        return this.AFTERGAME_MESSAGE[this.tries-1][1]
+        return this.AFTERGAME_MESSAGE[this.tries][1]
+    }
+
+    getAfterGameStarIMG() {
+        if (this.tries >= 5) {
+            return "img/end0.png"
+        }
+        var startLeft = 5 - this.tries
+        return "img/end" + startLeft + ".png"
     }
 }
 
@@ -240,6 +255,8 @@ function processEndGame() {
     afterGameTitle.innerText = completeLevel.getAfterGameTitle()
     let afterGameMsg = document.getElementById("aftergame-msg")
     afterGameMsg.innerText = completeLevel.getAfterGameMsg()
+    let endStarsElement = document.getElementById("end-stars")
+    endStarsElement.src = completeLevel.getAfterGameStarIMG()
 
     setTimeout(() => {
         displayFinishPopup()
