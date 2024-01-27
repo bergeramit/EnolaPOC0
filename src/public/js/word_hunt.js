@@ -167,12 +167,15 @@ class CompleteLevel {
         return this.AFTERGAME_MESSAGE[this.tries][1]
     }
 
-    getAfterGameStarIMG() {
+    getStarsLeft() {
         if (this.tries >= 5) {
-            return "img/end0.png"
+            return 0
         }
-        var startLeft = 5 - this.tries
-        return "img/end" + startLeft + ".png"
+        return 5 - this.tries
+    }
+
+    getAfterGameStarIMG() {
+        return "img/end" + this.getStarsLeft() + ".png"
     }
 }
 
@@ -257,6 +260,9 @@ function processEndGame() {
     afterGameMsg.innerText = completeLevel.getAfterGameMsg()
     let endStarsElement = document.getElementById("end-stars")
     endStarsElement.src = completeLevel.getAfterGameStarIMG()
+    let endScoreElement = document.getElementById("aftergame-score-text")
+    endScoreElement.innerText = completeLevel.getStarsLeft() + "/5"
+    
 
     setTimeout(() => {
         displayFinishPopup()

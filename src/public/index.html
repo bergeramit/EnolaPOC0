@@ -852,6 +852,7 @@
       /* min-height: 27rem; */
       max-width: 22rem;
       margin: auto;
+      padding-top: 2rem;
       position: relative;
       /* position: absolute; */
       /* top: 646px; */
@@ -1133,7 +1134,7 @@
         max-width: 18rem;
         min-width: 18rem;
         margin-top: var(--tooltip-margin-top);
-        padding-top: 18rem;
+        padding-top: 14rem;
         /* gap: 0.2rem; */
         text-align: center;
         /* justify-content: center; */
@@ -1202,7 +1203,7 @@
         background-size: 26rem;
         vertical-align: bottom;
         gap: 1.2rem;
-        /* min-height: 40rem; */
+        min-height: 40rem;
         
         flex-direction: column;
         align-items: center;
@@ -1212,6 +1213,7 @@
       
       .more-top-pad {
         padding-top: 10rem;
+        gap: 0.6rem;
       }
       
       .word-hunt .tile-bg {
@@ -1385,7 +1387,7 @@
         background-size: 26rem;
         vertical-align: bottom;
         gap: 1.2rem;
-        min-height: 40rem;
+        min-height: 50rem;
         
         flex-direction: column;
         align-items: center;
@@ -1395,6 +1397,7 @@
       
       .more-top-pad {
         padding-top: 10rem;
+        gap: 0.6rem;
       }
       
       .word-hunt .tile-bg {
@@ -2564,6 +2567,16 @@
       line-height: 1.5rem;
       text-align: center;
     }
+
+    .end-game-score {
+      color: var(--violet);
+      font-family: var(--font-family-gilroy-medium);
+      font-size: var(--font-size-xxl);
+      font-weight: 200;
+      letter-spacing: 0;
+      line-height: 1.5rem;
+      text-align: center;
+    }
     
     .play-button-view {
       cursor: pointer;
@@ -2832,6 +2845,7 @@
     <div class="welcome-bg-div more-top-pad">
       <!-- <img class="uptop-low stars-pic-class" src="img/stars.png"> -->
       <img class="uptop daily-quiz-class" id="end-stars" src="">
+      <p id="aftergame-score-text" class="uptop end-game-score">1/5</p>
       <p id="aftergame-title" class="uptop how-to-play-title">AMAZING</p>
       <p id="aftergame-msg" class="uptop you-made-it-explanation">YOU MADE IT ON THE SECOND TRY!</p>
       <div id="brag-button" class="uptop get-the-app-class start-now-class brag-class">
