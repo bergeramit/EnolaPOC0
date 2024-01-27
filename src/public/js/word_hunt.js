@@ -64,6 +64,7 @@ let shouldWaitForStartUp
 let registeredAlready = false
 let inFTUE = false
 let tutorialProgress = 0
+let backToMain = true
 
 /* Sounds */
 // let keyboardClickSound
@@ -204,17 +205,15 @@ function giveUp(e) {
     }
 }
 
-document.getElementById("try-status").addEventListener("click", giveUp)
-document.getElementById("try-status").addEventListener("touchstart", giveUp)
+document.getElementById("try-status-x").addEventListener("click", giveUp)
+document.getElementById("try-status-x").addEventListener("touchstart", giveUp)
 
 function processOutOfTries() {
     console.log(">processOutOfTries")
-    let tryStatus = document.getElementById("try-status")
-    tryStatus.style.backgroundColor = "#f03a47"
-    tryStatus.style.cursor = "pointer"
-
+    
     let tryStatusX = document.getElementById("try-status-x")
-    tryStatusX.style.color = "white"
+    tryStatusX.src = "img/x-on.png"
+    tryStatusX.style.cursor = "pointer"
 }
 
 function resetGame() {
@@ -625,24 +624,15 @@ document.addEventListener("DOMContentLoaded", function(e) {
 window.addEventListener("orientationchange", lockOrientation);
 
 
-document.getElementById("how-to-button-id").addEventListener("click", (e) => {
-    const howtoLabel = document.getElementById("how-to-button-text")
-    howtoLabel.innerText = "CONTINUE"
-    const howtoPopup = document.getElementById("howto-popup")
-    // setDark()
-    howtoPopup.style.display = "flex"
+// document.onclick = function (e) {
+//     var addToHomeTriggerPopup = document.getElementById('add-to-home-id');
+//     // var howToTriggerPopup = document.getElementById('how-to-button-id');
+//     var howToPopup = document.getElementById('how-to-popup');
     
-})
-
-document.onclick = function (e) {
-    var addToHomeTriggerPopup = document.getElementById('add-to-home-id');
-    // var howToTriggerPopup = document.getElementById('how-to-button-id');
-    var howToPopup = document.getElementById('how-to-popup');
-    
-    if (!howToPopup.contains(e.target)) {
-        howToPopup.style.display = "none"
-    }
-}
+//     if (!howToPopup.contains(e.target)) {
+//         howToPopup.style.display = "none"
+//     }
+// }
 
 const buttons = document.querySelectorAll('.keyboard-button')
 buttons.forEach((button) => {
@@ -677,12 +667,23 @@ document.getElementById("how-to-play").addEventListener("click", (e) => {
     howToPopup.style.display = "flex"
 }, {passive: true})
 
+document.getElementById("how-to-button-id").addEventListener("click", (e) => {
+    /* When "how-to" Pressed */
+    // window.LogRocket.track('clickQuestionMark', {});
+    backToMain = false
+    reportAnalytics("clickQuestionMark", {})
+    const howToPopup = document.getElementById("howto-popup")
+    howToPopup.style.display = "flex"
+}, {passive: true})
+
 document.getElementById("x-howto-button").addEventListener("click", (e) => {
     /* When "how-to" Pressed */
     // window.LogRocket.track('clickQuestionMark', {});
     reportAnalytics("clickQuestionMark", {})
-    const welcomPopup = document.getElementById("welcome-popup")
-    welcomPopup.style.display = "flex"
+    if (backToMain) {
+        const welcomPopup = document.getElementById("welcome-popup")
+        welcomPopup.style.display = "flex"
+    }
     const howToPopup = document.getElementById("howto-popup")
     howToPopup.style.display = "none"
 }, {passive: true})
