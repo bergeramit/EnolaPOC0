@@ -140,6 +140,10 @@ class CompleteLevel {
         return this.finishedLevel
     }
 
+    getRiddleTitle() {
+        return "\"" + this.currentPhrase.join(" ") + "\"" 
+    }
+
     highlighAnotherLetter() {
         let hintLetter = this.hints[0]
         this.hints = this.hints.slice(1)
@@ -267,13 +271,15 @@ function processEndGame() {
     let afterGameMsg = document.getElementById("aftergame-msg")
     let endStarsElement = document.getElementById("end-stars")
     let endScoreElement = document.getElementById("aftergame-score-text")
+    let riddleElement = document.getElementById("aftergame-riddle")
     
     if (!alreadySolved) {
         savedScore = {
             "title": completeLevel.getAfterGameTitle(),
             "msg": completeLevel.getAfterGameMsg(),
             "stars": completeLevel.getAfterGameStarIMG(),
-            "starsLeft": completeLevel.getStarsLeft() + "/5"
+            "starsLeft": completeLevel.getStarsLeft() + "/5",
+            "riddle": completeLevel.getRiddleTitle()
         }
         localStorage.setItem("savedScore", JSON.stringify(savedScore))
         localStorage.setItem("savedDate", JSON.stringify({"day": currentDateRiddle.getDate(), "month": currentDateRiddle.getMonth()}))
@@ -285,6 +291,7 @@ function processEndGame() {
     afterGameMsg.innerText = savedScore.msg
     endStarsElement.src = savedScore.stars
     endScoreElement.innerText = savedScore.starsLeft
+    riddleElement.innerText = savedScore.riddle
     
     if (!alreadySolved) {
         setTimeout(() => {
