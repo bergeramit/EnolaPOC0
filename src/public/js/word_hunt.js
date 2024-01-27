@@ -65,6 +65,9 @@ let registeredAlready = false
 let inFTUE = false
 let tutorialProgress = 0
 let backToMain = true
+let alreadySolved = false
+let savedScore
+let currentDateRiddle
 
 /* Sounds */
 // let keyboardClickSound
@@ -261,18 +264,35 @@ function displayFinishPopup() {
 
 function processEndGame() {
     let afterGameTitle = document.getElementById("aftergame-title")
-    afterGameTitle.innerText = completeLevel.getAfterGameTitle()
     let afterGameMsg = document.getElementById("aftergame-msg")
-    afterGameMsg.innerText = completeLevel.getAfterGameMsg()
     let endStarsElement = document.getElementById("end-stars")
-    endStarsElement.src = completeLevel.getAfterGameStarIMG()
     let endScoreElement = document.getElementById("aftergame-score-text")
-    endScoreElement.innerText = completeLevel.getStarsLeft() + "/5"
     
-
-    setTimeout(() => {
-        displayFinishPopup()
-    }, timeoutBetweenLevels)
+    if (!alreadySolved) {
+        savedScore = {
+            "title": completeLevel.getAfterGameTitle(),
+            "msg": completeLevel.getAfterGameMsg(),
+            "stars": completeLevel.getAfterGameStarIMG(),
+            "starsLeft": completeLevel.getStarsLeft() + "/5"
+        }
+        localStorage.setItem("savedScore", JSON.stringify(savedScore))
+        localStorage.setItem("savedDate", JSON.stringify({"day": currentDateRiddle.getDate(), "month": currentDateRiddle.getMonth()}))
+    } else {
+        savedScore = JSON.parse(localStorage.getItem("savedScore"))
+    }
+    
+    afterGameTitle.innerText = savedScore.title
+    afterGameMsg.innerText = savedScore.msg
+    endStarsElement.src = savedScore.stars
+    endScoreElement.innerText = savedScore.starsLeft
+    
+    if (!alreadySolved) {
+        setTimeout(() => {
+            displayFinishPopup()
+        }, timeoutBetweenLevels)
+        return
+    }
+    displayFinishPopup()
 }
 
 function handleSubmitChatMessage(message) {
@@ -565,12 +585,16 @@ function submitRegisterForm(email, callback) {
 }
 
 function startUp() {
+
+    if (alreadySolved) {
+        savedScore = JSON.parse(localStorage.getItem("savedScore"))
+        processEndGame()
+    }
     // let sideView = document.getElementById("players-side-view-id")
     // sideView.style.display = "flex"
     shouldWaitForStartUp = false
-    const d = new Date();
-    let month = MONTH_NAMES[d.getMonth()];
-    let day = d.getDate();
+    let month = MONTH_NAMES[currentDateRiddle.getMonth()];
+    let day = currentDateRiddle.getDate();
 
     let dayElement = document.getElementById("current-day");
     dayElement.innerText = day;
@@ -608,15 +632,17 @@ document.addEventListener("DOMContentLoaded", function(e) {
     
     // window.LogRocket && window.LogRocket.init('9o6vsp/enolapoc0');
     mixpanel.init('0a52e147364e256c34add1b9b04c0e79', { debug: true, track_pageview: true, persistence: 'localStorage' });
-    deviceId = localStorage.getItem("deviceId");
-    if (!deviceId) {
-        deviceId = uuidv4();
-        localStorage.setItem("deviceId", deviceId);
-        inFTUE = true
+    // deviceId = localStorage.getItem("deviceId");
+    currentDateRiddle = new Date()
+    const savedDate = JSON.parse(localStorage.getItem("savedDate"));
+    if (savedDate 
+        && currentDateRiddle.getDate() == savedDate.day 
+        && currentDateRiddle.getMonth() == savedDate.month)
+    {
+        alreadySolved = true
     }
-    // inFTUE = true
 
-    console.log(deviceId)
+    // console.log(deviceId)
     // gtag()
     mixpanel.identify(deviceId)
     // window.LogRocket.identify(deviceId, { uuid: deviceId });
