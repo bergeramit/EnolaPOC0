@@ -25,12 +25,12 @@ const LETTER_TEMPLATE = `
 `
 const LETTER_FILL_V2 = `
 <article class="letter-tile-v2">
-    <div class="letter valign-text-middle gilroy-extra-extra-bold-cherry-pie-65-1px"> </div>
+<div class="letter valign-text-middle gilroy-extra-extra-bold-cherry-pie-65-1px"> </div>
 </article>
 `
 const EMPTY_TILE = `
 <article class="letter-tile-empty">
-    <div class="letter valign-text-middle gilroy-extra-extra-bold-cherry-pie-65-1px"> </div>
+<div class="letter valign-text-middle gilroy-extra-extra-bold-cherry-pie-65-1px"> </div>
 </article>
 `
 const FILLED_TILES = `
@@ -100,7 +100,7 @@ class CompleteLevel {
             ["AT LEAST YOU TRIED!","THERE'S ALWAYS TOMORROW!"]
         ]
     }
-
+    
     guessWord(word) {
         for (let i=0; i< this.currentPhrase.length; i++) {
             if (word == this.currentPhrase[i]) {
@@ -118,14 +118,14 @@ class CompleteLevel {
         }
         return -1
     }
-
+    
     checkInputWord(word) {
         let position = this.guessWord(word)
         if (position != -1) {
             addCorrectWord(word, position)
         }
     }
-
+    
     makeGuess(words) {
         this.tries++;
         if (this.tries == this.maxTries) {
@@ -135,19 +135,19 @@ class CompleteLevel {
             this.checkInputWord(words[i])
         }
     }
-
+    
     isFinished() {
         return this.finishedLevel
     }
-
+    
     getRiddleTitle() {
         return "\"" + this.currentPhrase.join(" ") + "\"" 
     }
-
+    
     highlighAnotherLetter() {
         let hintLetter = this.hints[0]
         this.hints = this.hints.slice(1)
-
+        
         const buttons = document.querySelectorAll('.keyboard-button')
         buttons.forEach((button) => {
             // button.classList.remove("highlight")
@@ -160,28 +160,28 @@ class CompleteLevel {
         })
         //TODO: add highlight functionality
     }
-
+    
     getAfterGameTitle() {
         if (this.tries > 5) {
             return this.AFTERGAME_MESSAGE[5][0]
         }
         return this.AFTERGAME_MESSAGE[this.tries][0]
     }
-
+    
     getAfterGameMsg() {
         if (this.tries > 5) {
             return this.AFTERGAME_MESSAGE[5][1]
         }
         return this.AFTERGAME_MESSAGE[this.tries][1]
     }
-
+    
     getStarsLeft() {
         if (this.tries >= 5) {
             return 0
         }
         return 5 - this.tries
     }
-
+    
     getAfterGameStarIMG() {
         return "img/end" + this.getStarsLeft() + ".png"
     }
@@ -223,22 +223,69 @@ document.getElementById("try-status-x").addEventListener("click", giveUp)
 document.getElementById("try-status-x").addEventListener("touchstart", giveUp)
 
 document.getElementById("share-daily-pic").addEventListener("touchstart", (e) => {
-        // Check if the Web Share API is available
-        if (navigator.share) {
-            // Share the score
-            navigator.share({
-                title: "Solve the Daily PicWiz Challenge - " + currentDateRiddle.getDate() + MONTH_NAMES[currentDateRiddle.getMonth()] + "24",
-                text: "Join me in solving the daily picwiz challenge",
-                url: window.location.href // You can also share the URL of your website
-            }).then(() => {
-                console.log('Thanks for sharing!');
-            }).catch((error) => {
-                console.log('Error sharing:', error);
-            });
-        } else {
-            // Fallback for browsers that don't support the Web Share API
-            alert('Web Share API is not supported in your browser.');
+    var imageFile; // Variable to hold the image file
+    
+    // Function to load the image as a File object
+    function loadImage() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'img/bg.png', true); // Replace with the path to your image
+        xhr.responseType = 'blob';
+        xhr.onload = function() {
+            if (this.status === 200) {
+                var blob = this.response;
+                imageFile = new File([blob], 'bg.png', { type: 'image/png' });
+            }
+        };
+        xhr.send();
+    }
+    
+    // Call this function when the page loads or when the image becomes available
+    loadImage();
+    
+    var titleText = "PicWiz Daily - " + currentDateRiddle.getDate() + " " + MONTH_NAMES[currentDateRiddle.getMonth()] + " 24"
+    var msgText = "Join me in solving the daily picwiz challenge"
+    // Check if the Web Share API is available
+    if (navigator.share) {
+        // Fetch the image you want to share
+        try {
+            // Share the score and the image
+            if (navigator.canShare && imageFile && navigator.canShare({ files: [imageFile] })) {
+                navigator.share({
+                    title: titleText,
+                    text: msgText,
+                    url: window.location.href, // You can also share the URL of your website
+                    files: [imageFile]
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                    return
+                }).catch((error) => {
+                    console.log('Error sharing:', error);
+                });
+            } else {
+                console.error('Your browser does not support sharing files.');
+            }
+        } catch (error) {
+            console.error('Error fetching the image:', error);
         }
+    } else {
+        // Fallback for browsers that don't support the Web Share API
+        alert('Web Share API is not supported in your browser.');
+    }
+    if (navigator.share) {
+        // Share the score
+        navigator.share({
+            title: titleText,
+            text: msgText,
+            url: window.location.href // You can also share the URL of your website
+        }).then(() => {
+            console.log('Thanks for sharing!');
+        }).catch((error) => {
+            console.log('Error sharing:', error);
+        });
+    } else {
+        // Fallback for browsers that don't support the Web Share API
+        alert('Web Share API is not supported in your browser.');
+    }
 })
 
 function processOutOfTries() {
@@ -253,7 +300,7 @@ function resetGame() {
     round = 0
     streak = 1
 }
- 
+
 function addCorrectWord(word, wordIndex) {
     const row = document.getElementsByClassName('word')[wordIndex]
     for (let j = 0; j < row.children.length; j++) {
@@ -328,7 +375,7 @@ function handleSubmitChatMessage(message) {
     
     let messageWords = message.split(" ")
     completeLevel.makeGuess(messageWords)
-
+    
     if (!completeLevel.isFinished()) {
         if (completeLevel.outOfTries) {
             processOutOfTries()
@@ -337,7 +384,7 @@ function handleSubmitChatMessage(message) {
     } else {
         processEndGame()
     }
-
+    
     // console.log("Handle Chat Message")
 }
 
@@ -382,422 +429,423 @@ function shuffle(array) {
         
         return array;
     }
-
-/* ---------------------- /GameLogic ---------------------- */
-
-
-/* ---------------------- DOM Cyber ---------------------- */
-
-
-function setScaleAnimation(element) {
-    element.style.animationDuration = "0.7s";
-    element.style.animationTimingFunction = "ease";
-    element.style.animationName = "zoom-in-zoom-out";
-}
-
-function setKeyTapAnimation(element) {
-    element.style.animationDuration = "0.3s";
-    element.style.animationTimingFunction = "ease";
-    element.style.animationName = "keyboard-tap";
-}
-
-/* tile filling */
-function appendFilledTile(word, letter) {
-    word.innerHTML += filled_tile
-    let input = word.getElementsByClassName("letter-input").slice(-1)
-    input.innerText = letter
-}
-
-function setAvailableLetters() {
-
-}
-
-function createPhraseTiles(board) {
-    //split into rows
-    let rowStrings = []
-    let rowString = completeLevel.currentPhrase[0]
-    for (let i = 1; i < completeLevel.currentPhrase.length; i++) { // potential issue if there is a word of length 12
-        if (rowString.length + completeLevel.currentPhrase[i].length + 1 <= 12) {
-            // the +1 is for the " " that we have to add between letters
-            rowString += " " + completeLevel.currentPhrase[i]
-        } else {
-            rowStrings.push(rowString)
-            rowString = completeLevel.currentPhrase[i]
-        }
-        if (i == completeLevel.currentPhrase.length - 1) {
-            rowStrings.push(rowString)
-        }
+    
+    /* ---------------------- /GameLogic ---------------------- */
+    
+    
+    /* ---------------------- DOM Cyber ---------------------- */
+    
+    
+    function setScaleAnimation(element) {
+        element.style.animationDuration = "0.7s";
+        element.style.animationTimingFunction = "ease";
+        element.style.animationName = "zoom-in-zoom-out";
     }
-
-    if (rowStrings.length == 0) {
-        // one word challenge
-        rowStrings.push(rowString)
+    
+    function setKeyTapAnimation(element) {
+        element.style.animationDuration = "0.3s";
+        element.style.animationTimingFunction = "ease";
+        element.style.animationName = "keyboard-tap";
     }
-
-    // create matching rows
-    for (let index = 0; index < rowStrings.length; index++) {
-        let rowString = rowStrings[index]
-        const row = document.createElement('div')
-        row.className = 'line'
-
-        // create row with tiles and spaces
-        words = rowString.split(' ')
-        CurrentLevelDS.push(words)
-        for (let i = 0; i < words.length; i++) {
-            const word = document.createElement('div')
-            word.className = 'word'
-            for (let j = 0; j < words[i].length; j++) {
-                word.innerHTML += EMPTY_TILE
+    
+    /* tile filling */
+    function appendFilledTile(word, letter) {
+        word.innerHTML += filled_tile
+        let input = word.getElementsByClassName("letter-input").slice(-1)
+        input.innerText = letter
+    }
+    
+    function setAvailableLetters() {
+        
+    }
+    
+    function createPhraseTiles(board) {
+        //split into rows
+        let rowStrings = []
+        let rowString = completeLevel.currentPhrase[0]
+        for (let i = 1; i < completeLevel.currentPhrase.length; i++) { // potential issue if there is a word of length 12
+            if (rowString.length + completeLevel.currentPhrase[i].length + 1 <= 12) {
+                // the +1 is for the " " that we have to add between letters
+                rowString += " " + completeLevel.currentPhrase[i]
+            } else {
+                rowStrings.push(rowString)
+                rowString = completeLevel.currentPhrase[i]
             }
-            row.appendChild(word)
+            if (i == completeLevel.currentPhrase.length - 1) {
+                rowStrings.push(rowString)
+            }
         }
-
-        board.appendChild(row)
-    }
-
-    let view = document.getElementById("picture-view")
-    let padd = ""
-    switch(rowStrings.length) {
-        case 1:
+        
+        if (rowStrings.length == 0) {
+            // one word challenge
+            rowStrings.push(rowString)
+        }
+        
+        // create matching rows
+        for (let index = 0; index < rowStrings.length; index++) {
+            let rowString = rowStrings[index]
+            const row = document.createElement('div')
+            row.className = 'line'
+            
+            // create row with tiles and spaces
+            words = rowString.split(' ')
+            CurrentLevelDS.push(words)
+            for (let i = 0; i < words.length; i++) {
+                const word = document.createElement('div')
+                word.className = 'word'
+                for (let j = 0; j < words[i].length; j++) {
+                    word.innerHTML += EMPTY_TILE
+                }
+                row.appendChild(word)
+            }
+            
+            board.appendChild(row)
+        }
+        
+        let view = document.getElementById("picture-view")
+        let padd = ""
+        switch(rowStrings.length) {
+            case 1:
             padd = "18rem"
             break
-        case 2:
+            case 2:
             padd = "15rem"
             break
-        case 3:
+            case 3:
             padd = "12rem"
             break
-        case 4:
+            case 4:
             padd = "9rem"
             break
-    }
-    view.style.paddingTop = padd
-}
-
-function startTodaysPhrase () {
-    // var readyPopup = document.getElementById("ready-level-popup")
-    // readyPopup.style.display = "none"
-    const keyBackground = document.getElementById("main-view")
-    if (completeLevel.color.length > 3) {
-        keyBackground.style.backgroundColor = completeLevel.color
-    } else {
-        keyBackground.style.backgroundColor = DEFAULT_BACKGROUND_COLOR
-    }
-    const titleElement = document.getElementById("current-category")
-    titleElement.innerText = completeLevel.title
-
-    const board = document.getElementsByClassName("words-tiles")[0]
-    
-    //freezeGame = false
-    correctlyGuessed = []
-    createPhraseTiles(board)
-}
-
-function gtag(){dataLayer.push(arguments);}
-
-function lockOrientation() {
-    if (screen.orientation) {
-        screen.orientation.lock("portrait").catch(function(error) {
-            // If the orientation cannot be locked, handle the error (if needed)
-            console.error("Orientation lock failed:", error);
-        });
-    }
-}
-
-function setFadeAnimation(element, timeoutStr, timeoutMS) {
-    element.style.display = "flex"
-    element.style.animationDuration = timeoutStr;
-    element.style.animationTimingFunction = "ease";
-    element.style.animationName = "fade";
-    setTimeout(() => {
-        element.style.display = "none"
-        element.style.animationName = "none"
-    }, timeoutMS)
-}
-
-function popBeTheFirstMessage(offset="1rem", message="AddFriend") {
-    const firstToPlay = document.getElementById("first-to-play-message")
-    // firstToPlay.focus()
-    firstToPlay.style.top = offset
-    if (registeredAlready) {
-        setFadeAnimation(firstToPlay, "3s", 3000)
-        return
+        }
+        view.style.paddingTop = padd
     }
     
-    if (firstToPlay.style.display === "flex") {
-        firstToPlay.style.display = "none"
-    } else {
-        reportAnalytics("formMessage", {message: message})
-        firstToPlay.style.display = "flex"
-    }
-}
-
-/* ---------------------- /DOM Cyber ---------------------- */
-
-
-/* ---------------------- Server API ---------------------- */
-
-function setLevelDS(currentLevel) {
-    completeLevel = new CompleteLevel(currentLevel.phrase.split(' '), currentLevel.hints, currentLevel.title, currentLevel.color)
-    CurrentImage = currentLevel.imageURL
-
-    // CurrentPhrase = shuffle(Array.from(CurrentPhrase))
-}
-
-function generateNewLevel () {
-    correctlyGuessed = []
-    validGuessed = []
-    
-    fetch(generateLevelPostURL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Credentials': true
-        },
-        body: JSON.stringify({ })
-    }).then(response => {
-        // console.log(response.statusText)
-        return response.json()
-    })
-    .then(data => {
-        console.log(data)
-        setLevelDS(data)
-        // beginReadyLevel()
-    
+    function startTodaysPhrase () {
+        // var readyPopup = document.getElementById("ready-level-popup")
+        // readyPopup.style.display = "none"
+        const keyBackground = document.getElementById("main-view")
+        if (completeLevel.color.length > 3) {
+            keyBackground.style.backgroundColor = completeLevel.color
+        } else {
+            keyBackground.style.backgroundColor = DEFAULT_BACKGROUND_COLOR
+        }
+        const titleElement = document.getElementById("current-category")
+        titleElement.innerText = completeLevel.title
+        
         const board = document.getElementsByClassName("words-tiles")[0]
-        board.innerHTML = ''
-        startTodaysPhrase()
-        // setTimeout(() => {
-        //     startTodaysPhrase()
-        // }, timeoutBetweenLevels)
-    })
-}
-
-function ValidateEmail(email)
-{
-    var mailformat = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
-    if(email.match(mailformat))
-    {
-        return true;
+        
+        //freezeGame = false
+        correctlyGuessed = []
+        createPhraseTiles(board)
     }
-    else
-    {
-        return false;
-    }
-}
-
-function submitRegisterForm(email, callback) {
-    // window.LogRocket.track("RegisterRequest", {email: email})
-    if (!email || !ValidateEmail(email)) {
-        return
-    }
-    reportAnalytics("SubmitApplication", {email: email})
-    fetch(registerPostURL, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Credentials': true
-        },
-        body: JSON.stringify({ "email": email })
-    }).then(response => {
-        console.log(response.statusText)
-        callback()
-        return response.json()
-    })
-}
-
-function startUp() {
-
-    if (alreadySolved) {
-        savedScore = JSON.parse(localStorage.getItem("savedScore"))
-        processEndGame()
-    }
-    // let sideView = document.getElementById("players-side-view-id")
-    // sideView.style.display = "flex"
-    shouldWaitForStartUp = false
-    let month = MONTH_NAMES[currentDateRiddle.getMonth()];
-    let day = currentDateRiddle.getDate();
-
-    let dayElement = document.getElementById("current-day");
-    dayElement.innerText = day;
-
-    let monthElement = document.getElementById("current-month");
-    monthElement.innerText = month;
-
-    resetGame()
-    generateNewLevel()
-}
-
-function reportAnalytics(eventName, JSONData) {
-    // mixpanel.track(eventName, JSONData)
-    // fbq('track', eventName, JSONData)
-    // gtag('event', eventName, JSONData);
-}
-
-/* ---------------------- /Server API ---------------------- */
-
-
-/* ---------------------- EventListeners ---------------------- */
-
-document.addEventListener("DOMContentLoaded", function(e) {
-    const welcomePopup = document.getElementById("welcome-popup")
-    welcomePopup.style.display = "flex"
     
-    chatInput = document.getElementById("chat-input")
+    function gtag(){dataLayer.push(arguments);}
     
-    window.dataLayer = window.dataLayer || [];
-
-    // keyboardClickSound = new gameSound("audio/DAE_noise_vk_space_bar_02.wav");
-    
-    gtag('js', new Date());
-    gtag('config', 'G-2SSJZRPB03');
-    
-    // window.LogRocket && window.LogRocket.init('9o6vsp/enolapoc0');
-    mixpanel.init('0a52e147364e256c34add1b9b04c0e79', { debug: true, track_pageview: true, persistence: 'localStorage' });
-    // deviceId = localStorage.getItem("deviceId");
-    currentDateRiddle = new Date()
-    const savedDate = JSON.parse(localStorage.getItem("savedDate"));
-    if (savedDate 
-        && currentDateRiddle.getDate() == savedDate.day 
-        && currentDateRiddle.getMonth() == savedDate.month)
-    {
-        alreadySolved = true
-    }
-
-    // console.log(deviceId)
-    // gtag()
-    mixpanel.identify(deviceId)
-    // window.LogRocket.identify(deviceId, { uuid: deviceId });
-
-    startUp(true)
-    
-    // Call the function to lock the orientation on page load
-    // lockOrientation();
-});
-
-// Listen for the orientationchange event and lock the orientation when triggered
-window.addEventListener("orientationchange", lockOrientation);
-
-
-// document.onclick = function (e) {
-//     var addToHomeTriggerPopup = document.getElementById('add-to-home-id');
-//     // var howToTriggerPopup = document.getElementById('how-to-button-id');
-//     var howToPopup = document.getElementById('how-to-popup');
-    
-//     if (!howToPopup.contains(e.target)) {
-//         howToPopup.style.display = "none"
-//     }
-// }
-
-const buttons = document.querySelectorAll('.keyboard-button')
-buttons.forEach((button) => {
-    button.addEventListener("touchstart", (e) => {
-        //keyboardClickSound.start()
-        /* Only for onscreen button presses */
-        // setKeyTapAnimation(e.target)
-        if (e.target.classList.contains("keyboard-button")) {
-            e = e.target.getElementsByClassName("button-letter")[0]
-        } else if (e.target.classList.contains("letter-count")) {
-            e = e.target.parentElement.getElementsByClassName("button-letter")[0]
+    function lockOrientation() {
+        if (screen.orientation) {
+            screen.orientation.lock("portrait").catch(function(error) {
+                // If the orientation cannot be locked, handle the error (if needed)
+                console.error("Orientation lock failed:", error);
+            });
         }
-        const pressedKey = e.target.textContent[0].toLowerCase()
-        addKeyToInput(pressedKey, true)
-    }, {passive: true})
-})
-
-document.getElementById("enterButton").addEventListener("touchstart", (e) => {
-    /* When Enter key Pressed */
-    // window.LogRocket.track('clickEnter', {});
-    handleSubmitChatMessage(chatInput.value)
-    chatInput.value = ""
-}, {passive: true})
-
-document.getElementById("how-to-play").addEventListener("click", (e) => {
-    /* When "how-to" Pressed */
-    // window.LogRocket.track('clickQuestionMark', {});
-    reportAnalytics("clickQuestionMark", {})
-    const welcomPopup = document.getElementById("welcome-popup")
-    welcomPopup.style.display = "none"
-    const howToPopup = document.getElementById("howto-popup")
-    howToPopup.style.display = "flex"
-}, {passive: true})
-
-document.getElementById("how-to-button-id").addEventListener("click", (e) => {
-    /* When "how-to" Pressed */
-    // window.LogRocket.track('clickQuestionMark', {});
-    backToMain = false
-    reportAnalytics("clickQuestionMark", {})
-    const howToPopup = document.getElementById("howto-popup")
-    howToPopup.style.display = "flex"
-}, {passive: true})
-
-document.getElementById("x-howto-button").addEventListener("click", (e) => {
-    /* When "how-to" Pressed */
-    // window.LogRocket.track('clickQuestionMark', {});
-    reportAnalytics("clickQuestionMark", {})
-    if (backToMain) {
-        const welcomPopup = document.getElementById("welcome-popup")
-        welcomPopup.style.display = "flex"
-    }
-    const howToPopup = document.getElementById("howto-popup")
-    howToPopup.style.display = "none"
-}, {passive: true})
-
-function setDark() {
-    const darken = document.getElementById("darken-id")
-    darken.style.display = "block"
-}
-
-
-document.getElementById("register-play").addEventListener("click", (e) => {
-    const welcomPopup = document.getElementById("welcome-popup")
-    
-    welcomPopup.style.display = "none"
-})
-
-document.getElementById("howto-play-button").addEventListener("click", (e) => {
-    const howtoPopup = document.getElementById("howto-popup")
-    howtoPopup.style.display = "none"
-})
-
-document.getElementById("delButton").addEventListener("touchstart", (e) => {
-    /* When Enterkey Pressed */
-    // const chatInput = document.getElementById("chat-input")
-    chatInput.value = chatInput.value.substring(0, chatInput.value.length - 1)
-}, {passive: true})
-
-document.getElementById("spaceButton").addEventListener("touchstart", (e) => {
-    /* When Spacekey Pressed */
-    // const chatInput = document.getElementById("chat-input")
-    chatInput.value += " "
-}, {passive: true})
-
-document.addEventListener('keyup', (e) => {
-    const pressedKey = String(e.key)
-    addKeyToInput(pressedKey, false)
-    
-    if (pressedKey === ENTER_KEY_NAME) {
-        // window.LogRocket.track('clickEnter', {});
-        reportAnalytics("clickEnter", {})
     }
     
-    let found = pressedKey.match(/[a-z]/gi)
-    if (!found || found.length > 1) {
-        return
-    } else {
-        let emailElement = document.getElementById("chat-input")
-        let sideEmailElement = document.getElementById("email-input-from-how-to")
-        let tooltipEmailElement = document.getElementById("email-input-tooltip")
-        if (!(emailElement === document.activeElement)
-        && !(sideEmailElement === document.activeElement
-            || tooltipEmailElement === document.activeElement)) {
+    function setFadeAnimation(element, timeoutStr, timeoutMS) {
+        element.style.display = "flex"
+        element.style.animationDuration = timeoutStr;
+        element.style.animationTimingFunction = "ease";
+        element.style.animationName = "fade";
+        setTimeout(() => {
+            element.style.display = "none"
+            element.style.animationName = "none"
+        }, timeoutMS)
+    }
+    
+    function popBeTheFirstMessage(offset="1rem", message="AddFriend") {
+        const firstToPlay = document.getElementById("first-to-play-message")
+        // firstToPlay.focus()
+        firstToPlay.style.top = offset
+        if (registeredAlready) {
+            setFadeAnimation(firstToPlay, "3s", 3000)
+            return
+        }
+        
+        if (firstToPlay.style.display === "flex") {
+            firstToPlay.style.display = "none"
+        } else {
+            reportAnalytics("formMessage", {message: message})
+            firstToPlay.style.display = "flex"
+        }
+    }
+    
+    /* ---------------------- /DOM Cyber ---------------------- */
+    
+    
+    /* ---------------------- Server API ---------------------- */
+    
+    function setLevelDS(currentLevel) {
+        completeLevel = new CompleteLevel(currentLevel.phrase.split(' '), currentLevel.hints, currentLevel.title, currentLevel.color)
+        CurrentImage = currentLevel.imageURL
+        
+        // CurrentPhrase = shuffle(Array.from(CurrentPhrase))
+    }
+    
+    function generateNewLevel () {
+        correctlyGuessed = []
+        validGuessed = []
+        
+        fetch(generateLevelPostURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': true
+            },
+            body: JSON.stringify({ })
+        }).then(response => {
+            // console.log(response.statusText)
+            return response.json()
+        })
+        .then(data => {
+            console.log(data)
+            setLevelDS(data)
+            // beginReadyLevel()
+            
+            const board = document.getElementsByClassName("words-tiles")[0]
+            board.innerHTML = ''
+            startTodaysPhrase()
+            // setTimeout(() => {
+            //     startTodaysPhrase()
+            // }, timeoutBetweenLevels)
+        })
+    }
+    
+    function ValidateEmail(email)
+    {
+        var mailformat = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
+        if(email.match(mailformat))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    function submitRegisterForm(email, callback) {
+        // window.LogRocket.track("RegisterRequest", {email: email})
+        if (!email || !ValidateEmail(email)) {
+            return
+        }
+        reportAnalytics("SubmitApplication", {email: email})
+        fetch(registerPostURL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': true
+            },
+            body: JSON.stringify({ "email": email })
+        }).then(response => {
+            console.log(response.statusText)
+            callback()
+            return response.json()
+        })
+    }
+    
+    function startUp() {
+        
+        if (alreadySolved) {
+            savedScore = JSON.parse(localStorage.getItem("savedScore"))
+            processEndGame()
+        }
+        // let sideView = document.getElementById("players-side-view-id")
+        // sideView.style.display = "flex"
+        shouldWaitForStartUp = false
+        let month = MONTH_NAMES[currentDateRiddle.getMonth()];
+        let day = currentDateRiddle.getDate();
+        
+        let dayElement = document.getElementById("current-day");
+        dayElement.innerText = day;
+        
+        let monthElement = document.getElementById("current-month");
+        monthElement.innerText = month;
+        
+        resetGame()
+        generateNewLevel()
+    }
+    
+    function reportAnalytics(eventName, JSONData) {
+        // mixpanel.track(eventName, JSONData)
+        // fbq('track', eventName, JSONData)
+        // gtag('event', eventName, JSONData);
+    }
+    
+    /* ---------------------- /Server API ---------------------- */
+    
+    
+    /* ---------------------- EventListeners ---------------------- */
+    
+    document.addEventListener("DOMContentLoaded", function(e) {
+        const welcomePopup = document.getElementById("welcome-popup")
+        welcomePopup.style.display = "flex"
+        
+        chatInput = document.getElementById("chat-input")
+        
+        window.dataLayer = window.dataLayer || [];
+        
+        // keyboardClickSound = new gameSound("audio/DAE_noise_vk_space_bar_02.wav");
+        
+        gtag('js', new Date());
+        gtag('config', 'G-2SSJZRPB03');
+        
+        // window.LogRocket && window.LogRocket.init('9o6vsp/enolapoc0');
+        mixpanel.init('0a52e147364e256c34add1b9b04c0e79', { debug: true, track_pageview: true, persistence: 'localStorage' });
+        // deviceId = localStorage.getItem("deviceId");
+        currentDateRiddle = new Date()
+        const savedDate = JSON.parse(localStorage.getItem("savedDate"));
+        if (savedDate 
+            && currentDateRiddle.getDate() == savedDate.day 
+            && currentDateRiddle.getMonth() == savedDate.month)
+            {
+                alreadySolved = true
+            }
+            
+            // console.log(deviceId)
+            // gtag()
+            mixpanel.identify(deviceId)
+            // window.LogRocket.identify(deviceId, { uuid: deviceId });
+            
+            startUp(true)
+            
+            // Call the function to lock the orientation on page load
+            // lockOrientation();
+        });
+        
+        // Listen for the orientationchange event and lock the orientation when triggered
+        window.addEventListener("orientationchange", lockOrientation);
+        
+        
+        // document.onclick = function (e) {
+        //     var addToHomeTriggerPopup = document.getElementById('add-to-home-id');
+        //     // var howToTriggerPopup = document.getElementById('how-to-button-id');
+        //     var howToPopup = document.getElementById('how-to-popup');
+        
+        //     if (!howToPopup.contains(e.target)) {
+        //         howToPopup.style.display = "none"
+        //     }
+        // }
+        
+        const buttons = document.querySelectorAll('.keyboard-button')
+        buttons.forEach((button) => {
+            button.addEventListener("touchstart", (e) => {
+                //keyboardClickSound.start()
+                /* Only for onscreen button presses */
+                // setKeyTapAnimation(e.target)
+                if (e.target.classList.contains("keyboard-button")) {
+                    e = e.target.getElementsByClassName("button-letter")[0]
+                } else if (e.target.classList.contains("letter-count")) {
+                    e = e.target.parentElement.getElementsByClassName("button-letter")[0]
+                }
+                const pressedKey = e.target.textContent[0].toLowerCase()
                 addKeyToInput(pressedKey, true)
-                // emailElement.focus()
+            }, {passive: true})
+        })
+        
+        document.getElementById("enterButton").addEventListener("touchstart", (e) => {
+            /* When Enter key Pressed */
+            // window.LogRocket.track('clickEnter', {});
+            handleSubmitChatMessage(chatInput.value)
+            chatInput.value = ""
+        }, {passive: true})
+        
+        document.getElementById("how-to-play").addEventListener("click", (e) => {
+            /* When "how-to" Pressed */
+            // window.LogRocket.track('clickQuestionMark', {});
+            reportAnalytics("clickQuestionMark", {})
+            const welcomPopup = document.getElementById("welcome-popup")
+            welcomPopup.style.display = "none"
+            const howToPopup = document.getElementById("howto-popup")
+            howToPopup.style.display = "flex"
+        }, {passive: true})
+        
+        document.getElementById("how-to-button-id").addEventListener("click", (e) => {
+            /* When "how-to" Pressed */
+            // window.LogRocket.track('clickQuestionMark', {});
+            backToMain = false
+            reportAnalytics("clickQuestionMark", {})
+            const howToPopup = document.getElementById("howto-popup")
+            howToPopup.style.display = "flex"
+        }, {passive: true})
+        
+        document.getElementById("x-howto-button").addEventListener("click", (e) => {
+            /* When "how-to" Pressed */
+            // window.LogRocket.track('clickQuestionMark', {});
+            reportAnalytics("clickQuestionMark", {})
+            if (backToMain) {
+                const welcomPopup = document.getElementById("welcome-popup")
+                welcomPopup.style.display = "flex"
+            }
+            const howToPopup = document.getElementById("howto-popup")
+            howToPopup.style.display = "none"
+        }, {passive: true})
+        
+        function setDark() {
+            const darken = document.getElementById("darken-id")
+            darken.style.display = "block"
         }
-    }
-})
-/* ---------------------- /EventListeners ---------------------- */
+        
+        
+        document.getElementById("register-play").addEventListener("click", (e) => {
+            const welcomPopup = document.getElementById("welcome-popup")
+            
+            welcomPopup.style.display = "none"
+        })
+        
+        document.getElementById("howto-play-button").addEventListener("click", (e) => {
+            const howtoPopup = document.getElementById("howto-popup")
+            howtoPopup.style.display = "none"
+        })
+        
+        document.getElementById("delButton").addEventListener("touchstart", (e) => {
+            /* When Enterkey Pressed */
+            // const chatInput = document.getElementById("chat-input")
+            chatInput.value = chatInput.value.substring(0, chatInput.value.length - 1)
+        }, {passive: true})
+        
+        document.getElementById("spaceButton").addEventListener("touchstart", (e) => {
+            /* When Spacekey Pressed */
+            // const chatInput = document.getElementById("chat-input")
+            chatInput.value += " "
+        }, {passive: true})
+        
+        document.addEventListener('keyup', (e) => {
+            const pressedKey = String(e.key)
+            addKeyToInput(pressedKey, false)
+            
+            if (pressedKey === ENTER_KEY_NAME) {
+                // window.LogRocket.track('clickEnter', {});
+                reportAnalytics("clickEnter", {})
+            }
+            
+            let found = pressedKey.match(/[a-z]/gi)
+            if (!found || found.length > 1) {
+                return
+            } else {
+                let emailElement = document.getElementById("chat-input")
+                let sideEmailElement = document.getElementById("email-input-from-how-to")
+                let tooltipEmailElement = document.getElementById("email-input-tooltip")
+                if (!(emailElement === document.activeElement)
+                && !(sideEmailElement === document.activeElement
+                    || tooltipEmailElement === document.activeElement)) {
+                        addKeyToInput(pressedKey, true)
+                        // emailElement.focus()
+                    }
+                }
+            })
+            /* ---------------------- /EventListeners ---------------------- */
+            
