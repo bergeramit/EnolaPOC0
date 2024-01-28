@@ -222,6 +222,25 @@ function giveUp(e) {
 document.getElementById("try-status-x").addEventListener("click", giveUp)
 document.getElementById("try-status-x").addEventListener("touchstart", giveUp)
 
+document.getElementById("share-daily-pic").addEventListener("touchstart", (e) => {
+        // Check if the Web Share API is available
+        if (navigator.share) {
+            // Share the score
+            navigator.share({
+                title: "Solve the Daily PicWiz Challenge - " + currentDateRiddle.getDate() + MONTH_NAMES[currentDateRiddle.getMonth()] + "24",
+                text: "Join me in solving the daily picwiz challenge",
+                url: window.location.href // You can also share the URL of your website
+            }).then(() => {
+                console.log('Thanks for sharing!');
+            }).catch((error) => {
+                console.log('Error sharing:', error);
+            });
+        } else {
+            // Fallback for browsers that don't support the Web Share API
+            alert('Web Share API is not supported in your browser.');
+        }
+})
+
 function processOutOfTries() {
     console.log(">processOutOfTries")
     
