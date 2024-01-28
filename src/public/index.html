@@ -1183,7 +1183,7 @@
         background-size: contain;
         /* background-position: center; */
         /* background-size: cover; */
-        background-position: center;
+        /* background-position: center; */
         background-repeat: no-repeat;
         background-attachment: fixed;
         /* background-color: var(--cape-cod-2); */
@@ -1374,7 +1374,6 @@
         background-size: contain;
         background-attachment: fixed;
         background-repeat: no-repeat;
-        background-position: center;
         /* background-color: var(--cape-cod-2); */
         display: flex;
         flex-direction: row;
@@ -2806,6 +2805,12 @@
       position: relative;
       top:0.2rem;
     }
+
+    @media only screen and (min-width: 500px)  {
+      .desktop {
+        background-position: center;
+      }
+    }
     
     
   </style>
@@ -2856,7 +2861,7 @@
   <link rel="manifest" href="manifest.json">
   
 </head>
-<body id="main-view" class="full-view">
+<body id="main-view" class="full-view desktop">
   <!-- <div id="darken-id" class="darken"></div> -->
   <div id="welcome-popup" class="">
     <div class="welcome-bg-div" src="">
