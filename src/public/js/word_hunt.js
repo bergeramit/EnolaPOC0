@@ -157,7 +157,7 @@ class CompleteLevel {
     giveHint() {
         let hintLetter = this.hints[0]
         this.hints = this.hints.slice(1)
-        this.highlighAnotherLetter(hintLetter)
+        // this.highlighAnotherLetter(hintLetter)
         this.showLetterOnTiles(hintLetter)
     }
     
