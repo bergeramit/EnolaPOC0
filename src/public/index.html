@@ -2378,7 +2378,6 @@
       width: 1.7rem;
     }
     
-    
     .status-class {
       align-items: flex-end;
       /* color: var(--cape-cod); */
@@ -2404,6 +2403,7 @@
       padding-left: 0.6rem;
       padding-right: 0.6rem; */
       padding: 0.2rem;
+      /* min-width: 30rem; */
       justify-content: center;
       position: relative;
       background-color: white;
@@ -2413,20 +2413,18 @@
     
     .get-picwiz-bar-class {
       align-items: flex-start;
-      /* background: linear-gradient(180deg, rgb(180, 45, 215) 0%, rgb(221, 39, 181) 100%); */
       background-color: white;
       border: 0.2rem solid;
       border-color: var(--black);
       border-radius: 76px;
-      /* box-shadow: inset 0px -0.2rem 0px #00000030; */
       display: flex;
+      min-width: 9.5rem;
       height: 2rem;
       justify-content: flex-end;
-      /* left: 597px; */
-      width: 11rem;
       padding: 0.3rem 0.3rem;
       /* top: 54px; */
-      /* margin-left: 1rem; */
+      margin-left: 0.6rem;
+      margin-right: 0.5rem;
       cursor: pointer;
       
       align-items: center;
@@ -2449,6 +2447,8 @@
       letter-spacing: 0;
       line-height: normal;
       text-align: center;
+      margin-left: 0.3rem;
+      margin-right: 0.3rem;
       /* margin-top: 0.3rem; */
     }
     
@@ -2767,7 +2767,7 @@
     }
     
     .scale-icon {
-      width: 1.5rem;
+      width: 1.9rem;
       margin: 0.1rem;
     }
     
@@ -2810,6 +2810,29 @@
       .desktop {
         background-position: center;
       }
+    }
+
+    @media only screen and (max-width: 400px) {
+      .last-star-class {
+      margin-right: 1rem;
+    }
+    }
+    
+    @media only screen and (min-width: 400px) and (max-width: 420px) {
+      .last-star-class {
+      margin-right: 2rem;
+    }
+    }
+
+    @media only screen and (min-width: 420px) {
+      .last-star-class {
+      margin-right: 3rem;
+    }
+    }
+
+    #try-status-x {
+      margin-right: 0.3rem;
+      margin-left: 0.5rem;
     }
     
     
@@ -2942,13 +2965,13 @@
         <img class="star-class" src="img/filled-star.png" alt="Group 238306" />
         <img class="star-class" src="img/filled-star.png" alt="Group 238307" />
         <img class="star-class" src="img/filled-star.png" alt="Group 238308" />
-        <img class="star-class" src="img/filled-star.png" alt="Group 238309" />
+        <img class="star-class last-star-class" src="img/filled-star.png" alt="Group 238309" />
         <!-- <div id="how-to-button-id" class="how-to-class">
           <img class="question-mark-class" src="img/layer-1.svg" alt="question-mark-class" />
           <div class="how-to-dot-class"></div>
         </div> -->
         <img id="how-to-button-id" class="scale-icon" src="img/info.png">
-        <img id="analytic-id" class="scale-icon" src="img/share.png">
+        <!-- <img id="analytic-id" class="scale-icon" src="img/share.png"> -->
         <!-- <div id="analytic-id" class="analytic-border-class">
           <img class="analytic-class" src="img/share-var.png" alt="question-mark-class" />
         </div> -->
