@@ -143,11 +143,25 @@ class CompleteLevel {
     getRiddleTitle() {
         return "\"" + this.currentPhrase.join(" ") + "\"" 
     }
-    
-    highlighAnotherLetter() {
+
+    showLetterOnTiles(hintLetter) {
+        for (let i=0; i< this.currentPhrase.length; i++) {
+            for (let j=0; j< this.currentPhrase[i].length; j++) {
+                if (this.currentPhrase[i][j] == hintLetter) {
+                    addCorrectLetter(hintLetter, i, j)
+                }
+            }
+        }
+    }
+
+    giveHint() {
         let hintLetter = this.hints[0]
         this.hints = this.hints.slice(1)
-        
+        this.highlighAnotherLetter(hintLetter)
+        this.showLetterOnTiles(hintLetter)
+    }
+    
+    highlighAnotherLetter(hintLetter) {
         const buttons = document.querySelectorAll('.keyboard-button')
         buttons.forEach((button) => {
             // button.classList.remove("highlight")
@@ -201,7 +215,7 @@ function deleteStar() {
 function processWrongGuess() {
     console.log(">processWrongGuess")
     deleteStar()
-    completeLevel.highlighAnotherLetter()
+    completeLevel.giveHint()
 }
 
 function giveUp(e) {
@@ -299,6 +313,16 @@ function processOutOfTries() {
 function resetGame() {
     round = 0
     streak = 1
+}
+
+function addCorrectLetter(letter, wordIndex, letterIndex) {
+    const row = document.getElementsByClassName('word')[wordIndex]
+    let letterElement = row.children[letterIndex].getElementsByClassName("letter")[0]
+    letterElement.innerText = letter.toUpperCase()
+    row.children[letterIndex].classList.remove("letter-tile-empty")
+    row.children[letterIndex].classList.add("letter-tile-v2")
+    row.style.gap = "0.1rem"
+    setScaleAnimation(row)
 }
 
 function addCorrectWord(word, wordIndex) {
