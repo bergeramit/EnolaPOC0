@@ -24,7 +24,7 @@
     .word-hunt {
       align-items: flex-start;
       /* background-color: var(--white); */
-      border: 1px none;
+      /* border: 1px none; */
       /* display: flex; */
       /* gap: 1476px;
       height: 883px;
@@ -342,7 +342,7 @@
     
     .word-hunt .overlap-group-6 {
       align-items: flex-start;
-      background-image: url(img/subtract.svg);
+      background-image: url(img/send_icon.png);
       background-size: 100% 100%;
       display: flex;
       flex-direction: column;
@@ -850,13 +850,14 @@
       gap: 5px;
       /* left: 669px; */
       /* min-height: 27rem; */
-      max-width: 22rem;
+      /* max-width: 22rem; */
       margin: auto;
       padding-top: 2rem;
       position: relative;
       /* position: absolute; */
       /* top: 646px; */
       /* width: 386px; */
+      background-image: url(img/keyboard_bg.png);
     }
     
     .word-hunt .overlap-group2-2 {
@@ -1095,7 +1096,7 @@
       min-width: 2rem;
       min-height: 2rem; */
       height: var(--keyboard-button-height-size);
-      width: 1.5em;
+      /* width: 1.5em; */
     }
     
     .word-hunt .tail {
@@ -1153,7 +1154,7 @@
         display: flex;
         z-index: 3;
         /* top: 1rem; */
-        position: absolute;
+        /* position: absolute; */
         vertical-align: bottom;
         /* bottom:0; */
       }
@@ -1194,8 +1195,8 @@
       }
       
       .welcome-bg-div {
-        min-width: 25rem;
-        padding-top: 6rem;
+        /* min-width: 25rem; */
+        padding-top: 12rem;
         background-color: #F6F0F7;
         vertical-align: bottom;
         gap: 1.2rem;
@@ -1208,7 +1209,7 @@
       }
       
       .more-top-pad {
-        padding-top: 8rem;
+        padding-top: 12rem;
         gap: 0.6rem;
         /* min-width: 0rem; */
       }
@@ -1344,7 +1345,7 @@
         display: flex;
         z-index: 3;
         /* top: 1rem; */
-        position: absolute;
+        /* position: absolute; */
         vertical-align: bottom;
         /* bottom:0; */
       }
@@ -1382,8 +1383,8 @@
       }
       
       .welcome-bg-div {
-        min-width: 26rem;
-        padding-top: 6rem;
+        /* min-width: 26rem; */
+        padding-top: 12rem;
         background-color: #F6F0F7;
         vertical-align: bottom;
         gap: 1.2rem;
@@ -1396,7 +1397,7 @@
       }
       
       .more-top-pad {
-        padding-top: 8rem;
+        padding-top: 12rem;
         gap: 0.6rem;
         /* min-width: 0rem; */
       }
@@ -2512,7 +2513,7 @@
       background-repeat: no-repeat;
       /* background-attachment: fixed;
       background-size: cover; */
-      width: 23rem;
+      width: 27rem;
       /* height: 14rem; */
       background-size: 26rem;
       vertical-align: bottom;
@@ -2664,6 +2665,7 @@
     .brag-class {
       width: 20rem;
       border: none;
+      margin-bottom: 10rem;
     }
     
     .get-the-app-shadow {
@@ -2676,6 +2678,7 @@
       flex-direction: column;
       justify-content: center;
       align-content: center;
+      /* margin-bottom: 10rem; */
     }
     
     .play-button-place {
@@ -2810,6 +2813,10 @@
       .desktop {
         background-position: center;
       }
+
+      .middle-top-half {
+        padding-top: 30rem;
+      }
     }
 
     @media only screen and (max-width: 400px) {
@@ -2904,10 +2911,10 @@
       <div id="how-to-play" class="howto-button-view">
         <div class="howto-button-place gilroy-extra-extra-bold-white-12-8px">HOW TO PLAY?</div>
       </div>
-      <div id="share-daily-pic" class=" howto-button-view">
+      <!-- <div id="share-daily-pic" class=" howto-button-view">
         <div class="howto-button-place gilroy-extra-extra-bold-white-12-8px">SHARE DAILY PIC</div>
-      </div>
-      <img class="welcome-bottom-div" src="img/banner.png">
+      </div> -->
+      <img class="welcome-bottom-div" src="img/big_banner.png">
     </div>
   </div>
   
@@ -2938,15 +2945,15 @@
     <p id="aftergame-msg" class="uptop you-made-it-explanation">YOU MADE IT ON THE SECOND TRY!</p>
     <p id="aftergame-riddle" class="uptop riddle-text-class"></p>
     <div id="brag-button" class="uptop get-the-app-class start-now-class brag-class">
-      <div class="get-the-app-shadow">
+      <div id="share-daily-pic" class="get-the-app-shadow">
         <div class="getapp-button-place gilroy-extra-extra-bold-white-12-8px">SHARE SCORE</div>
       </div>
     </div>
     <!-- <img class="uptop daily-quiz-class" src="img/pic-wiz-logo.png"> -->
-    <div id="share-daily-pic" class=" howto-button-view">
+    <!-- <div id="share-daily-pic" class=" howto-button-view">
       <div class="howto-button-place gilroy-extra-extra-bold-white-12-8px">SHARE DAILY PIC</div>
-    </div>
-    <img class="welcome-bottom-div bottom-bg-end-game" src="img/banner.png">
+    </div> -->
+    <img class="welcome-bottom-div bottom-bg-end-game" src="img/big_banner.png">
   </div>
 </div>
 </div>
@@ -3019,7 +3026,7 @@
             <div class="input-to-chat">
               <input id="chat-input" class="chat-input-class"  inputmode='none' autocomplete="off" placeholder="Add your guess..." class="">
               <button id="enterButton" class="keyboard-button-submit">
-                <div class="enter-button"><img class="subtract" src="img/subtract.svg" alt="Subtract" />
+                <div class="enter-button"><img class="subtract" src="img/send_icon.png" alt="Subtract" />
                 </div>
               </button>
             </input>
