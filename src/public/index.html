@@ -2107,7 +2107,7 @@
       --riptide: #90f0e0;
       --spring-green: #32ff84;
       --sunglow: #ffd232;
-      /* --violent-violet: #300d65; */
+      --violet: #2C0A42;
       --vis-vis: #f9ef9c;
       --white: #ffffff;
       --white-2: #ffffffbf;
@@ -2144,6 +2144,7 @@
       --font-family-gilroy-extrabold: "Gilroy-ExtraBold", Helvetica;
       --font-family-gilroy-bold: "Gilroy-Bold", Helvetica;
       --font-family-gilroy-medium: "Gilroy-Medium", Helvetica;
+      --font-family-gilroy-heavy: "Gilroy-Heavy", Helvetica;
       --font-family-inter: "Inter", Helvetica;
       --font-family-poppins: "Poppins", Helvetica;
       --font-family-roboto: "Roboto", Helvetica;
@@ -2622,7 +2623,7 @@
     .how-to-play-title {
       color: var(--violet);
       font-family: var(--font-family-gilroy-extrabold);
-      font-size: var(--font-size-xl);
+      font-size: 2.3rem;;
       font-weight: 800;
       letter-spacing: 0;
       line-height: 1.5rem;
@@ -2904,6 +2905,11 @@
     20% { transform: skewX(0deg); }
     100% { transform: skewX(0deg); }  
   }
+
+  .fix-button-message {
+    position: relative;
+    top: 6rem;
+  }
     
     
   </style>
@@ -2977,6 +2983,7 @@
       <!-- <div id="share-daily-pic" class=" howto-button-view">
         <div class="howto-button-place gilroy-extra-extra-bold-white-12-8px">SHARE DAILY PIC</div>
       </div> -->
+      <p class="uptop you-made-it-explanation fix-button-message">FULL GAME <br> AVAILABLE NOW!</p>
       <img class="welcome-bottom-div" src="img/big_banner.png">
     </div>
   </div>
@@ -3003,7 +3010,7 @@
   <div class="welcome-bg-div more-top-pad">
     <!-- <img class="uptop-low stars-pic-class" src="img/stars.png"> -->
     <img class="uptop daily-quiz-class" id="end-stars" src="">
-    <p id="aftergame-score-text" class="uptop end-game-score">1/5</p>
+    <!-- <p id="aftergame-score-text" class="uptop end-game-score">1/5</p> -->
     <p id="aftergame-title" class="uptop how-to-play-title">AMAZING</p>
     <p id="aftergame-msg" class="uptop you-made-it-explanation">YOU MADE IT ON THE SECOND TRY!</p>
     <p id="aftergame-riddle" class="uptop riddle-text-class"></p>
@@ -3016,6 +3023,7 @@
     <!-- <div id="share-daily-pic" class=" howto-button-view">
       <div class="howto-button-place gilroy-extra-extra-bold-white-12-8px">SHARE DAILY PIC</div>
     </div> -->
+    <p class="uptop you-made-it-explanation fix-button-message">FULL GAME <br> AVAILABLE NOW!</p>
     <img class="welcome-bottom-div bottom-bg-end-game" src="img/big_banner.png">
   </div>
 </div>

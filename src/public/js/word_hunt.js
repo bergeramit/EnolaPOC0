@@ -364,7 +364,7 @@ function processEndGame() {
     let afterGameTitle = document.getElementById("aftergame-title")
     let afterGameMsg = document.getElementById("aftergame-msg")
     let endStarsElement = document.getElementById("end-stars")
-    let endScoreElement = document.getElementById("aftergame-score-text")
+    // let endScoreElement = document.getElementById("aftergame-score-text")
     let riddleElement = document.getElementById("aftergame-riddle")
     
     if (!alreadySolved) {
@@ -384,7 +384,7 @@ function processEndGame() {
     afterGameTitle.innerText = savedScore.title
     afterGameMsg.innerText = savedScore.msg
     endStarsElement.src = savedScore.stars
-    endScoreElement.innerText = savedScore.starsLeft
+    // endScoreElement.innerText = savedScore.starsLeft
     riddleElement.innerText = savedScore.riddle
     
     if (!alreadySolved) {
