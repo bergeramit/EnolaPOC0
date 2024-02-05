@@ -219,23 +219,23 @@ function processWrongGuess() {
     completeLevel.giveHint()
 }
 
-function giveUp(e) {
-    if (completeLevel.outOfTries) {
-        completeLevel.gaveUp = true
-        completeLevel.makeGuess(completeLevel.currentPhrase) // solve it for the user
-        processEndGame()
-    } else {
-        let notAvElement = document.getElementById("not-available-id")
-        // notAvElement.style.display = "inline-flex"
-        setFadeAnimation(notAvElement, "3s", 3000)
-        setTimeout(() => {
-            notAvElement.style.display = "none"
-        }, 3000)
-    }
-}
+// function giveUp(e) {
+//     if (completeLevel.outOfTries) {
+//         completeLevel.gaveUp = true
+//         completeLevel.makeGuess(completeLevel.currentPhrase) // solve it for the user
+//         processEndGame()
+//     } else {
+//         let notAvElement = document.getElementById("not-available-id")
+//         // notAvElement.style.display = "inline-flex"
+//         setFadeAnimation(notAvElement, "3s", 3000)
+//         setTimeout(() => {
+//             notAvElement.style.display = "none"
+//         }, 3000)
+//     }
+// }
 
-document.getElementById("try-status-x").addEventListener("click", giveUp)
-document.getElementById("try-status-x").addEventListener("touchstart", giveUp)
+// document.getElementById("try-status-x").addEventListener("click", giveUp)
+// document.getElementById("try-status-x").addEventListener("touchstart", giveUp)
 
 document.getElementById("share-daily-pic").addEventListener("touchstart", (e) => {
     var imageFile; // Variable to hold the image file
@@ -305,10 +305,14 @@ document.getElementById("share-daily-pic").addEventListener("touchstart", (e) =>
 
 function processOutOfTries() {
     console.log(">processOutOfTries")
+
+    completeLevel.gaveUp = true
+    completeLevel.makeGuess(completeLevel.currentPhrase) // solve it for the user
+    processEndGame()
     
-    let tryStatusX = document.getElementById("try-status-x")
-    tryStatusX.src = "img/x-on.png"
-    tryStatusX.style.cursor = "pointer"
+    // let tryStatusX = document.getElementById("try-status-x")
+    // tryStatusX.src = "img/x-on.png"
+    // tryStatusX.style.cursor = "pointer"
 }
 
 function resetGame() {
@@ -318,6 +322,9 @@ function resetGame() {
 
 function addCorrectLetter(letter, wordIndex, letterIndex) {
     const row = document.getElementsByClassName('word')[wordIndex]
+    if (row.children[letterIndex].classList.contains("letter-tile-v2")) {
+        return
+    }
     let letterElement = row.children[letterIndex].getElementsByClassName("letter")[0]
     letterElement.innerText = letter.toUpperCase()
     letterElement.style.color = "#989898"
