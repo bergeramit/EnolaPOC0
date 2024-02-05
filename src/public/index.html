@@ -2324,6 +2324,20 @@
       flex-direction: column;
       justify-content: center;
     }
+
+    .letter-tile-hint {
+      background-color: var(--white);
+      color: #989898;
+      /* border: 0.15rem solid; */
+      /* border-color: var(--cherry-pie); */
+      border-radius: 0.2rem;
+      height: 2.3rem;
+      position: relative;
+      width: 1.7rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     
     .letter-tile-empty {
       background-color: var(--white);
@@ -2859,6 +2873,11 @@
       margin-right: 0.3rem;
       margin-left: 0.5rem;
     }
+
+    .stars-class {
+      gap: 0;
+      display: flex;
+    }
     
     
   </style>
@@ -2986,11 +3005,13 @@
           <div id="try-status-x" class="status-extra-extra-bold-cape-cod-20-4px">X</div>
         </div> -->
         <img id="try-status-x" class="scale-icon" src="img/x-off.png">
-        <img class="star-class" src="img/filled-star.png" alt="Group 238296" />
-        <img class="star-class" src="img/filled-star.png" alt="Group 238306" />
-        <img class="star-class" src="img/filled-star.png" alt="Group 238307" />
-        <img class="star-class" src="img/filled-star.png" alt="Group 238308" />
-        <img class="star-class last-star-class" src="img/filled-star.png" alt="Group 238309" />
+        <div id="stars-row-id" class="stars-class">
+          <img class="star-class" src="img/filled-star.png" alt="Group 238296" />
+          <img class="star-class" src="img/filled-star.png" alt="Group 238306" />
+          <img class="star-class" src="img/filled-star.png" alt="Group 238307" />
+          <img class="star-class" src="img/filled-star.png" alt="Group 238308" />
+          <img class="star-class last-star-class" src="img/filled-star.png" alt="Group 238309" />
+        </div>
         <!-- <div id="how-to-button-id" class="how-to-class">
           <img class="question-mark-class" src="img/layer-1.svg" alt="question-mark-class" />
           <div class="how-to-dot-class"></div>

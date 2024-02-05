@@ -320,8 +320,9 @@ function addCorrectLetter(letter, wordIndex, letterIndex) {
     const row = document.getElementsByClassName('word')[wordIndex]
     let letterElement = row.children[letterIndex].getElementsByClassName("letter")[0]
     letterElement.innerText = letter.toUpperCase()
+    letterElement.style.color = "#989898"
     row.children[letterIndex].classList.remove("letter-tile-empty")
-    row.children[letterIndex].classList.add("letter-tile-v2")
+    row.children[letterIndex].classList.add("letter-tile-hint")
     row.style.gap = "0.1rem"
     // setScaleAnimation(row)
 }
@@ -468,7 +469,7 @@ function shuffle(array) {
     }
 
     function setShakeAnimation() {
-        let element = document.getElementsByClassName("words-tiles")[0]
+        let element = document.getElementById("stars-row-id")
         element.style.animationDuration = "0.3s";
         element.style.animationTimingFunction = "ease";
         element.style.animationName = "horizontal-shaking";
