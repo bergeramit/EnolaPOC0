@@ -10,7 +10,7 @@ const SPACE_KEY_NAME = "space"
 const BACKSPACE_KEY_NAME = "Backspace"
 const outOfTimeString = "OUT OF TIME!"
 const OOTRed = "#EF2253";
-const DEFAULT_BACKGROUND_COLOR = "#3c4141b2"
+const DEFAULT_BACKGROUND_COLOR = "#302238"
 
 const BEGINNING_ROUND_LETTER = `
 <div class="overlap-group">
@@ -578,11 +578,11 @@ function shuffle(array) {
         // var readyPopup = document.getElementById("ready-level-popup")
         // readyPopup.style.display = "none"
         const keyBackground = document.getElementById("main-view")
-        if (completeLevel.color.length > 3) {
-            keyBackground.style.backgroundColor = completeLevel.color
-        } else {
-            keyBackground.style.backgroundColor = DEFAULT_BACKGROUND_COLOR
-        }
+        // if (completeLevel.color.length > 3) {
+        //     keyBackground.style.backgroundColor = completeLevel.color
+        // } else {
+            // }
+        keyBackground.style.backgroundColor = DEFAULT_BACKGROUND_COLOR
         const titleElement = document.getElementById("current-category")
         titleElement.innerText = completeLevel.title
         
