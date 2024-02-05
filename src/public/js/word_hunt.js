@@ -332,7 +332,9 @@ function addCorrectWord(word, wordIndex) {
     for (let j = 0; j < row.children.length; j++) {
         let letter = row.children[j].getElementsByClassName("letter")[0]
         letter.innerText = word[j].toUpperCase()
+        letter.style.color = "black"
         row.children[j].classList.remove("letter-tile-empty")
+        row.children[j].classList.remove("letter-tile-hint")
         row.children[j].classList.add("letter-tile-v2")
     }
     row.style.gap = "0.1rem"
