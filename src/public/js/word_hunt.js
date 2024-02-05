@@ -324,7 +324,7 @@ function addCorrectLetter(letter, wordIndex, letterIndex) {
     row.children[letterIndex].classList.remove("letter-tile-empty")
     row.children[letterIndex].classList.add("letter-tile-hint")
     row.style.gap = "0.1rem"
-    // setScaleAnimation(row)
+    setInverseScaleAnimation(row.children[letterIndex])
 }
 
 function addCorrectWord(word, wordIndex) {
@@ -470,11 +470,26 @@ function shuffle(array) {
         element.style.animationName = "zoom-in-zoom-out";
     }
 
+    function setInverseScaleAnimation(element) {
+        element.style.animationDuration = "0.7s";
+        element.style.animationTimingFunction = "ease";
+        element.style.animationName = "zoom-out-zoom-in";
+    }
+
     function setShakeAnimation() {
         let element = document.getElementById("stars-row-id")
-        element.style.animationDuration = "0.3s";
+        element.style.animationDuration = "0.9s";
         element.style.animationTimingFunction = "ease";
         element.style.animationName = "horizontal-shaking";
+        setTimeout(function(e) {
+            element.style.animationName = "none"
+        }, 400)
+    }
+
+    function setHintShakeAnimation(element) {
+        element.style.animationDuration = "2s";
+        element.style.animationTimingFunction = "ease";
+        element.style.animationName = "skew-x-shake";
         setTimeout(function(e) {
             element.style.animationName = "none"
         }, 400)
