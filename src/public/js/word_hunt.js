@@ -155,6 +155,7 @@ class CompleteLevel {
     }
 
     giveHint() {
+        setShakeAnimation()
         let hintLetter = this.hints[0]
         this.hints = this.hints.slice(1)
         // this.highlighAnotherLetter(hintLetter)
@@ -322,7 +323,7 @@ function addCorrectLetter(letter, wordIndex, letterIndex) {
     row.children[letterIndex].classList.remove("letter-tile-empty")
     row.children[letterIndex].classList.add("letter-tile-v2")
     row.style.gap = "0.1rem"
-    setScaleAnimation(row)
+    // setScaleAnimation(row)
 }
 
 function addCorrectWord(word, wordIndex) {
@@ -464,6 +465,16 @@ function shuffle(array) {
         element.style.animationDuration = "0.7s";
         element.style.animationTimingFunction = "ease";
         element.style.animationName = "zoom-in-zoom-out";
+    }
+
+    function setShakeAnimation() {
+        let element = document.getElementsByClassName("words-tiles")[0]
+        element.style.animationDuration = "0.3s";
+        element.style.animationTimingFunction = "ease";
+        element.style.animationName = "horizontal-shaking";
+        setTimeout(function(e) {
+            element.style.animationName = "none"
+        }, 400)
     }
     
     function setKeyTapAnimation(element) {
