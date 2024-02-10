@@ -2525,7 +2525,7 @@
       border: none;
       display: flex;
       /* height: 4rem; */
-      min-width: 18rem;
+      min-width: 16rem;
       border-radius: 10rem;
       padding: 0.5rem;
     }
@@ -2732,6 +2732,24 @@
       justify-content: center;
       align-content: center;
       /* margin-bottom: 10rem; */
+    }
+
+    .send-button {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      align-items: center;
+    }
+
+    .send-button-back {
+      width: 4rem;
+      border-radius: 107px;
+      height: 2rem;
+      display: flex;
+    flex-direction: column;
+    justify-content: center;
+      background-color: #2C0A42;
+      margin: auto;
     }
     
     .play-button-place {
@@ -2947,6 +2965,26 @@
     line-height: 1rem;
     width: 12rem;
   }
+
+  .tries-send-display {
+    background-color: var(--white);
+    /* border: 3.99px solid; */
+    border-color: var(--violet);
+    border-radius: 20rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right: 0;
+    margin-left: 0.2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .tries-send-display-number {
+    color: var(--violet); 
+    margin: auto;
+    position: relative;
+    top: -0.1rem;
+  }
     
     
   </style>
@@ -3149,10 +3187,19 @@
           <div class="keyboard">
             <div class="input-to-chat">
               <input id="chat-input" class="chat-input-class"  inputmode='none' autocomplete="off" placeholder="Add your guess..." class="">
-              <button id="enterButton" class="keyboard-button-submit">
+              
+              <div id="enterButton" class="send-button-back">
+                <div class="send-button">
+                  <div class="gilroy-extra-extra-bold-white-12-8px">SEND</div>
+                  <div class="tries-send-display">
+                    <div id="tries-send-button" class="gilroy-extra-extra-bold-white-12-8px tries-send-display-number">5</div>
+                  </div>
+                </div>
+              </div>
+              <!-- <button id="enterButton" class="keyboard-button-submit">
                 <div class="enter-button"><img class="subtract" src="img/send_icon.png" />
                 </div>
-              </button>
+              </button> -->
             </input>
             <!-- <button id="enterButton" class="keyboard-button-key keyboard-button-submit">
               <div class="enter-button"><img class="subtract" src="img/subtract-2.svg" alt="Subtract" />

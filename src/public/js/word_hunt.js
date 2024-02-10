@@ -128,6 +128,8 @@ class CompleteLevel {
     
     makeGuess(words) {
         this.tries++;
+        let tryStatus = document.getElementById("tries-send-button")
+        tryStatus.innerText = 5 - this.tries
         if (this.tries == this.maxTries) {
             this.outOfTries = true
         }
