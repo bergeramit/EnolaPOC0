@@ -1198,7 +1198,7 @@
       
       .welcome-bg-div {
         /* min-width: 25rem; */
-        padding-top: 10rem;
+        padding-top: 7rem;
         background-color: #F6F0F7;
         vertical-align: bottom;
         gap: 0.8rem;
@@ -1217,6 +1217,7 @@
       }
       
       .howto-top-pad {
+        margin-top: 2rem;
         padding-top: 1rem;
         gap: 0.2rem;
         min-width: 26rem;
@@ -1354,6 +1355,7 @@
       }
 
       .howto-top-pad {
+        margin-top: 2rem;
         padding-top: 1rem;
         gap: 0.2rem;
         min-width: 26rem;
@@ -1393,7 +1395,7 @@
       
       .welcome-bg-div {
         /* min-width: 26rem; */
-        padding-top: 10rem;
+        padding-top: 7rem;
         background-color: #F6F0F7;
         vertical-align: bottom;
         gap: 0.8rem;
@@ -2529,7 +2531,7 @@
     }
     
     .darken {
-      /* display: none; */
+      display: none;
       z-index: 3;
       background-color: var(--black-8);
       height: 100%;
@@ -2685,7 +2687,7 @@
       height: 2.5rem;
       width: 16rem;
       display: flex;
-      margin-bottom: 3rem;
+      /* margin-bottom: 3rem; */
       flex-direction: column;
       justify-content: center;
       align-content: center;
@@ -2920,6 +2922,31 @@
     margin-top: 1rem;
     margin-bottom: 1.5rem;
   }
+
+  .howto-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .howto-pics {
+    width: 5rem;
+  }
+
+  .howto-pics-2 {
+    width: 3rem;
+  }
+
+  .howto-quote {
+    color: var(--violet);
+    font-family: var(--font-family-gilroy-extrabold);
+    font-size: var(--font-size-m);
+    /* font-weight: 800; */
+    letter-spacing: 0;
+    line-height: 1rem;
+    width: 12rem;
+  }
     
     
   </style>
@@ -2975,7 +3002,7 @@
   
 </head>
 <body id="main-view" class="full-view desktop">
-  <!-- <div id="darken-id" class="darken"></div> -->
+  <div id="darken-id" class="darken" none></div>
   <div id="welcome-popup" class="">
     <div class="welcome-bg-div" src="">
       <img class="uptop daily-quiz-class" src="img/welcom-logo.png">
@@ -3004,15 +3031,25 @@
   
 </div>
 <div id="howto-popup" class="">
-  <div class="welcome-bg-div howto-top-pad">
+  <div id="howto-fix-id" class="welcome-bg-div howto-top-pad">
     <img id="x-howto-button" class="x-pic" src="img/x.svg">
     <p id="" class="uptop how-to-play-title">HOW TO PLAY</p>
-    <p id="" class="uptop you-made-it-explanation">GUESS THE MEANING OF THE PICTURE</p>
-    <img class="howto-pic" src="img/howto-pic.png">
-    <p class="try-to-guess-what-is howto-decription">Every day you will get a new picture puzzle. Try to solve it and understand what is hidden behind the picture.</p>
-    <p class="try-to-guess-what-is howto-decription">For each unsuccessful attempt you will lose a star, go down in ranking, and in return you will get a hint for a letter that will appear on the keyboard and exist in the concept.</p>
-    <p class="try-to-guess-what-is howto-decription">After five unsuccessful attempts, you can quit the game, or keep trying again and again.</p>
-    <p class="try-to-guess-what-is howto-decription">Every morning you will get a new puzzle</p>
+    <div class="howto-item">
+      <img class="howto-pics" src="img/howto-pic.png" alt="">
+      <p class="howto-quote">GUESS THE MEANING OF THE PICTURE</p>
+    </div>
+    <div class="howto-item">
+      <p class="howto-quote">TRY TO DO IT IN AS FEW ATTEMPTS AS POSSIBLE</p>
+      <img class="howto-pics-2" src="img/empty-star-howto.png" alt="">
+    </div>
+    <div class="howto-item">
+      <img class="howto-pics-2" src="img/A-howto.png" alt="">
+      <p class="howto-quote">YOU WILL GET A HINT FOR EACH ATTEMPT</p>
+    </div>
+    <div class="howto-item">
+      <p class="howto-quote">SHARPEN YOUR BRAIN AND BRAG ABOUT IT!</p>
+      <img class="howto-pics-2" src="img/thumbsup-howto.png" alt="">
+    </div>
     <div id="brag-button" class="uptop get-the-app-class start-now-class brag-class">
       <div id="howto-play-button" class="get-the-app-shadow">
         <div class="getapp-button-place gilroy-extra-extra-bold-white-12-8px">GOT IT</div>

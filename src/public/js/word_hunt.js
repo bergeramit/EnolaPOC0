@@ -823,9 +823,23 @@ function shuffle(array) {
             chatInput.value = ""
         }, {passive: true})
         
+
+        function fixHowToTop() {
+            let howtoElement = document.getElementById("howto-fix-id")
+            howtoElement.style.marginTop = "0"
+        }
+
+        function fixHowToFloat() {
+            let howtoElement = document.getElementById("howto-fix-id")
+            howtoElement.style.marginTop = "2rem"
+        }
+
         document.getElementById("how-to-play").addEventListener("click", (e) => {
             /* When "how-to" Pressed */
             // window.LogRocket.track('clickQuestionMark', {});
+
+            fixHowToTop()
+
             reportAnalytics("clickQuestionMark", {})
             const welcomPopup = document.getElementById("welcome-popup")
             welcomPopup.style.display = "none"
@@ -840,11 +854,14 @@ function shuffle(array) {
             reportAnalytics("clickQuestionMark", {})
             const howToPopup = document.getElementById("howto-popup")
             howToPopup.style.display = "flex"
+            setDark()
+            fixHowToFloat()
         }, {passive: true})
         
         document.getElementById("x-howto-button").addEventListener("click", (e) => {
             /* When "how-to" Pressed */
             // window.LogRocket.track('clickQuestionMark', {});
+            removeDark()
             reportAnalytics("clickQuestionMark", {})
             if (backToMain) {
                 const welcomPopup = document.getElementById("welcome-popup")
@@ -858,15 +875,20 @@ function shuffle(array) {
             const darken = document.getElementById("darken-id")
             darken.style.display = "block"
         }
+
+        function removeDark() {
+            const darken = document.getElementById("darken-id")
+            darken.style.display = "none"
+        }
         
         
         document.getElementById("register-play").addEventListener("click", (e) => {
             const welcomPopup = document.getElementById("welcome-popup")
-            
             welcomPopup.style.display = "none"
         })
         
         document.getElementById("howto-play-button").addEventListener("click", (e) => {
+            removeDark()
             const howtoPopup = document.getElementById("howto-popup")
             howtoPopup.style.display = "none"
         })
