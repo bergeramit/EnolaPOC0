@@ -241,7 +241,8 @@ function processWrongGuess() {
 
 function shareWhatsapp() {
     // Sharing to whatsapp instead
-    window.open('whatsapp://send?text='+encodeURIComponent("https://picwiz.ai/src/public/img/LevelsBackground/bg.png")+" I solved the challenge with no help! how about you");
+    //+" I solved the challenge with no help! how about you"
+    window.open('whatsapp://send?text='+encodeURIComponent("https://picwiz.ai/src/public/img/LevelsBackground/bg.png"));
 }
 
 async function share() {
