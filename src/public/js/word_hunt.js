@@ -265,10 +265,11 @@ async function share() {
         context.drawImage(image, 0, 0);
         
         canvas.toBlob(async (blob) => {
-            const files = [new File([blob], 'dailyPic.png', { type: blob.type })];
+            const files = [new File([blob], 'Daily Challenge.png', { type: blob.type })];
             const shareData = {
                 text: 'Some text',
                 title: 'Some title',
+                url: "https://picwiz.ai/src/public/img/LevelsBackground/bg.png",
                 files,
             };
             

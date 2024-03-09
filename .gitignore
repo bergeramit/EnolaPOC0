@@ -130,3 +130,4 @@ dist
 .pnp.*
 src/server/gameServer/build/index.js
 *.DS_Store
+src/public/img/LevelsBackground/bg.png
