@@ -266,7 +266,7 @@ async function share() {
             const shareData = {
                 text: 'Some text',
                 title: 'Some title',
-                url: "https://picwiz.ai/src/public/img/LevelsBackground/bg.png",
+                url: "https://picwiz.ai/img/LevelsBackground/bg.png",
                 files,
             };
             
