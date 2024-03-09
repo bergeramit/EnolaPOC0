@@ -24,10 +24,11 @@
     "eslint-plugin-promise": "^6.1.1"
   },
   "dependencies": {
-    "node-schedule": "^2.1.1",
-    "pwa-asset-generator": "^6.3.1",
     "firebase-admin": "^11.8.0",
-    "firebase-functions": "^4.3.1"
+    "firebase-functions": "^4.3.1",
+    "html2canvas": "^1.4.1",
+    "node-schedule": "^2.1.1",
+    "pwa-asset-generator": "^6.3.1"
   },
   "engines": {
     "node": "18"

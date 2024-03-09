@@ -145,7 +145,7 @@ class CompleteLevel {
     getRiddleTitle() {
         return "\"" + this.currentPhrase.join(" ") + "\"" 
     }
-
+    
     showLetterOnTiles(hintLetter) {
         for (let i=0; i< this.currentPhrase.length; i++) {
             for (let j=0; j< this.currentPhrase[i].length; j++) {
@@ -155,7 +155,7 @@ class CompleteLevel {
             }
         }
     }
-
+    
     giveHint() {
         setShakeAnimation()
         let hintLetter = this.hints[0]
@@ -239,75 +239,61 @@ function processWrongGuess() {
 // document.getElementById("try-status-x").addEventListener("click", giveUp)
 // document.getElementById("try-status-x").addEventListener("touchstart", giveUp)
 
-document.getElementById("share-daily-pic").addEventListener("touchstart", (e) => {
-    var imageFile; // Variable to hold the image file
-    
-    // Function to load the image as a File object
-    function loadImage() {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'img/bg.png', true); // Replace with the path to your image
-        xhr.responseType = 'blob';
-        xhr.onload = function() {
-            if (this.status === 200) {
-                var blob = this.response;
-                imageFile = new File([blob], 'bg.png', { type: 'image/png' });
-            }
-        };
-        xhr.send();
+async function share() {
+    if (!('share' in navigator)) {
+        console.log("Share is not supported")
+        return;
     }
     
-    // Call this function when the page loads or when the image becomes available
-    loadImage();
+    const imageUrl = 'img/LevelsBackground/bg.png'; // Replace with the actual URL of your image
     
-    var titleText = "PicWiz Daily - " + currentDateRiddle.getDate() + " " + MONTH_NAMES[currentDateRiddle.getMonth()] + " 24"
-    var msgText = "Join me in solving the daily picwiz challenge"
-    // Check if the Web Share API is available
-    if (navigator.share) {
-        // Fetch the image you want to share
-        try {
-            // Share the score and the image
-            if (navigator.canShare && imageFile && navigator.canShare({ files: [imageFile] })) {
-                navigator.share({
-                    title: titleText,
-                    text: msgText,
-                    url: window.location.href, // You can also share the URL of your website
-                    files: [imageFile]
-                }).then(() => {
-                    console.log('Thanks for sharing!');
-                    return
-                }).catch((error) => {
-                    console.log('Error sharing:', error);
-                });
+    const image = new Image();
+    image.crossOrigin = 'anonymous';
+    image.src = imageUrl;
+    
+    image.onload = async () => {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        
+        canvas.width = image.width;
+        canvas.height = image.height;
+        
+        // Set background color
+        context.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw the image onto the canvas
+        context.drawImage(image, 0, 0);
+        
+        canvas.toBlob(async (blob) => {
+            const files = [new File([blob], 'dailyPic.png', { type: blob.type })];
+            const shareData = {
+                text: 'Some text',
+                title: 'Some title',
+                files,
+            };
+            
+            if (navigator.canShare(shareData)) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    if (err.name !== 'AbortError') {
+                        console.error(err.name, err.message);
+                    }
+                }
             } else {
-                console.error('Your browser does not support sharing files.');
+                console.warn('Sharing not supported', shareData);
             }
-        } catch (error) {
-            console.error('Error fetching the image:', error);
-        }
-    } else {
-        // Fallback for browsers that don't support the Web Share API
-        alert('Web Share API is not supported in your browser.');
-    }
-    if (navigator.share) {
-        // Share the score
-        navigator.share({
-            title: titleText,
-            text: msgText,
-            url: window.location.href // You can also share the URL of your website
-        }).then(() => {
-            console.log('Thanks for sharing!');
-        }).catch((error) => {
-            console.log('Error sharing:', error);
         });
-    } else {
-        // Fallback for browsers that don't support the Web Share API
-        alert('Web Share API is not supported in your browser.');
     }
+}
+
+document.getElementById("share-daily-pic").addEventListener("touchstart", (e) => {
+    share()
 })
 
 function processOutOfTries() {
     console.log(">processOutOfTries")
-
+    
     completeLevel.gaveUp = true
     completeLevel.makeGuess(completeLevel.currentPhrase) // solve it for the user
     processEndGame()
@@ -478,13 +464,13 @@ function shuffle(array) {
         element.style.animationTimingFunction = "ease";
         element.style.animationName = "zoom-in-zoom-out";
     }
-
+    
     function setInverseScaleAnimation(element) {
         element.style.animationDuration = "0.7s";
         element.style.animationTimingFunction = "ease";
         element.style.animationName = "zoom-out-zoom-in";
     }
-
+    
     function setShakeAnimation() {
         let element = document.getElementById("stars-row-id")
         element.style.animationDuration = "0.9s";
@@ -494,7 +480,7 @@ function shuffle(array) {
             element.style.animationName = "none"
         }, 400)
     }
-
+    
     function setHintShakeAnimation(element) {
         element.style.animationDuration = "2s";
         element.style.animationTimingFunction = "ease";
@@ -590,7 +576,7 @@ function shuffle(array) {
         // if (completeLevel.color.length > 3) {
         //     keyBackground.style.backgroundColor = completeLevel.color
         // } else {
-            // }
+        // }
         keyBackground.style.backgroundColor = DEFAULT_BACKGROUND_COLOR
         const titleElement = document.getElementById("current-category")
         titleElement.innerText = completeLevel.title
@@ -825,23 +811,23 @@ function shuffle(array) {
             chatInput.value = ""
         }, {passive: true})
         
-
+        
         function fixHowToTop() {
             let howtoElement = document.getElementById("howto-fix-id")
             howtoElement.style.marginTop = "0"
         }
-
+        
         function fixHowToFloat() {
             let howtoElement = document.getElementById("howto-fix-id")
             howtoElement.style.marginTop = "2rem"
         }
-
+        
         document.getElementById("how-to-play").addEventListener("click", (e) => {
             /* When "how-to" Pressed */
             // window.LogRocket.track('clickQuestionMark', {});
-
+            
             fixHowToTop()
-
+            
             reportAnalytics("clickQuestionMark", {})
             const welcomPopup = document.getElementById("welcome-popup")
             welcomPopup.style.display = "none"
@@ -877,7 +863,7 @@ function shuffle(array) {
             const darken = document.getElementById("darken-id")
             darken.style.display = "block"
         }
-
+        
         function removeDark() {
             const darken = document.getElementById("darken-id")
             darken.style.display = "none"
