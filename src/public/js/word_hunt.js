@@ -242,10 +242,10 @@ async function share() {
         return;
     }
     
-    const imageUrl = 'img/LevelsBackground/bg.png'; // Replace with the actual URL of your image
+    const imageUrl = 'https://picwiz.ai/img/LevelsBackground/bg.png'; // Replace with the actual URL of your image
     
     const image = new Image();
-    image.crossOrigin = 'anonymous';
+    image.crossOrigin = 'https://picwiz.ai/';
     image.src = imageUrl;
     
     image.onload = async () => {
