@@ -286,15 +286,15 @@ async function share() {
 }
 
 document.getElementById("share-daily-pic").addEventListener("touchstart", (e) => {
-    // share()
+    share()
     // shareWhatsapp()
-    window.open('whatsapp://send?text='+encodeURIComponent("https://picwiz.ai/img/LevelsBackground/bg.png"));
+    // window.open('whatsapp://send?text='+encodeURIComponent("https://picwiz.ai/img/LevelsBackground/bg.png"));
 })
 
 document.getElementById("share-daily-pic").addEventListener("click", (e) => {
-    // share()
+    share()
     // shareWhatsapp()
-    window.open('whatsapp://send?text='+encodeURIComponent("https://picwiz.ai/img/LevelsBackground/bg.png"));
+    // window.open('whatsapp://send?text='+encodeURIComponent("https://picwiz.ai/img/LevelsBackground/bg.png"));
 })
 
 function processOutOfTries() {
