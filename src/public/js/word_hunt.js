@@ -236,6 +236,17 @@ function processWrongGuess() {
 //     }
 // }
 
+function getScoreAnimated() {
+    var res = ""
+    for(let i=0; i<completeLevel.getStarsLeft(); i++) {
+        res += "★"
+    }
+    while(res.length < 5) {
+        res += "☆"
+    }
+    return res
+}
+
 async function share() {
     if (!('share' in navigator)) {
         console.log("Share is not supported")
@@ -264,10 +275,9 @@ async function share() {
         canvas.toBlob(async (blob) => {
             const files = [new File([blob], 'Daily Challenge.png', { type: blob.type })];
             const shareData = {
-                text: 'Some text',
-                title: 'Some title',
-                url: "https://picwiz.ai/img/LevelsBackground/bg.png",
                 files,
+                title: 'Daily Challenge Results',
+                text: 'I scored: '+getScoreAnimated()+" Try to Beat me at https://picwiz.ai/",
             };
             
             if (navigator.canShare(shareData)) {
