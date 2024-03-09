@@ -239,6 +239,11 @@ function processWrongGuess() {
 // document.getElementById("try-status-x").addEventListener("click", giveUp)
 // document.getElementById("try-status-x").addEventListener("touchstart", giveUp)
 
+function shareWhatsapp() {
+    // Sharing to whatsapp instead
+    window.open('whatsapp://send?text='+encodeURIComponent("https://picwiz.ai/src/public/img/LevelsBackground/bg.png")+" I solved the challenge with no help! how about you");
+}
+
 async function share() {
     if (!('share' in navigator)) {
         console.log("Share is not supported")
@@ -289,7 +294,8 @@ async function share() {
 }
 
 document.getElementById("share-daily-pic").addEventListener("touchstart", (e) => {
-    share()
+    // share()
+    shareWhatsapp()
 })
 
 function processOutOfTries() {
